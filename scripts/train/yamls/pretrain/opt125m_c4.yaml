@@ -1,0 +1,157 @@
+model_name_or_path: facebook/opt-125m
+max_seq_len: 2048
+precision: amp_bf16
+
+data_local: # TODO
+data_remote: # If blank, files must be present in data_local
+global_seed: 42
+seed: ${global_seed}
+
+max_duration: #TODO
+eval_interval: #TODO
+eval_first: true
+
+global_train_batch_size: #TODO
+device_train_microbatch_size: #TODO
+device_eval_batch_size: #TODO
+
+run_name: # If left blank, will be read from env var $RUN_NAME
+
+model:
+  name: hf_causal_lm
+  use_flash_attention_2: true
+  pretrained: true
+  pretrained_model_name_or_path: ${model_name_or_path}
+  # config_overrides:
+  #   # WARNING: if setting `pretrained: true`, `max_position_embeddings` must match the
+  #   # `max_position_embeddings` used during pre-training
+  #   max_position_embeddings: ${max_seq_len}
+
+tokenizer:
+  name: ${model_name_or_path}
+  kwargs:
+    model_max_length: ${max_seq_len}
+
+train_loader:
+  name: text
+  dataset:
+    local: ${data_local}
+    remote: ${data_remote}
+    split: train
+    shuffle: true
+    max_seq_len: ${max_seq_len}
+    shuffle_seed: ${global_seed}
+  drop_last: false
+  num_workers: 8
+  # prefetch_factor: 2
+  # pin_memory: false
+  # persistent_workers: true
+  # timeout: 0
+
+# TODO: probati dataloadere bez ovis fensi configs
+eval_loader:
+  name: text
+  dataset:
+    local: ${data_local}
+    remote: ${data_remote}
+    split: val
+    shuffle: false
+    max_seq_len: ${max_seq_len}
+    shuffle_seed: ${global_seed}
+  drop_last: false
+  num_workers: 8
+  # prefetch_factor: 2
+  # pin_memory: false
+  # persistent_workers: true
+  # timeout: 0
+
+scheduler:
+  name: cosine_with_warmup
+  t_warmup: 1000ba
+  alpha_f: 0.1
+
+optimizer:
+  name: decoupled_adamw
+  lr: #TODO
+  betas:
+  - 0.9
+  - 0.95
+  eps: 1.0e-08
+  weight_decay: 0.0
+
+algorithms:
+  gradient_clipping:
+    clipping_type: norm
+    clipping_threshold: 1.0
+
+fsdp_config:
+  sharding_strategy: FULL_SHARD
+  mixed_precision: DEFAULT # TODO: vs PURE?
+  activation_checkpointing: false
+  activation_checkpointing_reentrant: false
+  activation_cpu_offload: false
+  limit_all_gathers: true
+
+# Logging
+progress_bar: false
+log_to_console: true
+console_log_interval: 1ba
+
+callbacks:
+  speed_monitor:
+    window_size: 10
+  lr_monitor: {}
+  memory_monitor: {}
+  runtime_estimator: {}
+
+loggers:
+  wandb: {}
+
+# Checkpoint to local filesystem or remote object store
+save_interval: ${eval_interval}
+save_num_checkpoints_to_keep: 1  # Important, this cleans up checkpoints saved to DISK
+save_folder: /data/eldar/llmfoundry_checkpoints/${run_name}
+# save_folder: s3://my-bucket/my-folder/{run_name}/checkpoints
+
+# [DONE] ARC: 25-shot, arc-challenge (acc_norm)
+# [DONE] MMLU: 5-shot, hendrycksTest-abstract_algebra,hendrycksTest-anatomy,hendrycksTest-astronomy,hendrycksTest-business_ethics,hendrycksTest-clinical_knowledge,hendrycksTest-college_biology,hendrycksTest-college_chemistry,hendrycksTest-college_computer_science,hendrycksTest-college_mathematics,hendrycksTest-college_medicine,hendrycksTest-college_physics,hendrycksTest-computer_security,hendrycksTest-conceptual_physics,hendrycksTest-econometrics,hendrycksTest-electrical_engineering,hendrycksTest-elementary_mathematics,hendrycksTest-formal_logic,hendrycksTest-global_facts,hendrycksTest-high_school_biology,hendrycksTest-high_school_chemistry,hendrycksTest-high_school_computer_science,hendrycksTest-high_school_european_history,hendrycksTest-high_school_geography,hendrycksTest-high_school_government_and_politics,hendrycksTest-high_school_macroeconomics,hendrycksTest-high_school_mathematics,hendrycksTest-high_school_microeconomics,hendrycksTest-high_school_physics,hendrycksTest-high_school_psychology,hendrycksTest-high_school_statistics,hendrycksTest-high_school_us_history,hendrycksTest-high_school_world_history,hendrycksTest-human_aging,hendrycksTest-human_sexuality,hendrycksTest-international_law,hendrycksTest-jurisprudence,hendrycksTest-logical_fallacies,hendrycksTest-machine_learning,hendrycksTest-management,hendrycksTest-marketing,hendrycksTest-medical_genetics,hendrycksTest-miscellaneous,hendrycksTest-moral_disputes,hendrycksTest-moral_scenarios,hendrycksTest-nutrition,hendrycksTest-philosophy,hendrycksTest-prehistory,hendrycksTest-professional_accounting,hendrycksTest-professional_law,hendrycksTest-professional_medicine,hendrycksTest-professional_psychology,hendrycksTest-public_relations,hendrycksTest-security_studies,hendrycksTest-sociology,hendrycksTest-us_foreign_policy,hendrycksTest-virology,hendrycksTest-world_religions
+# [DONE] HellaSwag: 10-shot, hellaswag (acc_norm)
+# [DONE] Winogrande: 5-shot, winogrande (acc)
+# [DONE] GSM8k: 5-shot, gsm8k (acc)
+# [MISSING] TruthfulQA: 0-shot, truthfulqa-mc (mc2)
+# (average of all the results acc)
+
+icl_seq_len: ${max_seq_len}
+icl_tasks:
+-
+  label: arc_challenge
+  dataset_uri: /home/eldar/github/llm-foundry/scripts/eval/local_data/world_knowledge/arc_challenge.jsonl
+  num_fewshot: [25]
+  icl_task_type: multiple_choice
+  continuation_delimiter: "\nAnswer: " # this separates questions from answers
+-
+  label: mmlu
+  dataset_uri: /home/eldar/github/llm-foundry/scripts/eval/local_data/world_knowledge/mmlu.jsonl
+  num_fewshot: [5]
+  icl_task_type: multiple_choice
+  continuation_delimiter: "\nAnswer: " # this separates questions from answers
+  # has_categories: true  # this splits mmlu into separate categories; lets keep track of global average for now
+-
+  label: hellaswag
+  dataset_uri: /home/eldar/github/llm-foundry/scripts/eval/local_data/language_understanding/hellaswag.jsonl
+  num_fewshot: [10]
+  icl_task_type: multiple_choice
+-
+  label: winogrande
+  dataset_uri: /home/eldar/github/llm-foundry/scripts/eval/local_data/language_understanding/winogrande.jsonl
+  num_fewshot: [5]
+  icl_task_type: schema
+-
+  label: gsm8k
+  dataset_uri: /home/eldar/github/llm-foundry/scripts/eval/local_data/symbolic_problem_solving/gsm8k.jsonl
+  num_fewshot: [5]
+  icl_task_type: question_answering
+  cot_delimiter: ' #### '  # we need this
+  continuation_delimiter: "\nA: "
+  question_prelimiter: "Q: "
+
