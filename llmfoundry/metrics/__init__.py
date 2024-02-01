@@ -13,6 +13,8 @@ from llmfoundry.eval.metrics import (
     InContextLearningLMExpectedCalibrationError,
     InContextLearningMCExpectedCalibrationError,
     InContextLearningMultipleChoiceAccuracy,
+    InContextLearningCrossEntropy,
+    InContextLearningPerplexity,
 )
 from llmfoundry.metrics.token_acc import TokenAccuracy
 from llmfoundry.registry import metrics
@@ -35,6 +37,9 @@ metrics.register(
 metrics.register('language_cross_entropy', func=LanguageCrossEntropy)
 metrics.register('language_perplexity', func=LanguagePerplexity)
 metrics.register('masked_accuracy', func=MaskedAccuracy)
+
+metrics.register('icl_perplexity', func=InContextLearningPerplexity)
+metrics.register('icl_cross_entropy', func=InContextLearningCrossEntropy)
 
 DEFAULT_CAUSAL_LM_TRAIN_METRICS = [
     'language_cross_entropy',

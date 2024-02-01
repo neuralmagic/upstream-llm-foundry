@@ -2,7 +2,8 @@
 
 # export CUDA_VISIBLE_DEVICES=0,1
 
-export DATA_LOCAL=/data/eldar/opt125m/c4
+# export DATA_LOCAL=/data/eldar/opt125m/c4
+export DATA_LOCAL=/network/eldar/datasets/opt125m/c4
 
 export WANDB_ENTITY=eldarkurtic
 export WANDB_DISABLED=False
@@ -10,7 +11,6 @@ export WANDB_PROJECT=opt125m_c4
 
 export USE_FUSED_CROSSENTROPY_LOSS=1
 
-# export MDL=EleutherAI/gpt-neo-125m
 export MDL=facebook/opt-125m
 export MAX_SEQ_LEN=2048
 
@@ -21,15 +21,13 @@ export EVAL_INTERVAL=2000ba
 export GLOBAL_BS=256
 export PER_DEVICE_BS=32
 
-export LR=6e-4
+export LR=3e-4
 export WARMUP=1000ba
 
 export RUN_NAME=dense_maxseq${MAX_SEQ_LEN}_${MAX_DURATION}_cosineLR${LR}_warmup${WARMUP}_yesGradClip1.0_globalBS${GLOBAL_BS}_evalInterval${EVAL_INTERVAL}_fusedCE${USE_FUSED_CROSSENTROPY_LOSS}
 
-# yamls/eldar/mpt125m_c4.yaml \
-    # yamls/eldar/opt125m_c4.yaml \
 composer train.py \
-    yamls/eldar/opt125m_c4.yaml \
+    yamls/pretrain/opt125m_c4.yaml \
     model_name_or_path=${MDL} \
     max_seq_len=${MAX_SEQ_LEN} \
     data_local=${DATA_LOCAL} \
@@ -44,13 +42,20 @@ composer train.py \
     scheduler.t_warmup=${WARMUP}
 
 
-export LR=1e-4
+# 10b tokens --> 10*10^9/(2048*256) = 19073ba  <-- 50b is 5x
+export MAX_DURATION=100000ba
+export EVAL_INTERVAL=10000ba
+
+export GLOBAL_BS=256
+export PER_DEVICE_BS=32
+
+export LR=3e-4
+export WARMUP=5000ba
+
 export RUN_NAME=dense_maxseq${MAX_SEQ_LEN}_${MAX_DURATION}_cosineLR${LR}_warmup${WARMUP}_yesGradClip1.0_globalBS${GLOBAL_BS}_evalInterval${EVAL_INTERVAL}_fusedCE${USE_FUSED_CROSSENTROPY_LOSS}
 
-# yamls/eldar/mpt125m_c4.yaml \
-    # yamls/eldar/opt125m_c4.yaml \
 composer train.py \
-    yamls/eldar/opt125m_c4.yaml \
+    yamls/pretrain/opt125m_c4.yaml \
     model_name_or_path=${MDL} \
     max_seq_len=${MAX_SEQ_LEN} \
     data_local=${DATA_LOCAL} \
@@ -63,27 +68,4 @@ composer train.py \
     optimizer.lr=${LR} \
     eval_first=True \
     scheduler.t_warmup=${WARMUP}
-
-
-export SCHEDULER=linear_decay_with_warmup
-export LR=1e-4
-export RUN_NAME=dense_maxseq${MAX_SEQ_LEN}_${MAX_DURATION}_linearLR${LR}_warmup${WARMUP}_yesGradClip1.0_globalBS${GLOBAL_BS}_evalInterval${EVAL_INTERVAL}_fusedCE${USE_FUSED_CROSSENTROPY_LOSS}
-
-# yamls/eldar/mpt125m_c4.yaml \
-    # yamls/eldar/opt125m_c4.yaml \
-composer train.py \
-    yamls/eldar/opt125m_c4.yaml \
-    model_name_or_path=${MDL} \
-    max_seq_len=${MAX_SEQ_LEN} \
-    data_local=${DATA_LOCAL} \
-    max_duration=${MAX_DURATION} \
-    eval_interval=${EVAL_INTERVAL} \
-    global_train_batch_size=${GLOBAL_BS} \
-    device_train_microbatch_size=${PER_DEVICE_BS} \
-    device_eval_batch_size=${PER_DEVICE_BS} \
-    run_name=${RUN_NAME} \
-    optimizer.lr=${LR} \
-    eval_first=True \
-    scheduler.t_warmup=${WARMUP} \
-    scheduler.name=${SCHEDULER}
 
