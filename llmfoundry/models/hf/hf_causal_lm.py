@@ -15,7 +15,8 @@ from composer.metrics.nlp import (InContextLearningCodeEvalAccuracy,
                                   InContextLearningMCExpectedCalibrationError,
                                   InContextLearningMultipleChoiceAccuracy,
                                   InContextLearningQAAccuracy,
-                                  LanguageCrossEntropy, LanguagePerplexity)
+                                  LanguageCrossEntropy, LanguagePerplexity,
+                                  InContextLearningCrossEntropy, InContextLearningPerplexity)
 from composer.models.huggingface import peft_installed
 from composer.utils import dist
 from omegaconf import DictConfig
@@ -126,7 +127,9 @@ class ComposerHFCausalLM(HuggingFaceModelWithZLoss):
             InContextLearningQAAccuracy(),
             InContextLearningCodeEvalAccuracy(),
             InContextLearningLMExpectedCalibrationError(),
-            InContextLearningMCExpectedCalibrationError()
+            InContextLearningMCExpectedCalibrationError(),
+            InContextLearningCrossEntropy(),
+            InContextLearningPerplexity(),
         ]
         if not om_model_config.get('use_train_metrics', True):
             train_metrics = []

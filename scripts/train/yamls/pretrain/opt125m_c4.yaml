@@ -110,7 +110,8 @@ loggers:
 # Checkpoint to local filesystem or remote object store
 save_interval: ${eval_interval}
 save_num_checkpoints_to_keep: 1  # Important, this cleans up checkpoints saved to DISK
-save_folder: /data/eldar/llmfoundry_checkpoints/${run_name}
+#save_folder: /network/eldar/llmfoundry_checkpoints/opt125m_c4/${run_name} #<-- cant save to network due to issues with symbolic links
+save_folder: /data/eldar/llmfoundry_checkpoints/opt125m_c4/${run_name}
 # save_folder: s3://my-bucket/my-folder/{run_name}/checkpoints
 
 # [DONE] ARC: 25-shot, arc-challenge (acc_norm)
@@ -125,33 +126,57 @@ icl_seq_len: ${max_seq_len}
 icl_tasks:
 -
   label: arc_challenge
-  dataset_uri: /home/eldar/github/llm-foundry/scripts/eval/local_data/world_knowledge/arc_challenge.jsonl
-  num_fewshot: [25]
+  dataset_uri: /root/github/upstream-llm-foundry/scripts/eval/local_data/world_knowledge/arc_challenge.jsonl
+  num_fewshot: [0, 25]
   icl_task_type: multiple_choice
   continuation_delimiter: "\nAnswer: " # this separates questions from answers
+  metric_names:
+  - InContextLearningMultipleChoiceAccuracy
+  - InContextLearningLMAccuracy
+  - InContextLearningLMExpectedCalibrationError
+  - InContextLearningPerplexity
 -
   label: mmlu
-  dataset_uri: /home/eldar/github/llm-foundry/scripts/eval/local_data/world_knowledge/mmlu.jsonl
-  num_fewshot: [5]
+  dataset_uri: /root/github/upstream-llm-foundry/scripts/eval/local_data/world_knowledge/mmlu.jsonl
+  num_fewshot: [0, 5]
   icl_task_type: multiple_choice
   continuation_delimiter: "\nAnswer: " # this separates questions from answers
   # has_categories: true  # this splits mmlu into separate categories; lets keep track of global average for now
+  metric_names:
+  - InContextLearningMultipleChoiceAccuracy
+  - InContextLearningLMAccuracy
+  - InContextLearningLMExpectedCalibrationError
+  - InContextLearningPerplexity
 -
   label: hellaswag
-  dataset_uri: /home/eldar/github/llm-foundry/scripts/eval/local_data/language_understanding/hellaswag.jsonl
-  num_fewshot: [10]
+  dataset_uri: /root/github/upstream-llm-foundry/scripts/eval/local_data/language_understanding/hellaswag.jsonl
+  num_fewshot: [0, 10]
   icl_task_type: multiple_choice
+  metric_names:
+  - InContextLearningMultipleChoiceAccuracy
+  - InContextLearningLMAccuracy
+  - InContextLearningLMExpectedCalibrationError
+  - InContextLearningPerplexity
 -
   label: winogrande
-  dataset_uri: /home/eldar/github/llm-foundry/scripts/eval/local_data/language_understanding/winogrande.jsonl
-  num_fewshot: [5]
+  dataset_uri: /root/github/upstream-llm-foundry/scripts/eval/local_data/language_understanding/winogrande.jsonl
+  num_fewshot: [0, 5]
   icl_task_type: schema
--
-  label: gsm8k
-  dataset_uri: /home/eldar/github/llm-foundry/scripts/eval/local_data/symbolic_problem_solving/gsm8k.jsonl
-  num_fewshot: [5]
-  icl_task_type: question_answering
-  cot_delimiter: ' #### '  # we need this
-  continuation_delimiter: "\nA: "
-  question_prelimiter: "Q: "
-
+  metric_names:
+  - InContextLearningMultipleChoiceAccuracy
+  - InContextLearningLMAccuracy
+  - InContextLearningLMExpectedCalibrationError
+  - InContextLearningPerplexity
+# -
+#   label: gsm8k
+#   dataset_uri: /root/github/upstream-llm-foundry/scripts/eval/local_data/symbolic_problem_solving/gsm8k.jsonl
+#   num_fewshot: [0, 5]
+#   icl_task_type: question_answering
+#   cot_delimiter: ' #### '  # we need this
+#   continuation_delimiter: "\nA: "
+#   question_prelimiter: "Q: "
+#   metric_names:
+#   - InContextLearningQAAccuracy
+#   - InContextLearningLMAccuracy
+#   - InContextLearningLMExpectedCalibrationError
+  # - InContextLearningPerplexity
