@@ -1,5 +1,9 @@
 # Copyright 2022 MosaicML LLM Foundry authors
 # SPDX-License-Identifier: Apache-2.0
+
+from streaming.base.util import clean_stale_shared_memory
+clean_stale_shared_memory()
+
 import copy
 import gc
 import logging
