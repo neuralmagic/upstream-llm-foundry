@@ -1,0 +1,60 @@
+icl_tasks:
+-
+  label: arc_challenge
+  dataset_uri: /root/github/upstream-llm-foundry/scripts/eval/local_data/world_knowledge/arc_challenge.jsonl
+  num_fewshot: [25]
+  icl_task_type: multiple_choice
+  continuation_delimiter: "\nAnswer: " # this separates questions from answers
+  metric_names:
+  - InContextLearningMultipleChoiceAccuracy
+  # - InContextLearningLMAccuracy
+  # - InContextLearningLMExpectedCalibrationError
+  - InContextLearningPerplexity
+-
+  label: mmlu
+  dataset_uri: /root/github/upstream-llm-foundry/scripts/eval/local_data/world_knowledge/mmlu.jsonl
+  num_fewshot: [5]
+  icl_task_type: multiple_choice
+  continuation_delimiter: "\nAnswer: " # this separates questions from answers
+  # has_categories: true  # this splits mmlu into separate categories; lets keep track of global average for now
+  metric_names:
+  - InContextLearningMultipleChoiceAccuracy
+  # - InContextLearningLMAccuracy
+  # - InContextLearningLMExpectedCalibrationError
+  - InContextLearningPerplexity
+-
+  label: hellaswag
+  dataset_uri: /root/github/upstream-llm-foundry/scripts/eval/local_data/language_understanding/hellaswag.jsonl
+  num_fewshot: [10]
+  icl_task_type: multiple_choice
+  metric_names:
+  - InContextLearningMultipleChoiceAccuracy
+  # - InContextLearningLMAccuracy
+  # - InContextLearningLMExpectedCalibrationError
+  - InContextLearningPerplexity
+-
+  label: winogrande
+  dataset_uri: /root/github/upstream-llm-foundry/scripts/eval/local_data/language_understanding/winogrande.jsonl
+  num_fewshot: [5]
+  icl_task_type: schema
+  metric_names:
+  - InContextLearningMultipleChoiceAccuracy
+  # - InContextLearningLMAccuracy
+  # - InContextLearningLMExpectedCalibrationError
+  - InContextLearningPerplexity
+-
+  label: gsm8k
+  dataset_uri: /root/github/upstream-llm-foundry/scripts/eval/local_data/symbolic_problem_solving/gsm8k.jsonl
+  num_fewshot: [5]
+  icl_task_type: question_answering
+  cot_delimiter: ' #### '  # we need this
+  continuation_delimiter: "\nA: "
+  question_prelimiter: "Q: "
+  metric_names:
+  - InContextLearningQAAccuracy
+  # - InContextLearningLMAccuracy
+  # - InContextLearningLMExpectedCalibrationError
+  # - InContextLearningPerplexity
+
+
+
