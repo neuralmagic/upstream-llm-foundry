@@ -48,8 +48,12 @@ icl_tasks:
   num_fewshot: [5]
   icl_task_type: question_answering
   cot_delimiter: ' #### '  # we need this
-  continuation_delimiter: "\nA: "
-  question_prelimiter: "Q: "
+  continuation_delimiter: "\nAnswer: "
+  question_prelimiter: "Question: "
+  do_normalization: false
+  early_stopping_criteria:
+  - "\n\n"
+  - "Question:"
   metric_names:
   - InContextLearningQAAccuracy
   # - InContextLearningLMAccuracy
