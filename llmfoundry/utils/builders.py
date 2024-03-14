@@ -15,7 +15,7 @@ from composer.callbacks import (EarlyStopper, Generate, LRMonitor,
                                 MemoryMonitor, MemorySnapshot, OOMObserver,
                                 OptimizerMonitor, RuntimeEstimator,
                                 SpeedMonitor)
-from composer.core import Algorithm, Callback, Evaluator
+from composer.core import Algorithm, Callback, Evaluator, Event
 from composer.datasets.in_context_learning_evaluation import \
     get_icl_task_dataloader
 from composer.loggers import (InMemoryLogger, LoggerDestination, MLFlowLogger,
@@ -43,6 +43,22 @@ from llmfoundry.optim.scheduler import InverseSquareRootWithWarmupScheduler
 from llmfoundry.tokenizers.tiktoken import TiktokenTokenizerWrapper
 
 log = logging.getLogger(__name__)
+
+
+class MaskPrunedWeights(Algorithm):
+    def match(self, event, state):
+        # masking weights after optimizer step should be sufficient
+        # if we detect weird behaviour, we can also do it before the forward pass
+        # by adding `or event == Event.BATCH_START`
+        return event == Event.BATCH_END
+
+    @torch.no_grad()
+    def apply(self, event, state, logger):
+        def mask_weights(module):
+            if hasattr(module, 'mask'):
+                module.weight *= module.mask
+
+        state.model.apply(mask_weights)
 
 
 def build_evaluators(
@@ -256,6 +272,8 @@ def build_algorithm(name: str, kwargs: Dict[str, Any]) -> Algorithm:
         return algorithms.GatedLinearUnits(**kwargs)
     elif name == 'low_precision_layernorm':
         return algorithms.LowPrecisionLayerNorm(**kwargs)
+    elif name == 'mask_pruned_weights':
+        return MaskPrunedWeights()
     else:
         raise ValueError(f'Not sure how to build algorithm: {name}')
 
