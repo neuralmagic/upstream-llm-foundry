@@ -4,12 +4,71 @@
 """Datasets for converting to MDS Shards."""
 import os
 import warnings
-from typing import Dict, Iterable, Union
+from typing import Dict, Iterable, Union, Optional
 
 import datasets as hf_datasets
 import numpy as np
 from torch.utils.data import IterableDataset
 from transformers import PreTrainedTokenizerBase
+
+
+def open_platypus(sample):
+    return sample['instruction'] + " " + sample['output']
+
+def open_orca(sample):
+    return sample['question'] + " " + sample['response']
+
+def dolphin(sample):
+    return sample['input'] + " " + sample['output']
+
+def open_hermes_2_5(sample):
+    assert len(sample['conversations']) <= 3, "Fix the preprocessing code to account for multi-turn conversations"
+
+    ans_from_gpt = sample['conversations'][-1]
+    assert ans_from_gpt["from"] == "gpt", f"Sample is: {sample}"
+
+    q_from_human = sample['conversations'][-2]
+    assert q_from_human["from"] == "human", f"Sample is: {sample}"
+
+    if len(sample['conversations']) == 3:
+        system_prompt = sample['conversations'][0]
+        assert system_prompt["from"] == "system", f"Sample is: {sample}"
+    else:
+        system_prompt = ""
+
+    return system_prompt + " Question: " + q_from_human["value"] + " Answer: " + ans_from_gpt["value"]
+
+def bagel_v03(sample):
+    assert len(sample['conversations']) <= 3, "Fix the preprocessing code to account for multi-turn conversations"
+
+    ans_from_gpt = sample['conversations'][-1]
+    assert ans_from_gpt["from"] == "gpt", f"Sample is: {sample}"
+
+    q_from_human = sample['conversations'][-2]
+    assert q_from_human["from"] == "human", f"Sample is: {sample}"
+
+    if len(sample['conversations']) == 3:
+        system_prompt = sample['conversations'][0]
+        assert system_prompt["from"] == "system", f"Sample is: {sample}"
+    else:
+        system_prompt = ""
+
+    return system_prompt + " Question: " + q_from_human["value"] + " Answer: " + ans_from_gpt["value"]
+
+def ultrachat(sample):
+    assert len(sample['data']) % 2 == 0, "Some conversations dont have Q+A pairs"
+    txt = ""
+    for i in range(0, len(sample['data']), 2):
+        txt += "Question: " + sample['data'][i] + " Answer: " + sample['data'][i+1] + " "
+
+CONVERT_TO_PRETRAINING = {
+    "garage-bAInd/Open-Platypus": open_platypus,
+    "Open-Orca/OpenOrca": open_orca,
+    "cognitivecomputations/dolphin": dolphin,
+    "teknium/OpenHermes-2.5": open_hermes_2_5,
+    "jondurbin/bagel-v0.3": bagel_v03,
+    "stingning/ultrachat": ultrachat,
+}
 
 
 class NoConcatDataset(IterableDataset):
@@ -59,6 +118,7 @@ class ConcatTokensDataset(IterableDataset):
         bos_text: str,
         eos_text: str,
         no_wrap: bool,
+        hf_id: Optional[str] = None,
     ):
         self.hf_dataset = hf_dataset
         self.tokenizer = tokenizer
@@ -67,6 +127,7 @@ class ConcatTokensDataset(IterableDataset):
         self.bos_text = bos_text
         self.eos_text = eos_text
         self.should_wrap = not no_wrap
+        self.hf_id = hf_id
 
         self.bos_tokens = self.tokenizer(self.bos_text,
                                          truncation=False,
@@ -103,9 +164,17 @@ class ConcatTokensDataset(IterableDataset):
 
         buffer = []
         for sample in self.hf_dataset:
+            if self.hf_id in CONVERT_TO_PRETRAINING:
+                sample['text'] = CONVERT_TO_PRETRAINING[self.hf_id](sample)
+
             encoded = self.tokenizer(sample['text'],
                                      truncation=False,
                                      padding=False)
+
+            if "ELDAR_DEBUG" in os.environ and os.environ["ELDAR_DEBUG"] == "1":
+                print(f"\n---> {self.tokenizer.decode(encoded['input_ids'])}")
+                os.environ["ELDAR_DEBUG"] = "0"
+
             iids = encoded['input_ids']
             buffer = buffer + self.bos_tokens + iids + self.eos_tokens
             while len(buffer) >= self.max_length:
