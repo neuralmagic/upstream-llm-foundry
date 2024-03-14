@@ -15,14 +15,14 @@ seed: ${global_seed}
 
 models:
 -
-  model_name: /network/eldar/cerebras/llama2_7B_sparse50_retrained
+  model_name: mistralai/Mistral-7B-v0.1
   model:
     name: hf_causal_lm
     use_flash_attention_2: true
     pretrained: true
-    pretrained_model_name_or_path: /network/eldar/cerebras/llama2_7B_sparse50_retrained
+    pretrained_model_name_or_path: mistralai/Mistral-7B-v0.1
   tokenizer:
-    name: /network/eldar/cerebras/llama2_7B_sparse50_retrained
+    name: mistralai/Mistral-7B-v0.1
     kwargs:
       model_max_length: ${max_seq_len}
 # -

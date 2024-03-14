@@ -20,5 +20,4 @@ composer eval.py \
     yamls/eval.yaml \
     max_seq_len=${MAX_SEQ_LEN} \
     device_eval_batch_size=${PER_DEVICE_BS} \
-    run_name=${RUN_NAME} 2>&1 | tee -a icl_evals_ppl_ablation_part4.txt
-
+    run_name=${RUN_NAME}
