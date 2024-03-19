@@ -50,21 +50,21 @@ train_loader:
   # timeout: 0
 
 # TODO: probati dataloadere bez ovis fensi configs
-eval_loader:
-  name: text
-  dataset:
-    local: ${data_local}
-    remote: ${data_remote}
-    split: train
-    shuffle: false
-    max_seq_len: ${max_seq_len}
-    shuffle_seed: ${global_seed}
-  drop_last: false
-  num_workers: 8
-  # prefetch_factor: 2
-  # pin_memory: false
-  # persistent_workers: true
-  # timeout: 0
+# eval_loader:
+#   name: text
+#   dataset:
+#     local: ${data_local}
+#     remote: ${data_remote}
+#     split: train
+#     shuffle: false
+#     max_seq_len: ${max_seq_len}
+#     shuffle_seed: ${global_seed}
+#   drop_last: false
+#   num_workers: 8
+#   # prefetch_factor: 2
+#   # pin_memory: false
+#   # persistent_workers: true
+#   # timeout: 0
 
 scheduler:
   name: cosine_with_warmup
@@ -111,72 +111,57 @@ loggers:
 # Checkpoint to local filesystem or remote object store
 save_interval: ${eval_interval}
 save_num_checkpoints_to_keep: 1  # Important, this cleans up checkpoints saved to DISK
-save_folder: /data/eldar/llmfoundry_checkpoints/opt125m_openllm/${run_name}
+save_folder: /data/eldar/llmfoundry_checkpoints/opt125m/${run_name}
 # save_folder: s3://my-bucket/my-folder/{run_name}/checkpoints
-
-# [DONE] ARC: 25-shot, arc-challenge (acc_norm)
-# [DONE] MMLU: 5-shot, hendrycksTest-abstract_algebra,hendrycksTest-anatomy,hendrycksTest-astronomy,hendrycksTest-business_ethics,hendrycksTest-clinical_knowledge,hendrycksTest-college_biology,hendrycksTest-college_chemistry,hendrycksTest-college_computer_science,hendrycksTest-college_mathematics,hendrycksTest-college_medicine,hendrycksTest-college_physics,hendrycksTest-computer_security,hendrycksTest-conceptual_physics,hendrycksTest-econometrics,hendrycksTest-electrical_engineering,hendrycksTest-elementary_mathematics,hendrycksTest-formal_logic,hendrycksTest-global_facts,hendrycksTest-high_school_biology,hendrycksTest-high_school_chemistry,hendrycksTest-high_school_computer_science,hendrycksTest-high_school_european_history,hendrycksTest-high_school_geography,hendrycksTest-high_school_government_and_politics,hendrycksTest-high_school_macroeconomics,hendrycksTest-high_school_mathematics,hendrycksTest-high_school_microeconomics,hendrycksTest-high_school_physics,hendrycksTest-high_school_psychology,hendrycksTest-high_school_statistics,hendrycksTest-high_school_us_history,hendrycksTest-high_school_world_history,hendrycksTest-human_aging,hendrycksTest-human_sexuality,hendrycksTest-international_law,hendrycksTest-jurisprudence,hendrycksTest-logical_fallacies,hendrycksTest-machine_learning,hendrycksTest-management,hendrycksTest-marketing,hendrycksTest-medical_genetics,hendrycksTest-miscellaneous,hendrycksTest-moral_disputes,hendrycksTest-moral_scenarios,hendrycksTest-nutrition,hendrycksTest-philosophy,hendrycksTest-prehistory,hendrycksTest-professional_accounting,hendrycksTest-professional_law,hendrycksTest-professional_medicine,hendrycksTest-professional_psychology,hendrycksTest-public_relations,hendrycksTest-security_studies,hendrycksTest-sociology,hendrycksTest-us_foreign_policy,hendrycksTest-virology,hendrycksTest-world_religions
-# [DONE] HellaSwag: 10-shot, hellaswag (acc_norm)
-# [DONE] Winogrande: 5-shot, winogrande (acc)
-# [DONE] GSM8k: 5-shot, gsm8k (acc)
-# [MISSING] TruthfulQA: 0-shot, truthfulqa-mc (mc2)
-# (average of all the results acc)
 
 icl_seq_len: ${max_seq_len}
 icl_tasks:
 -
   label: arc_challenge
   dataset_uri: /root/github/upstream-llm-foundry/scripts/eval/local_data/world_knowledge/arc_challenge.jsonl
-  num_fewshot: [0, 25]
+  num_fewshot: [25]
   icl_task_type: multiple_choice
   continuation_delimiter: "\nAnswer: " # this separates questions from answers
   metric_names:
   - InContextLearningMultipleChoiceAccuracy
-  - InContextLearningLMAccuracy
-  - InContextLearningLMExpectedCalibrationError
   - InContextLearningPerplexity
 -
   label: mmlu
   dataset_uri: /root/github/upstream-llm-foundry/scripts/eval/local_data/world_knowledge/mmlu.jsonl
-  num_fewshot: [0, 5]
+  num_fewshot: [5]
   icl_task_type: multiple_choice
   continuation_delimiter: "\nAnswer: " # this separates questions from answers
   # has_categories: true  # this splits mmlu into separate categories; lets keep track of global average for now
   metric_names:
   - InContextLearningMultipleChoiceAccuracy
-  - InContextLearningLMAccuracy
-  - InContextLearningLMExpectedCalibrationError
   - InContextLearningPerplexity
 -
   label: hellaswag
   dataset_uri: /root/github/upstream-llm-foundry/scripts/eval/local_data/language_understanding/hellaswag.jsonl
-  num_fewshot: [0, 10]
+  num_fewshot: [10]
   icl_task_type: multiple_choice
   metric_names:
   - InContextLearningMultipleChoiceAccuracy
-  - InContextLearningLMAccuracy
-  - InContextLearningLMExpectedCalibrationError
   - InContextLearningPerplexity
 -
   label: winogrande
   dataset_uri: /root/github/upstream-llm-foundry/scripts/eval/local_data/language_understanding/winogrande.jsonl
-  num_fewshot: [0, 5]
+  num_fewshot: [5]
   icl_task_type: schema
   metric_names:
   - InContextLearningMultipleChoiceAccuracy
-  - InContextLearningLMAccuracy
-  - InContextLearningLMExpectedCalibrationError
   - InContextLearningPerplexity
-# -
-#   label: gsm8k
-#   dataset_uri: /root/github/upstream-llm-foundry/scripts/eval/local_data/symbolic_problem_solving/gsm8k.jsonl
-#   num_fewshot: [0, 5]
-#   icl_task_type: question_answering
-#   cot_delimiter: ' #### '  # we need this
-#   continuation_delimiter: "\nA: "
-#   question_prelimiter: "Q: "
-#   metric_names:
-#   - InContextLearningQAAccuracy
-#   - InContextLearningLMAccuracy
-#   - InContextLearningLMExpectedCalibrationError
-  # - InContextLearningPerplexity
+-
+  label: gsm8k
+  dataset_uri: /root/github/upstream-llm-foundry/scripts/eval/local_data/symbolic_problem_solving/gsm8k.jsonl
+  num_fewshot: [5]
+  icl_task_type: question_answering
+  cot_delimiter: ' #### '  # we need this
+  continuation_delimiter: "\nAnswer: "
+  question_prelimiter: "Question: "
+  do_normalization: false
+  early_stopping_criteria:
+  - "\n\n"
+  - "Question:"
+  metric_names:
+  - InContextLearningQAAccuracy
