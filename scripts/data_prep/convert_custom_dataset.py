@@ -1,7 +1,7 @@
 # Copyright 2022 MosaicML LLM Foundry authors
 # SPDX-License-Identifier: Apache-2.0
 
-"""Streaming dataset conversion scripts for C4 and The Pile."""
+"""Streaming dataset conversion scripts for (hopefully) all datasets."""
 
 from streaming.base.util import clean_stale_shared_memory
 clean_stale_shared_memory()

@@ -22,21 +22,15 @@ def dolphin(sample):
     return sample['input'] + " " + sample['output']
 
 def open_hermes_2_5(sample):
-    assert len(sample['conversations']) <= 3, "Fix the preprocessing code to account for multi-turn conversations"
+    txt = ""
+    if sample['conversations'][0]['from'] == 'system':
+        txt += sample['conversations'][0]['value']
+        sample['conversations'].pop(0)
 
-    ans_from_gpt = sample['conversations'][-1]
-    assert ans_from_gpt["from"] == "gpt", f"Sample is: {sample}"
+    for i in range(0, len(sample['conversations']), 2):
+        txt += " Question: " + sample['conversations'][i]['value'] + " Answer: " + sample['conversations'][i+1]['value']
 
-    q_from_human = sample['conversations'][-2]
-    assert q_from_human["from"] == "human", f"Sample is: {sample}"
-
-    if len(sample['conversations']) == 3:
-        system_prompt = sample['conversations'][0]
-        assert system_prompt["from"] == "system", f"Sample is: {sample}"
-    else:
-        system_prompt = ""
-
-    return system_prompt + " Question: " + q_from_human["value"] + " Answer: " + ans_from_gpt["value"]
+    return txt
 
 def bagel_v03(sample):
     assert len(sample['conversations']) <= 3, "Fix the preprocessing code to account for multi-turn conversations"
@@ -61,6 +55,13 @@ def ultrachat(sample):
     for i in range(0, len(sample['data']), 2):
         txt += "Question: " + sample['data'][i] + " Answer: " + sample['data'][i+1] + " "
 
+    return txt
+
+def mmlu_aux_train(sample):
+    if 'train' in sample.keys():
+        sample = sample['train']
+    return sample['question'] + " " + sample['choices'][sample['answer']]
+
 CONVERT_TO_PRETRAINING = {
     "garage-bAInd/Open-Platypus": open_platypus,
     "Open-Orca/OpenOrca": open_orca,
@@ -68,6 +69,7 @@ CONVERT_TO_PRETRAINING = {
     "teknium/OpenHermes-2.5": open_hermes_2_5,
     "jondurbin/bagel-v0.3": bagel_v03,
     "stingning/ultrachat": ultrachat,
+    "cais/mmlu": mmlu_aux_train,
 }
 
 
@@ -128,6 +130,7 @@ class ConcatTokensDataset(IterableDataset):
         self.eos_text = eos_text
         self.should_wrap = not no_wrap
         self.hf_id = hf_id
+        self.debug_counter = 100
 
         self.bos_tokens = self.tokenizer(self.bos_text,
                                          truncation=False,
@@ -172,8 +175,10 @@ class ConcatTokensDataset(IterableDataset):
                                      padding=False)
 
             if "ELDAR_DEBUG" in os.environ and os.environ["ELDAR_DEBUG"] == "1":
-                print(f"\n---> {self.tokenizer.decode(encoded['input_ids'])}")
-                os.environ["ELDAR_DEBUG"] = "0"
+                print(f"\n [a sample] ---> {self.tokenizer.decode(encoded['input_ids'])}")
+                self.debug_counter -= 1
+                if self.debug_counter <= 0:
+                    os.environ["ELDAR_DEBUG"] = "0"
 
             iids = encoded['input_ids']
             buffer = buffer + self.bos_tokens + iids + self.eos_tokens
@@ -184,3 +189,9 @@ class ConcatTokensDataset(IterableDataset):
                     # convert to bytes to store in MDS binary format
                     'tokens': np.asarray(concat_sample).tobytes()
                 }
+
+                if "ELDAR_DEBUG" in os.environ and os.environ["ELDAR_DEBUG"] == "1":
+                    print(f"\n [concatenated samples] ---> {self.tokenizer.decode(concat_sample)}")
+                    self.debug_counter -= 1
+                    if self.debug_counter <= 0:
+                        os.environ["ELDAR_DEBUG"] = "0"
