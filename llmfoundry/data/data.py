@@ -62,6 +62,15 @@ def mmlu_aux_train(sample):
         sample = sample['train']
     return sample['question'] + " " + sample['choices'][sample['answer']]
 
+def open_math_instruct_1(sample):
+    if sample['is_correct'] == 'true' or sample['is_correct'] == True:
+        return sample['question'] + " " + sample['generated_solution']
+    else:
+        return None
+
+def gsm8k(sample):
+    return sample['question'] + " " + sample['answer']
+
 CONVERT_TO_PRETRAINING = {
     "garage-bAInd/Open-Platypus": open_platypus,
     "Open-Orca/OpenOrca": open_orca,
@@ -70,6 +79,8 @@ CONVERT_TO_PRETRAINING = {
     "jondurbin/bagel-v0.3": bagel_v03,
     "stingning/ultrachat": ultrachat,
     "cais/mmlu": mmlu_aux_train,
+    "nvidia/OpenMathInstruct-1": open_math_instruct_1,
+    "gsm8k": gsm8k,
 }
 
 
@@ -169,6 +180,8 @@ class ConcatTokensDataset(IterableDataset):
         for sample in self.hf_dataset:
             if self.hf_id in CONVERT_TO_PRETRAINING:
                 sample['text'] = CONVERT_TO_PRETRAINING[self.hf_id](sample)
+                if sample['text'] is None:
+                    continue
 
             encoded = self.tokenizer(sample['text'],
                                      truncation=False,
