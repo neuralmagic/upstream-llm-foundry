@@ -1,9 +1,6 @@
 # Copyright 2022 MosaicML LLM Foundry authors
 # SPDX-License-Identifier: Apache-2.0
 
-from streaming.base.util import clean_stale_shared_memory
-clean_stale_shared_memory()
-
 import copy
 import gc
 import logging
@@ -436,6 +433,10 @@ def main(cfg: DictConfig) -> Trainer:
     # Initialize context
     init_context = process_init_device(model_config, fsdp_config)
     logged_cfg.update({'fsdp_config': fsdp_config}, merge=True)
+
+    # Cleanup to prevent stalled processes
+    from streaming.base.util import clean_stale_shared_memory
+    clean_stale_shared_memory()
 
     # Build tokenizer
     log.info('Building tokenizer...')
