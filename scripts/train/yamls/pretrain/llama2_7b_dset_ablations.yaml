@@ -39,7 +39,7 @@ train_loader:
     shuffle: true
     max_seq_len: ${max_seq_len}
     shuffle_seed: ${global_seed}
-  drop_last: false
+  drop_last: true
   num_workers: 8
   # prefetch_factor: 2
   # pin_memory: false
@@ -131,7 +131,7 @@ icl_seq_len: ${max_seq_len}
 icl_tasks:
 -
   label: arc_challenge
-  dataset_uri: /root/github/upstream-llm-foundry/scripts/eval/local_data/world_knowledge/arc_challenge.jsonl
+  dataset_uri: /root/github/upstream-llm-foundry/scripts/eval/local_data/world_knowledge/arc_challenge_shrinked.jsonl
   num_fewshot: [25]
   icl_task_type: multiple_choice
   continuation_delimiter: "\nAnswer: " # this separates questions from answers
@@ -142,7 +142,7 @@ icl_tasks:
   - InContextLearningPerplexity
 -
   label: mmlu
-  dataset_uri: /root/github/upstream-llm-foundry/scripts/eval/local_data/world_knowledge/mmlu.jsonl
+  dataset_uri: /root/github/upstream-llm-foundry/scripts/eval/local_data/world_knowledge/mmlu_shrinked.jsonl
   num_fewshot: [5]
   icl_task_type: multiple_choice
   continuation_delimiter: "\nAnswer: " # this separates questions from answers
@@ -154,7 +154,7 @@ icl_tasks:
   - InContextLearningPerplexity
 -
   label: hellaswag
-  dataset_uri: /root/github/upstream-llm-foundry/scripts/eval/local_data/language_understanding/hellaswag.jsonl
+  dataset_uri: /root/github/upstream-llm-foundry/scripts/eval/local_data/language_understanding/hellaswag_shrinked.jsonl
   num_fewshot: [10]
   icl_task_type: multiple_choice
   metric_names:
@@ -164,7 +164,7 @@ icl_tasks:
   - InContextLearningPerplexity
 -
   label: winogrande
-  dataset_uri: /root/github/upstream-llm-foundry/scripts/eval/local_data/language_understanding/winogrande.jsonl
+  dataset_uri: /root/github/upstream-llm-foundry/scripts/eval/local_data/language_understanding/winogrande_shrinked.jsonl
   num_fewshot: [5]
   icl_task_type: schema
   metric_names:
@@ -172,20 +172,20 @@ icl_tasks:
   # - InContextLearningLMAccuracy
   # - InContextLearningLMExpectedCalibrationError
   - InContextLearningPerplexity
--
-  label: gsm8k
-  dataset_uri: /root/github/upstream-llm-foundry/scripts/eval/local_data/symbolic_problem_solving/gsm8k.jsonl
-  num_fewshot: [5]
-  icl_task_type: question_answering
-  cot_delimiter: ' #### '  # we need this
-  continuation_delimiter: "\nAnswer: "
-  question_prelimiter: "Question: "
-  do_normalization: false
-  early_stopping_criteria:
-  - "\n\n"
-  - "Question:"
-  metric_names:
-  - InContextLearningQAAccuracy
-  # - InContextLearningLMAccuracy
-  # - InContextLearningLMExpectedCalibrationError
-  # - InContextLearningPerplexity
+# -
+#   label: gsm8k
+#   dataset_uri: /root/github/upstream-llm-foundry/scripts/eval/local_data/symbolic_problem_solving/gsm8k.jsonl
+#   num_fewshot: [5]
+#   icl_task_type: question_answering
+#   cot_delimiter: ' #### '  # we need this
+#   continuation_delimiter: "\nAnswer: "
+#   question_prelimiter: "Question: "
+#   do_normalization: false
+#   early_stopping_criteria:
+#   - "\n\n"
+#   - "Question:"
+#   metric_names:
+#   - InContextLearningQAAccuracy
+#   # - InContextLearningLMAccuracy
+#   # - InContextLearningLMExpectedCalibrationError
+#   # - InContextLearningPerplexity
