@@ -29,8 +29,8 @@ datasets=(
     # "open_platypus:10"
     # "gsm8k:10"
     # "open_math_instruct_1:1"
-    "open_hermes_2_5:2"
-    "dolphin_flan1m:2"
+    "flan2021_submix_original:1"
+    # "dolphin_flan1m:2"
     # "open_orca:1"
     # "dolphin_flan5m:1"
     # "ultrachat:1"
@@ -62,14 +62,14 @@ for dataset in "${datasets[@]}"; do
         export PRECISION=amp_bf16
         export USE_FUSED_CROSSENTROPY_LOSS=1
 
-        export MAX_DURATION=${ep}ep
-        export EVAL_INTERVAL=300ba
+        export MAX_DURATION=${ep}ep # 3814
+        export EVAL_INTERVAL=1000ba
 
         export GLOBAL_BS=128
         export PER_DEVICE_BS=16
 
         export LR=3e-4
-        export WARMUP=150ba
+        export WARMUP=400ba
 
         # TODO: no KD for dset ablations
         # Knowledge distillation
