@@ -101,6 +101,9 @@ def dolly_hhrlhf(sample):
 def flan2021_submix_original(sample):
     return sample['inputs'] + " " + sample['targets']
 
+def arc_corpus(sample):
+    return sample
+
 CONVERT_TO_PRETRAINING = {
     "garage-bAInd/Open-Platypus": open_platypus,
     "Open-Orca/OpenOrca": open_orca,
@@ -114,6 +117,7 @@ CONVERT_TO_PRETRAINING = {
     "yahma/alpaca-cleaned": alpaca_cleaned,
     "mosaicml/dolly_hhrlhf": dolly_hhrlhf,
     "prigoyal/flan2021_submix_original": flan2021_submix_original,
+    "arc_corpus": arc_corpus,
 }
 
 
