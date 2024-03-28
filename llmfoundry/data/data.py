@@ -92,6 +92,15 @@ def open_math_instruct_1(sample):
 def gsm8k(sample):
     return sample['question'] + " " + sample['answer']
 
+def alpaca_cleaned(sample):
+    return sample['instruction'] + " " + sample['input'] + " " + sample['output']
+
+def dolly_hhrlhf(sample):
+    return sample['prompt'] + " " + sample['response']
+
+def flan2021_submix_original(sample):
+    return sample['inputs'] + " " + sample['targets']
+
 CONVERT_TO_PRETRAINING = {
     "garage-bAInd/Open-Platypus": open_platypus,
     "Open-Orca/OpenOrca": open_orca,
@@ -102,6 +111,9 @@ CONVERT_TO_PRETRAINING = {
     "cais/mmlu": mmlu_aux_train,
     "nvidia/OpenMathInstruct-1": open_math_instruct_1,
     "gsm8k": gsm8k,
+    "yahma/alpaca-cleaned": alpaca_cleaned,
+    "mosaicml/dolly_hhrlhf": dolly_hhrlhf,
+    "prigoyal/flan2021_submix_original": flan2021_submix_original,
 }
 
 

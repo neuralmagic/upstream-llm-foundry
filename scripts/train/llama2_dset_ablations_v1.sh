@@ -21,14 +21,16 @@
 # export MASTER_PORT=12345
 # export NCCL_DEBUG=INFO
 
+# export ENGINE_DEBUG=1
+
 datasets=(
-    "openllm_test_set_stories:10"
-    "mmlu_auxiliary_train:10"
-    "open_platypus:10"
-    "gsm8k:10"
-    "open_math_instruct_1:1"
-    "open_hermes_2_5:1"
-    "dolphin_flan1m:1"
+    # "openllm_test_set_stories:10"
+    # "mmlu_auxiliary_train:10"
+    # "open_platypus:10"
+    # "gsm8k:10"
+    # "open_math_instruct_1:1"
+    "open_hermes_2_5:2"
+    "dolphin_flan1m:2"
     # "open_orca:1"
     # "dolphin_flan5m:1"
     # "ultrachat:1"
@@ -61,13 +63,13 @@ for dataset in "${datasets[@]}"; do
         export USE_FUSED_CROSSENTROPY_LOSS=1
 
         export MAX_DURATION=${ep}ep
-        export EVAL_INTERVAL=50ba
+        export EVAL_INTERVAL=300ba
 
         export GLOBAL_BS=128
         export PER_DEVICE_BS=16
 
         export LR=3e-4
-        export WARMUP=60ba
+        export WARMUP=150ba
 
         # TODO: no KD for dset ablations
         # Knowledge distillation
@@ -79,6 +81,7 @@ for dataset in "${datasets[@]}"; do
 
         export RUN_NAME=${MDL_TAG}_${PRECISION}_maxseq${MAX_SEQ_LEN}_${MAX_DURATION}_cosineLR${LR}_warmup${WARMUP}_noGradClip_globalBS${GLOBAL_BS}_evalInterval${EVAL_INTERVAL}_fusedCE${USE_FUSED_CROSSENTROPY_LOSS}
 
+        # composer train.py \
         composer train_sparse.py \
             yamls/pretrain/llama2_7b_dset_ablations.yaml \
             model_name_or_path=${MDL} \
@@ -91,7 +94,7 @@ for dataset in "${datasets[@]}"; do
             device_eval_batch_size=${PER_DEVICE_BS} \
             run_name=${RUN_NAME} \
             optimizer.lr=${LR} \
-            eval_first=False \
+            eval_first=True \
             scheduler.t_warmup=${WARMUP} \
             precision=${PRECISION} \
             model_tag=llama2_7b_${MDL_TAG} \
