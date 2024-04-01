@@ -34,6 +34,22 @@ train_loader:
   name: text
   dataset:
     streams:
+      open_platypus:
+        remote: /network/eldar/datasets/llama2_7b/seqlen4k_tokenized/open_platypus
+        local:
+        split: train
+      open_orca:
+        remote: /network/eldar/datasets/llama2_7b/seqlen4k_tokenized/open_orca
+        local:
+        split: train
+      open_hermes_2_5:
+        remote: /network/eldar/datasets/llama2_7b/seqlen4k_tokenized/open_hermes_2_5
+        local:
+        split: train
+      ultrachat:
+        remote: /network/eldar/datasets/llama2_7b/seqlen4k_tokenized/ultrachat
+        local:
+        split: train
       dolphin_flan1m:
         remote: /network/eldar/datasets/llama2_7b/seqlen4k_tokenized/dolphin_flan1m
         local:
@@ -42,16 +58,8 @@ train_loader:
         remote: /network/eldar/datasets/llama2_7b/seqlen4k_tokenized/dolphin_flan5m
         local:
         split: train
-      open_hermes_2_5:
-        remote: /network/eldar/datasets/llama2_7b/seqlen4k_tokenized/open_hermes_2_5
-        local:
-        split: train
-      open_orca:
-        remote: /network/eldar/datasets/llama2_7b/seqlen4k_tokenized/open_orca
-        local:
-        split: train
-      open_platypus:
-        remote: /network/eldar/datasets/llama2_7b/seqlen4k_tokenized/open_platypus
+      mmlu_aux:
+        remote: /network/eldar/datasets/llama2_7b/seqlen4k_tokenized/mmlu_auxiliary_train
         local:
         split: train
       alpaca_cleaned:
@@ -60,6 +68,26 @@ train_loader:
         split: train
       dolly_hhrlhf:
         remote: /network/eldar/datasets/llama2_7b/seqlen4k_tokenized/dolly_hhrlhf
+        local:
+        split: train
+      flan2021:
+        remote: /network/eldar/datasets/llama2_7b/seqlen4k_tokenized/flan2021_submix_original
+        local:
+        split: train
+      flancot:
+        remote: /network/eldar/datasets/llama2_7b/seqlen4k_tokenized/flan_cot
+        local:
+        split: train
+      winogrande:
+        remote: /network/eldar/datasets/llama2_7b/seqlen4k_tokenized/winogrande_all
+        local:
+        split: train
+      arc:
+        remote: /network/eldar/datasets/llama2_7b/seqlen4k_tokenized/arc_all
+        local:
+        split: train
+      hellaswag:
+        remote: /network/eldar/datasets/llama2_7b/seqlen4k_tokenized/hellaswag_all
         local:
         split: train
     max_seq_len: ${max_seq_len}
@@ -113,12 +141,12 @@ fsdp_config:
   activation_cpu_offload: false
   limit_all_gathers: true
 
-# knowledge_distillation:
-#   teacher_name_or_path: #TODO
-#   temperature: #TODO
-#   hardness_kldiv: #TODO
-#   hardness_ce: #TODO
-#   hardness_squarehead: #TODO
+knowledge_distillation:
+  teacher_name_or_path: #TODO
+  temperature: #TODO
+  hardness_kldiv: #TODO
+  hardness_ce: #TODO
+  hardness_squarehead: #TODO
 
 # Logging
 progress_bar: false
@@ -138,7 +166,7 @@ loggers:
 # Checkpoint to local filesystem or remote object store
 save_interval: ${eval_interval}
 save_num_checkpoints_to_keep: 1  # Important, this cleans up checkpoints saved to DISK
-save_folder: /cache/eldar/llmfoundry_checkpoints/${model_tag}/${dset_tag}/${run_name}
+save_folder: /nm/drive0/eldar/llmfoundry_checkpoints/${model_tag}/${dset_tag}/${run_name}
 # save_folder: s3://my-bucket/my-folder/{run_name}/checkpoints
 
 # [DONE] ARC: 25-shot, arc-challenge (acc_norm)
@@ -153,7 +181,7 @@ icl_seq_len: ${max_seq_len}
 icl_tasks:
 -
   label: arc_challenge
-  dataset_uri: /root/github/upstream-llm-foundry/scripts/eval/local_data/world_knowledge/arc_challenge_shrinked.jsonl
+  dataset_uri: /home/eldar/eldar-upstream/upstream-llm-foundry/scripts/eval/local_data/world_knowledge/arc_challenge_shrinked.jsonl
   num_fewshot: [25]
   icl_task_type: multiple_choice
   continuation_delimiter: "\nAnswer: " # this separates questions from answers
@@ -164,7 +192,7 @@ icl_tasks:
   - InContextLearningPerplexity
 -
   label: mmlu
-  dataset_uri: /root/github/upstream-llm-foundry/scripts/eval/local_data/world_knowledge/mmlu_shrinked.jsonl
+  dataset_uri: /home/eldar/eldar-upstream/upstream-llm-foundry/scripts/eval/local_data/world_knowledge/mmlu_shrinked.jsonl
   num_fewshot: [5]
   icl_task_type: multiple_choice
   continuation_delimiter: "\nAnswer: " # this separates questions from answers
@@ -176,7 +204,7 @@ icl_tasks:
   - InContextLearningPerplexity
 -
   label: hellaswag
-  dataset_uri: /root/github/upstream-llm-foundry/scripts/eval/local_data/language_understanding/hellaswag_shrinked.jsonl
+  dataset_uri: /home/eldar/eldar-upstream/upstream-llm-foundry/scripts/eval/local_data/language_understanding/hellaswag_shrinked.jsonl
   num_fewshot: [10]
   icl_task_type: multiple_choice
   metric_names:
@@ -186,7 +214,7 @@ icl_tasks:
   - InContextLearningPerplexity
 -
   label: winogrande
-  dataset_uri: /root/github/upstream-llm-foundry/scripts/eval/local_data/language_understanding/winogrande_shrinked.jsonl
+  dataset_uri: /home/eldar/eldar-upstream/upstream-llm-foundry/scripts/eval/local_data/language_understanding/winogrande_shrinked.jsonl
   num_fewshot: [5]
   icl_task_type: schema
   metric_names:
