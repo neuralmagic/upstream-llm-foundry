@@ -89,6 +89,34 @@ def flanv2(sample):
 def flan(sample):
     return sample['inputs'] + " " + sample['targets']
 
+def flan_cot(sample):
+    return sample['question'] + "\n" + "Explanation: " + sample['explanation'] + "\n" + "The correct answer is: " + sample['answer']
+
+def winogrande_all(sample):
+    return sample['sentence'].replace('_', sample['option' + sample['answer']])
+
+def hellaswag_all(sample):
+    return sample['ctx'] + " " + sample['endings'][int(sample['label'])]
+
+def arc_all(sample):
+    correct = [item for item in sample['question']['choices'] if item['label'] == sample['answerKey']]
+    assert len(correct) == 1, f"Something is wrong with sample: {sample}"
+    correct = correct[0]
+    # Make it explicit that there are some QA pairs with only three choices. Is this a bug in the dataset?
+    if len(sample['question']['choices']) == 3:
+        return (sample['question']['stem'] + "\nOptions:"
+            + f"\n- {sample['question']['choices'][0]['label']}) {sample['question']['choices'][0]['text']}"
+            + f"\n- {sample['question']['choices'][1]['label']}) {sample['question']['choices'][1]['text']}"
+            + f"\n- {sample['question']['choices'][2]['label']}) {sample['question']['choices'][2]['text']}"
+            + f"\nThe correct answer is: {sample['answerKey']}) {correct['text']}")
+    elif len(sample['question']['choices']) == 4:
+        return (sample['question']['stem'] + "\nOptions:"
+            + f"\n- {sample['question']['choices'][0]['label']}) {sample['question']['choices'][0]['text']}"
+            + f"\n- {sample['question']['choices'][1]['label']}) {sample['question']['choices'][1]['text']}"
+            + f"\n- {sample['question']['choices'][2]['label']}) {sample['question']['choices'][2]['text']}"
+            + f"\n- {sample['question']['choices'][3]['label']}) {sample['question']['choices'][3]['text']}"
+            + f"\nThe correct answer is: {sample['answerKey']}) {correct['text']}")
+
 CONVERT_TO_PRETRAINING = {
     "garage-bAInd/Open-Platypus": open_platypus,
     "Open-Orca/OpenOrca": open_orca,
@@ -105,6 +133,10 @@ CONVERT_TO_PRETRAINING = {
     "arc_corpus": arc_corpus,
     "philschmid/flanv2": flanv2,
     "Open-Orca/FLAN": flan,
+    "chiayewken/flan-cot": flan_cot,
+    "/root/winogrande_all": winogrande_all,
+    "/root/hellaswag_all": hellaswag_all,
+    "/root/arc_all": arc_all,
 }
 
 
