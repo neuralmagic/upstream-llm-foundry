@@ -59,6 +59,11 @@ def parse_args() -> Namespace:
     parser.add_argument('--eos_text', type=str, required=False, default=None)
     parser.add_argument('--no_wrap', default=False, action='store_true')
     parser.add_argument('--num_workers', type=int, required=False, default=None)
+    parser.add_argument('--data_files',
+                        type=str,
+                        required=False,
+                        default=None,
+                        help='Useful to concat all data_subsets, e.g. with data_files="data/**/*"')
 
     parsed = parser.parse_args()
 
@@ -98,6 +103,7 @@ def build_hf_dataset(
     no_wrap: bool = False,
     tokenizer: PreTrainedTokenizerBase = None,
     data_subset: Union[str, None] = None,
+    data_files: Union[str, None] = None,
 ) -> IterableDataset:
     """Build an IterableDataset over the HF C4 or pile source data.
 
@@ -112,6 +118,7 @@ def build_hf_dataset(
         tokenizer (PreTrainedTokenizerBase): if mode is CONCAT_TOKENS, the tokenizer to use
         data_subset (str): Referred to as "name" in HuggingFace datasets.load_dataset.
             Typically "all" (The Pile) or "en" (c4).
+        data_files (str): useful to concat all data_subsets, e.g. with data_files="data/**/*"
 
     Returns:
         An IterableDataset.
@@ -119,7 +126,8 @@ def build_hf_dataset(
     hf_dataset = hf_datasets.load_dataset(path=dataset_name,
                                           name=data_subset,
                                           split=split,
-                                          streaming=True)
+                                          streaming=True,
+                                          data_files=data_files)
     if mode == ConcatMode.NO_CONCAT:
         dataset = NoConcatDataset(hf_dataset)
     else:
@@ -224,7 +232,8 @@ def main(args: Namespace) -> None:
                                    bos_text=args.bos_text,
                                    eos_text=args.eos_text,
                                    no_wrap=args.no_wrap,
-                                   tokenizer=tokenizer)
+                                   tokenizer=tokenizer,
+                                   data_files=args.data_files)
         loader = build_dataloader(dataset=dataset,
                                   batch_size=512,
                                   num_workers=args.num_workers)
