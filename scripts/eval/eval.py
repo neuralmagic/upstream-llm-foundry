@@ -1,9 +1,6 @@
 # Copyright 2022 MosaicML LLM Foundry authors
 # SPDX-License-Identifier: Apache-2.0
 
-from streaming.base.util import clean_stale_shared_memory
-clean_stale_shared_memory()
-
 import copy
 import logging
 import os
@@ -287,6 +284,10 @@ def main(cfg: DictConfig) -> Tuple[List[Trainer], pd.DataFrame]:
 
     reproducibility.seed_all(seed)
     dist.initialize_dist(get_device(None), timeout=dist_timeout)
+
+    # Cleanup to prevent stalled processes
+    from streaming.base.util import clean_stale_shared_memory
+    clean_stale_shared_memory()
 
     if python_log_level is not None:
         logging.basicConfig(
