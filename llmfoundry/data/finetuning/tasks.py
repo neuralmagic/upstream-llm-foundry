@@ -1111,3 +1111,35 @@ def shareGPT_format_preprocessor(inp: dict) -> ChatFormattedDict:
     except Exception as e:
         raise UnableToProcessPromptResponseError(inp) from e
     return {'messages': messages}
+
+
+@dataset_constructor.register('gsm8k')
+def gsm8k_preprocessing_function(inp: Dict):
+    try:
+        return {'prompt': inp['question'], 'response': inp['answer']}
+    except Exception as e:
+        raise ValueError(f"Unable to extract prompt/response from inp={inp}") from e
+
+
+@dataset_constructor.register('garage-bAInd/Open-Platypus')
+def openplatypus_preprocessing_function(inp: Dict):
+    try:
+        prompt = "Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n### Instruction:\n{instruction}\n\n### Response:\n".format(instruction=inp['instruction'])
+        response = inp['output']
+    except Exception as e:
+        raise ValueError(
+            f"Unable to extract prompt/response from inp={inp}"
+        ) from e
+    return {'prompt': prompt, 'response': response}
+
+
+@dataset_constructor.register('cognitivecomputations/dolphin')
+def dolphin_preprocessing_function(inp: Dict):
+    try:
+        prompt = "Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n### Instruction:\n{instruction}\n\n### Response:\n".format(instruction=inp['input'])
+        response = inp['output']
+    except Exception as e:
+        raise ValueError(
+            f"Unable to extract prompt/response from inp={inp}"
+        ) from e
+    return {'prompt': prompt, 'response': response}
