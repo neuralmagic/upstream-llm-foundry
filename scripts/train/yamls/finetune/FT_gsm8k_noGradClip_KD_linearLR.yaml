@@ -1,0 +1,124 @@
+model_name_or_path: #TODO
+max_seq_len: #TODO
+precision: #TODO
+
+data_local: # TODO
+data_remote: # If blank, files must be present in data_local
+global_seed: 42
+seed: ${global_seed}
+
+max_duration: #TODO
+eval_interval: #TODO
+eval_first: true
+
+global_train_batch_size: #TODO
+device_train_microbatch_size: #TODO
+device_eval_batch_size: #TODO
+
+run_name: # If left blank, will be read from env var $RUN_NAME
+
+model:
+  name: hf_causal_lm
+  use_flash_attention_2: true
+  pretrained: true
+  pretrained_model_name_or_path: ${model_name_or_path}
+  use_auth_token: true
+
+tokenizer:
+  name: ${model_name_or_path}
+  kwargs:
+    model_max_length: ${max_seq_len}
+
+train_loader:
+  name: finetuning
+  dataset:
+    streams:
+      gsm8k:
+        remote:
+        local: /home/eldar/datasets/llama2_7b/gsm8k_seqlen512
+        split: train
+    max_seq_len: ${max_seq_len}
+    allow_pad_trimming: false
+    decoder_only_format: true
+    shuffle: true
+  drop_last: false
+  num_workers: 8
+  # pin_memory: false
+  # prefetch_factor: 2
+  # persistent_workers: true
+
+eval_loader:
+  name: finetuning
+  dataset:
+    streams:
+      gsm8k:
+        remote:
+        local: /home/eldar/datasets/llama2_7b/gsm8k_seqlen512
+        split: test
+    max_seq_len: ${max_seq_len}
+    allow_pad_trimming: false
+    decoder_only_format: true
+    shuffle: false
+  drop_last: false
+  num_workers: 8
+  # pin_memory: false
+  # prefetch_factor: 2
+  # persistent_workers: true
+
+scheduler:
+  name: linear_decay_with_warmup
+  t_warmup: #TODO
+  alpha_f: 0.0
+
+optimizer:
+  name: decoupled_adamw
+  lr: # TODO
+  betas:
+  - 0.9
+  - 0.999
+  eps: 1.0e-8
+  weight_decay: 0.0
+
+# we can't use gradient clipping for sparse training runs because we don't have
+# a way to mask gradients of pruned weights, and thus the global gradient norm
+# will be incorrect
+algorithms:
+  mask_pruned_weights: {}
+#   gradient_clipping:
+#     clipping_type: norm
+#     clipping_threshold: 1.0
+
+fsdp_config:
+  sharding_strategy: FULL_SHARD
+  mixed_precision: DEFAULT
+  activation_checkpointing: true
+  activation_checkpointing_reentrant: false
+  activation_cpu_offload: false
+  limit_all_gathers: true
+
+knowledge_distillation:
+  teacher_name_or_path: #TODO
+  temperature: #TODO
+  hardness_kldiv: #TODO
+  hardness_ce: #TODO
+  hardness_squarehead: #TODO
+
+# Logging
+progress_bar: false
+log_to_console: true
+console_log_interval: 1ba
+
+callbacks:
+  speed_monitor:
+    window_size: 10
+  lr_monitor: {}
+  memory_monitor: {}
+  runtime_estimator: {}
+
+loggers:
+  wandb: {}
+
+# Checkpoint to local filesystem or remote object store
+save_interval: 1dur
+save_num_checkpoints_to_keep: 1  # Important, this cleans up checkpoints saved to DISK
+save_folder: /nm/drive0/eldar/llmfoundry_checkpoints/llama2_7b_gsm8k/${run_name}
