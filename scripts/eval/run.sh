@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# export HF_DATASETS_CACHE="/localhome/ekurtic/hf_cache"
+
 export WANDB_ENTITY=eldarkurtic
 export WANDB_DISABLED=False
 export WANDB_PROJECT=test_evals
@@ -12,8 +14,11 @@ export BASE_PATH=/network/eldar
 export PROJECT=cerebras
 export RUN_NAME=openllm_seqlen${MAX_SEQ_LEN}_perdeviceBS${PER_DEVICE_BS}_worldsize4
 
-#llama2-7b_dolphin+open-platypus_transfer-pruned70;
-for CKPT in Llama-2-7b-pruned50-retrained;
+export BASE_PATH=/nfs/scistore19/alistgrp/ekurtic/eldar-upstream/llmfoundry_checkpoints
+export PROJECT=llama2_7b_cosmopedia_alldownstream
+export RUN_NAME=gauntletv03_seqlen${MAX_SEQ_LEN}_perdeviceBS${PER_DEVICE_BS}_worldsize4
+
+for CKPT in oneshot_sp70_fromConverged24_fromConverged70onDolma_amp_bf16_maxseq4096_1ep_cosineLR1e-4_warmup1500ba_noGradClip_globalBS256_evalInterval10000ba;
 do
     echo $CKPT
     mkdir -p eval/${PROJECT}/${CKPT}
