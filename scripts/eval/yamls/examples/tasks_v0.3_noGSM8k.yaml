@@ -1,16 +1,16 @@
 icl_tasks:
--
-  label: gsm8k
-  dataset_uri: eval/local_data/symbolic_problem_solving/gsm8k_prepended_8shot.jsonl
-  num_fewshot: [0]
-  icl_task_type: question_answering
-  cot_delimiter: "The answer is "
-  continuation_delimiter: "\n\nA:"
-  question_prelimiter: ""
-  do_normalization: false
-  early_stopping_criteria:
-  - "\n\n"
-  - "Question:"
+# -
+#   label: gsm8k
+#   dataset_uri: eval/local_data/symbolic_problem_solving/gsm8k_prepended_8shot.jsonl
+#   num_fewshot: [0]
+#   icl_task_type: question_answering
+#   cot_delimiter: "The answer is "
+#   continuation_delimiter: "\n\nA:"
+#   question_prelimiter: ""
+#   do_normalization: false
+#   early_stopping_criteria:
+#   - "\n\n"
+#   - "Question:"
 -
   label: triviaqa_sm_sub
   dataset_uri: eval/local_data/world_knowledge/triviaqa_sm_sub.jsonl
