@@ -84,9 +84,9 @@ eval_gauntlet:
     - name: simple_arithmetic_nospaces
       num_fewshot: 5
       random_baseline: 0.0
-    - name: gsm8k
-      num_fewshot: 0
-      random_baseline: 0.0
+    # - name: gsm8k
+    #   num_fewshot: 0
+    #   random_baseline: 0.0
     - name: svamp
       num_fewshot: 5
       random_baseline: 0
