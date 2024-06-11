@@ -673,8 +673,13 @@ def main(cfg: DictConfig) -> Trainer:
 
         if model_config.get('master_weights_dtype') in ('bf16', 'bfloat16'):
             model = model.to(dtype=torch.bfloat16)
+            if "knowledge_distillation" in cfg and cfg.knowledge_distillation.teacher_name_or_path is not None:
+                teacher = teacher.to(dtype=torch.bfloat16)
         elif model_config.get('master_weights_dtype') in ('f16', 'float16'):
             model = model.to(dtype=torch.float16)
+            if "knowledge_distillation" in cfg and cfg.knowledge_distillation.teacher_name_or_path is not None:
+                teacher = teacher.to(dtype=torch.float16)
+        print(f"[Eldar debug: dtype] Model dtype = {model.model.lm_head.weight.dtype}")
 
     def attach_masks(model, to_layer):
         for name, module in model.named_children():
