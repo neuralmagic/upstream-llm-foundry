@@ -557,6 +557,7 @@ def main(cfg: DictConfig) -> Trainer:
             model = model.to(dtype=torch.bfloat16)
         elif model_config.get('master_weights_dtype') in ('f16', 'float16'):
             model = model.to(dtype=torch.float16)
+        print(f"[Eldar debug: dtype] Model dtype = {model.model.lm_head.weight.dtype}")
 
     # Log number of parameters
     n_params = sum(p.numel() for p in model.parameters())
