@@ -22,3 +22,4 @@ composer eval/eval.py \
     max_seq_len=${MAX_SEQ_LEN} \
     device_eval_batch_size=${PER_DEVICE_BS} \
     ckpt_path=/network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/${CKPT} 2>&1 | tee eval/results/${PROJECT}/${CKPT}/${RUN_NAME}.txt
+
