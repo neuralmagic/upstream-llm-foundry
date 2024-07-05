@@ -2,6 +2,7 @@ import json
 
 def find_invalid_json_lines(file_path):
     with open(file_path, 'r') as file:
+        print(f"Total len = {len(file.readlines())}")
         for line_number, line in enumerate(file, start=1):
             try:
                 json.loads(line)
@@ -11,6 +12,6 @@ def find_invalid_json_lines(file_path):
                 print(f"Problematic line content: {line}")
 
 # Replace 'your_file.json' with the path to your JSON file
-file_path = '/root/arc_all/train.jsonl'
+file_path = '/network/eldar/datasets/shubhra_deduplicated/train.jsonl'
 find_invalid_json_lines(file_path)
 

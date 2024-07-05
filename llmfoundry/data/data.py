@@ -138,6 +138,53 @@ def arc_all(sample):
             + f"\n- {sample['question']['choices'][3]['label']}) {sample['question']['choices'][3]['text']}"
             + f"\nThe correct answer is: {sample['answerKey']}) {correct['text']}")
 
+def arc_all_datagen(sample):
+    txt = (f"The question is: {sample['question']}\n"
+           f"The choices are:{sample['all_choices']}\n"
+           f"The correct answer is: {sample['correct_answer']}\n"
+           f"Detailed explanation: {sample['detailed_answer']}")
+    return txt
+
+def winogrande_datagen(sample):
+    txt = (f"The question is: {sample['question']}\n"
+           f"The choices are:{sample['all_choices']}\n"
+           f"The correct answer is: {sample['correct_answer']}\n"
+           f"Detailed explanation: {sample['detailed_answer']}")
+    return txt
+
+def hellaswag_datagen(sample):
+    txt = (f"{sample['question']}\n"
+           f"The possible endings are:{sample['all_choices']}\n"
+           f"The correct ending is: {sample['correct_answer']}\n"
+           f"Detailed explanation: {sample['detailed_answer']}")
+    return txt
+
+def mmlu_datagen(sample):
+    txt = (f"The question is: {sample['question']}\n"
+           f"The choices are:{sample['all_choices']}\n"
+           f"The correct answer is: {sample['correct_answer']}\n"
+           f"Detailed explanation: {sample['detailed_answer']}")
+    return txt
+
+def openmathinstruct1_datagen(sample):
+    txt = (f"The question is: {sample['question']}\n"
+           f"{sample['detailed_answer']}")
+    return txt
+
+def shubhra_deduplicated(sample):
+    return sample['processed_text']
+
+def ultratextbooks2(sample):
+    return sample['text']
+
+def finewebedu(sample):
+    if sample['score'] >= float(os.environ["FINEWEBEDU_THRESHOLD"]):
+        return sample['text']
+    else:
+        # print(f"score of {sample['score']} is below threshold of {float(os.environ['FINEWEBEDU_THRESHOLD'])}, skipping it!")
+        return None
+
+
 CONVERT_TO_PRETRAINING = {
     "garage-bAInd/Open-Platypus": open_platypus,
     "Open-Orca/OpenOrca": open_orca,
@@ -147,6 +194,7 @@ CONVERT_TO_PRETRAINING = {
     "stingning/ultrachat": ultrachat,
     "cais/mmlu": mmlu_aux_train,
     "nvidia/OpenMathInstruct-1": open_math_instruct_1,
+    "/home/eldar/openmathinstruct_1/OpenMathInstruct-1": open_math_instruct_1,
     "gsm8k": gsm8k,
     "yahma/alpaca-cleaned": alpaca_cleaned,
     "mosaicml/dolly_hhrlhf": dolly_hhrlhf,
@@ -155,9 +203,52 @@ CONVERT_TO_PRETRAINING = {
     "philschmid/flanv2": flanv2,
     "Open-Orca/FLAN": flan,
     "chiayewken/flan-cot": flan_cot,
-    "/root/winogrande_all": winogrande_all,
-    "/root/hellaswag_all": hellaswag_all,
-    "/root/arc_all": arc_all,
+    "Locutusque/UltraTextbooks-2.0": ultratextbooks2,
+    # "/root/winogrande_all": winogrande_all,
+    # "/root/hellaswag_all": hellaswag_all,
+    # "/root/arc_all": arc_all,
+    "/nm/drive0/eldar/datasets/winogrande/merged_for_upstream_v2": winogrande_all,  #_v2 no dev
+    "/nm/drive0/eldar/datasets/hellaswag/merged_for_upstream_v2": hellaswag_all,  # _v2 no dev
+    "/nm/drive0/eldar/datasets/ARC-V1-Feb2018-2/merged_for_upstream": arc_all,
+    "/network/eldar/datasets/data_gen/arcboth/arcboth_llama3_8b_instruct": arc_all_datagen,
+    "/network/eldar/datasets/data_gen/arcboth/arcboth_llama3_70b_instruct": arc_all_datagen,
+    "/network/eldar/datasets/data_gen/winogrande/winogrande_llama3_8b_instruct": winogrande_datagen,
+    "/network/eldar/datasets/data_gen/winogrande/winogrande_llama3_70b_instruct": winogrande_datagen,
+    "/network/eldar/datasets/data_gen/hellaswag/hellaswag_llama3_8b_instruct": hellaswag_datagen,
+    "/network/eldar/datasets/data_gen/hellaswag/hellaswag_llama3_70b_instruct": hellaswag_datagen,
+    "/network/eldar/datasets/data_gen/mmlu": mmlu_datagen,
+    "/network/eldar/datasets/data_gen/openmathinstruct1": openmathinstruct1_datagen,
+    "/network/eldar/datasets/shubhra_deduplicated": shubhra_deduplicated,
+
+    "/network/eldar/datasets/data_gen/various_difficulties/arcboth/arc_young_children_llama3_8b_instruct": arc_all_datagen,
+    "/network/eldar/datasets/data_gen/various_difficulties/arcboth/arc_young_children_llama3_70b_instruct": arc_all_datagen,
+    "/network/eldar/datasets/data_gen/various_difficulties/arcboth/arc_college_students_llama3_8b_instruct": arc_all_datagen,
+    "/network/eldar/datasets/data_gen/various_difficulties/arcboth/arc_college_students_llama3_70b_instruct": arc_all_datagen,
+    "/network/eldar/datasets/data_gen/various_difficulties/arcboth/arc_scientists_llama3_8b_instruct": arc_all_datagen,
+    "/network/eldar/datasets/data_gen/various_difficulties/arcboth/arc_scientists_llama3_70b_instruct": arc_all_datagen,
+
+    "/network/eldar/datasets/data_gen/various_difficulties/hellaswag/hellaswag_young_children_llama3_8b_instruct": hellaswag_datagen,
+    "/network/eldar/datasets/data_gen/various_difficulties/hellaswag/hellaswag_young_children_llama3_70b_instruct": hellaswag_datagen,
+    "/network/eldar/datasets/data_gen/various_difficulties/hellaswag/hellaswag_college_students_llama3_8b_instruct": hellaswag_datagen,
+    "/network/eldar/datasets/data_gen/various_difficulties/hellaswag/hellaswag_college_students_llama3_70b_instruct": hellaswag_datagen,
+    "/network/eldar/datasets/data_gen/various_difficulties/hellaswag/hellaswag_scientists_llama3_8b_instruct": hellaswag_datagen,
+    "/network/eldar/datasets/data_gen/various_difficulties/hellaswag/hellaswag_scientists_llama3_70b_instruct": hellaswag_datagen,
+
+    "/network/eldar/datasets/data_gen/various_difficulties/winogrande/winogrande_young_children_llama3_8b_instruct": winogrande_datagen,
+    "/network/eldar/datasets/data_gen/various_difficulties/winogrande/winogrande_young_children_llama3_70b_instruct": winogrande_datagen,
+    "/network/eldar/datasets/data_gen/various_difficulties/winogrande/winogrande_college_students_llama3_8b_instruct": winogrande_datagen,
+    "/network/eldar/datasets/data_gen/various_difficulties/winogrande/winogrande_college_students_llama3_70b_instruct": winogrande_datagen,
+    "/network/eldar/datasets/data_gen/various_difficulties/winogrande/winogrande_scientists_llama3_8b_instruct": winogrande_datagen,
+    "/network/eldar/datasets/data_gen/various_difficulties/winogrande/winogrande_scientists_llama3_70b_instruct": winogrande_datagen,
+
+    "/network/eldar/datasets/data_gen/various_difficulties/mmlu/mmlu_young_children_llama3_8b_instruct": mmlu_datagen,
+    "/network/eldar/datasets/data_gen/various_difficulties/mmlu/mmlu_young_children_llama3_70b_instruct": mmlu_datagen,
+    "/network/eldar/datasets/data_gen/various_difficulties/mmlu/mmlu_college_students_llama3_8b_instruct": mmlu_datagen,
+    "/network/eldar/datasets/data_gen/various_difficulties/mmlu/mmlu_college_students_llama3_70b_instruct": mmlu_datagen,
+    "/network/eldar/datasets/data_gen/various_difficulties/mmlu/mmlu_scientists_llama3_8b_instruct": mmlu_datagen,
+    "/network/eldar/datasets/data_gen/various_difficulties/mmlu/mmlu_scientists_llama3_70b_instruct": mmlu_datagen,
+
+    "/network/eldar/datasets/raw/fineweb-edu/data": finewebedu,
 }
 
 
@@ -276,6 +367,7 @@ class ConcatTokensDataset(AbstractConcatTokensDataset):
         eos_text: str,
         no_wrap: bool,
         hf_id: Optional[str] = None,
+        tokenizer_call_kwargs: Optional[Dict] = None,
     ):
         self.hf_dataset = hf_dataset
         super().__init__(tokenizer, max_length, bos_text, eos_text, no_wrap)

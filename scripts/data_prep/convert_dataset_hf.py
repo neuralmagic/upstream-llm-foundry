@@ -42,6 +42,16 @@ def parse_args() -> Namespace:
     parser.add_argument('--no_wrap', default=False, action='store_true')
     parser.add_argument('--num_workers', type=int, required=False, default=None)
 
+    parser.add_argument('--tokenizer_call_kwargs',
+                        type=str,
+                        required=False,
+                        help="""These kwargs are passed to tokenizer directly in __call__.
+                        This is useful when tokenizer_kwargs are completely ignored and it
+                        is impossible to dig up the reason for it in the very cumbersome HF
+                        codebase. For example, it is impossible to disable adding of special
+                        tokens with Llama-3 tokenizer. It will always add BOS token, which we
+                        sometimes do not want. Now we can disable in __call__ by setting add_special_tokens=False""")
+
     parsed = parser.parse_args()
     return parsed
 
