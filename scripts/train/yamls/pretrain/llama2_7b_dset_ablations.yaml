@@ -109,6 +109,11 @@ callbacks:
   lr_monitor: {}
   memory_monitor: {}
   runtime_estimator: {}
+  hf_checkpointer:
+    overwrite: true
+    precision: bfloat16
+    save_folder: /nm/drive0/eldar/llmfoundry_checkpoints/${model_tag}/${dset_tag}/${run_name}
+    save_interval: ${eval_interval}
 
 loggers:
   wandb: {}

@@ -181,7 +181,6 @@ def finewebedu(sample):
     if sample['score'] >= float(os.environ["FINEWEBEDU_THRESHOLD"]):
         return sample['text']
     else:
-        # print(f"score of {sample['score']} is below threshold of {float(os.environ['FINEWEBEDU_THRESHOLD'])}, skipping it!")
         return None
 
 
