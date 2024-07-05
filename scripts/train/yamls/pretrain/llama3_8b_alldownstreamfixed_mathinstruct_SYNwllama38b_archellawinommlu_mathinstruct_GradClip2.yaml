@@ -1,0 +1,213 @@
+model_name_or_path: #TODO
+max_seq_len: #TODO
+precision: #TODO
+
+data_local: # TODO
+data_remote: # If blank, files must be present in data_local
+global_seed: 42
+seed: ${global_seed}
+
+max_duration: #TODO
+eval_interval: #TODO
+eval_first: true
+
+global_train_batch_size: #TODO
+device_train_microbatch_size: #TODO
+device_eval_batch_size: #TODO
+
+run_name: # If left blank, will be read from env var $RUN_NAME
+
+model:
+  name: hf_causal_lm
+  use_flash_attention_2: true
+  pretrained: true
+  pretrained_model_name_or_path: ${model_name_or_path}
+  use_auth_token: true
+
+# why do I need it when dataset is already tokenized?
+tokenizer:
+  name: ${model_name_or_path}
+  kwargs:
+    model_max_length: ${max_seq_len}
+
+train_loader:
+  name: text
+  dataset:
+    streams:
+      open_platypus:
+        remote: /network/eldar/datasets/llama3_8b/seqlen8k_tokenized_wEOS_noWrap/open_platypus
+        local:
+        split: train
+      open_orca:
+        remote: /network/eldar/datasets/llama3_8b/seqlen8k_tokenized_wEOS_noWrap/open_orca
+        local:
+        split: train
+      open_hermes_2_5:
+        remote: /network/eldar/datasets/llama3_8b/seqlen8k_tokenized_wEOS_noWrap/open_hermes_2_5
+        local:
+        split: train
+      ultrachat:
+        remote: /network/eldar/datasets/llama3_8b/seqlen8k_tokenized_wEOS_noWrap/ultrachat
+        local:
+        split: train
+      dolphin_flan1m:
+        remote: /network/eldar/datasets/llama3_8b/seqlen8k_tokenized_wEOS_noWrap/dolphin_flan1m
+        local:
+        split: train
+      dolphin_flan5m:
+        remote: /network/eldar/datasets/llama3_8b/seqlen8k_tokenized_wEOS_noWrap/dolphin_flan5m
+        local:
+        split: train
+      alpaca_cleaned:
+        remote: /network/eldar/datasets/llama3_8b/seqlen8k_tokenized_wEOS_noWrap/alpaca_cleaned
+        local:
+        split: train
+      dolly_hhrlhf:
+        remote: /network/eldar/datasets/llama3_8b/seqlen8k_tokenized_wEOS_noWrap/dolly_hhrlhf
+        local:
+        split: train
+      flan2021:
+        remote: /network/eldar/datasets/llama3_8b/seqlen8k_tokenized_wEOS_noWrap/flan2021_submix_original
+        local:
+        split: train
+      flancot:
+        remote: /network/eldar/datasets/llama3_8b/seqlen8k_tokenized_wEOS_noWrap/flan_cot
+        local:
+        split: train
+      winogrande:
+        remote: /network/eldar/datasets/llama3_8b/seqlen8k_tokenized_wEOS_noWrap/winogrande_datagen_wllama3_8b_instruct
+        local:
+        split: train
+      arc:
+        remote: /network/eldar/datasets/llama3_8b/seqlen8k_tokenized_wEOS_noWrap/arcboth_datagen_wllama3_8b_instruct
+        local:
+        split: train
+      hellaswag:
+        remote: /network/eldar/datasets/llama3_8b/seqlen8k_tokenized_wEOS_noWrap/hellaswag_datagen_wllama3_8b_instruct
+        local:
+        split: train
+      mmlu_aux:
+        remote: /network/eldar/datasets/llama3_8b/seqlen8k_tokenized_wEOS_noWrap/mmlu_datagen_wllama3_8b_instruct
+        local:
+        split: train
+      openmathinstruct_1:
+        remote: /network/eldar/datasets/llama3_8b/seqlen8k_tokenized_wEOS_noWrap/openmathinstruct1_datagen_wllama3_8b_instruct
+        local:
+        split: train
+    max_seq_len: ${max_seq_len}
+    shuffle: true
+    shuffle_seed: ${global_seed}
+  drop_last: true
+  num_workers: 8
+
+
+# TODO: probati dataloadere bez ovis fensi configs
+# eval_loader:
+#   name: text
+#   dataset:
+#     local: ${data_local}
+#     remote: ${data_remote}
+#     split: validation
+#     shuffle: false
+#     max_seq_len: ${max_seq_len}
+#     shuffle_seed: ${global_seed}
+#   drop_last: true
+#   num_workers: 8
+#   # prefetch_factor: 2
+#   # pin_memory: false
+#   # persistent_workers: true
+#   # timeout: 0
+
+scheduler:
+  name: cosine_with_warmup
+  t_warmup: # TODO
+  alpha_f: 0.1
+
+optimizer:
+  name: decoupled_adamw
+  lr: #TODO
+  betas:
+  - 0.9
+  - 0.95
+  eps: 1.0e-08
+  weight_decay: 0.0
+
+algorithms:
+  mask_pruned_weights: {}
+  gradient_clipping:
+    clipping_type: norm
+    clipping_threshold: 2.0
+
+fsdp_config:
+  sharding_strategy: FULL_SHARD
+  mixed_precision: PURE # TODO: DEFAULT vs PURE?
+  activation_checkpointing: true
+  activation_checkpointing_reentrant: false
+  activation_cpu_offload: false
+  limit_all_gathers: true
+
+knowledge_distillation:
+  teacher_name_or_path: #TODO
+  temperature: #TODO
+  hardness_kldiv: #TODO
+  hardness_ce: #TODO
+  hardness_squarehead: #TODO
+
+# Logging
+progress_bar: false
+log_to_console: true
+console_log_interval: 1ba
+
+callbacks:
+  speed_monitor:
+    window_size: 10
+  lr_monitor: {}
+  memory_monitor: {}
+  runtime_estimator: {}
+
+loggers:
+  wandb: {}
+
+# Checkpoint to local filesystem or remote object store
+save_interval: ${eval_interval}
+save_num_checkpoints_to_keep: 1  # Important, this cleans up checkpoints saved to DISK
+save_folder: /home/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/${run_name}
+# save_folder: s3://my-bucket/my-folder/{run_name}/checkpoints
+
+icl_seq_len: ${max_seq_len}
+icl_tasks:
+-
+  label: arc_challenge
+  dataset_uri: /home/eldar/eldar-upstream/upstream-llm-foundry/scripts/eval/local_data/world_knowledge/arc_challenge_shrinked.jsonl
+  num_fewshot: [25]
+  icl_task_type: multiple_choice
+  continuation_delimiter: "\nAnswer: " # this separates questions from answers
+  metric_names:
+  - InContextLearningMultipleChoiceAccuracy
+  - InContextLearningPerplexity
+-
+  label: mmlu
+  dataset_uri: /home/eldar/eldar-upstream/upstream-llm-foundry/scripts/eval/local_data/world_knowledge/mmlu_shrinked.jsonl
+  num_fewshot: [5]
+  icl_task_type: multiple_choice
+  continuation_delimiter: "\nAnswer: " # this separates questions from answers
+  # has_categories: true  # this splits mmlu into separate categories; lets keep track of global average for now
+  metric_names:
+  - InContextLearningMultipleChoiceAccuracy
+  - InContextLearningPerplexity
+-
+  label: hellaswag
+  dataset_uri: /home/eldar/eldar-upstream/upstream-llm-foundry/scripts/eval/local_data/language_understanding/hellaswag_shrinked.jsonl
+  num_fewshot: [10]
+  icl_task_type: multiple_choice
+  metric_names:
+  - InContextLearningMultipleChoiceAccuracy
+  - InContextLearningPerplexity
+-
+  label: winogrande
+  dataset_uri: /home/eldar/eldar-upstream/upstream-llm-foundry/scripts/eval/local_data/language_understanding/winogrande_shrinked.jsonl
+  num_fewshot: [5]
+  icl_task_type: schema
+  metric_names:
+  - InContextLearningMultipleChoiceAccuracy
+  - InContextLearningPerplexity
