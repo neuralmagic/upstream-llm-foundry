@@ -57,6 +57,16 @@ def parse_args() -> Namespace:
     parser.add_argument('--no_wrap', default=False, action='store_true')
     parser.add_argument('--num_workers', type=int, required=False, default=None)
 
+    parser.add_argument('--tokenizer_call_kwargs',
+                        type=str,
+                        required=False,
+                        help="""These kwargs are passed to tokenizer directly in __call__.
+                        This is useful when tokenizer_kwargs are completely ignored and it
+                        is impossible to dig up the reason for it in the very cumbersome HF
+                        codebase. For example, it is impossible to disable adding of special
+                        tokens with Llama-3 tokenizer. It will always add BOS token, which we
+                        sometimes do not want. Now we can disable in __call__ by setting add_special_tokens=False""")
+
     parsed = parser.parse_args()
 
     if parsed.tokenizer_kwargs is not None:
@@ -82,6 +92,12 @@ def parse_args() -> Namespace:
         parsed.bos_text = ''
     if parsed.eos_text is None:
         parsed.eos_text = ''
+
+    if parsed.tokenizer_call_kwargs is not None:
+        parsed.tokenizer_call_kwargs = json.loads(parsed.tokenizer_call_kwargs)
+    else:
+        parsed.tokenizer_call_kwargs = {}
+
     return parsed
 
 
@@ -205,6 +221,7 @@ def build_hf_dataset(
     no_wrap: bool = False,
     tokenizer: PreTrainedTokenizerBase = None,
     data_subset: Union[str, None] = None,
+    tokenizer_call_kwargs: Optional[Dict] = None,
 ) -> IterableDataset:
     """Build an IterableDataset over the HF C4 or pile source data.
 
@@ -251,7 +268,8 @@ def build_hf_dataset(
                                       max_length=max_length,
                                       bos_text=bos_text,
                                       eos_text=eos_text,
-                                      no_wrap=no_wrap)
+                                      no_wrap=no_wrap,
+                                      tokenizer_call_kwargs=tokenizer_call_kwargs)
     return dataset
 
 
@@ -360,7 +378,8 @@ def main(args: Namespace) -> None:
                                    bos_text=args.bos_text,
                                    eos_text=args.eos_text,
                                    no_wrap=args.no_wrap,
-                                   tokenizer=tokenizer)
+                                   tokenizer=tokenizer,
+                                   tokenizer_call_kwargs=args.tokenizer_call_kwargs)
         loader = build_dataloader(dataset=dataset,
                                   batch_size=512,
                                   num_workers=args.num_workers)
