@@ -48,4 +48,8 @@ for i, item in enumerate(ds):
         # # and torch does not support non-writeable tensors, so you get a scary warning and
         # # if you do try to write to the tensor you get undefined behavior
         # tokens = torch.from_numpy(np.frombuffer(ds[0]['tokens'], dtype=np.int64).copy())
+<<<<<<< HEAD
         # print(tokenizer.decode(tokens))
+=======
+        # print(tokenizer.decode(tokens))
+>>>>>>> 4ce3d69 (Add support for more datasets and tokenizer_call_kwargs)
