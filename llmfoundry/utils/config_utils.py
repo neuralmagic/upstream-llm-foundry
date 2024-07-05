@@ -164,3 +164,11 @@ def log_config(cfg: DictConfig) -> None:
             raise e
         if mlflow.active_run():
             mlflow.log_params(params=om.to_container(cfg, resolve=True))
+
+    if 'clearml' in cfg.get('loggers', {}):
+        try:
+            import clearml
+        except ImportError as e:
+            raise e
+        if clearml.Task.current_task():
+            clearml.Task.current_task().connect_configuration(om.to_container(cfg, resolve=True))
