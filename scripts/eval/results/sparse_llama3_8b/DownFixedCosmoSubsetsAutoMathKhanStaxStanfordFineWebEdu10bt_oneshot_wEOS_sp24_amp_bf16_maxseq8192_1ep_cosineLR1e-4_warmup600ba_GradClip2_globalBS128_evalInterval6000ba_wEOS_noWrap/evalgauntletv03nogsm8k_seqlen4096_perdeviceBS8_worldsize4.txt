@@ -1,0 +1,1373 @@
+----****----[eldar debug]----****---- Using fused CrossEntropyLoss from flash_attn.losses.cross_entropy ----****----[eldar debug]----****----
+----****----[eldar debug]----****---- Using fused CrossEntropyLoss from flash_attn.losses.cross_entropy ----****----[eldar debug]----****----
+/home/eldar/eldar-upstream/upstream-llm-foundry/scripts/eval/eval.py:281: UserWarning: Unused parameter global_seed found in cfg. Please check your yaml to ensure this parameter is necessary.
+  warnings.warn(
+/home/eldar/eldar-upstream/upstream-llm-foundry/scripts/eval/eval.py:281: UserWarning: Unused parameter ckpt_path found in cfg. Please check your yaml to ensure this parameter is necessary.
+  warnings.warn(
+[W Utils.hpp:133] Warning: Environment variable NCCL_ASYNC_ERROR_HANDLING is deprecated; use TORCH_NCCL_ASYNC_ERROR_HANDLING instead (function getCvarInt)
+2024-06-10 10:09:16,047: rank0[974105][MainThread]: INFO: llmfoundry.utils.builders: Extracting ICL task config from path: eval/yamls/examples/tasks_v0.3_noGSM8k.yaml
+Map:   0%|          | 0/413 [00:00<?, ? examples/s]Map:  31%|███       | 127/413 [00:00<00:00, 1257.99 examples/s]Map:  62%|██████▏   | 257/413 [00:00<00:00, 1277.25 examples/s]Map:  94%|█████████▍| 388/413 [00:00<00:00, 1287.00 examples/s]Map: 100%|██████████| 413/413 [00:00<00:00, 1050.53 examples/s]
+Map:   0%|          | 0/490 [00:00<?, ? examples/s]Map:  26%|██▋       | 129/490 [00:00<00:00, 1273.82 examples/s]Map:  53%|█████▎    | 262/490 [00:00<00:00, 1302.88 examples/s]Map:  80%|████████  | 394/490 [00:00<00:00, 1308.71 examples/s]Map: 100%|██████████| 490/490 [00:00<00:00, 1089.98 examples/s]
+Map:   0%|          | 0/476 [00:00<?, ? examples/s]Map: 100%|██████████| 476/476 [00:00<00:00, 27404.34 examples/s]
+Map:   0%|          | 0/476 [00:00<?, ? examples/s]Map:  28%|██▊       | 132/476 [00:00<00:00, 1302.71 examples/s]Map:  56%|█████▌    | 266/476 [00:00<00:00, 1317.16 examples/s]Map:  84%|████████▍ | 401/476 [00:00<00:00, 1327.80 examples/s]Map: 100%|██████████| 476/476 [00:00<00:00, 1073.11 examples/s]
+Map:   0%|          | 0/365 [00:00<?, ? examples/s]Map:  35%|███▌      | 129/365 [00:00<00:00, 1272.52 examples/s]Map:  72%|███████▏  | 262/365 [00:00<00:00, 1298.54 examples/s]Map: 100%|██████████| 365/365 [00:00<00:00, 1080.03 examples/s]
+Map:   0%|          | 0/373 [00:00<?, ? examples/s]Map:  34%|███▍      | 126/373 [00:00<00:00, 1242.68 examples/s]Map:  68%|██████▊   | 255/373 [00:00<00:00, 1263.22 examples/s]Map: 100%|██████████| 373/373 [00:00<00:00, 1058.19 examples/s]
+Map:   0%|          | 0/135 [00:00<?, ? examples/s]Map:  33%|███▎      | 45/135 [00:00<00:00, 442.95 examples/s]Map:  68%|██████▊   | 92/135 [00:00<00:00, 453.70 examples/s]Map: 100%|██████████| 135/135 [00:00<00:00, 334.76 examples/s]
+Map:   0%|          | 0/152 [00:00<?, ? examples/s]Map:  28%|██▊       | 43/152 [00:00<00:00, 416.78 examples/s]Map:  57%|█████▋    | 87/152 [00:00<00:00, 424.00 examples/s]Map:  86%|████████▌ | 130/152 [00:00<00:00, 425.38 examples/s]Map: 100%|██████████| 152/152 [00:00<00:00, 324.69 examples/s]
+Map:   0%|          | 0/100 [00:00<?, ? examples/s]Map:  42%|████▏     | 42/100 [00:00<00:00, 404.85 examples/s]Map: 100%|██████████| 100/100 [00:00<00:00, 311.99 examples/s]Map: 100%|██████████| 100/100 [00:00<00:00, 319.86 examples/s]
+Map:   0%|          | 0/265 [00:00<?, ? examples/s]Map:  18%|█▊        | 47/265 [00:00<00:00, 457.78 examples/s]Map:  36%|███▌      | 95/265 [00:00<00:00, 467.11 examples/s]Map:  54%|█████▍    | 143/265 [00:00<00:00, 468.02 examples/s]Map:  72%|███████▏  | 192/265 [00:00<00:00, 468.85 examples/s]Map:  90%|█████████ | 239/265 [00:00<00:00, 467.45 examples/s]Map: 100%|██████████| 265/265 [00:00<00:00, 340.07 examples/s]
+Map:   0%|          | 0/144 [00:00<?, ? examples/s]Map:  28%|██▊       | 41/144 [00:00<00:00, 392.48 examples/s]Map:  57%|█████▋    | 82/144 [00:00<00:00, 398.55 examples/s]Map:  86%|████████▌ | 124/144 [00:00<00:00, 401.36 examples/s]Map: 100%|██████████| 144/144 [00:00<00:00, 300.92 examples/s]
+Map:   0%|          | 0/100 [00:00<?, ? examples/s]Map:  39%|███▉      | 39/100 [00:00<00:00, 372.30 examples/s]Map:  77%|███████▋  | 77/100 [00:00<00:00, 374.79 examples/s]Map: 100%|██████████| 100/100 [00:00<00:00, 301.68 examples/s]
+Map:   0%|          | 0/100 [00:00<?, ? examples/s]Map:  45%|████▌     | 45/100 [00:00<00:00, 430.16 examples/s]Map:  89%|████████▉ | 89/100 [00:00<00:00, 432.62 examples/s]Map: 100%|██████████| 100/100 [00:00<00:00, 340.33 examples/s]
+Map:   0%|          | 0/173 [00:00<?, ? examples/s]Map:  23%|██▎       | 40/173 [00:00<00:00, 386.09 examples/s]Map:  56%|█████▌    | 97/173 [00:00<00:00, 371.20 examples/s]Map:  79%|███████▊  | 136/173 [00:00<00:00, 377.31 examples/s]Map: 100%|██████████| 173/173 [00:00<00:00, 304.43 examples/s]
+Map:   0%|          | 0/102 [00:00<?, ? examples/s]Map:  42%|████▏     | 43/102 [00:00<00:00, 416.50 examples/s]Map:  85%|████████▌ | 87/102 [00:00<00:00, 423.32 examples/s]Map: 100%|██████████| 102/102 [00:00<00:00, 319.73 examples/s]
+Map:   0%|          | 0/100 [00:00<?, ? examples/s]Map:  42%|████▏     | 42/100 [00:00<00:00, 401.92 examples/s]Map:  86%|████████▌ | 86/100 [00:00<00:00, 418.20 examples/s]Map: 100%|██████████| 100/100 [00:00<00:00, 328.06 examples/s]
+Map:   0%|          | 0/235 [00:00<?, ? examples/s]Map:  21%|██        | 49/235 [00:00<00:00, 475.34 examples/s]Map:  42%|████▏     | 98/235 [00:00<00:00, 482.18 examples/s]Map:  63%|██████▎   | 148/235 [00:00<00:00, 484.46 examples/s]Map:  84%|████████▍ | 197/235 [00:00<00:00, 482.57 examples/s]Map: 100%|██████████| 235/235 [00:00<00:00, 366.68 examples/s]
+Map:   0%|          | 0/114 [00:00<?, ? examples/s]Map:  33%|███▎      | 38/114 [00:00<00:00, 365.57 examples/s]Map:  82%|████████▏ | 93/114 [00:00<00:00, 358.64 examples/s]Map: 100%|██████████| 114/114 [00:00<00:00, 298.62 examples/s]
+Map:   0%|          | 0/145 [00:00<?, ? examples/s]Map:  34%|███▍      | 50/145 [00:00<00:00, 481.19 examples/s]Map:  68%|██████▊   | 99/145 [00:00<00:00, 480.62 examples/s]Map: 100%|██████████| 145/145 [00:00<00:00, 349.88 examples/s]
+Map:   0%|          | 0/378 [00:00<?, ? examples/s]Map:  13%|█▎        | 48/378 [00:00<00:00, 470.44 examples/s]Map:  26%|██▌       | 97/378 [00:00<00:00, 477.07 examples/s]Map:  44%|████▍     | 167/378 [00:00<00:00, 465.99 examples/s]Map:  57%|█████▋    | 215/378 [00:00<00:00, 468.08 examples/s]Map:  70%|██████▉   | 263/378 [00:00<00:00, 468.92 examples/s]Map:  83%|████████▎ | 312/378 [00:00<00:00, 471.88 examples/s]Map:  95%|█████████▌| 360/378 [00:00<00:00, 469.24 examples/s]Map: 100%|██████████| 378/378 [00:01<00:00, 301.90 examples/s]
+Map:   0%|          | 0/100 [00:00<?, ? examples/s]Map:  49%|████▉     | 49/100 [00:00<00:00, 484.60 examples/s]Map: 100%|██████████| 100/100 [00:00<00:00, 352.20 examples/s]Map: 100%|██████████| 100/100 [00:00<00:00, 365.04 examples/s]
+Map:   0%|          | 0/310 [00:00<?, ? examples/s]Map:  13%|█▎        | 41/310 [00:00<00:00, 402.12 examples/s]Map:  27%|██▋       | 83/310 [00:00<00:00, 405.30 examples/s]Map:  40%|████      | 125/310 [00:00<00:00, 408.55 examples/s]Map:  60%|██████    | 187/310 [00:00<00:00, 405.12 examples/s]Map:  74%|███████▍  | 230/310 [00:00<00:00, 408.50 examples/s]Map:  88%|████████▊ | 273/310 [00:00<00:00, 409.40 examples/s]Map: 100%|██████████| 310/310 [00:01<00:00, 307.51 examples/s]
+Map:   0%|          | 0/203 [00:00<?, ? examples/s]Map:  21%|██        | 43/203 [00:00<00:00, 418.39 examples/s]Map:  52%|█████▏    | 106/203 [00:00<00:00, 414.48 examples/s]Map:  74%|███████▍  | 150/203 [00:00<00:00, 418.52 examples/s]Map:  96%|█████████▌| 194/203 [00:00<00:00, 421.97 examples/s]Map: 100%|██████████| 203/203 [00:00<00:00, 328.29 examples/s]
+Map:   0%|          | 0/100 [00:00<?, ? examples/s]Map:  34%|███▍      | 34/100 [00:00<00:00, 328.09 examples/s]Map:  71%|███████   | 71/100 [00:00<00:00, 344.47 examples/s]Map: 100%|██████████| 100/100 [00:00<00:00, 283.75 examples/s]
+Map:   0%|          | 0/165 [00:00<?, ? examples/s]Map:  10%|█         | 17/165 [00:00<00:00, 164.06 examples/s]Map:  21%|██        | 35/165 [00:00<00:00, 170.06 examples/s]Map:  32%|███▏      | 53/165 [00:00<00:00, 171.85 examples/s]Map:  43%|████▎     | 71/165 [00:00<00:00, 173.31 examples/s]Map:  55%|█████▍    | 90/165 [00:00<00:00, 175.26 examples/s]Map:  65%|██████▌   | 108/165 [00:00<00:00, 174.02 examples/s]Map:  76%|███████▋  | 126/165 [00:00<00:00, 172.58 examples/s]Map:  87%|████████▋ | 144/165 [00:00<00:00, 170.99 examples/s]Map:  98%|█████████▊| 162/165 [00:00<00:00, 170.86 examples/s]Map: 100%|██████████| 165/165 [00:01<00:00, 152.43 examples/s]
+Map:   0%|          | 0/198 [00:00<?, ? examples/s]Map:  24%|██▎       | 47/198 [00:00<00:00, 453.73 examples/s]Map:  58%|█████▊    | 115/198 [00:00<00:00, 446.83 examples/s]Map:  82%|████████▏ | 163/198 [00:00<00:00, 453.44 examples/s]Map: 100%|██████████| 198/198 [00:00<00:00, 346.02 examples/s]
+Map:   0%|          | 0/193 [00:00<?, ? examples/s]Map:  20%|█▉        | 38/193 [00:00<00:00, 368.99 examples/s]Map:  40%|████      | 78/193 [00:00<00:00, 383.63 examples/s]Map:  61%|██████    | 118/193 [00:00<00:00, 388.51 examples/s]Map:  82%|████████▏ | 158/193 [00:00<00:00, 390.47 examples/s]Map: 100%|██████████| 193/193 [00:00<00:00, 312.07 examples/s]
+Map:   0%|          | 0/390 [00:00<?, ? examples/s]Map:  11%|█         | 42/390 [00:00<00:00, 406.64 examples/s]Map:  22%|██▏       | 85/390 [00:00<00:00, 416.42 examples/s]Map:  33%|███▎      | 127/390 [00:00<00:00, 415.13 examples/s]Map:  44%|████▍     | 171/390 [00:00<00:00, 422.48 examples/s]Map:  55%|█████▌    | 215/390 [00:00<00:00, 426.55 examples/s]Map:  67%|██████▋   | 260/390 [00:00<00:00, 430.29 examples/s]Map:  78%|███████▊  | 304/390 [00:00<00:00, 430.94 examples/s]Map:  89%|████████▉ | 348/390 [00:00<00:00, 430.47 examples/s]Map: 100%|██████████| 390/390 [00:01<00:00, 331.73 examples/s]
+Map:   0%|          | 0/270 [00:00<?, ? examples/s]Map:  17%|█▋        | 46/270 [00:00<00:00, 443.52 examples/s]Map:  35%|███▍      | 94/270 [00:00<00:00, 456.90 examples/s]Map:  53%|█████▎    | 142/270 [00:00<00:00, 462.10 examples/s]Map:  71%|███████   | 191/270 [00:00<00:00, 465.86 examples/s]Map:  89%|████████▊ | 239/270 [00:00<00:00, 467.87 examples/s]Map: 100%|██████████| 270/270 [00:00<00:00, 331.81 examples/s]
+Map:   0%|          | 0/238 [00:00<?, ? examples/s]Map:  16%|█▋        | 39/238 [00:00<00:00, 381.40 examples/s]Map:  34%|███▍      | 81/238 [00:00<00:00, 398.35 examples/s]Map:  52%|█████▏    | 124/238 [00:00<00:00, 408.98 examples/s]Map:  71%|███████   | 168/238 [00:00<00:00, 416.72 examples/s]Map:  89%|████████▉ | 212/238 [00:00<00:00, 421.71 examples/s]Map: 100%|██████████| 238/238 [00:00<00:00, 329.67 examples/s]
+Map:   0%|          | 0/545 [00:00<?, ? examples/s]Map:   8%|▊         | 43/545 [00:00<00:01, 414.89 examples/s]Map:  19%|█▉        | 106/545 [00:00<00:01, 411.77 examples/s]Map:  31%|███       | 168/545 [00:00<00:00, 408.08 examples/s]Map:  39%|███▉      | 212/545 [00:00<00:00, 413.48 examples/s]Map:  47%|████▋     | 257/545 [00:00<00:00, 422.25 examples/s]Map:  59%|█████▉    | 322/545 [00:00<00:00, 422.82 examples/s]Map:  67%|██████▋   | 366/545 [00:00<00:00, 423.12 examples/s]Map:  75%|███████▌  | 410/545 [00:00<00:00, 423.76 examples/s]Map:  83%|████████▎ | 455/545 [00:01<00:00, 426.74 examples/s]Map:  92%|█████████▏| 499/545 [00:01<00:00, 427.44 examples/s]Map:  99%|█████████▉| 542/545 [00:01<00:00, 425.14 examples/s]Map: 100%|██████████| 545/545 [00:01<00:00, 312.33 examples/s]
+Map:   0%|          | 0/216 [00:00<?, ? examples/s]Map:  16%|█▌        | 35/216 [00:00<00:00, 333.66 examples/s]Map:  32%|███▏      | 69/216 [00:00<00:00, 332.27 examples/s]Map:  54%|█████▍    | 117/216 [00:00<00:00, 319.35 examples/s]Map:  70%|███████   | 152/216 [00:00<00:00, 325.94 examples/s]Map:  87%|████████▋ | 188/216 [00:00<00:00, 333.24 examples/s]Map: 100%|██████████| 216/216 [00:00<00:00, 275.42 examples/s]
+Map:   0%|          | 0/204 [00:00<?, ? examples/s]Map:   9%|▉         | 18/204 [00:00<00:01, 169.14 examples/s]Map:  19%|█▊        | 38/204 [00:00<00:00, 181.46 examples/s]Map:  28%|██▊       | 58/204 [00:00<00:00, 186.15 examples/s]Map:  38%|███▊      | 78/204 [00:00<00:00, 185.73 examples/s]Map:  48%|████▊     | 98/204 [00:00<00:00, 186.84 examples/s]Map:  58%|█████▊    | 118/204 [00:00<00:00, 188.52 examples/s]Map:  68%|██████▊   | 138/204 [00:00<00:00, 188.04 examples/s]Map:  77%|███████▋  | 158/204 [00:00<00:00, 188.09 examples/s]Map:  87%|████████▋ | 178/204 [00:00<00:00, 186.63 examples/s]Map:  97%|█████████▋| 197/204 [00:01<00:00, 183.50 examples/s]Map: 100%|██████████| 204/204 [00:01<00:00, 164.96 examples/s]
+Map:   0%|          | 0/237 [00:00<?, ? examples/s]Map:   8%|▊         | 20/237 [00:00<00:01, 179.24 examples/s]Map:  16%|█▋        | 39/237 [00:00<00:01, 179.10 examples/s]Map:  24%|██▍       | 57/237 [00:00<00:01, 176.45 examples/s]Map:  32%|███▏      | 75/237 [00:00<00:00, 176.92 examples/s]Map:  39%|███▉      | 93/237 [00:00<00:00, 174.80 examples/s]Map:  47%|████▋     | 111/237 [00:00<00:00, 173.73 examples/s]Map:  58%|█████▊    | 137/237 [00:00<00:00, 170.66 examples/s]Map:  66%|██████▌   | 156/237 [00:00<00:00, 173.11 examples/s]Map:  73%|███████▎  | 174/237 [00:01<00:00, 172.10 examples/s]Map:  82%|████████▏ | 194/237 [00:01<00:00, 176.34 examples/s]Map:  93%|█████████▎| 220/237 [00:01<00:00, 173.69 examples/s]Map: 100%|██████████| 237/237 [00:01<00:00, 158.97 examples/s]
+Map:   0%|          | 0/223 [00:00<?, ? examples/s]Map:  22%|██▏       | 48/223 [00:00<00:00, 465.74 examples/s]Map:  43%|████▎     | 95/223 [00:00<00:00, 458.48 examples/s]Map:  64%|██████▎   | 142/223 [00:00<00:00, 462.32 examples/s]Map:  85%|████████▍ | 189/223 [00:00<00:00, 461.78 examples/s]Map: 100%|██████████| 223/223 [00:00<00:00, 365.12 examples/s]
+Map:   0%|          | 0/121 [00:00<?, ? examples/s]Map:  31%|███       | 37/121 [00:00<00:00, 364.39 examples/s]Map:  64%|██████▎   | 77/121 [00:00<00:00, 375.46 examples/s]Map:  95%|█████████▌| 115/121 [00:00<00:00, 376.31 examples/s]Map: 100%|██████████| 121/121 [00:00<00:00, 311.05 examples/s]
+Map:   0%|          | 0/108 [00:00<?, ? examples/s]Map:  39%|███▉      | 42/108 [00:00<00:00, 401.95 examples/s]Map:  77%|███████▋  | 83/108 [00:00<00:00, 402.28 examples/s]Map: 100%|██████████| 108/108 [00:00<00:00, 328.14 examples/s]
+Map:   0%|          | 0/163 [00:00<?, ? examples/s]Map:  26%|██▌       | 42/163 [00:00<00:00, 409.57 examples/s]Map:  52%|█████▏    | 85/163 [00:00<00:00, 416.35 examples/s]Map:  79%|███████▉  | 129/163 [00:00<00:00, 420.76 examples/s]Map: 100%|██████████| 163/163 [00:00<00:00, 322.83 examples/s]
+Map:   0%|          | 0/112 [00:00<?, ? examples/s]Map:  38%|███▊      | 42/112 [00:00<00:00, 412.28 examples/s]Map:  75%|███████▌  | 84/112 [00:00<00:00, 411.18 examples/s]Map: 100%|██████████| 112/112 [00:00<00:00, 329.01 examples/s]
+Map:   0%|          | 0/103 [00:00<?, ? examples/s]Map:  49%|████▊     | 50/103 [00:00<00:00, 487.70 examples/s]Map:  97%|█████████▋| 100/103 [00:00<00:00, 485.53 examples/s]Map: 100%|██████████| 103/103 [00:00<00:00, 380.78 examples/s]
+Map:   0%|          | 0/234 [00:00<?, ? examples/s]Map:  19%|█▉        | 44/234 [00:00<00:00, 424.39 examples/s]Map:  38%|███▊      | 90/234 [00:00<00:00, 436.95 examples/s]Map:  58%|█████▊    | 136/234 [00:00<00:00, 440.60 examples/s]Map:  78%|███████▊  | 182/234 [00:00<00:00, 445.53 examples/s]Map:  97%|█████████▋| 228/234 [00:00<00:00, 446.34 examples/s]Map: 100%|██████████| 234/234 [00:00<00:00, 347.19 examples/s]
+Map:   0%|          | 0/100 [00:00<?, ? examples/s]Map:  45%|████▌     | 45/100 [00:00<00:00, 444.82 examples/s]Map:  94%|█████████▍| 94/100 [00:00<00:00, 466.75 examples/s]Map: 100%|██████████| 100/100 [00:00<00:00, 365.62 examples/s]
+Map:   0%|          | 0/783 [00:00<?, ? examples/s]Map:   6%|▋         | 49/783 [00:00<00:01, 485.53 examples/s]Map:  13%|█▎        | 99/783 [00:00<00:01, 489.96 examples/s]Map:  19%|█▉        | 150/783 [00:00<00:01, 492.96 examples/s]Map:  26%|██▌       | 200/783 [00:00<00:01, 489.36 examples/s]Map:  32%|███▏      | 251/783 [00:00<00:01, 492.15 examples/s]Map:  39%|███▊      | 302/783 [00:00<00:00, 493.32 examples/s]Map:  45%|████▌     | 353/783 [00:00<00:00, 496.01 examples/s]Map:  51%|█████▏    | 403/783 [00:00<00:00, 496.18 examples/s]Map:  61%|██████    | 477/783 [00:00<00:00, 491.71 examples/s]Map:  70%|███████   | 551/783 [00:01<00:00, 487.74 examples/s]Map:  77%|███████▋  | 600/783 [00:01<00:00, 485.81 examples/s]Map:  86%|████████▌ | 673/783 [00:01<00:00, 481.64 examples/s]Map:  92%|█████████▏| 723/783 [00:01<00:00, 482.73 examples/s]Map:  99%|█████████▊| 773/783 [00:01<00:00, 484.55 examples/s]Map: 100%|██████████| 783/783 [00:02<00:00, 361.48 examples/s]
+Map:   0%|          | 0/346 [00:00<?, ? examples/s]Map:  12%|█▏        | 42/346 [00:00<00:00, 407.47 examples/s]Map:  25%|██▍       | 85/346 [00:00<00:00, 410.69 examples/s]Map:  43%|████▎     | 148/346 [00:00<00:00, 410.98 examples/s]Map:  55%|█████▌    | 191/346 [00:00<00:00, 413.49 examples/s]Map:  68%|██████▊   | 234/346 [00:00<00:00, 416.15 examples/s]Map:  80%|████████  | 278/346 [00:00<00:00, 419.51 examples/s]Map:  93%|█████████▎| 322/346 [00:00<00:00, 421.10 examples/s]Map: 100%|██████████| 346/346 [00:01<00:00, 313.50 examples/s]
+Map:   0%|          | 0/895 [00:00<?, ? examples/s]Map:   4%|▍         | 37/895 [00:00<00:02, 360.91 examples/s]Map:   8%|▊         | 75/895 [00:00<00:02, 367.24 examples/s]Map:  13%|█▎        | 113/895 [00:00<00:02, 369.15 examples/s]Map:  17%|█▋        | 151/895 [00:00<00:02, 368.97 examples/s]Map:  21%|██        | 189/895 [00:00<00:01, 370.60 examples/s]Map:  25%|██▌       | 227/895 [00:00<00:01, 371.62 examples/s]Map:  30%|██▉       | 265/895 [00:00<00:01, 373.11 examples/s]Map:  34%|███▍      | 303/895 [00:00<00:01, 373.25 examples/s]Map:  38%|███▊      | 341/895 [00:00<00:01, 373.84 examples/s]Map:  42%|████▏     | 379/895 [00:01<00:01, 373.70 examples/s]Map:  47%|████▋     | 417/895 [00:01<00:01, 374.25 examples/s]Map:  51%|█████     | 455/895 [00:01<00:01, 374.79 examples/s]Map:  55%|█████▌    | 493/895 [00:01<00:01, 375.90 examples/s]Map:  59%|█████▉    | 531/895 [00:01<00:00, 376.31 examples/s]Map:  64%|██████▎   | 569/895 [00:01<00:00, 376.74 examples/s]Map:  68%|██████▊   | 607/895 [00:01<00:00, 375.34 examples/s]Map:  72%|███████▏  | 645/895 [00:01<00:00, 375.44 examples/s]Map:  78%|███████▊  | 701/895 [00:01<00:00, 371.33 examples/s]Map:  83%|████████▎ | 739/895 [00:01<00:00, 372.27 examples/s]Map:  87%|████████▋ | 777/895 [00:02<00:00, 373.06 examples/s]Map:  91%|█████████ | 815/895 [00:02<00:00, 371.63 examples/s]Map:  96%|█████████▌| 855/895 [00:02<00:00, 244.94 examples/s]Map: 100%|█████████▉| 893/895 [00:02<00:00, 270.29 examples/s]Map: 100%|██████████| 895/895 [00:03<00:00, 279.32 examples/s]
+Map:   0%|          | 0/306 [00:00<?, ? examples/s]Map:  14%|█▍        | 43/306 [00:00<00:00, 414.81 examples/s]Map:  29%|██▉       | 88/306 [00:00<00:00, 425.20 examples/s]Map:  43%|████▎     | 132/306 [00:00<00:00, 425.33 examples/s]Map:  63%|██████▎   | 194/306 [00:00<00:00, 413.87 examples/s]Map:  84%|████████▍ | 257/306 [00:00<00:00, 412.20 examples/s]Map:  98%|█████████▊| 301/306 [00:00<00:00, 416.18 examples/s]Map: 100%|██████████| 306/306 [00:00<00:00, 311.10 examples/s]
+Map:   0%|          | 0/311 [00:00<?, ? examples/s]Map:  14%|█▍        | 45/311 [00:00<00:00, 429.56 examples/s]Map:  29%|██▉       | 91/311 [00:00<00:00, 434.62 examples/s]Map:  44%|████▎     | 136/311 [00:00<00:00, 436.13 examples/s]Map:  58%|█████▊    | 180/311 [00:00<00:00, 433.66 examples/s]Map:  73%|███████▎  | 226/311 [00:00<00:00, 441.14 examples/s]Map:  87%|████████▋ | 272/311 [00:00<00:00, 443.26 examples/s]Map: 100%|██████████| 311/311 [00:00<00:00, 324.15 examples/s]
+Map:   0%|          | 0/324 [00:00<?, ? examples/s]Map:  14%|█▎        | 44/324 [00:00<00:00, 432.99 examples/s]Map:  27%|██▋       | 88/324 [00:00<00:00, 432.69 examples/s]Map:  41%|████      | 133/324 [00:00<00:00, 435.93 examples/s]Map:  55%|█████▌    | 179/324 [00:00<00:00, 441.21 examples/s]Map:  69%|██████▉   | 224/324 [00:00<00:00, 442.03 examples/s]Map:  83%|████████▎ | 270/324 [00:00<00:00, 445.04 examples/s]Map:  98%|█████████▊| 316/324 [00:00<00:00, 447.44 examples/s]Map: 100%|██████████| 324/324 [00:00<00:00, 333.32 examples/s]
+Map:   0%|          | 0/1534 [00:00<?, ? examples/s]Map: 100%|██████████| 1534/1534 [00:00<00:00, 20117.76 examples/s]
+Map:   0%|          | 0/1534 [00:00<?, ? examples/s]Map:   1%|▏         | 22/1534 [00:00<00:07, 208.96 examples/s]Map:   3%|▎         | 45/1534 [00:00<00:07, 211.12 examples/s]Map:   4%|▍         | 67/1534 [00:00<00:06, 211.25 examples/s]Map:   6%|▌         | 89/1534 [00:00<00:06, 210.44 examples/s]Map:   8%|▊         | 121/1534 [00:00<00:06, 208.63 examples/s]Map:   9%|▉         | 145/1534 [00:00<00:06, 213.71 examples/s]Map:  11%|█         | 167/1534 [00:00<00:06, 213.59 examples/s]Map:  12%|█▏        | 189/1534 [00:00<00:06, 213.53 examples/s]Map:  14%|█▍        | 211/1534 [00:00<00:06, 213.54 examples/s]Map:  15%|█▌        | 234/1534 [00:01<00:06, 215.88 examples/s]Map:  17%|█▋        | 256/1534 [00:01<00:05, 215.76 examples/s]Map:  18%|█▊        | 278/1534 [00:01<00:05, 213.87 examples/s]Map:  20%|█▉        | 300/1534 [00:01<00:05, 212.10 examples/s]Map:  21%|██        | 322/1534 [00:01<00:05, 211.62 examples/s]Map:  22%|██▏       | 344/1534 [00:01<00:05, 210.31 examples/s]Map:  24%|██▍       | 366/1534 [00:01<00:05, 208.92 examples/s]Map:  25%|██▌       | 388/1534 [00:01<00:05, 211.06 examples/s]Map:  27%|██▋       | 410/1534 [00:01<00:05, 210.74 examples/s]Map:  28%|██▊       | 432/1534 [00:02<00:05, 210.50 examples/s]Map:  30%|██▉       | 454/1534 [00:02<00:05, 208.74 examples/s]Map:  31%|███       | 476/1534 [00:02<00:05, 209.67 examples/s]Map:  32%|███▏      | 498/1534 [00:02<00:04, 210.24 examples/s]Map:  34%|███▍      | 520/1534 [00:02<00:04, 210.41 examples/s]Map:  35%|███▌      | 542/1534 [00:02<00:04, 209.81 examples/s]Map:  37%|███▋      | 564/1534 [00:02<00:04, 208.53 examples/s]Map:  38%|███▊      | 586/1534 [00:02<00:04, 207.44 examples/s]Map:  40%|███▉      | 608/1534 [00:02<00:04, 209.16 examples/s]Map:  41%|████      | 630/1534 [00:02<00:04, 208.00 examples/s]Map:  43%|████▎     | 652/1534 [00:03<00:04, 209.93 examples/s]Map:  44%|████▍     | 674/1534 [00:03<00:04, 210.62 examples/s]Map:  45%|████▌     | 697/1534 [00:03<00:03, 213.22 examples/s]Map:  47%|████▋     | 719/1534 [00:03<00:03, 212.15 examples/s]Map:  48%|████▊     | 741/1534 [00:03<00:03, 212.59 examples/s]Map:  50%|████▉     | 763/1534 [00:03<00:03, 212.88 examples/s]Map:  51%|█████     | 785/1534 [00:03<00:03, 213.20 examples/s]Map:  53%|█████▎    | 807/1534 [00:03<00:03, 212.96 examples/s]Map:  54%|█████▍    | 829/1534 [00:03<00:03, 210.76 examples/s]Map:  56%|█████▌    | 861/1534 [00:04<00:03, 206.72 examples/s]Map:  58%|█████▊    | 883/1534 [00:04<00:03, 208.03 examples/s]Map:  59%|█████▉    | 905/1534 [00:04<00:03, 208.83 examples/s]Map:  60%|██████    | 926/1534 [00:04<00:02, 206.92 examples/s]Map:  62%|██████▏   | 948/1534 [00:04<00:02, 206.86 examples/s]Map:  63%|██████▎   | 970/1534 [00:04<00:02, 208.29 examples/s]Map:  65%|██████▍   | 992/1534 [00:04<00:02, 208.22 examples/s]Map:  67%|██████▋   | 1022/1534 [00:05<00:06, 81.88 examples/s]Map:  68%|██████▊   | 1045/1534 [00:05<00:04, 99.74 examples/s]Map:  70%|██████▉   | 1067/1534 [00:05<00:03, 117.02 examples/s]Map:  71%|███████   | 1089/1534 [00:05<00:03, 133.20 examples/s]Map:  72%|███████▏  | 1112/1534 [00:05<00:02, 150.43 examples/s]Map:  74%|███████▍  | 1135/1534 [00:05<00:02, 166.39 examples/s]Map:  75%|███████▌  | 1157/1534 [00:06<00:02, 177.65 examples/s]Map:  77%|███████▋  | 1179/1534 [00:06<00:01, 186.92 examples/s]Map:  78%|███████▊  | 1203/1534 [00:06<00:01, 196.35 examples/s]Map:  80%|███████▉  | 1225/1534 [00:06<00:01, 199.60 examples/s]Map:  81%|████████▏ | 1247/1534 [00:06<00:01, 202.50 examples/s]Map:  83%|████████▎ | 1270/1534 [00:06<00:01, 207.00 examples/s]Map:  84%|████████▍ | 1292/1534 [00:06<00:01, 209.92 examples/s]Map:  86%|████████▋ | 1324/1534 [00:06<00:01, 208.55 examples/s]Map:  88%|████████▊ | 1346/1534 [00:06<00:00, 207.55 examples/s]Map:  89%|████████▉ | 1367/1534 [00:07<00:00, 206.19 examples/s]Map:  91%|█████████ | 1389/1534 [00:07<00:00, 206.86 examples/s]Map:  92%|█████████▏| 1411/1534 [00:07<00:00, 209.14 examples/s]Map:  93%|█████████▎| 1433/1534 [00:07<00:00, 211.02 examples/s]Map:  95%|█████████▍| 1456/1534 [00:07<00:00, 212.05 examples/s]Map:  96%|█████████▋| 1478/1534 [00:07<00:00, 211.26 examples/s]Map:  98%|█████████▊| 1500/1534 [00:07<00:00, 209.96 examples/s]Map:  99%|█████████▉| 1523/1534 [00:07<00:00, 211.98 examples/s]Map: 100%|██████████| 1534/1534 [00:08<00:00, 186.81 examples/s]
+Map:   0%|          | 0/272 [00:00<?, ? examples/s]Map:  10%|▉         | 26/272 [00:00<00:01, 245.67 examples/s]Map:  19%|█▉        | 53/272 [00:00<00:00, 256.82 examples/s]Map:  29%|██▉       | 80/272 [00:00<00:00, 260.35 examples/s]Map:  40%|███▉      | 108/272 [00:00<00:00, 266.00 examples/s]Map:  50%|█████     | 136/272 [00:00<00:00, 265.49 examples/s]Map:  60%|██████    | 164/272 [00:00<00:00, 264.87 examples/s]Map:  71%|███████   | 192/272 [00:00<00:00, 266.02 examples/s]Map:  81%|████████  | 219/272 [00:00<00:00, 265.20 examples/s]Map:  91%|█████████ | 247/272 [00:00<00:00, 265.29 examples/s]Map: 100%|██████████| 272/272 [00:01<00:00, 206.95 examples/s]
+Map:   0%|          | 0/612 [00:00<?, ? examples/s]Map:   7%|▋         | 40/612 [00:00<00:01, 386.67 examples/s]Map:  13%|█▎        | 81/612 [00:00<00:01, 391.37 examples/s]Map:  20%|█▉        | 122/612 [00:00<00:01, 395.62 examples/s]Map:  26%|██▋       | 162/612 [00:00<00:01, 392.18 examples/s]Map:  33%|███▎      | 203/612 [00:00<00:01, 394.94 examples/s]Map:  43%|████▎     | 262/612 [00:00<00:00, 387.92 examples/s]Map:  49%|████▉     | 302/612 [00:00<00:00, 389.30 examples/s]Map:  59%|█████▉    | 360/612 [00:00<00:00, 383.98 examples/s]Map:  68%|██████▊   | 417/612 [00:01<00:00, 377.84 examples/s]Map:  75%|███████▍  | 457/612 [00:01<00:00, 382.02 examples/s]Map:  81%|████████▏ | 498/612 [00:01<00:00, 386.40 examples/s]Map:  88%|████████▊ | 537/612 [00:01<00:00, 382.85 examples/s]Map:  94%|█████████▍| 577/612 [00:01<00:00, 385.36 examples/s]Map: 100%|██████████| 612/612 [00:02<00:00, 295.33 examples/s]
+Map:   0%|          | 0/245 [00:00<?, ? examples/s]Map:  11%|█         | 26/245 [00:00<00:00, 247.26 examples/s]Map:  22%|██▏       | 54/245 [00:00<00:00, 257.17 examples/s]Map:  33%|███▎      | 82/245 [00:00<00:00, 263.33 examples/s]Map:  45%|████▍     | 110/245 [00:00<00:00, 267.01 examples/s]Map:  57%|█████▋    | 139/245 [00:00<00:00, 270.58 examples/s]Map:  73%|███████▎  | 180/245 [00:00<00:00, 269.80 examples/s]Map:  84%|████████▍ | 207/245 [00:00<00:00, 268.15 examples/s]Map:  96%|█████████▌| 235/245 [00:00<00:00, 269.21 examples/s]Map: 100%|██████████| 245/245 [00:01<00:00, 228.55 examples/s]
+Map:   0%|          | 0/201 [00:00<?, ? examples/s]Map:  20%|██        | 41/201 [00:00<00:00, 401.56 examples/s]Map:  41%|████▏     | 83/201 [00:00<00:00, 408.65 examples/s]Map:  62%|██████▏   | 124/201 [00:00<00:00, 402.38 examples/s]Map:  83%|████████▎ | 167/201 [00:00<00:00, 407.40 examples/s]Map: 100%|██████████| 201/201 [00:00<00:00, 320.43 examples/s]
+Map:   0%|          | 0/100 [00:00<?, ? examples/s]Map:  43%|████▎     | 43/100 [00:00<00:00, 419.92 examples/s]Map:  86%|████████▌ | 86/100 [00:00<00:00, 419.15 examples/s]Map: 100%|██████████| 100/100 [00:00<00:00, 337.73 examples/s]
+Map:   0%|          | 0/166 [00:00<?, ? examples/s]Map:  28%|██▊       | 47/166 [00:00<00:00, 461.31 examples/s]Map:  57%|█████▋    | 94/166 [00:00<00:00, 458.86 examples/s]Map:  84%|████████▍ | 140/166 [00:00<00:00, 454.09 examples/s]Map: 100%|██████████| 166/166 [00:00<00:00, 336.45 examples/s]
+Map:   0%|          | 0/171 [00:00<?, ? examples/s]Map:  31%|███       | 53/171 [00:00<00:00, 511.98 examples/s]Map:  63%|██████▎   | 107/171 [00:00<00:00, 518.60 examples/s]Map:  94%|█████████▍| 161/171 [00:00<00:00, 524.66 examples/s]Map: 100%|██████████| 171/171 [00:00<00:00, 388.49 examples/s]
+/home/eldar/eldar-upstream/upstream-transformers/src/transformers/models/auto/configuration_auto.py:1111: FutureWarning: The `use_auth_token` argument is deprecated and will be removed in v5 of Transformers. Please use `token` instead.
+  warnings.warn(
+/home/eldar/eldar-upstream/upstream-transformers/src/transformers/models/auto/auto_factory.py:468: FutureWarning: The `use_auth_token` argument is deprecated and will be removed in v5 of Transformers. Please use `token` instead.
+  warnings.warn(
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:00<00:00,  6.03it/s]Loading checkpoint shards:  50%|█████     | 2/4 [00:00<00:00,  6.38it/s]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:00<00:00,  6.61it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:00<00:00,  6.84it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:00<00:00,  6.67it/s]
+/home/eldar/eldar-upstream/upstream-transformers/src/transformers/models/auto/auto_factory.py:468: FutureWarning: The `use_auth_token` argument is deprecated and will be removed in v5 of Transformers. Please use `token` instead.
+  warnings.warn(
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:02<00:06,  2.23s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:03<00:03,  1.74s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:05<00:01,  1.99s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:06<00:00,  1.37s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:06<00:00,  1.58s/it]
+2024-06-10 10:11:03,882: rank0[974105][MainThread]: INFO: composer.utils.reproducibility: Setting seed to 42
+/home/eldar/eldar-upstream/upstream-composer/composer/trainer/trainer.py:1163: UserWarning: No optimizer was specified. Defaulting to DecoupledSGDW(lr=0.1)
+  warnings.warn((
+2024-06-10 10:11:03,884: rank0[974105][MainThread]: INFO: composer.trainer.trainer: Run name: evalgauntletv03nogsm8k_seqlen4096_perdeviceBS8_worldsize4
+2024-06-10 10:11:05,205: rank0[974105][MainThread]: INFO: composer.trainer.trainer: Stepping schedulers every batch. To step schedulers every epoch, set `step_schedulers_every_batch=False`.
+2024-06-10 10:11:05,209: rank0[974105][MainThread]: INFO: composer.utils.reproducibility: Setting seed to 42
+2024-06-10 10:11:20,929: rank0[974105][MainThread]: DEBUG: composer.utils.reproducibility: Restoring the RNG state
+2024-06-10 10:11:20,930: rank0[974105][MainThread]: INFO: composer.trainer.trainer: Setting seed to 42
+2024-06-10 10:11:20,930: rank0[974105][MainThread]: INFO: composer.utils.reproducibility: Setting seed to 42
+max_seq_len: 4096
+precision: amp_bf16
+device_eval_batch_size: 8
+global_seed: 42
+seed: 42
+ckpt_path: /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap
+models:
+- model_name: /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap
+  model:
+    name: hf_causal_lm
+    use_flash_attention_2: true
+    pretrained: true
+    pretrained_model_name_or_path: /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap
+    use_auth_token: true
+  tokenizer:
+    name: /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap
+    kwargs:
+      model_max_length: 4096
+fsdp_config:
+  sharding_strategy: FULL_SHARD
+  mixed_precision: PURE
+  activation_checkpointing: false
+  activation_checkpointing_reentrant: false
+  activation_cpu_offload: false
+  limit_all_gathers: true
+icl_tasks: eval/yamls/examples/tasks_v0.3_noGSM8k.yaml
+eval_gauntlet: eval/yamls/examples/eval_gauntlet_v0.3_noGSM8k.yaml
+
+2024-06-10 10:11:20,944: rank0[974105][MainThread]: INFO: composer.trainer.trainer: Added ['triviaqa_sm_sub/3-shot', 'svamp/5-shot', 'jeopardy/3-shot/american_history', 'jeopardy/3-shot/literature', 'jeopardy/3-shot/science', 'jeopardy/3-shot/word_origins', 'jeopardy/3-shot/world_history', 'bigbench_qa_wikidata/3-shot', 'arc_easy/3-shot', 'arc_challenge/3-shot', 'arc_challenge/25-shot', 'mmlu/5-shot/abstract_algebra', 'mmlu/5-shot/anatomy', 'mmlu/5-shot/astronomy', 'mmlu/5-shot/business_ethics', 'mmlu/5-shot/clinical_knowledge', 'mmlu/5-shot/college_biology', 'mmlu/5-shot/college_chemistry', 'mmlu/5-shot/college_computer_science', 'mmlu/5-shot/college_mathematics', 'mmlu/5-shot/college_medicine', 'mmlu/5-shot/college_physics', 'mmlu/5-shot/computer_security', 'mmlu/5-shot/conceptual_physics', 'mmlu/5-shot/econometrics', 'mmlu/5-shot/electrical_engineering', 'mmlu/5-shot/elementary_mathematics', 'mmlu/5-shot/formal_logic', 'mmlu/5-shot/global_facts', 'mmlu/5-shot/high_school_biology', 'mmlu/5-shot/high_school_chemistry', 'mmlu/5-shot/high_school_computer_science', 'mmlu/5-shot/high_school_european_history', 'mmlu/5-shot/high_school_geography', 'mmlu/5-shot/high_school_government_and_politics', 'mmlu/5-shot/high_school_macroeconomics', 'mmlu/5-shot/high_school_mathematics', 'mmlu/5-shot/high_school_microeconomics', 'mmlu/5-shot/high_school_physics', 'mmlu/5-shot/high_school_psychology', 'mmlu/5-shot/high_school_statistics', 'mmlu/5-shot/high_school_us_history', 'mmlu/5-shot/high_school_world_history', 'mmlu/5-shot/human_aging', 'mmlu/5-shot/human_sexuality', 'mmlu/5-shot/international_law', 'mmlu/5-shot/jurisprudence', 'mmlu/5-shot/logical_fallacies', 'mmlu/5-shot/machine_learning', 'mmlu/5-shot/management', 'mmlu/5-shot/marketing', 'mmlu/5-shot/medical_genetics', 'mmlu/5-shot/miscellaneous', 'mmlu/5-shot/moral_disputes', 'mmlu/5-shot/moral_scenarios', 'mmlu/5-shot/nutrition', 'mmlu/5-shot/philosophy', 'mmlu/5-shot/prehistory', 'mmlu/5-shot/professional_accounting', 'mmlu/5-shot/professional_law', 'mmlu/5-shot/professional_medicine', 'mmlu/5-shot/professional_psychology', 'mmlu/5-shot/public_relations', 'mmlu/5-shot/security_studies', 'mmlu/5-shot/sociology', 'mmlu/5-shot/us_foreign_policy', 'mmlu/5-shot/virology', 'mmlu/5-shot/world_religions', 'copa/0-shot', 'siqa/3-shot', 'commonsense_qa/0-shot', 'piqa/0-shot', 'openbook_qa/10-shot', 'bigbench_strange_stories/0-shot', 'bigbench_strategy_qa/0-shot', 'bigbench_dyck_languages/5-shot', 'lambada_openai/0-shot', 'hellaswag/0-shot', 'hellaswag/10-shot', 'winograd/3-shot', 'winogrande/5-shot', 'bigbench_elementary_math_qa/1-shot', 'agi_eval_lsat_ar/5-shot', 'bigbench_cs_algorithms/10-shot', 'bigbench_operators/3-shot', 'simple_arithmetic_nospaces/5-shot', 'simple_arithmetic_withspaces/5-shot', 'squad/3-shot', 'agi_eval_lsat_rc/5-shot', 'agi_eval_lsat_lr/5-shot', 'coqa/0-shot', 'boolq/0-shot', 'agi_eval_sat_en/5-shot'] to eval_metrics.
+******************************
+Config:
+composer_commit_hash: None
+composer_version: 0.20.1
+node_name: unknown because NODENAME environment variable not set
+num_gpus_per_node: 4
+num_nodes: 1
+rank_zero_seed: 42
+
+******************************
+[Eval batch=1/94] Eval on triviaqa_sm_sub/3-shot data
+[Eval batch=10/94] Eval on triviaqa_sm_sub/3-shot data
+[Eval batch=20/94] Eval on triviaqa_sm_sub/3-shot data
+[Eval batch=29/94] Eval on triviaqa_sm_sub/3-shot data
+[Eval batch=38/94] Eval on triviaqa_sm_sub/3-shot data
+[Eval batch=48/94] Eval on triviaqa_sm_sub/3-shot data
+[Eval batch=57/94] Eval on triviaqa_sm_sub/3-shot data
+[Eval batch=66/94] Eval on triviaqa_sm_sub/3-shot data
+[Eval batch=75/94] Eval on triviaqa_sm_sub/3-shot data
+[Eval batch=85/94] Eval on triviaqa_sm_sub/3-shot data
+/home/eldar/eldar-upstream/upstream-composer/composer/core/data_spec.py:37: UserWarning: Cannot split tensor of length 6 into batches of size 8. As it is smaller, no splitting will be done. This may happen on the last batch of a dataset if it is a smaller size than the microbatch size.
+  warnings.warn(
+/home/eldar/eldar-upstream/upstream-composer/composer/core/data_spec.py:26: UserWarning: Cannot split list of length 6 into batches of size 8. As it is smaller, no splitting will be done. This may happen on the last batch of a dataset if it is a smaller size than the microbatch size.
+  warnings.warn(
+[Eval batch=94/94] Eval on triviaqa_sm_sub/3-shot data:
+	 Eval metrics/triviaqa_sm_sub/3-shot/InContextLearningQAAccuracy: 0.5277
+[Eval batch=1/10] Eval on svamp/5-shot data
+[Eval batch=2/10] Eval on svamp/5-shot data
+[Eval batch=3/10] Eval on svamp/5-shot data
+[Eval batch=4/10] Eval on svamp/5-shot data
+[Eval batch=5/10] Eval on svamp/5-shot data
+[Eval batch=6/10] Eval on svamp/5-shot data
+[Eval batch=7/10] Eval on svamp/5-shot data
+[Eval batch=8/10] Eval on svamp/5-shot data
+[Eval batch=9/10] Eval on svamp/5-shot data
+/home/eldar/eldar-upstream/upstream-composer/composer/core/data_spec.py:37: UserWarning: Cannot split tensor of length 3 into batches of size 8. As it is smaller, no splitting will be done. This may happen on the last batch of a dataset if it is a smaller size than the microbatch size.
+  warnings.warn(
+/home/eldar/eldar-upstream/upstream-composer/composer/core/data_spec.py:26: UserWarning: Cannot split list of length 3 into batches of size 8. As it is smaller, no splitting will be done. This may happen on the last batch of a dataset if it is a smaller size than the microbatch size.
+  warnings.warn(
+[Eval batch=10/10] Eval on svamp/5-shot data:
+	 Eval metrics/svamp/5-shot/InContextLearningQAAccuracy: 0.6233
+[Eval batch=1/13] Eval on jeopardy/3-shot/american_history data
+[Eval batch=2/13] Eval on jeopardy/3-shot/american_history data
+[Eval batch=3/13] Eval on jeopardy/3-shot/american_history data
+[Eval batch=5/13] Eval on jeopardy/3-shot/american_history data
+[Eval batch=6/13] Eval on jeopardy/3-shot/american_history data
+[Eval batch=7/13] Eval on jeopardy/3-shot/american_history data
+[Eval batch=8/13] Eval on jeopardy/3-shot/american_history data
+[Eval batch=9/13] Eval on jeopardy/3-shot/american_history data
+[Eval batch=11/13] Eval on jeopardy/3-shot/american_history data
+[Eval batch=12/13] Eval on jeopardy/3-shot/american_history data
+[Eval batch=13/13] Eval on jeopardy/3-shot/american_history data:
+	 Eval metrics/jeopardy/3-shot/american_history/InContextLearningLMAccuracy: 0.5230
+[Eval batch=1/16] Eval on jeopardy/3-shot/literature data
+[Eval batch=2/16] Eval on jeopardy/3-shot/literature data
+[Eval batch=4/16] Eval on jeopardy/3-shot/literature data
+[Eval batch=6/16] Eval on jeopardy/3-shot/literature data
+[Eval batch=7/16] Eval on jeopardy/3-shot/literature data
+[Eval batch=8/16] Eval on jeopardy/3-shot/literature data
+[Eval batch=10/16] Eval on jeopardy/3-shot/literature data
+[Eval batch=12/16] Eval on jeopardy/3-shot/literature data
+[Eval batch=13/16] Eval on jeopardy/3-shot/literature data
+[Eval batch=14/16] Eval on jeopardy/3-shot/literature data
+[Eval batch=16/16] Eval on jeopardy/3-shot/literature data:
+	 Eval metrics/jeopardy/3-shot/literature/InContextLearningLMAccuracy: 0.6163
+[Eval batch=1/15] Eval on jeopardy/3-shot/science data
+[Eval batch=2/15] Eval on jeopardy/3-shot/science data
+[Eval batch=4/15] Eval on jeopardy/3-shot/science data
+[Eval batch=5/15] Eval on jeopardy/3-shot/science data
+[Eval batch=7/15] Eval on jeopardy/3-shot/science data
+[Eval batch=8/15] Eval on jeopardy/3-shot/science data
+[Eval batch=9/15] Eval on jeopardy/3-shot/science data
+[Eval batch=11/15] Eval on jeopardy/3-shot/science data
+[Eval batch=12/15] Eval on jeopardy/3-shot/science data
+[Eval batch=14/15] Eval on jeopardy/3-shot/science data
+/home/eldar/eldar-upstream/upstream-composer/composer/core/data_spec.py:37: UserWarning: Cannot split tensor of length 7 into batches of size 8. As it is smaller, no splitting will be done. This may happen on the last batch of a dataset if it is a smaller size than the microbatch size.
+  warnings.warn(
+/home/eldar/eldar-upstream/upstream-composer/composer/core/data_spec.py:26: UserWarning: Cannot split list of length 7 into batches of size 8. As it is smaller, no splitting will be done. This may happen on the last batch of a dataset if it is a smaller size than the microbatch size.
+  warnings.warn(
+[Eval batch=15/15] Eval on jeopardy/3-shot/science data:
+	 Eval metrics/jeopardy/3-shot/science/InContextLearningLMAccuracy: 0.4160
+[Eval batch=1/12] Eval on jeopardy/3-shot/word_origins data
+[Eval batch=2/12] Eval on jeopardy/3-shot/word_origins data
+[Eval batch=3/12] Eval on jeopardy/3-shot/word_origins data
+[Eval batch=4/12] Eval on jeopardy/3-shot/word_origins data
+[Eval batch=5/12] Eval on jeopardy/3-shot/word_origins data
+[Eval batch=6/12] Eval on jeopardy/3-shot/word_origins data
+[Eval batch=8/12] Eval on jeopardy/3-shot/word_origins data
+[Eval batch=9/12] Eval on jeopardy/3-shot/word_origins data
+[Eval batch=10/12] Eval on jeopardy/3-shot/word_origins data
+[Eval batch=11/12] Eval on jeopardy/3-shot/word_origins data
+/home/eldar/eldar-upstream/upstream-composer/composer/core/data_spec.py:37: UserWarning: Cannot split tensor of length 4 into batches of size 8. As it is smaller, no splitting will be done. This may happen on the last batch of a dataset if it is a smaller size than the microbatch size.
+  warnings.warn(
+/home/eldar/eldar-upstream/upstream-composer/composer/core/data_spec.py:26: UserWarning: Cannot split list of length 4 into batches of size 8. As it is smaller, no splitting will be done. This may happen on the last batch of a dataset if it is a smaller size than the microbatch size.
+  warnings.warn(
+[Eval batch=12/12] Eval on jeopardy/3-shot/word_origins data:
+	 Eval metrics/jeopardy/3-shot/word_origins/InContextLearningLMAccuracy: 0.2795
+[Eval batch=1/12] Eval on jeopardy/3-shot/world_history data
+[Eval batch=2/12] Eval on jeopardy/3-shot/world_history data
+[Eval batch=3/12] Eval on jeopardy/3-shot/world_history data
+[Eval batch=4/12] Eval on jeopardy/3-shot/world_history data
+[Eval batch=5/12] Eval on jeopardy/3-shot/world_history data
+[Eval batch=6/12] Eval on jeopardy/3-shot/world_history data
+[Eval batch=8/12] Eval on jeopardy/3-shot/world_history data
+[Eval batch=9/12] Eval on jeopardy/3-shot/world_history data
+[Eval batch=10/12] Eval on jeopardy/3-shot/world_history data
+[Eval batch=11/12] Eval on jeopardy/3-shot/world_history data
+[Eval batch=12/12] Eval on jeopardy/3-shot/world_history data:
+	 Eval metrics/jeopardy/3-shot/world_history/InContextLearningLMAccuracy: 0.6354
+[Eval batch=1/636] Eval on bigbench_qa_wikidata/3-shot data
+[Eval batch=64/636] Eval on bigbench_qa_wikidata/3-shot data
+[Eval batch=128/636] Eval on bigbench_qa_wikidata/3-shot data
+[Eval batch=192/636] Eval on bigbench_qa_wikidata/3-shot data
+[Eval batch=255/636] Eval on bigbench_qa_wikidata/3-shot data
+[Eval batch=318/636] Eval on bigbench_qa_wikidata/3-shot data
+[Eval batch=382/636] Eval on bigbench_qa_wikidata/3-shot data
+[Eval batch=446/636] Eval on bigbench_qa_wikidata/3-shot data
+[Eval batch=509/636] Eval on bigbench_qa_wikidata/3-shot data
+[Eval batch=572/636] Eval on bigbench_qa_wikidata/3-shot data
+/home/eldar/eldar-upstream/upstream-composer/composer/core/data_spec.py:37: UserWarning: Cannot split tensor of length 1 into batches of size 8. As it is smaller, no splitting will be done. This may happen on the last batch of a dataset if it is a smaller size than the microbatch size.
+  warnings.warn(
+/home/eldar/eldar-upstream/upstream-composer/composer/core/data_spec.py:26: UserWarning: Cannot split list of length 1 into batches of size 8. As it is smaller, no splitting will be done. This may happen on the last batch of a dataset if it is a smaller size than the microbatch size.
+  warnings.warn(
+[Eval batch=636/636] Eval on bigbench_qa_wikidata/3-shot data:
+	 Eval metrics/bigbench_qa_wikidata/3-shot/InContextLearningLMAccuracy: 0.6797
+[Eval batch=1/297] Eval on arc_easy/3-shot data
+[Eval batch=31/297] Eval on arc_easy/3-shot data
+[Eval batch=60/297] Eval on arc_easy/3-shot data
+[Eval batch=90/297] Eval on arc_easy/3-shot data
+[Eval batch=119/297] Eval on arc_easy/3-shot data
+[Eval batch=149/297] Eval on arc_easy/3-shot data
+[Eval batch=179/297] Eval on arc_easy/3-shot data
+[Eval batch=208/297] Eval on arc_easy/3-shot data
+[Eval batch=238/297] Eval on arc_easy/3-shot data
+[Eval batch=267/297] Eval on arc_easy/3-shot data
+[Eval batch=297/297] Eval on arc_easy/3-shot data:
+	 Eval metrics/arc_easy/3-shot/InContextLearningMultipleChoiceAccuracy: 0.7900
+[Eval batch=1/147] Eval on arc_challenge/3-shot data
+[Eval batch=16/147] Eval on arc_challenge/3-shot data
+[Eval batch=30/147] Eval on arc_challenge/3-shot data
+[Eval batch=45/147] Eval on arc_challenge/3-shot data
+[Eval batch=59/147] Eval on arc_challenge/3-shot data
+[Eval batch=74/147] Eval on arc_challenge/3-shot data
+[Eval batch=89/147] Eval on arc_challenge/3-shot data
+[Eval batch=103/147] Eval on arc_challenge/3-shot data
+[Eval batch=118/147] Eval on arc_challenge/3-shot data
+[Eval batch=132/147] Eval on arc_challenge/3-shot data
+/home/eldar/eldar-upstream/upstream-composer/composer/core/data_spec.py:26: UserWarning: Cannot split list of length 1 into batches of size 2. As it is smaller, no splitting will be done. This may happen on the last batch of a dataset if it is a smaller size than the microbatch size.
+  warnings.warn(
+[Eval batch=147/147] Eval on arc_challenge/3-shot data:
+	 Eval metrics/arc_challenge/3-shot/InContextLearningMultipleChoiceAccuracy: 0.5299
+[Eval batch=1/147] Eval on arc_challenge/25-shot data
+[Eval batch=16/147] Eval on arc_challenge/25-shot data
+[Eval batch=30/147] Eval on arc_challenge/25-shot data
+[Eval batch=45/147] Eval on arc_challenge/25-shot data
+[Eval batch=59/147] Eval on arc_challenge/25-shot data
+[Eval batch=74/147] Eval on arc_challenge/25-shot data
+[Eval batch=89/147] Eval on arc_challenge/25-shot data
+[Eval batch=103/147] Eval on arc_challenge/25-shot data
+[Eval batch=118/147] Eval on arc_challenge/25-shot data
+[Eval batch=132/147] Eval on arc_challenge/25-shot data
+[Eval batch=147/147] Eval on arc_challenge/25-shot data:
+	 Eval metrics/arc_challenge/25-shot/InContextLearningMultipleChoiceAccuracy: 0.5538
+[Eval batch=1/13] Eval on mmlu/5-shot/abstract_algebra data
+[Eval batch=2/13] Eval on mmlu/5-shot/abstract_algebra data
+[Eval batch=3/13] Eval on mmlu/5-shot/abstract_algebra data
+[Eval batch=5/13] Eval on mmlu/5-shot/abstract_algebra data
+[Eval batch=6/13] Eval on mmlu/5-shot/abstract_algebra data
+[Eval batch=7/13] Eval on mmlu/5-shot/abstract_algebra data
+[Eval batch=8/13] Eval on mmlu/5-shot/abstract_algebra data
+[Eval batch=9/13] Eval on mmlu/5-shot/abstract_algebra data
+[Eval batch=11/13] Eval on mmlu/5-shot/abstract_algebra data
+[Eval batch=12/13] Eval on mmlu/5-shot/abstract_algebra data
+[Eval batch=13/13] Eval on mmlu/5-shot/abstract_algebra data:
+	 Eval metrics/mmlu/5-shot/abstract_algebra/InContextLearningMultipleChoiceAccuracy: 0.2700
+[Eval batch=1/17] Eval on mmlu/5-shot/anatomy data
+[Eval batch=3/17] Eval on mmlu/5-shot/anatomy data
+[Eval batch=4/17] Eval on mmlu/5-shot/anatomy data
+[Eval batch=6/17] Eval on mmlu/5-shot/anatomy data
+[Eval batch=7/17] Eval on mmlu/5-shot/anatomy data
+[Eval batch=9/17] Eval on mmlu/5-shot/anatomy data
+[Eval batch=11/17] Eval on mmlu/5-shot/anatomy data
+[Eval batch=12/17] Eval on mmlu/5-shot/anatomy data
+[Eval batch=14/17] Eval on mmlu/5-shot/anatomy data
+[Eval batch=15/17] Eval on mmlu/5-shot/anatomy data
+[Eval batch=17/17] Eval on mmlu/5-shot/anatomy data:
+	 Eval metrics/mmlu/5-shot/anatomy/InContextLearningMultipleChoiceAccuracy: 0.6444
+[Eval batch=1/19] Eval on mmlu/5-shot/astronomy data
+[Eval batch=3/19] Eval on mmlu/5-shot/astronomy data
+[Eval batch=5/19] Eval on mmlu/5-shot/astronomy data
+[Eval batch=6/19] Eval on mmlu/5-shot/astronomy data
+[Eval batch=8/19] Eval on mmlu/5-shot/astronomy data
+[Eval batch=10/19] Eval on mmlu/5-shot/astronomy data
+[Eval batch=12/19] Eval on mmlu/5-shot/astronomy data
+[Eval batch=14/19] Eval on mmlu/5-shot/astronomy data
+[Eval batch=15/19] Eval on mmlu/5-shot/astronomy data
+[Eval batch=17/19] Eval on mmlu/5-shot/astronomy data
+[Eval batch=19/19] Eval on mmlu/5-shot/astronomy data:
+	 Eval metrics/mmlu/5-shot/astronomy/InContextLearningMultipleChoiceAccuracy: 0.6118
+[Eval batch=1/13] Eval on mmlu/5-shot/business_ethics data
+[Eval batch=2/13] Eval on mmlu/5-shot/business_ethics data
+[Eval batch=3/13] Eval on mmlu/5-shot/business_ethics data
+[Eval batch=5/13] Eval on mmlu/5-shot/business_ethics data
+[Eval batch=6/13] Eval on mmlu/5-shot/business_ethics data
+[Eval batch=7/13] Eval on mmlu/5-shot/business_ethics data
+[Eval batch=8/13] Eval on mmlu/5-shot/business_ethics data
+[Eval batch=9/13] Eval on mmlu/5-shot/business_ethics data
+[Eval batch=11/13] Eval on mmlu/5-shot/business_ethics data
+[Eval batch=12/13] Eval on mmlu/5-shot/business_ethics data
+[Eval batch=13/13] Eval on mmlu/5-shot/business_ethics data:
+	 Eval metrics/mmlu/5-shot/business_ethics/InContextLearningMultipleChoiceAccuracy: 0.5600
+[Eval batch=1/34] Eval on mmlu/5-shot/clinical_knowledge data
+[Eval batch=4/34] Eval on mmlu/5-shot/clinical_knowledge data
+[Eval batch=8/34] Eval on mmlu/5-shot/clinical_knowledge data
+[Eval batch=11/34] Eval on mmlu/5-shot/clinical_knowledge data
+[Eval batch=14/34] Eval on mmlu/5-shot/clinical_knowledge data
+[Eval batch=18/34] Eval on mmlu/5-shot/clinical_knowledge data
+[Eval batch=21/34] Eval on mmlu/5-shot/clinical_knowledge data
+[Eval batch=24/34] Eval on mmlu/5-shot/clinical_knowledge data
+[Eval batch=27/34] Eval on mmlu/5-shot/clinical_knowledge data
+[Eval batch=31/34] Eval on mmlu/5-shot/clinical_knowledge data
+[Eval batch=34/34] Eval on mmlu/5-shot/clinical_knowledge data:
+	 Eval metrics/mmlu/5-shot/clinical_knowledge/InContextLearningMultipleChoiceAccuracy: 0.6679
+[Eval batch=1/18] Eval on mmlu/5-shot/college_biology data
+[Eval batch=3/18] Eval on mmlu/5-shot/college_biology data
+[Eval batch=4/18] Eval on mmlu/5-shot/college_biology data
+[Eval batch=6/18] Eval on mmlu/5-shot/college_biology data
+[Eval batch=8/18] Eval on mmlu/5-shot/college_biology data
+[Eval batch=10/18] Eval on mmlu/5-shot/college_biology data
+[Eval batch=11/18] Eval on mmlu/5-shot/college_biology data
+[Eval batch=13/18] Eval on mmlu/5-shot/college_biology data
+[Eval batch=15/18] Eval on mmlu/5-shot/college_biology data
+[Eval batch=16/18] Eval on mmlu/5-shot/college_biology data
+[Eval batch=18/18] Eval on mmlu/5-shot/college_biology data:
+	 Eval metrics/mmlu/5-shot/college_biology/InContextLearningMultipleChoiceAccuracy: 0.7083
+[Eval batch=1/13] Eval on mmlu/5-shot/college_chemistry data
+[Eval batch=2/13] Eval on mmlu/5-shot/college_chemistry data
+[Eval batch=3/13] Eval on mmlu/5-shot/college_chemistry data
+[Eval batch=5/13] Eval on mmlu/5-shot/college_chemistry data
+[Eval batch=6/13] Eval on mmlu/5-shot/college_chemistry data
+[Eval batch=7/13] Eval on mmlu/5-shot/college_chemistry data
+[Eval batch=8/13] Eval on mmlu/5-shot/college_chemistry data
+[Eval batch=9/13] Eval on mmlu/5-shot/college_chemistry data
+[Eval batch=11/13] Eval on mmlu/5-shot/college_chemistry data
+[Eval batch=12/13] Eval on mmlu/5-shot/college_chemistry data
+[Eval batch=13/13] Eval on mmlu/5-shot/college_chemistry data:
+	 Eval metrics/mmlu/5-shot/college_chemistry/InContextLearningMultipleChoiceAccuracy: 0.4300
+[Eval batch=1/13] Eval on mmlu/5-shot/college_computer_science data
+[Eval batch=2/13] Eval on mmlu/5-shot/college_computer_science data
+[Eval batch=3/13] Eval on mmlu/5-shot/college_computer_science data
+[Eval batch=5/13] Eval on mmlu/5-shot/college_computer_science data
+[Eval batch=6/13] Eval on mmlu/5-shot/college_computer_science data
+[Eval batch=7/13] Eval on mmlu/5-shot/college_computer_science data
+[Eval batch=8/13] Eval on mmlu/5-shot/college_computer_science data
+[Eval batch=9/13] Eval on mmlu/5-shot/college_computer_science data
+[Eval batch=11/13] Eval on mmlu/5-shot/college_computer_science data
+[Eval batch=12/13] Eval on mmlu/5-shot/college_computer_science data
+[Eval batch=13/13] Eval on mmlu/5-shot/college_computer_science data:
+	 Eval metrics/mmlu/5-shot/college_computer_science/InContextLearningMultipleChoiceAccuracy: 0.4100
+[Eval batch=1/13] Eval on mmlu/5-shot/college_mathematics data
+[Eval batch=2/13] Eval on mmlu/5-shot/college_mathematics data
+[Eval batch=3/13] Eval on mmlu/5-shot/college_mathematics data
+[Eval batch=5/13] Eval on mmlu/5-shot/college_mathematics data
+[Eval batch=6/13] Eval on mmlu/5-shot/college_mathematics data
+[Eval batch=7/13] Eval on mmlu/5-shot/college_mathematics data
+[Eval batch=8/13] Eval on mmlu/5-shot/college_mathematics data
+[Eval batch=9/13] Eval on mmlu/5-shot/college_mathematics data
+[Eval batch=11/13] Eval on mmlu/5-shot/college_mathematics data
+[Eval batch=12/13] Eval on mmlu/5-shot/college_mathematics data
+[Eval batch=13/13] Eval on mmlu/5-shot/college_mathematics data:
+	 Eval metrics/mmlu/5-shot/college_mathematics/InContextLearningMultipleChoiceAccuracy: 0.3700
+[Eval batch=1/22] Eval on mmlu/5-shot/college_medicine data
+[Eval batch=3/22] Eval on mmlu/5-shot/college_medicine data
+[Eval batch=5/22] Eval on mmlu/5-shot/college_medicine data
+[Eval batch=7/22] Eval on mmlu/5-shot/college_medicine data
+[Eval batch=9/22] Eval on mmlu/5-shot/college_medicine data
+[Eval batch=12/22] Eval on mmlu/5-shot/college_medicine data
+[Eval batch=14/22] Eval on mmlu/5-shot/college_medicine data
+[Eval batch=16/22] Eval on mmlu/5-shot/college_medicine data
+[Eval batch=18/22] Eval on mmlu/5-shot/college_medicine data
+[Eval batch=20/22] Eval on mmlu/5-shot/college_medicine data
+[Eval batch=22/22] Eval on mmlu/5-shot/college_medicine data:
+	 Eval metrics/mmlu/5-shot/college_medicine/InContextLearningMultipleChoiceAccuracy: 0.6069
+[Eval batch=1/13] Eval on mmlu/5-shot/college_physics data
+[Eval batch=2/13] Eval on mmlu/5-shot/college_physics data
+[Eval batch=3/13] Eval on mmlu/5-shot/college_physics data
+[Eval batch=5/13] Eval on mmlu/5-shot/college_physics data
+[Eval batch=6/13] Eval on mmlu/5-shot/college_physics data
+[Eval batch=7/13] Eval on mmlu/5-shot/college_physics data
+[Eval batch=8/13] Eval on mmlu/5-shot/college_physics data
+[Eval batch=9/13] Eval on mmlu/5-shot/college_physics data
+[Eval batch=11/13] Eval on mmlu/5-shot/college_physics data
+[Eval batch=12/13] Eval on mmlu/5-shot/college_physics data
+[Eval batch=13/13] Eval on mmlu/5-shot/college_physics data:
+	 Eval metrics/mmlu/5-shot/college_physics/InContextLearningMultipleChoiceAccuracy: 0.4314
+[Eval batch=1/13] Eval on mmlu/5-shot/computer_security data
+[Eval batch=2/13] Eval on mmlu/5-shot/computer_security data
+[Eval batch=3/13] Eval on mmlu/5-shot/computer_security data
+[Eval batch=5/13] Eval on mmlu/5-shot/computer_security data
+[Eval batch=6/13] Eval on mmlu/5-shot/computer_security data
+[Eval batch=7/13] Eval on mmlu/5-shot/computer_security data
+[Eval batch=8/13] Eval on mmlu/5-shot/computer_security data
+[Eval batch=9/13] Eval on mmlu/5-shot/computer_security data
+[Eval batch=11/13] Eval on mmlu/5-shot/computer_security data
+[Eval batch=12/13] Eval on mmlu/5-shot/computer_security data
+[Eval batch=13/13] Eval on mmlu/5-shot/computer_security data:
+	 Eval metrics/mmlu/5-shot/computer_security/InContextLearningMultipleChoiceAccuracy: 0.7900
+[Eval batch=1/30] Eval on mmlu/5-shot/conceptual_physics data
+[Eval batch=4/30] Eval on mmlu/5-shot/conceptual_physics data
+[Eval batch=7/30] Eval on mmlu/5-shot/conceptual_physics data
+[Eval batch=10/30] Eval on mmlu/5-shot/conceptual_physics data
+[Eval batch=13/30] Eval on mmlu/5-shot/conceptual_physics data
+[Eval batch=16/30] Eval on mmlu/5-shot/conceptual_physics data
+[Eval batch=18/30] Eval on mmlu/5-shot/conceptual_physics data
+[Eval batch=21/30] Eval on mmlu/5-shot/conceptual_physics data
+[Eval batch=24/30] Eval on mmlu/5-shot/conceptual_physics data
+[Eval batch=27/30] Eval on mmlu/5-shot/conceptual_physics data
+[Eval batch=30/30] Eval on mmlu/5-shot/conceptual_physics data:
+	 Eval metrics/mmlu/5-shot/conceptual_physics/InContextLearningMultipleChoiceAccuracy: 0.5234
+[Eval batch=1/15] Eval on mmlu/5-shot/econometrics data
+[Eval batch=2/15] Eval on mmlu/5-shot/econometrics data
+[Eval batch=4/15] Eval on mmlu/5-shot/econometrics data
+[Eval batch=5/15] Eval on mmlu/5-shot/econometrics data
+[Eval batch=7/15] Eval on mmlu/5-shot/econometrics data
+[Eval batch=8/15] Eval on mmlu/5-shot/econometrics data
+[Eval batch=9/15] Eval on mmlu/5-shot/econometrics data
+[Eval batch=11/15] Eval on mmlu/5-shot/econometrics data
+[Eval batch=12/15] Eval on mmlu/5-shot/econometrics data
+[Eval batch=14/15] Eval on mmlu/5-shot/econometrics data
+[Eval batch=15/15] Eval on mmlu/5-shot/econometrics data:
+	 Eval metrics/mmlu/5-shot/econometrics/InContextLearningMultipleChoiceAccuracy: 0.3947
+[Eval batch=1/19] Eval on mmlu/5-shot/electrical_engineering data
+[Eval batch=3/19] Eval on mmlu/5-shot/electrical_engineering data
+[Eval batch=5/19] Eval on mmlu/5-shot/electrical_engineering data
+[Eval batch=6/19] Eval on mmlu/5-shot/electrical_engineering data
+[Eval batch=8/19] Eval on mmlu/5-shot/electrical_engineering data
+[Eval batch=10/19] Eval on mmlu/5-shot/electrical_engineering data
+[Eval batch=12/19] Eval on mmlu/5-shot/electrical_engineering data
+[Eval batch=14/19] Eval on mmlu/5-shot/electrical_engineering data
+[Eval batch=15/19] Eval on mmlu/5-shot/electrical_engineering data
+[Eval batch=17/19] Eval on mmlu/5-shot/electrical_engineering data
+[Eval batch=19/19] Eval on mmlu/5-shot/electrical_engineering data:
+	 Eval metrics/mmlu/5-shot/electrical_engineering/InContextLearningMultipleChoiceAccuracy: 0.5793
+[Eval batch=1/48] Eval on mmlu/5-shot/elementary_mathematics data
+[Eval batch=6/48] Eval on mmlu/5-shot/elementary_mathematics data
+[Eval batch=10/48] Eval on mmlu/5-shot/elementary_mathematics data
+[Eval batch=15/48] Eval on mmlu/5-shot/elementary_mathematics data
+[Eval batch=20/48] Eval on mmlu/5-shot/elementary_mathematics data
+[Eval batch=24/48] Eval on mmlu/5-shot/elementary_mathematics data
+[Eval batch=29/48] Eval on mmlu/5-shot/elementary_mathematics data
+[Eval batch=34/48] Eval on mmlu/5-shot/elementary_mathematics data
+[Eval batch=39/48] Eval on mmlu/5-shot/elementary_mathematics data
+[Eval batch=43/48] Eval on mmlu/5-shot/elementary_mathematics data
+[Eval batch=48/48] Eval on mmlu/5-shot/elementary_mathematics data:
+	 Eval metrics/mmlu/5-shot/elementary_mathematics/InContextLearningMultipleChoiceAccuracy: 0.3915
+[Eval batch=1/16] Eval on mmlu/5-shot/formal_logic data
+[Eval batch=2/16] Eval on mmlu/5-shot/formal_logic data
+[Eval batch=4/16] Eval on mmlu/5-shot/formal_logic data
+[Eval batch=6/16] Eval on mmlu/5-shot/formal_logic data
+[Eval batch=7/16] Eval on mmlu/5-shot/formal_logic data
+[Eval batch=8/16] Eval on mmlu/5-shot/formal_logic data
+[Eval batch=10/16] Eval on mmlu/5-shot/formal_logic data
+[Eval batch=12/16] Eval on mmlu/5-shot/formal_logic data
+[Eval batch=13/16] Eval on mmlu/5-shot/formal_logic data
+[Eval batch=14/16] Eval on mmlu/5-shot/formal_logic data
+[Eval batch=16/16] Eval on mmlu/5-shot/formal_logic data:
+	 Eval metrics/mmlu/5-shot/formal_logic/InContextLearningMultipleChoiceAccuracy: 0.4048
+[Eval batch=1/13] Eval on mmlu/5-shot/global_facts data
+[Eval batch=2/13] Eval on mmlu/5-shot/global_facts data
+[Eval batch=3/13] Eval on mmlu/5-shot/global_facts data
+[Eval batch=5/13] Eval on mmlu/5-shot/global_facts data
+[Eval batch=6/13] Eval on mmlu/5-shot/global_facts data
+[Eval batch=7/13] Eval on mmlu/5-shot/global_facts data
+[Eval batch=8/13] Eval on mmlu/5-shot/global_facts data
+[Eval batch=9/13] Eval on mmlu/5-shot/global_facts data
+[Eval batch=11/13] Eval on mmlu/5-shot/global_facts data
+[Eval batch=12/13] Eval on mmlu/5-shot/global_facts data
+[Eval batch=13/13] Eval on mmlu/5-shot/global_facts data:
+	 Eval metrics/mmlu/5-shot/global_facts/InContextLearningMultipleChoiceAccuracy: 0.3600
+[Eval batch=1/39] Eval on mmlu/5-shot/high_school_biology data
+[Eval batch=5/39] Eval on mmlu/5-shot/high_school_biology data
+[Eval batch=9/39] Eval on mmlu/5-shot/high_school_biology data
+[Eval batch=12/39] Eval on mmlu/5-shot/high_school_biology data
+[Eval batch=16/39] Eval on mmlu/5-shot/high_school_biology data
+[Eval batch=20/39] Eval on mmlu/5-shot/high_school_biology data
+[Eval batch=24/39] Eval on mmlu/5-shot/high_school_biology data
+[Eval batch=28/39] Eval on mmlu/5-shot/high_school_biology data
+[Eval batch=31/39] Eval on mmlu/5-shot/high_school_biology data
+[Eval batch=35/39] Eval on mmlu/5-shot/high_school_biology data
+[Eval batch=39/39] Eval on mmlu/5-shot/high_school_biology data:
+	 Eval metrics/mmlu/5-shot/high_school_biology/InContextLearningMultipleChoiceAccuracy: 0.7839
+[Eval batch=1/26] Eval on mmlu/5-shot/high_school_chemistry data
+[Eval batch=4/26] Eval on mmlu/5-shot/high_school_chemistry data
+[Eval batch=6/26] Eval on mmlu/5-shot/high_school_chemistry data
+[Eval batch=8/26] Eval on mmlu/5-shot/high_school_chemistry data
+[Eval batch=11/26] Eval on mmlu/5-shot/high_school_chemistry data
+[Eval batch=14/26] Eval on mmlu/5-shot/high_school_chemistry data
+[Eval batch=16/26] Eval on mmlu/5-shot/high_school_chemistry data
+[Eval batch=18/26] Eval on mmlu/5-shot/high_school_chemistry data
+[Eval batch=21/26] Eval on mmlu/5-shot/high_school_chemistry data
+[Eval batch=24/26] Eval on mmlu/5-shot/high_school_chemistry data
+[Eval batch=26/26] Eval on mmlu/5-shot/high_school_chemistry data:
+	 Eval metrics/mmlu/5-shot/high_school_chemistry/InContextLearningMultipleChoiceAccuracy: 0.5123
+[Eval batch=1/13] Eval on mmlu/5-shot/high_school_computer_science data
+[Eval batch=2/13] Eval on mmlu/5-shot/high_school_computer_science data
+[Eval batch=3/13] Eval on mmlu/5-shot/high_school_computer_science data
+[Eval batch=5/13] Eval on mmlu/5-shot/high_school_computer_science data
+[Eval batch=6/13] Eval on mmlu/5-shot/high_school_computer_science data
+[Eval batch=7/13] Eval on mmlu/5-shot/high_school_computer_science data
+[Eval batch=8/13] Eval on mmlu/5-shot/high_school_computer_science data
+[Eval batch=9/13] Eval on mmlu/5-shot/high_school_computer_science data
+[Eval batch=11/13] Eval on mmlu/5-shot/high_school_computer_science data
+[Eval batch=12/13] Eval on mmlu/5-shot/high_school_computer_science data
+[Eval batch=13/13] Eval on mmlu/5-shot/high_school_computer_science data:
+	 Eval metrics/mmlu/5-shot/high_school_computer_science/InContextLearningMultipleChoiceAccuracy: 0.6200
+[Eval batch=1/21] Eval on mmlu/5-shot/high_school_european_history data
+[Eval batch=3/21] Eval on mmlu/5-shot/high_school_european_history data
+[Eval batch=5/21] Eval on mmlu/5-shot/high_school_european_history data
+[Eval batch=7/21] Eval on mmlu/5-shot/high_school_european_history data
+[Eval batch=9/21] Eval on mmlu/5-shot/high_school_european_history data
+[Eval batch=11/21] Eval on mmlu/5-shot/high_school_european_history data
+[Eval batch=13/21] Eval on mmlu/5-shot/high_school_european_history data
+[Eval batch=15/21] Eval on mmlu/5-shot/high_school_european_history data
+[Eval batch=17/21] Eval on mmlu/5-shot/high_school_european_history data
+[Eval batch=19/21] Eval on mmlu/5-shot/high_school_european_history data
+[Eval batch=21/21] Eval on mmlu/5-shot/high_school_european_history data:
+	 Eval metrics/mmlu/5-shot/high_school_european_history/InContextLearningMultipleChoiceAccuracy: 0.7697
+[Eval batch=1/25] Eval on mmlu/5-shot/high_school_geography data
+[Eval batch=3/25] Eval on mmlu/5-shot/high_school_geography data
+[Eval batch=6/25] Eval on mmlu/5-shot/high_school_geography data
+[Eval batch=8/25] Eval on mmlu/5-shot/high_school_geography data
+[Eval batch=11/25] Eval on mmlu/5-shot/high_school_geography data
+[Eval batch=13/25] Eval on mmlu/5-shot/high_school_geography data
+[Eval batch=15/25] Eval on mmlu/5-shot/high_school_geography data
+[Eval batch=18/25] Eval on mmlu/5-shot/high_school_geography data
+[Eval batch=20/25] Eval on mmlu/5-shot/high_school_geography data
+[Eval batch=23/25] Eval on mmlu/5-shot/high_school_geography data
+[Eval batch=25/25] Eval on mmlu/5-shot/high_school_geography data:
+	 Eval metrics/mmlu/5-shot/high_school_geography/InContextLearningMultipleChoiceAccuracy: 0.7677
+[Eval batch=1/25] Eval on mmlu/5-shot/high_school_government_and_politics data
+[Eval batch=3/25] Eval on mmlu/5-shot/high_school_government_and_politics data
+[Eval batch=6/25] Eval on mmlu/5-shot/high_school_government_and_politics data
+[Eval batch=8/25] Eval on mmlu/5-shot/high_school_government_and_politics data
+[Eval batch=11/25] Eval on mmlu/5-shot/high_school_government_and_politics data
+[Eval batch=13/25] Eval on mmlu/5-shot/high_school_government_and_politics data
+[Eval batch=15/25] Eval on mmlu/5-shot/high_school_government_and_politics data
+[Eval batch=18/25] Eval on mmlu/5-shot/high_school_government_and_politics data
+[Eval batch=20/25] Eval on mmlu/5-shot/high_school_government_and_politics data
+[Eval batch=23/25] Eval on mmlu/5-shot/high_school_government_and_politics data
+[Eval batch=25/25] Eval on mmlu/5-shot/high_school_government_and_politics data:
+	 Eval metrics/mmlu/5-shot/high_school_government_and_politics/InContextLearningMultipleChoiceAccuracy: 0.8135
+[Eval batch=1/49] Eval on mmlu/5-shot/high_school_macroeconomics data
+[Eval batch=6/49] Eval on mmlu/5-shot/high_school_macroeconomics data
+[Eval batch=11/49] Eval on mmlu/5-shot/high_school_macroeconomics data
+[Eval batch=15/49] Eval on mmlu/5-shot/high_school_macroeconomics data
+[Eval batch=20/49] Eval on mmlu/5-shot/high_school_macroeconomics data
+[Eval batch=25/49] Eval on mmlu/5-shot/high_school_macroeconomics data
+[Eval batch=30/49] Eval on mmlu/5-shot/high_school_macroeconomics data
+[Eval batch=35/49] Eval on mmlu/5-shot/high_school_macroeconomics data
+[Eval batch=39/49] Eval on mmlu/5-shot/high_school_macroeconomics data
+[Eval batch=44/49] Eval on mmlu/5-shot/high_school_macroeconomics data
+[Eval batch=49/49] Eval on mmlu/5-shot/high_school_macroeconomics data:
+	 Eval metrics/mmlu/5-shot/high_school_macroeconomics/InContextLearningMultipleChoiceAccuracy: 0.5897
+[Eval batch=1/34] Eval on mmlu/5-shot/high_school_mathematics data
+[Eval batch=4/34] Eval on mmlu/5-shot/high_school_mathematics data
+[Eval batch=8/34] Eval on mmlu/5-shot/high_school_mathematics data
+[Eval batch=11/34] Eval on mmlu/5-shot/high_school_mathematics data
+[Eval batch=14/34] Eval on mmlu/5-shot/high_school_mathematics data
+[Eval batch=18/34] Eval on mmlu/5-shot/high_school_mathematics data
+[Eval batch=21/34] Eval on mmlu/5-shot/high_school_mathematics data
+[Eval batch=24/34] Eval on mmlu/5-shot/high_school_mathematics data
+[Eval batch=27/34] Eval on mmlu/5-shot/high_school_mathematics data
+[Eval batch=31/34] Eval on mmlu/5-shot/high_school_mathematics data
+[Eval batch=34/34] Eval on mmlu/5-shot/high_school_mathematics data:
+	 Eval metrics/mmlu/5-shot/high_school_mathematics/InContextLearningMultipleChoiceAccuracy: 0.3333
+[Eval batch=1/30] Eval on mmlu/5-shot/high_school_microeconomics data
+[Eval batch=4/30] Eval on mmlu/5-shot/high_school_microeconomics data
+[Eval batch=7/30] Eval on mmlu/5-shot/high_school_microeconomics data
+[Eval batch=10/30] Eval on mmlu/5-shot/high_school_microeconomics data
+[Eval batch=13/30] Eval on mmlu/5-shot/high_school_microeconomics data
+[Eval batch=16/30] Eval on mmlu/5-shot/high_school_microeconomics data
+[Eval batch=18/30] Eval on mmlu/5-shot/high_school_microeconomics data
+[Eval batch=21/30] Eval on mmlu/5-shot/high_school_microeconomics data
+[Eval batch=24/30] Eval on mmlu/5-shot/high_school_microeconomics data
+[Eval batch=27/30] Eval on mmlu/5-shot/high_school_microeconomics data
+[Eval batch=30/30] Eval on mmlu/5-shot/high_school_microeconomics data:
+	 Eval metrics/mmlu/5-shot/high_school_microeconomics/InContextLearningMultipleChoiceAccuracy: 0.6639
+[Eval batch=1/19] Eval on mmlu/5-shot/high_school_physics data
+[Eval batch=3/19] Eval on mmlu/5-shot/high_school_physics data
+[Eval batch=5/19] Eval on mmlu/5-shot/high_school_physics data
+[Eval batch=6/19] Eval on mmlu/5-shot/high_school_physics data
+[Eval batch=8/19] Eval on mmlu/5-shot/high_school_physics data
+[Eval batch=10/19] Eval on mmlu/5-shot/high_school_physics data
+[Eval batch=12/19] Eval on mmlu/5-shot/high_school_physics data
+[Eval batch=14/19] Eval on mmlu/5-shot/high_school_physics data
+[Eval batch=15/19] Eval on mmlu/5-shot/high_school_physics data
+[Eval batch=17/19] Eval on mmlu/5-shot/high_school_physics data
+[Eval batch=19/19] Eval on mmlu/5-shot/high_school_physics data:
+	 Eval metrics/mmlu/5-shot/high_school_physics/InContextLearningMultipleChoiceAccuracy: 0.3974
+[Eval batch=1/69] Eval on mmlu/5-shot/high_school_psychology data
+[Eval batch=8/69] Eval on mmlu/5-shot/high_school_psychology data
+[Eval batch=15/69] Eval on mmlu/5-shot/high_school_psychology data
+[Eval batch=21/69] Eval on mmlu/5-shot/high_school_psychology data
+[Eval batch=28/69] Eval on mmlu/5-shot/high_school_psychology data
+[Eval batch=35/69] Eval on mmlu/5-shot/high_school_psychology data
+[Eval batch=42/69] Eval on mmlu/5-shot/high_school_psychology data
+[Eval batch=49/69] Eval on mmlu/5-shot/high_school_psychology data
+[Eval batch=55/69] Eval on mmlu/5-shot/high_school_psychology data
+[Eval batch=62/69] Eval on mmlu/5-shot/high_school_psychology data
+[Eval batch=69/69] Eval on mmlu/5-shot/high_school_psychology data:
+	 Eval metrics/mmlu/5-shot/high_school_psychology/InContextLearningMultipleChoiceAccuracy: 0.7927
+[Eval batch=1/27] Eval on mmlu/5-shot/high_school_statistics data
+[Eval batch=4/27] Eval on mmlu/5-shot/high_school_statistics data
+[Eval batch=6/27] Eval on mmlu/5-shot/high_school_statistics data
+[Eval batch=9/27] Eval on mmlu/5-shot/high_school_statistics data
+[Eval batch=11/27] Eval on mmlu/5-shot/high_school_statistics data
+[Eval batch=14/27] Eval on mmlu/5-shot/high_school_statistics data
+[Eval batch=17/27] Eval on mmlu/5-shot/high_school_statistics data
+[Eval batch=19/27] Eval on mmlu/5-shot/high_school_statistics data
+[Eval batch=22/27] Eval on mmlu/5-shot/high_school_statistics data
+[Eval batch=24/27] Eval on mmlu/5-shot/high_school_statistics data
+[Eval batch=27/27] Eval on mmlu/5-shot/high_school_statistics data:
+	 Eval metrics/mmlu/5-shot/high_school_statistics/InContextLearningMultipleChoiceAccuracy: 0.4583
+[Eval batch=1/26] Eval on mmlu/5-shot/high_school_us_history data
+[Eval batch=4/26] Eval on mmlu/5-shot/high_school_us_history data
+[Eval batch=6/26] Eval on mmlu/5-shot/high_school_us_history data
+[Eval batch=8/26] Eval on mmlu/5-shot/high_school_us_history data
+[Eval batch=11/26] Eval on mmlu/5-shot/high_school_us_history data
+[Eval batch=14/26] Eval on mmlu/5-shot/high_school_us_history data
+[Eval batch=16/26] Eval on mmlu/5-shot/high_school_us_history data
+[Eval batch=18/26] Eval on mmlu/5-shot/high_school_us_history data
+[Eval batch=21/26] Eval on mmlu/5-shot/high_school_us_history data
+[Eval batch=24/26] Eval on mmlu/5-shot/high_school_us_history data
+[Eval batch=26/26] Eval on mmlu/5-shot/high_school_us_history data:
+	 Eval metrics/mmlu/5-shot/high_school_us_history/InContextLearningMultipleChoiceAccuracy: 0.7892
+[Eval batch=1/30] Eval on mmlu/5-shot/high_school_world_history data
+[Eval batch=4/30] Eval on mmlu/5-shot/high_school_world_history data
+[Eval batch=7/30] Eval on mmlu/5-shot/high_school_world_history data
+[Eval batch=10/30] Eval on mmlu/5-shot/high_school_world_history data
+[Eval batch=13/30] Eval on mmlu/5-shot/high_school_world_history data
+[Eval batch=16/30] Eval on mmlu/5-shot/high_school_world_history data
+[Eval batch=18/30] Eval on mmlu/5-shot/high_school_world_history data
+[Eval batch=21/30] Eval on mmlu/5-shot/high_school_world_history data
+[Eval batch=24/30] Eval on mmlu/5-shot/high_school_world_history data
+[Eval batch=27/30] Eval on mmlu/5-shot/high_school_world_history data
+[Eval batch=30/30] Eval on mmlu/5-shot/high_school_world_history data:
+	 Eval metrics/mmlu/5-shot/high_school_world_history/InContextLearningMultipleChoiceAccuracy: 0.7890
+[Eval batch=1/28] Eval on mmlu/5-shot/human_aging data
+[Eval batch=4/28] Eval on mmlu/5-shot/human_aging data
+[Eval batch=6/28] Eval on mmlu/5-shot/human_aging data
+[Eval batch=9/28] Eval on mmlu/5-shot/human_aging data
+[Eval batch=12/28] Eval on mmlu/5-shot/human_aging data
+[Eval batch=14/28] Eval on mmlu/5-shot/human_aging data
+[Eval batch=17/28] Eval on mmlu/5-shot/human_aging data
+[Eval batch=20/28] Eval on mmlu/5-shot/human_aging data
+[Eval batch=23/28] Eval on mmlu/5-shot/human_aging data
+[Eval batch=25/28] Eval on mmlu/5-shot/human_aging data
+[Eval batch=28/28] Eval on mmlu/5-shot/human_aging data:
+	 Eval metrics/mmlu/5-shot/human_aging/InContextLearningMultipleChoiceAccuracy: 0.6816
+[Eval batch=1/17] Eval on mmlu/5-shot/human_sexuality data
+[Eval batch=3/17] Eval on mmlu/5-shot/human_sexuality data
+[Eval batch=4/17] Eval on mmlu/5-shot/human_sexuality data
+[Eval batch=6/17] Eval on mmlu/5-shot/human_sexuality data
+[Eval batch=7/17] Eval on mmlu/5-shot/human_sexuality data
+[Eval batch=9/17] Eval on mmlu/5-shot/human_sexuality data
+[Eval batch=11/17] Eval on mmlu/5-shot/human_sexuality data
+[Eval batch=12/17] Eval on mmlu/5-shot/human_sexuality data
+[Eval batch=14/17] Eval on mmlu/5-shot/human_sexuality data
+[Eval batch=15/17] Eval on mmlu/5-shot/human_sexuality data
+[Eval batch=17/17] Eval on mmlu/5-shot/human_sexuality data:
+	 Eval metrics/mmlu/5-shot/human_sexuality/InContextLearningMultipleChoiceAccuracy: 0.6947
+[Eval batch=1/16] Eval on mmlu/5-shot/international_law data
+[Eval batch=2/16] Eval on mmlu/5-shot/international_law data
+[Eval batch=4/16] Eval on mmlu/5-shot/international_law data
+[Eval batch=6/16] Eval on mmlu/5-shot/international_law data
+[Eval batch=7/16] Eval on mmlu/5-shot/international_law data
+[Eval batch=8/16] Eval on mmlu/5-shot/international_law data
+[Eval batch=10/16] Eval on mmlu/5-shot/international_law data
+[Eval batch=12/16] Eval on mmlu/5-shot/international_law data
+[Eval batch=13/16] Eval on mmlu/5-shot/international_law data
+[Eval batch=14/16] Eval on mmlu/5-shot/international_law data
+[Eval batch=16/16] Eval on mmlu/5-shot/international_law data:
+	 Eval metrics/mmlu/5-shot/international_law/InContextLearningMultipleChoiceAccuracy: 0.7521
+[Eval batch=1/14] Eval on mmlu/5-shot/jurisprudence data
+[Eval batch=2/14] Eval on mmlu/5-shot/jurisprudence data
+[Eval batch=4/14] Eval on mmlu/5-shot/jurisprudence data
+[Eval batch=5/14] Eval on mmlu/5-shot/jurisprudence data
+[Eval batch=6/14] Eval on mmlu/5-shot/jurisprudence data
+[Eval batch=8/14] Eval on mmlu/5-shot/jurisprudence data
+[Eval batch=9/14] Eval on mmlu/5-shot/jurisprudence data
+[Eval batch=10/14] Eval on mmlu/5-shot/jurisprudence data
+[Eval batch=11/14] Eval on mmlu/5-shot/jurisprudence data
+[Eval batch=13/14] Eval on mmlu/5-shot/jurisprudence data
+[Eval batch=14/14] Eval on mmlu/5-shot/jurisprudence data:
+	 Eval metrics/mmlu/5-shot/jurisprudence/InContextLearningMultipleChoiceAccuracy: 0.7407
+[Eval batch=1/21] Eval on mmlu/5-shot/logical_fallacies data
+[Eval batch=3/21] Eval on mmlu/5-shot/logical_fallacies data
+[Eval batch=5/21] Eval on mmlu/5-shot/logical_fallacies data
+[Eval batch=7/21] Eval on mmlu/5-shot/logical_fallacies data
+[Eval batch=9/21] Eval on mmlu/5-shot/logical_fallacies data
+[Eval batch=11/21] Eval on mmlu/5-shot/logical_fallacies data
+[Eval batch=13/21] Eval on mmlu/5-shot/logical_fallacies data
+[Eval batch=15/21] Eval on mmlu/5-shot/logical_fallacies data
+[Eval batch=17/21] Eval on mmlu/5-shot/logical_fallacies data
+[Eval batch=19/21] Eval on mmlu/5-shot/logical_fallacies data
+[Eval batch=21/21] Eval on mmlu/5-shot/logical_fallacies data:
+	 Eval metrics/mmlu/5-shot/logical_fallacies/InContextLearningMultipleChoiceAccuracy: 0.6994
+[Eval batch=1/14] Eval on mmlu/5-shot/machine_learning data
+[Eval batch=2/14] Eval on mmlu/5-shot/machine_learning data
+[Eval batch=4/14] Eval on mmlu/5-shot/machine_learning data
+[Eval batch=5/14] Eval on mmlu/5-shot/machine_learning data
+[Eval batch=6/14] Eval on mmlu/5-shot/machine_learning data
+[Eval batch=8/14] Eval on mmlu/5-shot/machine_learning data
+[Eval batch=9/14] Eval on mmlu/5-shot/machine_learning data
+[Eval batch=10/14] Eval on mmlu/5-shot/machine_learning data
+[Eval batch=11/14] Eval on mmlu/5-shot/machine_learning data
+[Eval batch=13/14] Eval on mmlu/5-shot/machine_learning data
+[Eval batch=14/14] Eval on mmlu/5-shot/machine_learning data:
+	 Eval metrics/mmlu/5-shot/machine_learning/InContextLearningMultipleChoiceAccuracy: 0.4464
+[Eval batch=1/13] Eval on mmlu/5-shot/management data
+[Eval batch=2/13] Eval on mmlu/5-shot/management data
+[Eval batch=3/13] Eval on mmlu/5-shot/management data
+[Eval batch=5/13] Eval on mmlu/5-shot/management data
+[Eval batch=6/13] Eval on mmlu/5-shot/management data
+[Eval batch=7/13] Eval on mmlu/5-shot/management data
+[Eval batch=8/13] Eval on mmlu/5-shot/management data
+[Eval batch=9/13] Eval on mmlu/5-shot/management data
+[Eval batch=11/13] Eval on mmlu/5-shot/management data
+[Eval batch=12/13] Eval on mmlu/5-shot/management data
+[Eval batch=13/13] Eval on mmlu/5-shot/management data:
+	 Eval metrics/mmlu/5-shot/management/InContextLearningMultipleChoiceAccuracy: 0.7670
+[Eval batch=1/30] Eval on mmlu/5-shot/marketing data
+[Eval batch=4/30] Eval on mmlu/5-shot/marketing data
+[Eval batch=7/30] Eval on mmlu/5-shot/marketing data
+[Eval batch=10/30] Eval on mmlu/5-shot/marketing data
+[Eval batch=13/30] Eval on mmlu/5-shot/marketing data
+[Eval batch=16/30] Eval on mmlu/5-shot/marketing data
+[Eval batch=18/30] Eval on mmlu/5-shot/marketing data
+[Eval batch=21/30] Eval on mmlu/5-shot/marketing data
+[Eval batch=24/30] Eval on mmlu/5-shot/marketing data
+[Eval batch=27/30] Eval on mmlu/5-shot/marketing data
+[Eval batch=30/30] Eval on mmlu/5-shot/marketing data:
+	 Eval metrics/mmlu/5-shot/marketing/InContextLearningMultipleChoiceAccuracy: 0.8675
+[Eval batch=1/13] Eval on mmlu/5-shot/medical_genetics data
+[Eval batch=2/13] Eval on mmlu/5-shot/medical_genetics data
+[Eval batch=3/13] Eval on mmlu/5-shot/medical_genetics data
+[Eval batch=5/13] Eval on mmlu/5-shot/medical_genetics data
+[Eval batch=6/13] Eval on mmlu/5-shot/medical_genetics data
+[Eval batch=7/13] Eval on mmlu/5-shot/medical_genetics data
+[Eval batch=8/13] Eval on mmlu/5-shot/medical_genetics data
+[Eval batch=9/13] Eval on mmlu/5-shot/medical_genetics data
+[Eval batch=11/13] Eval on mmlu/5-shot/medical_genetics data
+[Eval batch=12/13] Eval on mmlu/5-shot/medical_genetics data
+[Eval batch=13/13] Eval on mmlu/5-shot/medical_genetics data:
+	 Eval metrics/mmlu/5-shot/medical_genetics/InContextLearningMultipleChoiceAccuracy: 0.7400
+[Eval batch=1/98] Eval on mmlu/5-shot/miscellaneous data
+[Eval batch=11/98] Eval on mmlu/5-shot/miscellaneous data
+[Eval batch=20/98] Eval on mmlu/5-shot/miscellaneous data
+[Eval batch=30/98] Eval on mmlu/5-shot/miscellaneous data
+[Eval batch=40/98] Eval on mmlu/5-shot/miscellaneous data
+[Eval batch=50/98] Eval on mmlu/5-shot/miscellaneous data
+[Eval batch=59/98] Eval on mmlu/5-shot/miscellaneous data
+[Eval batch=69/98] Eval on mmlu/5-shot/miscellaneous data
+[Eval batch=79/98] Eval on mmlu/5-shot/miscellaneous data
+[Eval batch=88/98] Eval on mmlu/5-shot/miscellaneous data
+[Eval batch=98/98] Eval on mmlu/5-shot/miscellaneous data:
+	 Eval metrics/mmlu/5-shot/miscellaneous/InContextLearningMultipleChoiceAccuracy: 0.7842
+[Eval batch=1/44] Eval on mmlu/5-shot/moral_disputes data
+[Eval batch=5/44] Eval on mmlu/5-shot/moral_disputes data
+[Eval batch=10/44] Eval on mmlu/5-shot/moral_disputes data
+[Eval batch=14/44] Eval on mmlu/5-shot/moral_disputes data
+[Eval batch=18/44] Eval on mmlu/5-shot/moral_disputes data
+[Eval batch=22/44] Eval on mmlu/5-shot/moral_disputes data
+[Eval batch=27/44] Eval on mmlu/5-shot/moral_disputes data
+[Eval batch=31/44] Eval on mmlu/5-shot/moral_disputes data
+[Eval batch=35/44] Eval on mmlu/5-shot/moral_disputes data
+[Eval batch=40/44] Eval on mmlu/5-shot/moral_disputes data
+[Eval batch=44/44] Eval on mmlu/5-shot/moral_disputes data:
+	 Eval metrics/mmlu/5-shot/moral_disputes/InContextLearningMultipleChoiceAccuracy: 0.6734
+[Eval batch=1/112] Eval on mmlu/5-shot/moral_scenarios data
+[Eval batch=12/112] Eval on mmlu/5-shot/moral_scenarios data
+[Eval batch=23/112] Eval on mmlu/5-shot/moral_scenarios data
+[Eval batch=34/112] Eval on mmlu/5-shot/moral_scenarios data
+[Eval batch=45/112] Eval on mmlu/5-shot/moral_scenarios data
+[Eval batch=56/112] Eval on mmlu/5-shot/moral_scenarios data
+[Eval batch=68/112] Eval on mmlu/5-shot/moral_scenarios data
+[Eval batch=79/112] Eval on mmlu/5-shot/moral_scenarios data
+[Eval batch=90/112] Eval on mmlu/5-shot/moral_scenarios data
+[Eval batch=101/112] Eval on mmlu/5-shot/moral_scenarios data
+[Eval batch=112/112] Eval on mmlu/5-shot/moral_scenarios data:
+	 Eval metrics/mmlu/5-shot/moral_scenarios/InContextLearningMultipleChoiceAccuracy: 0.3486
+[Eval batch=1/39] Eval on mmlu/5-shot/nutrition data
+[Eval batch=5/39] Eval on mmlu/5-shot/nutrition data
+[Eval batch=9/39] Eval on mmlu/5-shot/nutrition data
+[Eval batch=12/39] Eval on mmlu/5-shot/nutrition data
+[Eval batch=16/39] Eval on mmlu/5-shot/nutrition data
+[Eval batch=20/39] Eval on mmlu/5-shot/nutrition data
+[Eval batch=24/39] Eval on mmlu/5-shot/nutrition data
+[Eval batch=28/39] Eval on mmlu/5-shot/nutrition data
+[Eval batch=31/39] Eval on mmlu/5-shot/nutrition data
+[Eval batch=35/39] Eval on mmlu/5-shot/nutrition data
+[Eval batch=39/39] Eval on mmlu/5-shot/nutrition data:
+	 Eval metrics/mmlu/5-shot/nutrition/InContextLearningMultipleChoiceAccuracy: 0.7288
+[Eval batch=1/39] Eval on mmlu/5-shot/philosophy data
+[Eval batch=5/39] Eval on mmlu/5-shot/philosophy data
+[Eval batch=9/39] Eval on mmlu/5-shot/philosophy data
+[Eval batch=12/39] Eval on mmlu/5-shot/philosophy data
+[Eval batch=16/39] Eval on mmlu/5-shot/philosophy data
+[Eval batch=20/39] Eval on mmlu/5-shot/philosophy data
+[Eval batch=24/39] Eval on mmlu/5-shot/philosophy data
+[Eval batch=28/39] Eval on mmlu/5-shot/philosophy data
+[Eval batch=31/39] Eval on mmlu/5-shot/philosophy data
+[Eval batch=35/39] Eval on mmlu/5-shot/philosophy data
+[Eval batch=39/39] Eval on mmlu/5-shot/philosophy data:
+	 Eval metrics/mmlu/5-shot/philosophy/InContextLearningMultipleChoiceAccuracy: 0.6849
+[Eval batch=1/41] Eval on mmlu/5-shot/prehistory data
+[Eval batch=5/41] Eval on mmlu/5-shot/prehistory data
+[Eval batch=9/41] Eval on mmlu/5-shot/prehistory data
+[Eval batch=13/41] Eval on mmlu/5-shot/prehistory data
+[Eval batch=17/41] Eval on mmlu/5-shot/prehistory data
+[Eval batch=21/41] Eval on mmlu/5-shot/prehistory data
+[Eval batch=25/41] Eval on mmlu/5-shot/prehistory data
+[Eval batch=29/41] Eval on mmlu/5-shot/prehistory data
+[Eval batch=33/41] Eval on mmlu/5-shot/prehistory data
+[Eval batch=37/41] Eval on mmlu/5-shot/prehistory data
+[Eval batch=41/41] Eval on mmlu/5-shot/prehistory data:
+	 Eval metrics/mmlu/5-shot/prehistory/InContextLearningMultipleChoiceAccuracy: 0.6821
+[Eval batch=1/36] Eval on mmlu/5-shot/professional_accounting data
+[Eval batch=4/36] Eval on mmlu/5-shot/professional_accounting data
+[Eval batch=8/36] Eval on mmlu/5-shot/professional_accounting data
+[Eval batch=12/36] Eval on mmlu/5-shot/professional_accounting data
+[Eval batch=15/36] Eval on mmlu/5-shot/professional_accounting data
+[Eval batch=18/36] Eval on mmlu/5-shot/professional_accounting data
+[Eval batch=22/36] Eval on mmlu/5-shot/professional_accounting data
+[Eval batch=26/36] Eval on mmlu/5-shot/professional_accounting data
+[Eval batch=29/36] Eval on mmlu/5-shot/professional_accounting data
+[Eval batch=32/36] Eval on mmlu/5-shot/professional_accounting data
+[Eval batch=36/36] Eval on mmlu/5-shot/professional_accounting data:
+	 Eval metrics/mmlu/5-shot/professional_accounting/InContextLearningMultipleChoiceAccuracy: 0.4645
+[Eval batch=1/192] Eval on mmlu/5-shot/professional_law data
+[Eval batch=20/192] Eval on mmlu/5-shot/professional_law data
+[Eval batch=39/192] Eval on mmlu/5-shot/professional_law data
+[Eval batch=58/192] Eval on mmlu/5-shot/professional_law data
+[Eval batch=77/192] Eval on mmlu/5-shot/professional_law data
+[Eval batch=96/192] Eval on mmlu/5-shot/professional_law data
+[Eval batch=116/192] Eval on mmlu/5-shot/professional_law data
+[Eval batch=135/192] Eval on mmlu/5-shot/professional_law data
+[Eval batch=154/192] Eval on mmlu/5-shot/professional_law data
+[Eval batch=173/192] Eval on mmlu/5-shot/professional_law data
+[Eval batch=192/192] Eval on mmlu/5-shot/professional_law data:
+	 Eval metrics/mmlu/5-shot/professional_law/InContextLearningMultipleChoiceAccuracy: 0.4374
+[Eval batch=1/34] Eval on mmlu/5-shot/professional_medicine data
+[Eval batch=4/34] Eval on mmlu/5-shot/professional_medicine data
+[Eval batch=8/34] Eval on mmlu/5-shot/professional_medicine data
+[Eval batch=11/34] Eval on mmlu/5-shot/professional_medicine data
+[Eval batch=14/34] Eval on mmlu/5-shot/professional_medicine data
+[Eval batch=18/34] Eval on mmlu/5-shot/professional_medicine data
+[Eval batch=21/34] Eval on mmlu/5-shot/professional_medicine data
+[Eval batch=24/34] Eval on mmlu/5-shot/professional_medicine data
+[Eval batch=27/34] Eval on mmlu/5-shot/professional_medicine data
+[Eval batch=31/34] Eval on mmlu/5-shot/professional_medicine data
+[Eval batch=34/34] Eval on mmlu/5-shot/professional_medicine data:
+	 Eval metrics/mmlu/5-shot/professional_medicine/InContextLearningMultipleChoiceAccuracy: 0.6360
+[Eval batch=1/77] Eval on mmlu/5-shot/professional_psychology data
+[Eval batch=9/77] Eval on mmlu/5-shot/professional_psychology data
+[Eval batch=16/77] Eval on mmlu/5-shot/professional_psychology data
+[Eval batch=24/77] Eval on mmlu/5-shot/professional_psychology data
+[Eval batch=31/77] Eval on mmlu/5-shot/professional_psychology data
+[Eval batch=39/77] Eval on mmlu/5-shot/professional_psychology data
+[Eval batch=47/77] Eval on mmlu/5-shot/professional_psychology data
+[Eval batch=54/77] Eval on mmlu/5-shot/professional_psychology data
+[Eval batch=62/77] Eval on mmlu/5-shot/professional_psychology data
+[Eval batch=69/77] Eval on mmlu/5-shot/professional_psychology data
+[Eval batch=77/77] Eval on mmlu/5-shot/professional_psychology data:
+	 Eval metrics/mmlu/5-shot/professional_psychology/InContextLearningMultipleChoiceAccuracy: 0.6291
+[Eval batch=1/14] Eval on mmlu/5-shot/public_relations data
+[Eval batch=2/14] Eval on mmlu/5-shot/public_relations data
+[Eval batch=4/14] Eval on mmlu/5-shot/public_relations data
+[Eval batch=5/14] Eval on mmlu/5-shot/public_relations data
+[Eval batch=6/14] Eval on mmlu/5-shot/public_relations data
+[Eval batch=8/14] Eval on mmlu/5-shot/public_relations data
+[Eval batch=9/14] Eval on mmlu/5-shot/public_relations data
+[Eval batch=10/14] Eval on mmlu/5-shot/public_relations data
+[Eval batch=11/14] Eval on mmlu/5-shot/public_relations data
+[Eval batch=13/14] Eval on mmlu/5-shot/public_relations data
+[Eval batch=14/14] Eval on mmlu/5-shot/public_relations data:
+	 Eval metrics/mmlu/5-shot/public_relations/InContextLearningMultipleChoiceAccuracy: 0.6364
+[Eval batch=1/31] Eval on mmlu/5-shot/security_studies data
+[Eval batch=4/31] Eval on mmlu/5-shot/security_studies data
+[Eval batch=7/31] Eval on mmlu/5-shot/security_studies data
+[Eval batch=10/31] Eval on mmlu/5-shot/security_studies data
+[Eval batch=13/31] Eval on mmlu/5-shot/security_studies data
+[Eval batch=16/31] Eval on mmlu/5-shot/security_studies data
+[Eval batch=19/31] Eval on mmlu/5-shot/security_studies data
+[Eval batch=22/31] Eval on mmlu/5-shot/security_studies data
+[Eval batch=25/31] Eval on mmlu/5-shot/security_studies data
+[Eval batch=28/31] Eval on mmlu/5-shot/security_studies data
+[Eval batch=31/31] Eval on mmlu/5-shot/security_studies data:
+	 Eval metrics/mmlu/5-shot/security_studies/InContextLearningMultipleChoiceAccuracy: 0.6531
+[Eval batch=1/26] Eval on mmlu/5-shot/sociology data
+[Eval batch=4/26] Eval on mmlu/5-shot/sociology data
+[Eval batch=6/26] Eval on mmlu/5-shot/sociology data
+[Eval batch=8/26] Eval on mmlu/5-shot/sociology data
+[Eval batch=11/26] Eval on mmlu/5-shot/sociology data
+[Eval batch=14/26] Eval on mmlu/5-shot/sociology data
+[Eval batch=16/26] Eval on mmlu/5-shot/sociology data
+[Eval batch=18/26] Eval on mmlu/5-shot/sociology data
+[Eval batch=21/26] Eval on mmlu/5-shot/sociology data
+[Eval batch=24/26] Eval on mmlu/5-shot/sociology data
+[Eval batch=26/26] Eval on mmlu/5-shot/sociology data:
+	 Eval metrics/mmlu/5-shot/sociology/InContextLearningMultipleChoiceAccuracy: 0.8209
+[Eval batch=1/13] Eval on mmlu/5-shot/us_foreign_policy data
+[Eval batch=2/13] Eval on mmlu/5-shot/us_foreign_policy data
+[Eval batch=3/13] Eval on mmlu/5-shot/us_foreign_policy data
+[Eval batch=5/13] Eval on mmlu/5-shot/us_foreign_policy data
+[Eval batch=6/13] Eval on mmlu/5-shot/us_foreign_policy data
+[Eval batch=7/13] Eval on mmlu/5-shot/us_foreign_policy data
+[Eval batch=8/13] Eval on mmlu/5-shot/us_foreign_policy data
+[Eval batch=9/13] Eval on mmlu/5-shot/us_foreign_policy data
+[Eval batch=11/13] Eval on mmlu/5-shot/us_foreign_policy data
+[Eval batch=12/13] Eval on mmlu/5-shot/us_foreign_policy data
+[Eval batch=13/13] Eval on mmlu/5-shot/us_foreign_policy data:
+	 Eval metrics/mmlu/5-shot/us_foreign_policy/InContextLearningMultipleChoiceAccuracy: 0.8100
+[Eval batch=1/21] Eval on mmlu/5-shot/virology data
+[Eval batch=3/21] Eval on mmlu/5-shot/virology data
+[Eval batch=5/21] Eval on mmlu/5-shot/virology data
+[Eval batch=7/21] Eval on mmlu/5-shot/virology data
+[Eval batch=9/21] Eval on mmlu/5-shot/virology data
+[Eval batch=11/21] Eval on mmlu/5-shot/virology data
+[Eval batch=13/21] Eval on mmlu/5-shot/virology data
+[Eval batch=15/21] Eval on mmlu/5-shot/virology data
+[Eval batch=17/21] Eval on mmlu/5-shot/virology data
+[Eval batch=19/21] Eval on mmlu/5-shot/virology data
+[Eval batch=21/21] Eval on mmlu/5-shot/virology data:
+	 Eval metrics/mmlu/5-shot/virology/InContextLearningMultipleChoiceAccuracy: 0.4819
+[Eval batch=1/22] Eval on mmlu/5-shot/world_religions data
+[Eval batch=3/22] Eval on mmlu/5-shot/world_religions data
+[Eval batch=5/22] Eval on mmlu/5-shot/world_religions data
+[Eval batch=7/22] Eval on mmlu/5-shot/world_religions data
+[Eval batch=9/22] Eval on mmlu/5-shot/world_religions data
+[Eval batch=12/22] Eval on mmlu/5-shot/world_religions data
+[Eval batch=14/22] Eval on mmlu/5-shot/world_religions data
+[Eval batch=16/22] Eval on mmlu/5-shot/world_religions data
+[Eval batch=18/22] Eval on mmlu/5-shot/world_religions data
+[Eval batch=20/22] Eval on mmlu/5-shot/world_religions data
+[Eval batch=22/22] Eval on mmlu/5-shot/world_religions data:
+	 Eval metrics/mmlu/5-shot/world_religions/InContextLearningMultipleChoiceAccuracy: 0.7778
+[Eval batch=1/7] Eval on copa/0-shot data
+[Eval batch=2/7] Eval on copa/0-shot data
+[Eval batch=3/7] Eval on copa/0-shot data
+[Eval batch=4/7] Eval on copa/0-shot data
+[Eval batch=5/7] Eval on copa/0-shot data
+[Eval batch=6/7] Eval on copa/0-shot data
+/home/eldar/eldar-upstream/upstream-composer/composer/core/data_spec.py:37: UserWarning: Cannot split tensor of length 2 into batches of size 8. As it is smaller, no splitting will be done. This may happen on the last batch of a dataset if it is a smaller size than the microbatch size.
+  warnings.warn(
+/home/eldar/eldar-upstream/upstream-composer/composer/core/data_spec.py:26: UserWarning: Cannot split list of length 2 into batches of size 8. As it is smaller, no splitting will be done. This may happen on the last batch of a dataset if it is a smaller size than the microbatch size.
+  warnings.warn(
+/home/eldar/eldar-upstream/upstream-composer/composer/core/data_spec.py:26: UserWarning: Cannot split list of length 1 into batches of size 4. As it is smaller, no splitting will be done. This may happen on the last batch of a dataset if it is a smaller size than the microbatch size.
+  warnings.warn(
+[Eval batch=7/7] Eval on copa/0-shot data:
+	 Eval metrics/copa/0-shot/InContextLearningMultipleChoiceAccuracy: 0.8400
+[Eval batch=1/123] Eval on siqa/3-shot data
+[Eval batch=13/123] Eval on siqa/3-shot data
+[Eval batch=25/123] Eval on siqa/3-shot data
+[Eval batch=38/123] Eval on siqa/3-shot data
+[Eval batch=50/123] Eval on siqa/3-shot data
+[Eval batch=62/123] Eval on siqa/3-shot data
+[Eval batch=74/123] Eval on siqa/3-shot data
+[Eval batch=86/123] Eval on siqa/3-shot data
+[Eval batch=99/123] Eval on siqa/3-shot data
+[Eval batch=111/123] Eval on siqa/3-shot data
+[Eval batch=123/123] Eval on siqa/3-shot data:
+	 Eval metrics/siqa/3-shot/InContextLearningMultipleChoiceAccuracy: 0.7907
+[Eval batch=1/153] Eval on commonsense_qa/0-shot data
+[Eval batch=16/153] Eval on commonsense_qa/0-shot data
+[Eval batch=31/153] Eval on commonsense_qa/0-shot data
+[Eval batch=47/153] Eval on commonsense_qa/0-shot data
+[Eval batch=62/153] Eval on commonsense_qa/0-shot data
+[Eval batch=77/153] Eval on commonsense_qa/0-shot data
+[Eval batch=92/153] Eval on commonsense_qa/0-shot data
+[Eval batch=107/153] Eval on commonsense_qa/0-shot data
+[Eval batch=123/153] Eval on commonsense_qa/0-shot data
+[Eval batch=138/153] Eval on commonsense_qa/0-shot data
+[Eval batch=153/153] Eval on commonsense_qa/0-shot data:
+	 Eval metrics/commonsense_qa/0-shot/InContextLearningMultipleChoiceAccuracy: 0.7527
+[Eval batch=1/115] Eval on piqa/0-shot data
+[Eval batch=12/115] Eval on piqa/0-shot data
+[Eval batch=24/115] Eval on piqa/0-shot data
+[Eval batch=35/115] Eval on piqa/0-shot data
+[Eval batch=47/115] Eval on piqa/0-shot data
+[Eval batch=58/115] Eval on piqa/0-shot data
+[Eval batch=69/115] Eval on piqa/0-shot data
+[Eval batch=81/115] Eval on piqa/0-shot data
+[Eval batch=92/115] Eval on piqa/0-shot data
+[Eval batch=104/115] Eval on piqa/0-shot data
+[Eval batch=115/115] Eval on piqa/0-shot data:
+	 Eval metrics/piqa/0-shot/InContextLearningMultipleChoiceAccuracy: 0.8079
+[Eval batch=1/63] Eval on openbook_qa/10-shot data
+[Eval batch=7/63] Eval on openbook_qa/10-shot data
+[Eval batch=13/63] Eval on openbook_qa/10-shot data
+[Eval batch=20/63] Eval on openbook_qa/10-shot data
+[Eval batch=26/63] Eval on openbook_qa/10-shot data
+[Eval batch=32/63] Eval on openbook_qa/10-shot data
+[Eval batch=38/63] Eval on openbook_qa/10-shot data
+[Eval batch=44/63] Eval on openbook_qa/10-shot data
+[Eval batch=51/63] Eval on openbook_qa/10-shot data
+[Eval batch=57/63] Eval on openbook_qa/10-shot data
+[Eval batch=63/63] Eval on openbook_qa/10-shot data:
+	 Eval metrics/openbook_qa/10-shot/InContextLearningMultipleChoiceAccuracy: 0.4900
+[Eval batch=1/11] Eval on bigbench_strange_stories/0-shot data
+[Eval batch=2/11] Eval on bigbench_strange_stories/0-shot data
+[Eval batch=3/11] Eval on bigbench_strange_stories/0-shot data
+[Eval batch=4/11] Eval on bigbench_strange_stories/0-shot data
+[Eval batch=5/11] Eval on bigbench_strange_stories/0-shot data
+[Eval batch=6/11] Eval on bigbench_strange_stories/0-shot data
+[Eval batch=7/11] Eval on bigbench_strange_stories/0-shot data
+[Eval batch=8/11] Eval on bigbench_strange_stories/0-shot data
+[Eval batch=9/11] Eval on bigbench_strange_stories/0-shot data
+[Eval batch=10/11] Eval on bigbench_strange_stories/0-shot data
+[Eval batch=11/11] Eval on bigbench_strange_stories/0-shot data:
+	 Eval metrics/bigbench_strange_stories/0-shot/InContextLearningMultipleChoiceAccuracy: 0.6149
+[Eval batch=1/144] Eval on bigbench_strategy_qa/0-shot data
+[Eval batch=15/144] Eval on bigbench_strategy_qa/0-shot data
+[Eval batch=30/144] Eval on bigbench_strategy_qa/0-shot data
+[Eval batch=44/144] Eval on bigbench_strategy_qa/0-shot data
+[Eval batch=58/144] Eval on bigbench_strategy_qa/0-shot data
+[Eval batch=72/144] Eval on bigbench_strategy_qa/0-shot data
+[Eval batch=87/144] Eval on bigbench_strategy_qa/0-shot data
+[Eval batch=101/144] Eval on bigbench_strategy_qa/0-shot data
+[Eval batch=115/144] Eval on bigbench_strategy_qa/0-shot data
+[Eval batch=130/144] Eval on bigbench_strategy_qa/0-shot data
+[Eval batch=144/144] Eval on bigbench_strategy_qa/0-shot data:
+	 Eval metrics/bigbench_strategy_qa/0-shot/InContextLearningMultipleChoiceAccuracy: 0.6182
+[Eval batch=1/32] Eval on bigbench_dyck_languages/5-shot data
+[Eval batch=4/32] Eval on bigbench_dyck_languages/5-shot data
+[Eval batch=7/32] Eval on bigbench_dyck_languages/5-shot data
+[Eval batch=10/32] Eval on bigbench_dyck_languages/5-shot data
+[Eval batch=13/32] Eval on bigbench_dyck_languages/5-shot data
+[Eval batch=16/32] Eval on bigbench_dyck_languages/5-shot data
+[Eval batch=20/32] Eval on bigbench_dyck_languages/5-shot data
+[Eval batch=23/32] Eval on bigbench_dyck_languages/5-shot data
+[Eval batch=26/32] Eval on bigbench_dyck_languages/5-shot data
+[Eval batch=29/32] Eval on bigbench_dyck_languages/5-shot data
+[Eval batch=32/32] Eval on bigbench_dyck_languages/5-shot data:
+	 Eval metrics/bigbench_dyck_languages/5-shot/InContextLearningLMAccuracy: 0.0970
+[Eval batch=1/162] Eval on lambada_openai/0-shot data
+[Eval batch=17/162] Eval on lambada_openai/0-shot data
+[Eval batch=33/162] Eval on lambada_openai/0-shot data
+[Eval batch=49/162] Eval on lambada_openai/0-shot data
+[Eval batch=65/162] Eval on lambada_openai/0-shot data
+[Eval batch=82/162] Eval on lambada_openai/0-shot data
+[Eval batch=98/162] Eval on lambada_openai/0-shot data
+[Eval batch=114/162] Eval on lambada_openai/0-shot data
+[Eval batch=130/162] Eval on lambada_openai/0-shot data
+[Eval batch=146/162] Eval on lambada_openai/0-shot data
+[Eval batch=162/162] Eval on lambada_openai/0-shot data:
+	 Eval metrics/lambada_openai/0-shot/InContextLearningLMAccuracy: 0.7140
+[Eval batch=1/1256] Eval on hellaswag/0-shot data
+[Eval batch=126/1256] Eval on hellaswag/0-shot data
+[Eval batch=252/1256] Eval on hellaswag/0-shot data
+[Eval batch=378/1256] Eval on hellaswag/0-shot data
+[Eval batch=503/1256] Eval on hellaswag/0-shot data
+[Eval batch=628/1256] Eval on hellaswag/0-shot data
+[Eval batch=754/1256] Eval on hellaswag/0-shot data
+[Eval batch=880/1256] Eval on hellaswag/0-shot data
+[Eval batch=1005/1256] Eval on hellaswag/0-shot data
+[Eval batch=1130/1256] Eval on hellaswag/0-shot data
+[Eval batch=1256/1256] Eval on hellaswag/0-shot data:
+	 Eval metrics/hellaswag/0-shot/InContextLearningMultipleChoiceAccuracy: 0.7768
+[Eval batch=1/1256] Eval on hellaswag/10-shot data
+[Eval batch=126/1256] Eval on hellaswag/10-shot data
+[Eval batch=252/1256] Eval on hellaswag/10-shot data
+[Eval batch=378/1256] Eval on hellaswag/10-shot data
+[Eval batch=503/1256] Eval on hellaswag/10-shot data
+[Eval batch=628/1256] Eval on hellaswag/10-shot data
+[Eval batch=754/1256] Eval on hellaswag/10-shot data
+[Eval batch=880/1256] Eval on hellaswag/10-shot data
+[Eval batch=1005/1256] Eval on hellaswag/10-shot data
+[Eval batch=1130/1256] Eval on hellaswag/10-shot data
+[Eval batch=1256/1256] Eval on hellaswag/10-shot data:
+	 Eval metrics/hellaswag/10-shot/InContextLearningMultipleChoiceAccuracy: 0.7917
+[Eval batch=1/18] Eval on winograd/3-shot data
+[Eval batch=3/18] Eval on winograd/3-shot data
+[Eval batch=4/18] Eval on winograd/3-shot data
+[Eval batch=6/18] Eval on winograd/3-shot data
+[Eval batch=8/18] Eval on winograd/3-shot data
+[Eval batch=10/18] Eval on winograd/3-shot data
+[Eval batch=11/18] Eval on winograd/3-shot data
+[Eval batch=13/18] Eval on winograd/3-shot data
+[Eval batch=15/18] Eval on winograd/3-shot data
+[Eval batch=16/18] Eval on winograd/3-shot data
+[Eval batch=18/18] Eval on winograd/3-shot data:
+	 Eval metrics/winograd/3-shot/InContextLearningMultipleChoiceAccuracy: 0.8755
+[Eval batch=1/80] Eval on winogrande/5-shot data
+[Eval batch=9/80] Eval on winogrande/5-shot data
+[Eval batch=17/80] Eval on winogrande/5-shot data
+[Eval batch=25/80] Eval on winogrande/5-shot data
+[Eval batch=33/80] Eval on winogrande/5-shot data
+[Eval batch=40/80] Eval on winogrande/5-shot data
+[Eval batch=48/80] Eval on winogrande/5-shot data
+[Eval batch=56/80] Eval on winogrande/5-shot data
+[Eval batch=64/80] Eval on winogrande/5-shot data
+[Eval batch=72/80] Eval on winogrande/5-shot data
+[Eval batch=80/80] Eval on winogrande/5-shot data:
+	 Eval metrics/winogrande/5-shot/InContextLearningMultipleChoiceAccuracy: 0.7680
+[Eval batch=1/4770] Eval on bigbench_elementary_math_qa/1-shot data
+[Eval batch=478/4770] Eval on bigbench_elementary_math_qa/1-shot data
+[Eval batch=955/4770] Eval on bigbench_elementary_math_qa/1-shot data
+[Eval batch=1432/4770] Eval on bigbench_elementary_math_qa/1-shot data
+[Eval batch=1909/4770] Eval on bigbench_elementary_math_qa/1-shot data
+[Eval batch=2386/4770] Eval on bigbench_elementary_math_qa/1-shot data
+[Eval batch=2862/4770] Eval on bigbench_elementary_math_qa/1-shot data
+[Eval batch=3339/4770] Eval on bigbench_elementary_math_qa/1-shot data
+[Eval batch=3816/4770] Eval on bigbench_elementary_math_qa/1-shot data
+[Eval batch=4293/4770] Eval on bigbench_elementary_math_qa/1-shot data
+[Eval batch=4770/4770] Eval on bigbench_elementary_math_qa/1-shot data:
+	 Eval metrics/bigbench_elementary_math_qa/1-shot/InContextLearningMultipleChoiceAccuracy: 0.4100
+[Eval batch=1/29] Eval on agi_eval_lsat_ar/5-shot data
+[Eval batch=4/29] Eval on agi_eval_lsat_ar/5-shot data
+[Eval batch=7/29] Eval on agi_eval_lsat_ar/5-shot data
+[Eval batch=9/29] Eval on agi_eval_lsat_ar/5-shot data
+[Eval batch=12/29] Eval on agi_eval_lsat_ar/5-shot data
+[Eval batch=15/29] Eval on agi_eval_lsat_ar/5-shot data
+[Eval batch=18/29] Eval on agi_eval_lsat_ar/5-shot data
+[Eval batch=21/29] Eval on agi_eval_lsat_ar/5-shot data
+[Eval batch=23/29] Eval on agi_eval_lsat_ar/5-shot data
+[Eval batch=26/29] Eval on agi_eval_lsat_ar/5-shot data
+[Eval batch=29/29] Eval on agi_eval_lsat_ar/5-shot data:
+	 Eval metrics/agi_eval_lsat_ar/5-shot/InContextLearningMultipleChoiceAccuracy: 0.2304
+[Eval batch=1/42] Eval on bigbench_cs_algorithms/10-shot data
+[Eval batch=5/42] Eval on bigbench_cs_algorithms/10-shot data
+[Eval batch=9/42] Eval on bigbench_cs_algorithms/10-shot data
+[Eval batch=13/42] Eval on bigbench_cs_algorithms/10-shot data
+[Eval batch=17/42] Eval on bigbench_cs_algorithms/10-shot data
+[Eval batch=22/42] Eval on bigbench_cs_algorithms/10-shot data
+[Eval batch=26/42] Eval on bigbench_cs_algorithms/10-shot data
+[Eval batch=30/42] Eval on bigbench_cs_algorithms/10-shot data
+[Eval batch=34/42] Eval on bigbench_cs_algorithms/10-shot data
+[Eval batch=38/42] Eval on bigbench_cs_algorithms/10-shot data
+[Eval batch=42/42] Eval on bigbench_cs_algorithms/10-shot data:
+	 Eval metrics/bigbench_cs_algorithms/10-shot/InContextLearningLMAccuracy: 0.5591
+[Eval batch=1/7] Eval on bigbench_operators/3-shot data
+[Eval batch=2/7] Eval on bigbench_operators/3-shot data
+[Eval batch=3/7] Eval on bigbench_operators/3-shot data
+[Eval batch=4/7] Eval on bigbench_operators/3-shot data
+[Eval batch=5/7] Eval on bigbench_operators/3-shot data
+[Eval batch=6/7] Eval on bigbench_operators/3-shot data
+/home/eldar/eldar-upstream/upstream-composer/composer/core/data_spec.py:37: UserWarning: Cannot split tensor of length 5 into batches of size 8. As it is smaller, no splitting will be done. This may happen on the last batch of a dataset if it is a smaller size than the microbatch size.
+  warnings.warn(
+/home/eldar/eldar-upstream/upstream-composer/composer/core/data_spec.py:26: UserWarning: Cannot split list of length 5 into batches of size 8. As it is smaller, no splitting will be done. This may happen on the last batch of a dataset if it is a smaller size than the microbatch size.
+  warnings.warn(
+[Eval batch=7/7] Eval on bigbench_operators/3-shot data:
+	 Eval metrics/bigbench_operators/3-shot/InContextLearningLMAccuracy: 0.5714
+[Eval batch=1/32] Eval on simple_arithmetic_nospaces/5-shot data
+[Eval batch=4/32] Eval on simple_arithmetic_nospaces/5-shot data
+[Eval batch=7/32] Eval on simple_arithmetic_nospaces/5-shot data
+[Eval batch=10/32] Eval on simple_arithmetic_nospaces/5-shot data
+[Eval batch=13/32] Eval on simple_arithmetic_nospaces/5-shot data
+[Eval batch=16/32] Eval on simple_arithmetic_nospaces/5-shot data
+[Eval batch=20/32] Eval on simple_arithmetic_nospaces/5-shot data
+[Eval batch=23/32] Eval on simple_arithmetic_nospaces/5-shot data
+[Eval batch=26/32] Eval on simple_arithmetic_nospaces/5-shot data
+[Eval batch=29/32] Eval on simple_arithmetic_nospaces/5-shot data
+[Eval batch=32/32] Eval on simple_arithmetic_nospaces/5-shot data:
+	 Eval metrics/simple_arithmetic_nospaces/5-shot/InContextLearningLMAccuracy: 0.3570
+[Eval batch=1/32] Eval on simple_arithmetic_withspaces/5-shot data
+[Eval batch=4/32] Eval on simple_arithmetic_withspaces/5-shot data
+[Eval batch=7/32] Eval on simple_arithmetic_withspaces/5-shot data
+[Eval batch=10/32] Eval on simple_arithmetic_withspaces/5-shot data
+[Eval batch=13/32] Eval on simple_arithmetic_withspaces/5-shot data
+[Eval batch=16/32] Eval on simple_arithmetic_withspaces/5-shot data
+[Eval batch=20/32] Eval on simple_arithmetic_withspaces/5-shot data
+[Eval batch=23/32] Eval on simple_arithmetic_withspaces/5-shot data
+[Eval batch=26/32] Eval on simple_arithmetic_withspaces/5-shot data
+[Eval batch=29/32] Eval on simple_arithmetic_withspaces/5-shot data
+[Eval batch=32/32] Eval on simple_arithmetic_withspaces/5-shot data:
+	 Eval metrics/simple_arithmetic_withspaces/5-shot/InContextLearningLMAccuracy: 0.4150
+[Eval batch=1/331] Eval on squad/3-shot data
+[Eval batch=34/331] Eval on squad/3-shot data
+[Eval batch=67/331] Eval on squad/3-shot data
+[Eval batch=100/331] Eval on squad/3-shot data
+[Eval batch=133/331] Eval on squad/3-shot data
+[Eval batch=166/331] Eval on squad/3-shot data
+[Eval batch=199/331] Eval on squad/3-shot data
+[Eval batch=232/331] Eval on squad/3-shot data
+[Eval batch=265/331] Eval on squad/3-shot data
+[Eval batch=298/331] Eval on squad/3-shot data
+[Eval batch=331/331] Eval on squad/3-shot data:
+	 Eval metrics/squad/3-shot/InContextLearningLMAccuracy: 0.6297
+[Eval batch=1/34] Eval on agi_eval_lsat_rc/5-shot data
+[Eval batch=4/34] Eval on agi_eval_lsat_rc/5-shot data
+[Eval batch=8/34] Eval on agi_eval_lsat_rc/5-shot data
+[Eval batch=11/34] Eval on agi_eval_lsat_rc/5-shot data
+[Eval batch=14/34] Eval on agi_eval_lsat_rc/5-shot data
+[Eval batch=18/34] Eval on agi_eval_lsat_rc/5-shot data
+[Eval batch=21/34] Eval on agi_eval_lsat_rc/5-shot data
+[Eval batch=24/34] Eval on agi_eval_lsat_rc/5-shot data
+[Eval batch=27/34] Eval on agi_eval_lsat_rc/5-shot data
+[Eval batch=31/34] Eval on agi_eval_lsat_rc/5-shot data
+[Eval batch=34/34] Eval on agi_eval_lsat_rc/5-shot data:
+	 Eval metrics/agi_eval_lsat_rc/5-shot/InContextLearningMultipleChoiceAccuracy: 0.6754
+[Eval batch=1/64] Eval on agi_eval_lsat_lr/5-shot data
+[Eval batch=7/64] Eval on agi_eval_lsat_lr/5-shot data
+[Eval batch=14/64] Eval on agi_eval_lsat_lr/5-shot data
+[Eval batch=20/64] Eval on agi_eval_lsat_lr/5-shot data
+[Eval batch=26/64] Eval on agi_eval_lsat_lr/5-shot data
+[Eval batch=32/64] Eval on agi_eval_lsat_lr/5-shot data
+[Eval batch=39/64] Eval on agi_eval_lsat_lr/5-shot data
+[Eval batch=45/64] Eval on agi_eval_lsat_lr/5-shot data
+[Eval batch=51/64] Eval on agi_eval_lsat_lr/5-shot data
+[Eval batch=58/64] Eval on agi_eval_lsat_lr/5-shot data
+[Eval batch=64/64] Eval on agi_eval_lsat_lr/5-shot data:
+	 Eval metrics/agi_eval_lsat_lr/5-shot/InContextLearningMultipleChoiceAccuracy: 0.5078
+[Eval batch=1/250] Eval on coqa/0-shot data
+[Eval batch=26/250] Eval on coqa/0-shot data
+[Eval batch=51/250] Eval on coqa/0-shot data
+[Eval batch=76/250] Eval on coqa/0-shot data
+[Eval batch=101/250] Eval on coqa/0-shot data
+[Eval batch=126/250] Eval on coqa/0-shot data
+[Eval batch=150/250] Eval on coqa/0-shot data
+[Eval batch=175/250] Eval on coqa/0-shot data
+[Eval batch=200/250] Eval on coqa/0-shot data
+[Eval batch=225/250] Eval on coqa/0-shot data
+[Eval batch=250/250] Eval on coqa/0-shot data:
+	 Eval metrics/coqa/0-shot/InContextLearningLMAccuracy: 0.4627
+[Eval batch=1/205] Eval on boolq/0-shot data
+[Eval batch=21/205] Eval on boolq/0-shot data
+[Eval batch=42/205] Eval on boolq/0-shot data
+[Eval batch=62/205] Eval on boolq/0-shot data
+[Eval batch=83/205] Eval on boolq/0-shot data
+[Eval batch=103/205] Eval on boolq/0-shot data
+[Eval batch=123/205] Eval on boolq/0-shot data
+[Eval batch=144/205] Eval on boolq/0-shot data
+[Eval batch=164/205] Eval on boolq/0-shot data
+[Eval batch=185/205] Eval on boolq/0-shot data
+/home/eldar/eldar-upstream/upstream-composer/composer/core/data_spec.py:26: UserWarning: Cannot split list of length 2 into batches of size 4. As it is smaller, no splitting will be done. This may happen on the last batch of a dataset if it is a smaller size than the microbatch size.
+  warnings.warn(
+[Eval batch=205/205] Eval on boolq/0-shot data:
+	 Eval metrics/boolq/0-shot/InContextLearningMultipleChoiceAccuracy: 0.8266
+[Eval batch=1/26] Eval on agi_eval_sat_en/5-shot data
+[Eval batch=4/26] Eval on agi_eval_sat_en/5-shot data
+[Eval batch=6/26] Eval on agi_eval_sat_en/5-shot data
+[Eval batch=8/26] Eval on agi_eval_sat_en/5-shot data
+[Eval batch=11/26] Eval on agi_eval_sat_en/5-shot data
+[Eval batch=14/26] Eval on agi_eval_sat_en/5-shot data
+[Eval batch=16/26] Eval on agi_eval_sat_en/5-shot data
+[Eval batch=18/26] Eval on agi_eval_sat_en/5-shot data
+[Eval batch=21/26] Eval on agi_eval_sat_en/5-shot data
+[Eval batch=24/26] Eval on agi_eval_sat_en/5-shot data
+[Eval batch=26/26] Eval on agi_eval_sat_en/5-shot data:
+	 Eval metrics/agi_eval_sat_en/5-shot/InContextLearningMultipleChoiceAccuracy: 0.7670
+/home/eldar/eldar-upstream/upstream-llm-foundry/scripts/eval/eval.py:354: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  eval_gauntlet_df = pd.concat(
+Printing gauntlet results for all models
+| model_name                                                                                                                                                                                                                                                   |   core_average |   world_knowledge |   commonsense_reasoning |   language_understanding |   symbolic_problem_solving |   reading_comprehension |
+|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------:|------------------:|------------------------:|-------------------------:|---------------------------:|------------------------:|
+| /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |       0.515486 |          0.546156 |                0.476244 |                 0.675808 |                    0.32157 |                0.557654 |
+Printing complete results for all models
+| Category                 | Benchmark                    | Subtask                             |   Accuracy | Number few shot   | Model                                                                                                                                                                                                                                                        |
+|:-------------------------|:-----------------------------|:------------------------------------|-----------:|:------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| world_knowledge          | triviaqa_sm_sub              |                                     |   0.527667 | 3-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| world_knowledge          | jeopardy                     | Average                             |   0.494027 | 3-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| world_knowledge          |                              | american_history                    |   0.523002 | 3-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| world_knowledge          |                              | literature                          |   0.616327 | 3-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| world_knowledge          |                              | science                             |   0.415966 | 3-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| world_knowledge          |                              | word_origins                        |   0.279452 | 3-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| world_knowledge          |                              | world_history                       |   0.635389 | 3-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| world_knowledge          | bigbench_qa_wikidata         |                                     |   0.679691 | 3-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| world_knowledge          | arc_easy                     |                                     |   0.789983 | 3-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| world_knowledge          | arc_challenge                |                                     |   0.529863 | 3-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| commonsense_reasoning    | siqa                         |                                     |   0.790686 | 3-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| language_understanding   | winograd                     |                                     |   0.875458 | 3-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| symbolic_problem_solving | bigbench_operators           |                                     |   0.571429 | 3-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| reading_comprehension    | squad                        |                                     |   0.629707 | 3-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| symbolic_problem_solving | svamp                        |                                     |   0.623333 | 5-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| world_knowledge          | mmlu                         | Average                             |   0.611817 | 5-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| world_knowledge          |                              | abstract_algebra                    |   0.27     | 5-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| world_knowledge          |                              | anatomy                             |   0.644444 | 5-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| world_knowledge          |                              | astronomy                           |   0.611842 | 5-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| world_knowledge          |                              | business_ethics                     |   0.56     | 5-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| world_knowledge          |                              | clinical_knowledge                  |   0.667925 | 5-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| world_knowledge          |                              | college_biology                     |   0.708333 | 5-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| world_knowledge          |                              | college_chemistry                   |   0.43     | 5-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| world_knowledge          |                              | college_computer_science            |   0.41     | 5-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| world_knowledge          |                              | college_mathematics                 |   0.37     | 5-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| world_knowledge          |                              | college_medicine                    |   0.606936 | 5-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| world_knowledge          |                              | college_physics                     |   0.431373 | 5-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| world_knowledge          |                              | computer_security                   |   0.79     | 5-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| world_knowledge          |                              | conceptual_physics                  |   0.523404 | 5-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| world_knowledge          |                              | econometrics                        |   0.394737 | 5-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| world_knowledge          |                              | electrical_engineering              |   0.57931  | 5-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| world_knowledge          |                              | elementary_mathematics              |   0.391534 | 5-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| world_knowledge          |                              | formal_logic                        |   0.404762 | 5-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| world_knowledge          |                              | global_facts                        |   0.36     | 5-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| world_knowledge          |                              | high_school_biology                 |   0.783871 | 5-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| world_knowledge          |                              | high_school_chemistry               |   0.512315 | 5-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| world_knowledge          |                              | high_school_computer_science        |   0.62     | 5-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| world_knowledge          |                              | high_school_european_history        |   0.769697 | 5-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| world_knowledge          |                              | high_school_geography               |   0.767677 | 5-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| world_knowledge          |                              | high_school_government_and_politics |   0.813471 | 5-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| world_knowledge          |                              | high_school_macroeconomics          |   0.589744 | 5-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| world_knowledge          |                              | high_school_mathematics             |   0.333333 | 5-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| world_knowledge          |                              | high_school_microeconomics          |   0.663866 | 5-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| world_knowledge          |                              | high_school_physics                 |   0.397351 | 5-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| world_knowledge          |                              | high_school_psychology              |   0.792661 | 5-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| world_knowledge          |                              | high_school_statistics              |   0.458333 | 5-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| world_knowledge          |                              | high_school_us_history              |   0.789216 | 5-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| world_knowledge          |                              | high_school_world_history           |   0.78903  | 5-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| world_knowledge          |                              | human_aging                         |   0.681614 | 5-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| world_knowledge          |                              | human_sexuality                     |   0.694656 | 5-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| world_knowledge          |                              | international_law                   |   0.752066 | 5-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| world_knowledge          |                              | jurisprudence                       |   0.740741 | 5-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| world_knowledge          |                              | logical_fallacies                   |   0.699386 | 5-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| world_knowledge          |                              | machine_learning                    |   0.446429 | 5-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| world_knowledge          |                              | management                          |   0.76699  | 5-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| world_knowledge          |                              | marketing                           |   0.867521 | 5-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| world_knowledge          |                              | medical_genetics                    |   0.74     | 5-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| world_knowledge          |                              | miscellaneous                       |   0.784163 | 5-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| world_knowledge          |                              | moral_disputes                      |   0.67341  | 5-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| world_knowledge          |                              | moral_scenarios                     |   0.348603 | 5-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| world_knowledge          |                              | nutrition                           |   0.728758 | 5-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| world_knowledge          |                              | philosophy                          |   0.684887 | 5-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| world_knowledge          |                              | prehistory                          |   0.682099 | 5-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| world_knowledge          |                              | professional_accounting             |   0.464539 | 5-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| world_knowledge          |                              | professional_law                    |   0.437419 | 5-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| world_knowledge          |                              | professional_medicine               |   0.636029 | 5-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| world_knowledge          |                              | professional_psychology             |   0.629085 | 5-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| world_knowledge          |                              | public_relations                    |   0.636364 | 5-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| world_knowledge          |                              | security_studies                    |   0.653061 | 5-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| world_knowledge          |                              | sociology                           |   0.820895 | 5-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| world_knowledge          |                              | us_foreign_policy                   |   0.81     | 5-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| world_knowledge          |                              | virology                            |   0.481928 | 5-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| world_knowledge          |                              | world_religions                     |   0.777778 | 5-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| symbolic_problem_solving | bigbench_dyck_languages      |                                     |   0.097    | 5-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| language_understanding   | winogrande                   |                                     |   0.767956 | 5-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| symbolic_problem_solving | agi_eval_lsat_ar             |                                     |   0.230435 | 5-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| symbolic_problem_solving | simple_arithmetic_nospaces   |                                     |   0.357    | 5-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| symbolic_problem_solving | simple_arithmetic_withspaces |                                     |   0.415    | 5-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| reading_comprehension    | agi_eval_lsat_rc             |                                     |   0.675373 | 5-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| reading_comprehension    | agi_eval_lsat_lr             |                                     |   0.507843 | 5-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| reading_comprehension    | agi_eval_sat_en              |                                     |   0.76699  | 5-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| world_knowledge          | arc_challenge                |                                     |   0.553754 | 25-shot           | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| commonsense_reasoning    | copa                         |                                     |   0.84     | 0-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| commonsense_reasoning    | commonsense_qa               |                                     |   0.752662 | 0-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| commonsense_reasoning    | piqa                         |                                     |   0.807943 | 0-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| commonsense_reasoning    | bigbench_strange_stories     |                                     |   0.614943 | 0-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| commonsense_reasoning    | bigbench_strategy_qa         |                                     |   0.618174 | 0-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| language_understanding   | lambada_openai               |                                     |   0.713953 | 0-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| language_understanding   | hellaswag                    |                                     |   0.776837 | 0-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| reading_comprehension    | coqa                         |                                     |   0.462733 | 0-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| reading_comprehension    | boolq                        |                                     |   0.826605 | 0-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| commonsense_reasoning    | openbook_qa                  |                                     |   0.49     | 10-shot           | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| language_understanding   | hellaswag                    |                                     |   0.791675 | 10-shot           | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+|                          | bigbench_cs_algorithms       |                                     |   0.559091 | 10-shot           | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+| symbolic_problem_solving | bigbench_elementary_math_qa  |                                     |   0.409984 | 1-shot            | /network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedCosmoSubsetsAutoMathKhanStaxStanfordFineWebEdu10bt_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup600ba_GradClip2_globalBS128_evalInterval6000ba_wEOS_noWrap |
+2024-06-10 18:21:00,894: rank0[974105][MainThread]: DEBUG: composer.core.engine: Closing the engine.
+2024-06-10 18:21:00,894: rank0[974105][MainThread]: DEBUG: composer.core.engine: Closing callback ConsoleLogger
+2024-06-10 18:21:00,894: rank0[974105][MainThread]: DEBUG: composer.core.engine: Closing callback EvalGauntlet
+2024-06-10 18:21:00,894: rank0[974105][MainThread]: DEBUG: composer.core.engine: Post-closing callback ConsoleLogger
+2024-06-10 18:21:00,894: rank0[974105][MainThread]: DEBUG: composer.core.engine: Post-closing callback EvalGauntlet
+2024-06-10 18:21:00,894: rank0[974105][MainThread]: DEBUG: composer.core.engine: Engine closed.
+Waiting up to 30 seconds for all training processes to terminate. Press Ctrl-C to exit immediately.

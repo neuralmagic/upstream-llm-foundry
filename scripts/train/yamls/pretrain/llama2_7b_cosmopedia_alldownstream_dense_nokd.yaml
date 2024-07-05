@@ -1,0 +1,205 @@
+model_name_or_path: #TODO
+max_seq_len: #TODO
+precision: #TODO
+
+data_local: # TODO
+data_remote: # If blank, files must be present in data_local
+global_seed: 42
+seed: ${global_seed}
+
+max_duration: #TODO
+eval_interval: #TODO
+eval_first: true
+
+global_train_batch_size: #TODO
+device_train_microbatch_size: #TODO
+device_eval_batch_size: #TODO
+
+run_name: # If left blank, will be read from env var $RUN_NAME
+
+model:
+  name: hf_causal_lm
+  use_flash_attention_2: true
+  pretrained: true
+  pretrained_model_name_or_path: ${model_name_or_path}
+  use_auth_token: true
+
+# why do I need it when dataset is already tokenized?
+tokenizer:
+  name: ${model_name_or_path}
+  kwargs:
+    model_max_length: ${max_seq_len}
+
+train_loader:
+  name: text
+  dataset:
+    streams:
+      open_platypus:
+        local: /network/eldar/datasets/llama2_7b/seqlen4k_tokenized/open_platypus
+        remote:
+        split: train
+      open_orca:
+        local: /network/eldar/datasets/llama2_7b/seqlen4k_tokenized/open_orca
+        remote:
+        split: train
+      open_hermes_2_5:
+        local: /network/eldar/datasets/llama2_7b/seqlen4k_tokenized/open_hermes_2_5
+        remote:
+        split: train
+      ultrachat:
+        local: /network/eldar/datasets/llama2_7b/seqlen4k_tokenized/ultrachat
+        remote:
+        split: train
+      dolphin_flan1m:
+        local: /network/eldar/datasets/llama2_7b/seqlen4k_tokenized/dolphin_flan1m
+        remote:
+        split: train
+      dolphin_flan5m:
+        local: /network/eldar/datasets/llama2_7b/seqlen4k_tokenized/dolphin_flan5m
+        remote:
+        split: train
+      mmlu_aux:
+        local: /network/eldar/datasets/llama2_7b/seqlen4k_tokenized/mmlu_auxiliary_train
+        remote:
+        split: train
+      alpaca_cleaned:
+        local: /network/eldar/datasets/llama2_7b/seqlen4k_tokenized/alpaca_cleaned
+        remote:
+        split: train
+      dolly_hhrlhf:
+        local: /network/eldar/datasets/llama2_7b/seqlen4k_tokenized/dolly_hhrlhf
+        remote:
+        split: train
+      flan2021:
+        local: /network/eldar/datasets/llama2_7b/seqlen4k_tokenized/flan2021_submix_original
+        remote:
+        split: train
+      flancot:
+        local: /network/eldar/datasets/llama2_7b/seqlen4k_tokenized/flan_cot
+        remote:
+        split: train
+      winogrande:
+        local: /network/eldar/datasets/llama2_7b/seqlen4k_tokenized/winogrande_all
+        remote:
+        split: train
+      arc:
+        local: /network/eldar/datasets/llama2_7b/seqlen4k_tokenized/arc_all
+        remote:
+        split: train
+      hellaswag:
+        local: /network/eldar/datasets/llama2_7b/seqlen4k_tokenized/hellaswag_all
+        remote:
+        split: train
+      cosmopedia:
+        local: /network/eldar/datasets/llama2_7b_Cosmopedia_seq4k_tokenized
+        remote:
+        split: train
+    max_seq_len: ${max_seq_len}
+    shuffle: true
+    shuffle_seed: ${global_seed}
+  drop_last: true
+  num_workers: 8
+
+
+# TODO: probati dataloadere bez ovis fensi configs
+# eval_loader:
+#   name: text
+#   dataset:
+#     local: ${data_local}
+#     remote: ${data_remote}
+#     split: validation
+#     shuffle: false
+#     max_seq_len: ${max_seq_len}
+#     shuffle_seed: ${global_seed}
+#   drop_last: true
+#   num_workers: 8
+#   # prefetch_factor: 2
+#   # pin_memory: false
+#   # persistent_workers: true
+#   # timeout: 0
+
+scheduler:
+  name: cosine_with_warmup
+  t_warmup: # TODO
+  alpha_f: 0.1
+
+optimizer:
+  name: decoupled_adamw
+  lr: #TODO
+  betas:
+  - 0.9
+  - 0.95
+  eps: 1.0e-08
+  weight_decay: 0.0
+
+algorithms:
+  gradient_clipping:
+    clipping_type: norm
+    clipping_threshold: 1.0
+
+fsdp_config:
+  sharding_strategy: FULL_SHARD
+  mixed_precision: PURE # TODO: DEFAULT vs PURE?
+  activation_checkpointing: true
+  activation_checkpointing_reentrant: false
+  activation_cpu_offload: false
+  limit_all_gathers: true
+
+# Logging
+progress_bar: false
+log_to_console: true
+console_log_interval: 1ba
+
+callbacks:
+  speed_monitor:
+    window_size: 10
+  lr_monitor: {}
+  memory_monitor: {}
+  runtime_estimator: {}
+
+loggers:
+  wandb: {}
+
+# Checkpoint to local filesystem or remote object store
+save_interval: ${eval_interval}
+save_num_checkpoints_to_keep: 1  # Important, this cleans up checkpoints saved to DISK
+save_folder: /nm/drive0/eldar/llmfoundry_checkpoints/llama2_7b_cosmopedia_alldownstream/${run_name}
+# save_folder: s3://my-bucket/my-folder/{run_name}/checkpoints
+
+icl_seq_len: ${max_seq_len}
+icl_tasks:
+-
+  label: arc_challenge
+  dataset_uri: /home/eldar/eldar-upstream/upstream-llm-foundry/scripts/eval/local_data/world_knowledge/arc_challenge_shrinked.jsonl
+  num_fewshot: [25]
+  icl_task_type: multiple_choice
+  continuation_delimiter: "\nAnswer: " # this separates questions from answers
+  metric_names:
+  - InContextLearningMultipleChoiceAccuracy
+  - InContextLearningPerplexity
+-
+  label: mmlu
+  dataset_uri: /home/eldar/eldar-upstream/upstream-llm-foundry/scripts/eval/local_data/world_knowledge/mmlu_shrinked.jsonl
+  num_fewshot: [5]
+  icl_task_type: multiple_choice
+  continuation_delimiter: "\nAnswer: " # this separates questions from answers
+  # has_categories: true  # this splits mmlu into separate categories; lets keep track of global average for now
+  metric_names:
+  - InContextLearningMultipleChoiceAccuracy
+  - InContextLearningPerplexity
+-
+  label: hellaswag
+  dataset_uri: /home/eldar/eldar-upstream/upstream-llm-foundry/scripts/eval/local_data/language_understanding/hellaswag_shrinked.jsonl
+  num_fewshot: [10]
+  icl_task_type: multiple_choice
+  metric_names:
+  - InContextLearningMultipleChoiceAccuracy
+  - InContextLearningPerplexity
+-
+  label: winogrande
+  dataset_uri: /home/eldar/eldar-upstream/upstream-llm-foundry/scripts/eval/local_data/language_understanding/winogrande_shrinked.jsonl
+  num_fewshot: [5]
+  icl_task_type: schema
+  metric_names:
+  - InContextLearningMultipleChoiceAccuracy
+  - InContextLearningPerplexity

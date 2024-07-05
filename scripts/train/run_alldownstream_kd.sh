@@ -1,9 +1,9 @@
 #!/bin/bash
 
 export WORLD_SIZE=24
-export NODE_RANK=0
+export NODE_RANK=2
 export MASTER_ADDR=192.168.201.158
-export MASTER_PORT=12345
+export MASTER_PORT=12349
 
 export NCCL_DEBUG=INFO
 export NCCL_DEBUG_SUBSYS=INIT
@@ -40,10 +40,12 @@ export HARDNESS_KL=0.0
 export HARDNESS_CE=1.0
 export HARDNESS_SQUAREHEAD=1.0
 
-export RUN_NAME=openplatypus+openorca+openhermes25+ultrachat+dolphin+mmluaux+alpacaclean+dollyhhrlhf+flan2021+flancot+winograndeall+arcall+hellaswagall_${MDL_TAG}_${PRECISION}_maxseq${MAX_SEQ_LEN}_${MAX_DURATION}_cosineLR${LR}_warmup${WARMUP}_noGradClip_globalBS${GLOBAL_BS}_evalInterval${EVAL_INTERVAL}_fusedCE${USE_FUSED_CROSSENTROPY_LOSS}_wKD_CE${HARDNESS_CE}_SQ${HARDNESS_SQUAREHEAD}
+export LR_SCHEDULER=constant_with_warmup
+
+export RUN_NAME=platy+orca+hermes+ultra+dolp+mmlu+alpaca+dollyhh+flan2021+flancot+winogrande+arc+hella_oneshot70_${PRECISION}_maxseq${MAX_SEQ_LEN}_${MAX_DURATION}_${LR_SCHEDULER}LR${LR}_warmup${WARMUP}_noGradClip_globalBS${GLOBAL_BS}_evalInterval${EVAL_INTERVAL}_wKD_CE${HARDNESS_CE}_SQ${HARDNESS_SQUAREHEAD}
 
 composer train_sparse.py \
-    yamls/pretrain/llama2_7b_dset_ablations_concats.yaml \
+    yamls/pretrain/llama2_7b_dset_ablations_concats_constLR.yaml \
     model_name_or_path=${MDL} \
     max_seq_len=${MAX_SEQ_LEN} \
     max_duration=${MAX_DURATION} \
@@ -63,4 +65,5 @@ composer train_sparse.py \
     knowledge_distillation.hardness_kldiv=${HARDNESS_KL} \
     knowledge_distillation.hardness_ce=${HARDNESS_CE} \
     knowledge_distillation.hardness_squarehead=${HARDNESS_SQUAREHEAD} \
-    dist_timeout=10000000
+    dist_timeout=10000000 \
+    scheduler.name=${LR_SCHEDULER}
