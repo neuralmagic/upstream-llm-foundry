@@ -1,0 +1,15 @@
+icl_tasks:
+-
+  label: gsm8k
+  dataset_uri: eval/local_data/symbolic_problem_solving/gsm8k.jsonl
+  num_fewshot: [5]
+  icl_task_type: question_answering
+  cot_delimiter: " #### "
+  continuation_delimiter: "\nAnswer: "
+  question_prelimiter: "Question: "
+  do_normalization: false
+  early_stopping_criteria:
+  - "\n\n"
+  - "Question:"
+  metric_names:
+  - InContextLearningQAAccuracy

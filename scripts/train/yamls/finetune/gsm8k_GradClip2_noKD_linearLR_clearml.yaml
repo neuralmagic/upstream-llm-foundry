@@ -84,9 +84,9 @@ optimizer:
 # will be incorrect
 algorithms:
   mask_pruned_weights: {}
-#   gradient_clipping:
-#     clipping_type: norm
-#     clipping_threshold: 1.0
+  gradient_clipping:
+    clipping_type: norm
+    clipping_threshold: 2.0
 
 fsdp_config:
   sharding_strategy: FULL_SHARD
@@ -96,12 +96,12 @@ fsdp_config:
   activation_cpu_offload: false
   limit_all_gathers: true
 
-knowledge_distillation:
-  teacher_name_or_path: #TODO
-  temperature: #TODO
-  hardness_kldiv: #TODO
-  hardness_ce: #TODO
-  hardness_squarehead: #TODO
+# knowledge_distillation:
+#   teacher_name_or_path: #TODO
+#   temperature: #TODO
+#   hardness_kldiv: #TODO
+#   hardness_ce: #TODO
+#   hardness_squarehead: #TODO
 
 # Logging
 progress_bar: false
@@ -117,8 +117,10 @@ callbacks:
 
 loggers:
   wandb: {}
+  clearml: {}
 
 # Checkpoint to local filesystem or remote object store
 save_interval: 1dur
 save_num_checkpoints_to_keep: 1  # Important, this cleans up checkpoints saved to DISK
 save_folder: /nm/drive0/eldar/llmfoundry_checkpoints/llama2_7b_gsm8k/${run_name}
+save_weights_only: true

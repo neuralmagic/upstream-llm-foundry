@@ -33,18 +33,69 @@ tokenizer:
 train_loader:
   name: text
   dataset:
-    local: ${data_local}
-    remote: ${data_remote}
-    split: train
-    shuffle: true
+    streams:
+      open_platypus:
+        local: /network/eldar/datasets/llama2_7b/seqlen4k_tokenized/open_platypus
+        remote:
+        split: train
+      open_orca:
+        local: /network/eldar/datasets/llama2_7b/seqlen4k_tokenized/open_orca
+        remote:
+        split: train
+      open_hermes_2_5:
+        local: /network/eldar/datasets/llama2_7b/seqlen4k_tokenized/open_hermes_2_5
+        remote:
+        split: train
+      ultrachat:
+        local: /network/eldar/datasets/llama2_7b/seqlen4k_tokenized/ultrachat
+        remote:
+        split: train
+      dolphin_flan1m:
+        local: /network/eldar/datasets/llama2_7b/seqlen4k_tokenized/dolphin_flan1m
+        remote:
+        split: train
+      dolphin_flan5m:
+        local: /network/eldar/datasets/llama2_7b/seqlen4k_tokenized/dolphin_flan5m
+        remote:
+        split: train
+      mmlu_aux:
+        local: /network/eldar/datasets/llama2_7b/seqlen4k_tokenized/mmlu_auxiliary_train
+        remote:
+        split: train
+      alpaca_cleaned:
+        local: /network/eldar/datasets/llama2_7b/seqlen4k_tokenized/alpaca_cleaned
+        remote:
+        split: train
+      dolly_hhrlhf:
+        local: /network/eldar/datasets/llama2_7b/seqlen4k_tokenized/dolly_hhrlhf
+        remote:
+        split: train
+      flan2021:
+        local: /network/eldar/datasets/llama2_7b/seqlen4k_tokenized/flan2021_submix_original
+        remote:
+        split: train
+      flancot:
+        local: /network/eldar/datasets/llama2_7b/seqlen4k_tokenized/flan_cot
+        remote:
+        split: train
+      winogrande:
+        local: /network/eldar/datasets/llama2_7b/seqlen4k_tokenized/winogrande_all
+        remote:
+        split: train
+      arc:
+        local: /network/eldar/datasets/llama2_7b/seqlen4k_tokenized/arc_all
+        remote:
+        split: train
+      hellaswag:
+        local: /network/eldar/datasets/llama2_7b/seqlen4k_tokenized/hellaswag_all
+        remote:
+        split: train
     max_seq_len: ${max_seq_len}
+    shuffle: true
     shuffle_seed: ${global_seed}
   drop_last: true
   num_workers: 8
-  # prefetch_factor: 2
-  # pin_memory: false
-  # persistent_workers: true
-  # timeout: 0
+
 
 # TODO: probati dataloadere bez ovis fensi configs
 # eval_loader:
@@ -56,12 +107,12 @@ train_loader:
 #     shuffle: false
 #     max_seq_len: ${max_seq_len}
 #     shuffle_seed: ${global_seed}
-#   drop_last: false
+#   drop_last: true
 #   num_workers: 8
-  # prefetch_factor: 2
-  # pin_memory: false
-  # persistent_workers: true
-  # timeout: 0
+#   # prefetch_factor: 2
+#   # pin_memory: false
+#   # persistent_workers: true
+#   # timeout: 0
 
 scheduler:
   name: cosine_with_warmup
@@ -91,12 +142,12 @@ fsdp_config:
   activation_cpu_offload: false
   limit_all_gathers: true
 
-# knowledge_distillation:
-#   teacher_name_or_path: #TODO
-#   temperature: #TODO
-#   hardness_kldiv: #TODO
-#   hardness_ce: #TODO
-#   hardness_squarehead: #TODO
+knowledge_distillation:
+  teacher_name_or_path: #TODO
+  temperature: #TODO
+  hardness_kldiv: #TODO
+  hardness_ce: #TODO
+  hardness_squarehead: #TODO
 
 # Logging
 progress_bar: false
@@ -116,6 +167,7 @@ loggers:
 # Checkpoint to local filesystem or remote object store
 save_interval: ${eval_interval}
 save_num_checkpoints_to_keep: 1  # Important, this cleans up checkpoints saved to DISK
+# save_folder: /home/eldar/llmfoundry_checkpoints/llama2_7b_cosmopedia_alldownstream/${run_name}
 save_folder: /nm/drive0/eldar/llmfoundry_checkpoints/${model_tag}/${dset_tag}/${run_name}
 # save_folder: s3://my-bucket/my-folder/{run_name}/checkpoints
 
@@ -174,7 +226,7 @@ icl_tasks:
   - InContextLearningPerplexity
 # -
 #   label: gsm8k
-#   dataset_uri: /root/github/upstream-llm-foundry/scripts/eval/local_data/symbolic_problem_solving/gsm8k.jsonl
+#   dataset_uri: /home/eldar/eldar-upstream/upstream-llm-foundry/scripts/eval/local_data/symbolic_problem_solving/gsm8k.jsonl
 #   num_fewshot: [5]
 #   icl_task_type: question_answering
 #   cot_delimiter: ' #### '  # we need this
@@ -189,4 +241,3 @@ icl_tasks:
 #   # - InContextLearningLMAccuracy
 #   # - InContextLearningLMExpectedCalibrationError
 #   # - InContextLearningPerplexity
-
