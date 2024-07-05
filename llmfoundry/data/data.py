@@ -160,7 +160,6 @@ def finewebedu(sample):
     if sample['score'] >= float(os.environ["FINEWEBEDU_THRESHOLD"]):
         return sample['text']
     else:
-        # print(f"score of {sample['score']} is below threshold of {float(os.environ['FINEWEBEDU_THRESHOLD'])}, skipping it!")
         return None
 
 
@@ -358,3 +357,4 @@ class ConcatTokensDataset(IterableDataset):
                     self.debug_counter -= 1
                     if self.debug_counter <= 0:
                         os.environ["ELDAR_DEBUG"] = "0"
+

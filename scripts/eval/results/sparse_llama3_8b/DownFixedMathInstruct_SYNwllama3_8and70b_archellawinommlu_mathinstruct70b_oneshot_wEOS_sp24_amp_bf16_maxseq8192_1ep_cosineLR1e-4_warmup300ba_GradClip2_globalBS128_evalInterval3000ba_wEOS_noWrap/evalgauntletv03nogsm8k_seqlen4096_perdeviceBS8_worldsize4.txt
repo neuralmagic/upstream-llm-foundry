@@ -1,0 +1,169 @@
+----****----[eldar debug]----****---- Using fused CrossEntropyLoss from flash_attn.losses.cross_entropy ----****----[eldar debug]----****----
+----****----[eldar debug]----****---- Using fused CrossEntropyLoss from flash_attn.losses.cross_entropy ----****----[eldar debug]----****----
+/home/eldar/eldar-upstream/upstream-llm-foundry/scripts/eval/eval.py:281: UserWarning: Unused parameter global_seed found in cfg. Please check your yaml to ensure this parameter is necessary.
+  warnings.warn(
+/home/eldar/eldar-upstream/upstream-llm-foundry/scripts/eval/eval.py:281: UserWarning: Unused parameter ckpt_path found in cfg. Please check your yaml to ensure this parameter is necessary.
+  warnings.warn(
+[W Utils.hpp:133] Warning: Environment variable NCCL_ASYNC_ERROR_HANDLING is deprecated; use TORCH_NCCL_ASYNC_ERROR_HANDLING instead (function getCvarInt)
+╭─────────────────────────────── Traceback (most recent call last) ────────────────────────────────╮
+│ /home/eldar/eldar-upstream/upstream-transformers/src/transformers/utils/hub.py:398 in            │
+│ cached_file                                                                                      │
+│                                                                                                  │
+│    395 │   user_agent = http_user_agent(user_agent)                                              │
+│    396 │   try:                                                                                  │
+│    397 │   │   # Load from URL or cache if already cached                                        │
+│ ❱  398 │   │   resolved_file = hf_hub_download(                                                  │
+│    399 │   │   │   path_or_repo_id,                                                              │
+│    400 │   │   │   filename,                                                                     │
+│    401 │   │   │   subfolder=None if len(subfolder) == 0 else subfolder,                         │
+│                                                                                                  │
+│ /home/eldar/miniconda3/envs/eldar-upstream/lib/python3.11/site-packages/huggingface_hub/utils/_v │
+│ alidators.py:111 in _inner_fn                                                                    │
+│                                                                                                  │
+│   108 │   │   │   kwargs.items(),  # Kwargs values                                               │
+│   109 │   │   ):                                                                                 │
+│   110 │   │   │   if arg_name in ["repo_id", "from_id", "to_id"]:                                │
+│ ❱ 111 │   │   │   │   validate_repo_id(arg_value)                                                │
+│   112 │   │   │                                                                                  │
+│   113 │   │   │   elif arg_name == "token" and arg_value is not None:                            │
+│   114 │   │   │   │   has_token = True                                                           │
+│                                                                                                  │
+│ /home/eldar/miniconda3/envs/eldar-upstream/lib/python3.11/site-packages/huggingface_hub/utils/_v │
+│ alidators.py:159 in validate_repo_id                                                             │
+│                                                                                                  │
+│   156 │   │   raise HFValidationError(f"Repo id must be a string, not {type(repo_id)}: '{repo_   │
+│   157 │                                                                                          │
+│   158 │   if repo_id.count("/") > 1:                                                             │
+│ ❱ 159 │   │   raise HFValidationError(                                                           │
+│   160 │   │   │   "Repo id must be in the form 'repo_name' or 'namespace/repo_name':"            │
+│   161 │   │   │   f" '{repo_id}'. Use `repo_type` argument if needed."                           │
+│   162 │   │   )                                                                                  │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────╯
+HFValidationError: Repo id must be in the form 'repo_name' or 'namespace/repo_name': 
+'/network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedMathInstruct_SYNwllama3_8and70b_archellawinommlu_mathinstruct70b_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup300
+ba_GradClip2_globalBS128_evalInterval3000ba_wEOS_noWrap'. Use `repo_type` argument if needed.
+
+The above exception was the direct cause of the following exception:
+
+╭─────────────────────────────── Traceback (most recent call last) ────────────────────────────────╮
+│ /home/eldar/eldar-upstream/upstream-llm-foundry/scripts/eval/eval.py:463 in <module>             │
+│                                                                                                  │
+│   460 │   cli_cfg = om.from_cli(args_list)                                                       │
+│   461 │   cfg = om.merge(yaml_cfg, cli_cfg)                                                      │
+│   462 │   assert isinstance(cfg, DictConfig)                                                     │
+│ ❱ 463 │   main(cfg)                                                                              │
+│   464                                                                                            │
+│                                                                                                  │
+│ /home/eldar/eldar-upstream/upstream-llm-foundry/scripts/eval/eval.py:307 in main                 │
+│                                                                                                  │
+│   304 │   trainers = []                                                                          │
+│   305 │   for model_cfg in model_configs:                                                        │
+│   306 │   │   (trainer, logger_keys, eval_gauntlet_callback,                                     │
+│ ❱ 307 │   │    eval_gauntlet_df) = evaluate_model(                                               │
+│   308 │   │   │    model_cfg=model_cfg,                                                          │
+│   309 │   │   │    dist_timeout=dist_timeout,                                                    │
+│   310 │   │   │    run_name=run_name,                                                            │
+│                                                                                                  │
+│ /home/eldar/eldar-upstream/upstream-llm-foundry/scripts/eval/eval.py:90 in evaluate_model        │
+│                                                                                                  │
+│    87 │   │   │   │   │   │   │   │   │   │   │      resolve=True)  # type: ignore               │
+│    88 │   tokenizer_name = tokenizer_cfg['name']                                                 │
+│    89 │   tokenizer_kwargs = tokenizer_cfg.get('kwargs', {})                                     │
+│ ❱  90 │   tokenizer = build_tokenizer(tokenizer_name, tokenizer_kwargs)                          │
+│    91 │                                                                                          │
+│    92 │   evaluators, logger_keys, eval_gauntlet_callback = build_evaluators(                    │
+│    93 │   │   eval_loader_config,                                                                │
+│                                                                                                  │
+│ /home/eldar/eldar-upstream/upstream-llm-foundry/llmfoundry/utils/builders.py:429 in              │
+│ build_tokenizer                                                                                  │
+│                                                                                                  │
+│   426 │   if tokenizer_name.startswith('tiktoken'):                                              │
+│   427 │   │   tokenizer = TiktokenTokenizerWrapper(**tokenizer_kwargs)                           │
+│   428 │   else:                                                                                  │
+│ ❱ 429 │   │   tokenizer = AutoTokenizer.from_pretrained(tokenizer_name,                          │
+│   430 │   │   │   │   │   │   │   │   │   │   │   │     **tokenizer_kwargs)                      │
+│   431 │   │                                                                                      │
+│   432 │   │   # HuggingFace does not respect the model_max_length kwarg, and overrides it with   │
+│                                                                                                  │
+│ /home/eldar/eldar-upstream/upstream-transformers/src/transformers/models/auto/tokenization_auto. │
+│ py:776 in from_pretrained                                                                        │
+│                                                                                                  │
+│   773 │   │   │   return tokenizer_class.from_pretrained(pretrained_model_name_or_path, *input   │
+│   774 │   │                                                                                      │
+│   775 │   │   # Next, let's try to use the tokenizer_config file to get the tokenizer class.     │
+│ ❱ 776 │   │   tokenizer_config = get_tokenizer_config(pretrained_model_name_or_path, **kwargs)   │
+│   777 │   │   if "_commit_hash" in tokenizer_config:                                             │
+│   778 │   │   │   kwargs["_commit_hash"] = tokenizer_config["_commit_hash"]                      │
+│   779 │   │   config_tokenizer_class = tokenizer_config.get("tokenizer_class")                   │
+│                                                                                                  │
+│ /home/eldar/eldar-upstream/upstream-transformers/src/transformers/models/auto/tokenization_auto. │
+│ py:609 in get_tokenizer_config                                                                   │
+│                                                                                                  │
+│   606 │   │   token = use_auth_token                                                             │
+│   607 │                                                                                          │
+│   608 │   commit_hash = kwargs.get("_commit_hash", None)                                         │
+│ ❱ 609 │   resolved_config_file = cached_file(                                                    │
+│   610 │   │   pretrained_model_name_or_path,                                                     │
+│   611 │   │   TOKENIZER_CONFIG_FILE,                                                             │
+│   612 │   │   cache_dir=cache_dir,                                                               │
+│                                                                                                  │
+│ /home/eldar/eldar-upstream/upstream-transformers/src/transformers/utils/hub.py:462 in            │
+│ cached_file                                                                                      │
+│                                                                                                  │
+│    459 │   │   │   return resolved_file                                                          │
+│    460 │   │   raise EnvironmentError(f"There was a specific connection error when trying to lo  │
+│    461 │   except HFValidationError as e:                                                        │
+│ ❱  462 │   │   raise EnvironmentError(                                                           │
+│    463 │   │   │   f"Incorrect path_or_model_id: '{path_or_repo_id}'. Please provide either the  │
+│    464 │   │   ) from e                                                                          │
+│    465 │   return resolved_file                                                                  │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────╯
+OSError: Incorrect path_or_model_id: 
+'/network/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/DownFixedMathInstruct_SYNwllama3_8and70b_archellawinommlu_mathinstruct70b_oneshot_wEOS_sp24_amp_bf16_maxseq8192_1ep_cosineLR1e-4_warmup300
+ba_GradClip2_globalBS128_evalInterval3000ba_wEOS_noWrap'. Please provide either the path to a local folder or the repo_id of a model on the Hub.
+ERROR:composer.cli.launcher:Rank 0 crashed with exit code 1.
+ERROR:composer.cli.launcher:Global rank 0 (PID 108379) exited with code 1
+Waiting up to 30 seconds for all training processes to terminate. Press Ctrl-C to exit immediately.
+Global rank 0 (PID 108379) exited with code 1
+Global rank 1 (PID 108380) exited with code 143
+----------Begin global rank 1 STDOUT----------
+----****----[eldar debug]----****---- Using fused CrossEntropyLoss from flash_attn.losses.cross_entropy ----****----[eldar debug]----****----
+----****----[eldar debug]----****---- Using fused CrossEntropyLoss from flash_attn.losses.cross_entropy ----****----[eldar debug]----****----
+
+----------End global rank 1 STDOUT----------
+----------Begin global rank 1 STDERR----------
+/home/eldar/eldar-upstream/upstream-llm-foundry/scripts/eval/eval.py:281: UserWarning: Unused parameter global_seed found in cfg. Please check your yaml to ensure this parameter is necessary.
+  warnings.warn(
+/home/eldar/eldar-upstream/upstream-llm-foundry/scripts/eval/eval.py:281: UserWarning: Unused parameter ckpt_path found in cfg. Please check your yaml to ensure this parameter is necessary.
+  warnings.warn(
+[W Utils.hpp:133] Warning: Environment variable NCCL_ASYNC_ERROR_HANDLING is deprecated; use TORCH_NCCL_ASYNC_ERROR_HANDLING instead (function getCvarInt)
+
+----------End global rank 1 STDERR----------
+Global rank 2 (PID 108381) exited with code 143
+----------Begin global rank 2 STDOUT----------
+----****----[eldar debug]----****---- Using fused CrossEntropyLoss from flash_attn.losses.cross_entropy ----****----[eldar debug]----****----
+----****----[eldar debug]----****---- Using fused CrossEntropyLoss from flash_attn.losses.cross_entropy ----****----[eldar debug]----****----
+
+----------End global rank 2 STDOUT----------
+----------Begin global rank 2 STDERR----------
+/home/eldar/eldar-upstream/upstream-llm-foundry/scripts/eval/eval.py:281: UserWarning: Unused parameter global_seed found in cfg. Please check your yaml to ensure this parameter is necessary.
+  warnings.warn(
+/home/eldar/eldar-upstream/upstream-llm-foundry/scripts/eval/eval.py:281: UserWarning: Unused parameter ckpt_path found in cfg. Please check your yaml to ensure this parameter is necessary.
+  warnings.warn(
+[W Utils.hpp:133] Warning: Environment variable NCCL_ASYNC_ERROR_HANDLING is deprecated; use TORCH_NCCL_ASYNC_ERROR_HANDLING instead (function getCvarInt)
+
+----------End global rank 2 STDERR----------
+Global rank 3 (PID 108382) exited with code 143
+----------Begin global rank 3 STDOUT----------
+----****----[eldar debug]----****---- Using fused CrossEntropyLoss from flash_attn.losses.cross_entropy ----****----[eldar debug]----****----
+----****----[eldar debug]----****---- Using fused CrossEntropyLoss from flash_attn.losses.cross_entropy ----****----[eldar debug]----****----
+
+----------End global rank 3 STDOUT----------
+----------Begin global rank 3 STDERR----------
+/home/eldar/eldar-upstream/upstream-llm-foundry/scripts/eval/eval.py:281: UserWarning: Unused parameter global_seed found in cfg. Please check your yaml to ensure this parameter is necessary.
+  warnings.warn(
+/home/eldar/eldar-upstream/upstream-llm-foundry/scripts/eval/eval.py:281: UserWarning: Unused parameter ckpt_path found in cfg. Please check your yaml to ensure this parameter is necessary.
+  warnings.warn(
+[W Utils.hpp:133] Warning: Environment variable NCCL_ASYNC_ERROR_HANDLING is deprecated; use TORCH_NCCL_ASYNC_ERROR_HANDLING instead (function getCvarInt)
+
+----------End global rank 3 STDERR----------
