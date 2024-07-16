@@ -313,6 +313,9 @@ class HuggingFaceCheckpointer(Callback):
                         new_model_instance.generation_config.update(
                             **original_model.generation_config.to_dict()
                         )
+                        # llm-foundry manually disables use_cache for all models
+                        new_model_instance.config.update({"use_cache": True})
+                        new_model_instance.generation_config.update(**{"use_cache": True})
 
                 # Then load the state dict in with "assign" so that the state dict
                 # is loaded properly even though the model is initially on meta device.
