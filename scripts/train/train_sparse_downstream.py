@@ -103,7 +103,7 @@ class KnowledgeDistillation(Algorithm):
 
             kl_loss = torch.tensor(0.0)
             if self.hardness_kldiv > 0.0:
-                kl_loss += self.hardness_kldiv * kldiv_loss(student_logits, teacher_logits, self.temperature)
+                kl_loss = self.hardness_kldiv * kldiv_loss(student_logits, teacher_logits, self.temperature)
 
             squarehead_loss = torch.tensor(0.0)
             to_log_squarehead = {}
