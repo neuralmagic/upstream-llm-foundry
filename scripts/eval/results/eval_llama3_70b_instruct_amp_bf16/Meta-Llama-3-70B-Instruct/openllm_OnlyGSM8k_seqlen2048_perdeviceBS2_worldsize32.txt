@@ -1,0 +1,216 @@
+----****----[eldar debug]----****---- Using fused CrossEntropyLoss from flash_attn.losses.cross_entropy ----****----[eldar debug]----****----
+----****----[eldar debug]----****---- Using fused CrossEntropyLoss from flash_attn.losses.cross_entropy ----****----[eldar debug]----****----
+/home/eldar/eldar-upstream/upstream-llm-foundry/scripts/eval/eval.py:281: UserWarning: Unused parameter global_seed found in cfg. Please check your yaml to ensure this parameter is necessary.
+  warnings.warn(
+/home/eldar/eldar-upstream/upstream-llm-foundry/scripts/eval/eval.py:281: UserWarning: Unused parameter ckpt_path found in cfg. Please check your yaml to ensure this parameter is necessary.
+  warnings.warn(
+[W Utils.hpp:133] Warning: Environment variable NCCL_ASYNC_ERROR_HANDLING is deprecated; use TORCH_NCCL_ASYNC_ERROR_HANDLING instead (function getCvarInt)
+H100-GPU19:963354:963354 [0] NCCL INFO cudaDriverVersion 12030
+H100-GPU19:963354:963354 [0] NCCL INFO Bootstrap : Using ibs3:fe80::a288:c203:8c:df72%ibs3<0>
+H100-GPU19:963354:963354 [0] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
+H100-GPU19:963354:964579 [0] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [1]mlx5_1:1/IB [2]mlx5_2:1/IB [3]mlx5_3:1/IB [4]mlx5_4:1/IB [5]mlx5_5:1/IB [6]mlx5_6:1/IB [7]mlx5_7:1/IB [RO]; OOB ibs3:fe80::a288:c203:8c:df72%ibs3<0>
+H100-GPU19:963354:964579 [0] NCCL INFO Using non-device net plugin version 0
+H100-GPU19:963354:964579 [0] NCCL INFO Using network IB
+H100-GPU19:963354:964579 [0] NCCL INFO comm 0xbf2ba10 rank 16 nranks 32 cudaDev 0 nvmlDev 0 busId 4000 commId 0xe39075cf366b0ea7 - Init START
+H100-GPU19:963354:964579 [0] NCCL INFO Setting affinity for GPU 0 to ffffffff,ffffffff,ffffffff,00000000,00000000,00000000,ffffffff,ffffffff,ffffffff
+H100-GPU19:963354:964579 [0] NCCL INFO NVLS multicast support is available on dev 0
+H100-GPU19:963354:964579 [0] NCCL INFO Trees [0] 17/24/-1->16->0 [1] -1/-1/-1->16->23 [2] 17/-1/-1->16->23 [3] 17/11/-1->16->19 [4] 17/-1/-1->16->23 [5] 17/-1/-1->16->23 [6] 17/-1/-1->16->23 [7] 17/-1/-1->16->22 [8] 17/-1/-1->16->9 [9] -1/-1/-1->16->23 [10] 17/-1/-1->16->23 [11] 17/-1/-1->16->19 [12] 17/-1/-1->16->23 [13] 17/-1/-1->16->23 [14] 17/-1/-1->16->23 [15] 17/-1/-1->16->22
+H100-GPU19:963354:964579 [0] NCCL INFO P2P Chunksize set to 131072
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 07/0 : 16[0] -> 20[4] via P2P/CUMEM
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 15/0 : 16[0] -> 20[4] via P2P/CUMEM
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 00/0 : 9[1] -> 16[0] [receive] via NET/IB/2
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 08/0 : 9[1] -> 16[0] [receive] via NET/IB/2
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 00/0 : 16[0] -> 23[7] via P2P/CUMEM
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 01/0 : 16[0] -> 23[7] via P2P/CUMEM
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 02/0 : 16[0] -> 23[7] via P2P/CUMEM
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 04/0 : 16[0] -> 23[7] via P2P/CUMEM
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 05/0 : 16[0] -> 23[7] via P2P/CUMEM
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 06/0 : 16[0] -> 23[7] via P2P/CUMEM
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 08/0 : 16[0] -> 23[7] via P2P/CUMEM
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 09/0 : 16[0] -> 23[7] via P2P/CUMEM
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 10/0 : 16[0] -> 23[7] via P2P/CUMEM
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 12/0 : 16[0] -> 23[7] via P2P/CUMEM
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 13/0 : 16[0] -> 23[7] via P2P/CUMEM
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 14/0 : 16[0] -> 23[7] via P2P/CUMEM
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 03/0 : 16[0] -> 27[3] [send] via NET/IB/0
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 11/0 : 16[0] -> 27[3] [send] via NET/IB/0
+H100-GPU19:963354:964579 [0] NCCL INFO Connected all rings
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 00/0 : 16[0] -> 17[1] via P2P/CUMEM
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 02/0 : 16[0] -> 17[1] via P2P/CUMEM
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 03/0 : 16[0] -> 17[1] via P2P/CUMEM
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 04/0 : 16[0] -> 17[1] via P2P/CUMEM
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 05/0 : 16[0] -> 17[1] via P2P/CUMEM
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 06/0 : 16[0] -> 17[1] via P2P/CUMEM
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 07/0 : 16[0] -> 17[1] via P2P/CUMEM
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 08/0 : 16[0] -> 17[1] via P2P/CUMEM
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 10/0 : 16[0] -> 17[1] via P2P/CUMEM
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 11/0 : 16[0] -> 17[1] via P2P/CUMEM
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 12/0 : 16[0] -> 17[1] via P2P/CUMEM
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 13/0 : 16[0] -> 17[1] via P2P/CUMEM
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 14/0 : 16[0] -> 17[1] via P2P/CUMEM
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 15/0 : 16[0] -> 17[1] via P2P/CUMEM
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 03/0 : 16[0] -> 19[3] via P2P/CUMEM
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 11/0 : 16[0] -> 19[3] via P2P/CUMEM
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 03/0 : 11[3] -> 16[0] [receive] via NET/IB/0
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 07/0 : 16[0] -> 22[6] via P2P/CUMEM
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 15/0 : 16[0] -> 22[6] via P2P/CUMEM
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 00/0 : 16[0] -> 24[0] [send] via NET/IB/2
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 00/0 : 0[0] -> 16[0] [receive] via NET/IB/2
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 00/0 : 16[0] -> 0[0] [send] via NET/IB/2
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 00/0 : 24[0] -> 16[0] [receive] via NET/IB/2
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 08/0 : 16[0] -> 9[1] [send] via NET/IB/2
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 03/0 : 16[0] -> 11[3] [send] via NET/IB/0
+H100-GPU19:963354:964579 [0] NCCL INFO Connected all trees
+H100-GPU19:963354:964579 [0] NCCL INFO NVLS comm 0xbf2ba10 headRank 0 nHeads 8 buffSize 4194304 memSize 2097152 nvlsPerRankSize 201326592 nvlsTotalSize 1610612736
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 00/0 : 8[0] -> 16[0] [receive] via NET/IB/2
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 01/0 : 8[0] -> 16[0] [receive] via NET/IB/2
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 02/0 : 8[0] -> 16[0] [receive] via NET/IB/2
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 03/0 : 8[0] -> 16[0] [receive] via NET/IB/2
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 04/0 : 8[0] -> 16[0] [receive] via NET/IB/2
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 05/0 : 8[0] -> 16[0] [receive] via NET/IB/2
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 06/0 : 8[0] -> 16[0] [receive] via NET/IB/2
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 07/0 : 8[0] -> 16[0] [receive] via NET/IB/2
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 08/0 : 8[0] -> 16[0] [receive] via NET/IB/2
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 09/0 : 8[0] -> 16[0] [receive] via NET/IB/2
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 10/0 : 8[0] -> 16[0] [receive] via NET/IB/2
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 11/0 : 8[0] -> 16[0] [receive] via NET/IB/2
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 12/0 : 8[0] -> 16[0] [receive] via NET/IB/2
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 13/0 : 8[0] -> 16[0] [receive] via NET/IB/2
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 14/0 : 8[0] -> 16[0] [receive] via NET/IB/2
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 15/0 : 8[0] -> 16[0] [receive] via NET/IB/2
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 02/0 : 16[0] -> 24[0] [send] via NET/IB/2
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 04/0 : 16[0] -> 24[0] [send] via NET/IB/2
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 06/0 : 16[0] -> 24[0] [send] via NET/IB/2
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 08/0 : 16[0] -> 24[0] [send] via NET/IB/2
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 10/0 : 16[0] -> 24[0] [send] via NET/IB/2
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 12/0 : 16[0] -> 24[0] [send] via NET/IB/2
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 14/0 : 16[0] -> 24[0] [send] via NET/IB/2
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 02/0 : 0[0] -> 16[0] [receive] via NET/IB/2
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 04/0 : 0[0] -> 16[0] [receive] via NET/IB/2
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 06/0 : 0[0] -> 16[0] [receive] via NET/IB/2
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 08/0 : 0[0] -> 16[0] [receive] via NET/IB/2
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 10/0 : 0[0] -> 16[0] [receive] via NET/IB/2
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 12/0 : 0[0] -> 16[0] [receive] via NET/IB/2
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 14/0 : 0[0] -> 16[0] [receive] via NET/IB/2
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 02/0 : 16[0] -> 0[0] [send] via NET/IB/2
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 04/0 : 16[0] -> 0[0] [send] via NET/IB/2
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 06/0 : 16[0] -> 0[0] [send] via NET/IB/2
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 08/0 : 16[0] -> 0[0] [send] via NET/IB/2
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 10/0 : 16[0] -> 0[0] [send] via NET/IB/2
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 12/0 : 16[0] -> 0[0] [send] via NET/IB/2
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 14/0 : 16[0] -> 0[0] [send] via NET/IB/2
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 02/0 : 24[0] -> 16[0] [receive] via NET/IB/2
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 04/0 : 24[0] -> 16[0] [receive] via NET/IB/2
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 06/0 : 24[0] -> 16[0] [receive] via NET/IB/2
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 08/0 : 24[0] -> 16[0] [receive] via NET/IB/2
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 10/0 : 24[0] -> 16[0] [receive] via NET/IB/2
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 12/0 : 24[0] -> 16[0] [receive] via NET/IB/2
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 14/0 : 24[0] -> 16[0] [receive] via NET/IB/2
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 00/0 : 16[0] -> 8[0] [send] via NET/IB/2
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 01/0 : 16[0] -> 8[0] [send] via NET/IB/2
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 02/0 : 16[0] -> 8[0] [send] via NET/IB/2
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 03/0 : 16[0] -> 8[0] [send] via NET/IB/2
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 04/0 : 16[0] -> 8[0] [send] via NET/IB/2
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 05/0 : 16[0] -> 8[0] [send] via NET/IB/2
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 06/0 : 16[0] -> 8[0] [send] via NET/IB/2
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 07/0 : 16[0] -> 8[0] [send] via NET/IB/2
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 08/0 : 16[0] -> 8[0] [send] via NET/IB/2
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 09/0 : 16[0] -> 8[0] [send] via NET/IB/2
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 10/0 : 16[0] -> 8[0] [send] via NET/IB/2
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 11/0 : 16[0] -> 8[0] [send] via NET/IB/2
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 12/0 : 16[0] -> 8[0] [send] via NET/IB/2
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 13/0 : 16[0] -> 8[0] [send] via NET/IB/2
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 14/0 : 16[0] -> 8[0] [send] via NET/IB/2
+H100-GPU19:963354:964579 [0] NCCL INFO Channel 15/0 : 16[0] -> 8[0] [send] via NET/IB/2
+H100-GPU19:963354:964579 [0] NCCL INFO Connected NVLS tree
+H100-GPU19:963354:964579 [0] NCCL INFO threadThresholds 8/8/64 | 256/8/64 | 512 | 512
+H100-GPU19:963354:964579 [0] NCCL INFO 16 coll channels, 16 nvls channels, 16 p2p channels, 2 p2p channels per peer
+H100-GPU19:963354:964579 [0] NCCL INFO comm 0xbf2ba10 rank 16 nranks 32 cudaDev 0 nvmlDev 0 busId 4000 commId 0xe39075cf366b0ea7 - Init COMPLETE
+2024-07-23 04:57:03,814: rank16[963354][MainThread]: INFO: llmfoundry.utils.builders: Extracting ICL task config from path: eval/yamls/openllm_onlyGSM8k.yaml
+/home/eldar/eldar-upstream/upstream-transformers/src/transformers/models/auto/configuration_auto.py:1111: FutureWarning: The `use_auth_token` argument is deprecated and will be removed in v5 of Transformers. Please use `token` instead.
+  warnings.warn(
+/home/eldar/eldar-upstream/upstream-transformers/src/transformers/models/auto/auto_factory.py:468: FutureWarning: The `use_auth_token` argument is deprecated and will be removed in v5 of Transformers. Please use `token` instead.
+  warnings.warn(
+Loading checkpoint shards:   0%|          | 0/30 [00:00<?, ?it/s]Loading checkpoint shards:   3%|▎         | 1/30 [00:00<00:18,  1.60it/s]Loading checkpoint shards:   7%|▋         | 2/30 [00:01<00:16,  1.71it/s]Loading checkpoint shards:  10%|█         | 3/30 [00:01<00:16,  1.69it/s]Loading checkpoint shards:  13%|█▎        | 4/30 [00:02<00:15,  1.70it/s]Loading checkpoint shards:  17%|█▋        | 5/30 [00:02<00:14,  1.74it/s]Loading checkpoint shards:  20%|██        | 6/30 [00:03<00:13,  1.76it/s]Loading checkpoint shards:  23%|██▎       | 7/30 [00:04<00:13,  1.76it/s]Loading checkpoint shards:  27%|██▋       | 8/30 [00:04<00:12,  1.75it/s]Loading checkpoint shards:  30%|███       | 9/30 [00:05<00:11,  1.78it/s]Loading checkpoint shards:  33%|███▎      | 10/30 [00:05<00:10,  1.83it/s]Loading checkpoint shards:  37%|███▋      | 11/30 [00:06<00:10,  1.84it/s]Loading checkpoint shards:  40%|████      | 12/30 [00:06<00:09,  1.86it/s]Loading checkpoint shards:  43%|████▎     | 13/30 [00:07<00:09,  1.88it/s]Loading checkpoint shards:  47%|████▋     | 14/30 [00:07<00:08,  1.89it/s]Loading checkpoint shards:  50%|█████     | 15/30 [00:08<00:07,  1.93it/s]Loading checkpoint shards:  53%|█████▎    | 16/30 [00:08<00:07,  1.96it/s]Loading checkpoint shards:  57%|█████▋    | 17/30 [00:09<00:06,  1.98it/s]Loading checkpoint shards:  60%|██████    | 18/30 [00:09<00:06,  1.96it/s]Loading checkpoint shards:  63%|██████▎   | 19/30 [00:10<00:05,  1.94it/s]Loading checkpoint shards:  67%|██████▋   | 20/30 [00:10<00:05,  1.96it/s]Loading checkpoint shards:  70%|███████   | 21/30 [00:11<00:04,  1.98it/s]Loading checkpoint shards:  73%|███████▎  | 22/30 [00:11<00:04,  1.99it/s]Loading checkpoint shards:  77%|███████▋  | 23/30 [00:12<00:03,  1.97it/s]Loading checkpoint shards:  80%|████████  | 24/30 [00:12<00:03,  1.95it/s]Loading checkpoint shards:  83%|████████▎ | 25/30 [00:13<00:02,  1.96it/s]Loading checkpoint shards:  87%|████████▋ | 26/30 [00:13<00:02,  1.97it/s]Loading checkpoint shards:  90%|█████████ | 27/30 [00:14<00:01,  1.98it/s]Loading checkpoint shards:  93%|█████████▎| 28/30 [00:14<00:01,  1.95it/s]Loading checkpoint shards:  97%|█████████▋| 29/30 [00:15<00:00,  1.94it/s]Loading checkpoint shards: 100%|██████████| 30/30 [00:15<00:00,  2.20it/s]Loading checkpoint shards: 100%|██████████| 30/30 [00:15<00:00,  1.91it/s]
+2024-07-23 04:57:43,691: rank16[963354][MainThread]: INFO: composer.utils.reproducibility: Setting seed to 58
+/home/eldar/eldar-upstream/upstream-composer/composer/trainer/trainer.py:1163: UserWarning: No optimizer was specified. Defaulting to DecoupledSGDW(lr=0.1)
+  warnings.warn((
+2024-07-23 04:57:43,694: rank16[963354][MainThread]: INFO: composer.trainer.trainer: Run name: openllm_OnlyGSM8k_seqlen2048_perdeviceBS2_worldsize32
+2024-07-23 04:57:45,015: rank16[963354][MainThread]: INFO: composer.trainer.trainer: Stepping schedulers every batch. To step schedulers every epoch, set `step_schedulers_every_batch=False`.
+2024-07-23 04:57:45,124: rank16[963354][MainThread]: INFO: composer.utils.reproducibility: Setting seed to 42
+2024-07-23 04:59:58,536: rank16[963354][MainThread]: DEBUG: composer.utils.reproducibility: Restoring the RNG state
+2024-07-23 04:59:58,537: rank16[963354][MainThread]: INFO: composer.trainer.trainer: Setting seed to 58
+2024-07-23 04:59:58,537: rank16[963354][MainThread]: INFO: composer.utils.reproducibility: Setting seed to 58
+max_seq_len: 2048
+precision: amp_bf16
+device_eval_batch_size: 2
+global_seed: 42
+seed: 42
+ckpt_path: meta-llama/Meta-Llama-3-70B-Instruct
+models:
+- model_name: meta-llama/Meta-Llama-3-70B-Instruct
+  model:
+    name: hf_causal_lm
+    pretrained: true
+    init_device: mixed
+    use_auth_token: true
+    use_flash_attention_2: true
+    pretrained_model_name_or_path: meta-llama/Meta-Llama-3-70B-Instruct
+    master_weights_dtype: bf16
+  tokenizer:
+    name: meta-llama/Meta-Llama-3-70B-Instruct
+    kwargs:
+      model_max_length: 2048
+fsdp_config:
+  sharding_strategy: FULL_SHARD
+  mixed_precision: PURE
+  activation_checkpointing: false
+  activation_checkpointing_reentrant: false
+  activation_cpu_offload: false
+  limit_all_gathers: true
+  sync_module_states: true
+  state_dict_type: sharded
+icl_tasks: eval/yamls/openllm_onlyGSM8k.yaml
+dist_timeout: 10000000
+
+2024-07-23 05:00:01,707: rank16[963354][MainThread]: INFO: composer.trainer.trainer: Added ['gsm8k/5-shot'] to eval_metrics.
+******************************
+Config:
+composer_commit_hash: None
+composer_version: 0.20.1
+node_name: unknown because NODENAME environment variable not set
+num_gpus_per_node: 8
+num_nodes: 4
+rank_zero_seed: 42
+
+******************************
+[Eval batch=1/21] Eval on gsm8k/5-shot data
+[Eval batch=3/21] Eval on gsm8k/5-shot data
+[Eval batch=5/21] Eval on gsm8k/5-shot data
+[Eval batch=7/21] Eval on gsm8k/5-shot data
+[Eval batch=9/21] Eval on gsm8k/5-shot data
+[Eval batch=11/21] Eval on gsm8k/5-shot data
+[Eval batch=13/21] Eval on gsm8k/5-shot data
+[Eval batch=15/21] Eval on gsm8k/5-shot data
+[Eval batch=17/21] Eval on gsm8k/5-shot data
+[Eval batch=19/21] Eval on gsm8k/5-shot data
+[Eval batch=21/21] Eval on gsm8k/5-shot data:
+	 Eval metrics/gsm8k/5-shot/InContextLearningQAAccuracy: 0.9045
+Printing complete results for all models
+| Category   | Benchmark   | Subtask   |   Accuracy | Number few shot   | Model                                |
+|:-----------|:------------|:----------|-----------:|:------------------|:-------------------------------------|
+|            | gsm8k       |           |   0.904473 | 5-shot            | meta-llama/Meta-Llama-3-70B-Instruct |
+2024-07-23 07:46:36,621: rank16[963354][MainThread]: DEBUG: composer.core.engine: Closing the engine.
+2024-07-23 07:46:36,621: rank16[963354][MainThread]: DEBUG: composer.core.engine: Closing callback ConsoleLogger
+2024-07-23 07:46:36,621: rank16[963354][MainThread]: DEBUG: composer.core.engine: Post-closing callback ConsoleLogger
+2024-07-23 07:46:36,621: rank16[963354][MainThread]: DEBUG: composer.core.engine: Engine closed.
+H100-GPU19:963354:964663 [0] NCCL INFO [Service thread] Connection closed by localRank 5
+H100-GPU19:963354:964663 [0] NCCL INFO [Service thread] Connection closed by localRank 3
+H100-GPU19:963354:964663 [0] NCCL INFO [Service thread] Connection closed by localRank 2
+H100-GPU19:963354:964663 [0] NCCL INFO [Service thread] Connection closed by localRank 6
+H100-GPU19:963354:964663 [0] NCCL INFO [Service thread] Connection closed by localRank 7
+H100-GPU19:963354:964663 [0] NCCL INFO [Service thread] Connection closed by localRank 1
+H100-GPU19:963354:964663 [0] NCCL INFO [Service thread] Connection closed by localRank 4
+H100-GPU19:963354:964663 [0] NCCL INFO [Service thread] Connection closed by localRank 0
+H100-GPU19:963354:963354 [0] NCCL INFO comm 0xbf2ba10 rank 16 nranks 32 cudaDev 0 busId 4000 - Abort COMPLETE
+Waiting up to 30 seconds for all training processes to terminate. Press Ctrl-C to exit immediately.
