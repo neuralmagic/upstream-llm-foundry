@@ -71,6 +71,22 @@ class MaskPrunedWeights(Algorithm):
         state.model.apply(mask_weights)
 
 
+class MaskPrunedWeights(Algorithm):
+    def match(self, event, state):
+        # masking weights after optimizer step should be sufficient
+        # if we detect weird behaviour, we can also do it before the forward pass
+        # by adding `or event == Event.BATCH_START`
+        return event == Event.BATCH_END
+
+    @torch.no_grad()
+    def apply(self, event, state, logger):
+        def mask_weights(module):
+            if hasattr(module, 'mask'):
+                module.weight *= module.mask
+
+        state.model.apply(mask_weights)
+
+
 def build_evaluators(
     eval_loader_config: Optional[Union[dict[str, Any], list[dict[str, Any]]]],
     icl_tasks_config: Optional[Union[str, list[dict[str, Any]]]],
