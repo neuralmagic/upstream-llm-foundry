@@ -31,29 +31,72 @@ tokenizer:
     model_max_length: ${max_seq_len}
 
 train_loader:
-  name: text
+  name: finetuning
   dataset:
     streams:
+      open_platypus:
+        remote: /network/eldar/datasets/llama3_8b_instruct/maxseqlen8k_chat_tokenized/open_platypus
+        local:
+        split: train
       open_orca:
-        remote: /network/eldar/datasets/llama2_7b/seqlen4k_tokenized/open_orca
+        remote: /network/eldar/datasets/llama3_8b_instruct/maxseqlen8k_chat_tokenized/open_orca
         local:
         split: train
-        choose: 364815
-      cosmopedia:
-        remote: /network/eldar/datasets/llama2_7b_Cosmopedia_seq4k_tokenized
+      open_hermes_2_5:
+        remote: /network/eldar/datasets/llama3_8b_instruct/maxseqlen8k_chat_tokenized/open_hermes_2_5
         local:
         split: train
-        choose: 5738453
-      slimpajama:
-        remote: /network/eldar/datasets/llama2_7b_SlimPajama_seq4k_tokenized
+      ultrachat:
+        remote: /network/eldar/datasets/llama3_8b_instruct/maxseqlen8k_chat_tokenized/ultrachat
         local:
         split: train
-        choose: 6850464
+      dolphin_flan1m:
+        remote: /network/eldar/datasets/llama3_8b_instruct/maxseqlen8k_chat_tokenized/dolphin_flan1m
+        local:
+        split: train
+      dolphin_flan5m:
+        remote: /network/eldar/datasets/llama3_8b_instruct/maxseqlen8k_chat_tokenized/dolphin_flan5m
+        local:
+        split: train
+      mmlu_aux:
+        remote: /network/eldar/datasets/llama3_8b_instruct/maxseqlen8k_chat_tokenized/mmlu_auxiliary_train
+        local:
+        split: train
+      alpaca_cleaned:
+        remote: /network/eldar/datasets/llama3_8b_instruct/maxseqlen8k_chat_tokenized/alpaca_cleaned
+        local:
+        split: train
+      dolly_hhrlhf:
+        remote: /network/eldar/datasets/llama3_8b_instruct/maxseqlen8k_chat_tokenized/dolly_hhrlhf
+        local:
+        split: train
+      flan2021:
+        remote: /network/eldar/datasets/llama3_8b_instruct/maxseqlen8k_chat_tokenized/flan2021_submix_original
+        local:
+        split: train
+      flancot:
+        remote: /network/eldar/datasets/llama3_8b_instruct/maxseqlen8k_chat_tokenized/flan_cot
+        local:
+        split: train
+      winogrande:
+        remote: /network/eldar/datasets/llama3_8b_instruct/maxseqlen8k_chat_tokenized/winogrande_all_v2
+        local:
+        split: train
+      arc:
+        remote: /network/eldar/datasets/llama3_8b_instruct/maxseqlen8k_chat_tokenized/arc_all
+        local:
+        split: train
+      hellaswag:
+        remote: /network/eldar/datasets/llama3_8b_instruct/maxseqlen8k_chat_tokenized/hellaswag_all_v2
+        local:
+        split: train
     max_seq_len: ${max_seq_len}
     shuffle: true
     shuffle_seed: ${global_seed}
+    decoder_only_format: true
   drop_last: true
   num_workers: 8
+
 
 # TODO: probati dataloadere bez ovis fensi configs
 # eval_loader:
@@ -88,9 +131,9 @@ optimizer:
 
 algorithms:
   mask_pruned_weights: {}
-  # gradient_clipping:
-  #   clipping_type: norm
-  #   clipping_threshold: 1.0
+  gradient_clipping:
+    clipping_type: norm
+    clipping_threshold: 2.0
 
 fsdp_config:
   sharding_strategy: FULL_SHARD
@@ -125,16 +168,8 @@ loggers:
 # Checkpoint to local filesystem or remote object store
 save_interval: ${eval_interval}
 save_num_checkpoints_to_keep: 1  # Important, this cleans up checkpoints saved to DISK
-save_folder: /home/eldar/llmfoundry_checkpoints/llama2_7b_cosmopedia_slimpajama_openorca/${run_name}
+save_folder: /home/eldar/llmfoundry_checkpoints/llama3_8b_instruct/${run_name}
 # save_folder: s3://my-bucket/my-folder/{run_name}/checkpoints
-
-# [DONE] ARC: 25-shot, arc-challenge (acc_norm)
-# [DONE] MMLU: 5-shot, hendrycksTest-abstract_algebra,hendrycksTest-anatomy,hendrycksTest-astronomy,hendrycksTest-business_ethics,hendrycksTest-clinical_knowledge,hendrycksTest-college_biology,hendrycksTest-college_chemistry,hendrycksTest-college_computer_science,hendrycksTest-college_mathematics,hendrycksTest-college_medicine,hendrycksTest-college_physics,hendrycksTest-computer_security,hendrycksTest-conceptual_physics,hendrycksTest-econometrics,hendrycksTest-electrical_engineering,hendrycksTest-elementary_mathematics,hendrycksTest-formal_logic,hendrycksTest-global_facts,hendrycksTest-high_school_biology,hendrycksTest-high_school_chemistry,hendrycksTest-high_school_computer_science,hendrycksTest-high_school_european_history,hendrycksTest-high_school_geography,hendrycksTest-high_school_government_and_politics,hendrycksTest-high_school_macroeconomics,hendrycksTest-high_school_mathematics,hendrycksTest-high_school_microeconomics,hendrycksTest-high_school_physics,hendrycksTest-high_school_psychology,hendrycksTest-high_school_statistics,hendrycksTest-high_school_us_history,hendrycksTest-high_school_world_history,hendrycksTest-human_aging,hendrycksTest-human_sexuality,hendrycksTest-international_law,hendrycksTest-jurisprudence,hendrycksTest-logical_fallacies,hendrycksTest-machine_learning,hendrycksTest-management,hendrycksTest-marketing,hendrycksTest-medical_genetics,hendrycksTest-miscellaneous,hendrycksTest-moral_disputes,hendrycksTest-moral_scenarios,hendrycksTest-nutrition,hendrycksTest-philosophy,hendrycksTest-prehistory,hendrycksTest-professional_accounting,hendrycksTest-professional_law,hendrycksTest-professional_medicine,hendrycksTest-professional_psychology,hendrycksTest-public_relations,hendrycksTest-security_studies,hendrycksTest-sociology,hendrycksTest-us_foreign_policy,hendrycksTest-virology,hendrycksTest-world_religions
-# [DONE] HellaSwag: 10-shot, hellaswag (acc_norm)
-# [DONE] Winogrande: 5-shot, winogrande (acc)
-# [DONE] GSM8k: 5-shot, gsm8k (acc)
-# [MISSING] TruthfulQA: 0-shot, truthfulqa-mc (mc2)
-# (average of all the results acc)
 
 icl_seq_len: ${max_seq_len}
 icl_tasks:
@@ -146,8 +181,6 @@ icl_tasks:
   continuation_delimiter: "\nAnswer: " # this separates questions from answers
   metric_names:
   - InContextLearningMultipleChoiceAccuracy
-  # - InContextLearningLMAccuracy
-  # - InContextLearningLMExpectedCalibrationError
   - InContextLearningPerplexity
 -
   label: mmlu
@@ -158,8 +191,6 @@ icl_tasks:
   # has_categories: true  # this splits mmlu into separate categories; lets keep track of global average for now
   metric_names:
   - InContextLearningMultipleChoiceAccuracy
-  # - InContextLearningLMAccuracy
-  # - InContextLearningLMExpectedCalibrationError
   - InContextLearningPerplexity
 -
   label: hellaswag
@@ -168,8 +199,6 @@ icl_tasks:
   icl_task_type: multiple_choice
   metric_names:
   - InContextLearningMultipleChoiceAccuracy
-  # - InContextLearningLMAccuracy
-  # - InContextLearningLMExpectedCalibrationError
   - InContextLearningPerplexity
 -
   label: winogrande
@@ -178,23 +207,4 @@ icl_tasks:
   icl_task_type: schema
   metric_names:
   - InContextLearningMultipleChoiceAccuracy
-  # - InContextLearningLMAccuracy
-  # - InContextLearningLMExpectedCalibrationError
   - InContextLearningPerplexity
-# -
-#   label: gsm8k
-#   dataset_uri: /home/eldar/eldar-upstream/upstream-llm-foundry/scripts/eval/local_data/symbolic_problem_solving/gsm8k.jsonl
-#   num_fewshot: [5]
-#   icl_task_type: question_answering
-#   cot_delimiter: ' #### '  # we need this
-#   continuation_delimiter: "\nAnswer: "
-#   question_prelimiter: "Question: "
-#   do_normalization: false
-#   early_stopping_criteria:
-#   - "\n\n"
-#   - "Question:"
-#   metric_names:
-#   - InContextLearningQAAccuracy
-#   # - InContextLearningLMAccuracy
-#   # - InContextLearningLMExpectedCalibrationError
-#   # - InContextLearningPerplexity

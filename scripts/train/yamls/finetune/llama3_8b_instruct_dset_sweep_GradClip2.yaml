@@ -1,6 +1,8 @@
-model_name_or_path: facebook/opt-125m
-max_seq_len: 2048
+model_name_or_path: #TODO
+max_seq_len: #TODO
 precision: #TODO
+
+dset_tag: #TODO
 
 data_local: # TODO
 data_remote: # If blank, files must be present in data_local
@@ -9,7 +11,7 @@ seed: ${global_seed}
 
 max_duration: #TODO
 eval_interval: #TODO
-eval_first: true
+eval_first: false
 
 global_train_batch_size: #TODO
 device_train_microbatch_size: #TODO
@@ -22,10 +24,7 @@ model:
   use_flash_attention_2: true
   pretrained: true
   pretrained_model_name_or_path: ${model_name_or_path}
-  # config_overrides:
-  #   # WARNING: if setting `pretrained: true`, `max_position_embeddings` must match the
-  #   # `max_position_embeddings` used during pre-training
-  #   max_position_embeddings: ${max_seq_len}
+  use_auth_token: true
 
 # why do I need it when dataset is already tokenized?
 tokenizer:
@@ -34,37 +33,20 @@ tokenizer:
     model_max_length: ${max_seq_len}
 
 train_loader:
-  name: text
+  name: finetuning
   dataset:
-    local: ${data_local}
-    remote: ${data_remote}
-    split: train
-    shuffle: true
+    streams:
+      dset:
+        remote: /network/eldar/datasets/llama3_8b_instruct/maxseqlen8k_chat_tokenized/${dset_tag}
+        local:
+        split: train
     max_seq_len: ${max_seq_len}
+    shuffle: true
     shuffle_seed: ${global_seed}
-  drop_last: false
+    decoder_only_format: true
+  drop_last: true
   num_workers: 8
-  # prefetch_factor: 2
-  # pin_memory: false
-  # persistent_workers: true
-  # timeout: 0
 
-# TODO: probati dataloadere bez ovis fensi configs
-# eval_loader:
-#   name: text
-#   dataset:
-#     local: ${data_local}
-#     remote: ${data_remote}
-#     split: train
-#     shuffle: false
-#     max_seq_len: ${max_seq_len}
-#     shuffle_seed: ${global_seed}
-#   drop_last: false
-#   num_workers: 8
-#   # prefetch_factor: 2
-#   # pin_memory: false
-#   # persistent_workers: true
-#   # timeout: 0
 
 scheduler:
   name: cosine_with_warmup
@@ -81,17 +63,25 @@ optimizer:
   weight_decay: 0.0
 
 algorithms:
+  mask_pruned_weights: {}
   gradient_clipping:
     clipping_type: norm
-    clipping_threshold: 1.0
+    clipping_threshold: 2.0
 
 fsdp_config:
   sharding_strategy: FULL_SHARD
-  mixed_precision: DEFAULT # TODO: vs PURE?
-  activation_checkpointing: false
+  mixed_precision: PURE # TODO: DEFAULT vs PURE?
+  activation_checkpointing: true
   activation_checkpointing_reentrant: false
   activation_cpu_offload: false
   limit_all_gathers: true
+
+knowledge_distillation:
+  teacher_name_or_path: #TODO
+  temperature: #TODO
+  hardness_kldiv: #TODO
+  hardness_ce: #TODO
+  hardness_squarehead: #TODO
 
 # Logging
 progress_bar: false
@@ -104,21 +94,26 @@ callbacks:
   lr_monitor: {}
   memory_monitor: {}
   runtime_estimator: {}
+  hf_checkpointer:
+    overwrite: true
+    precision: bfloat16
+    save_folder: /home/eldar/llmfoundry_checkpoints/llama3_8b_instruct/${run_name}
+    save_interval: 1dur
 
 loggers:
   wandb: {}
+  clearml: {}
 
 # Checkpoint to local filesystem or remote object store
 save_interval: ${eval_interval}
 save_num_checkpoints_to_keep: 1  # Important, this cleans up checkpoints saved to DISK
-save_folder: /data/eldar/llmfoundry_checkpoints/opt125m/${run_name}
-# save_folder: s3://my-bucket/my-folder/{run_name}/checkpoints
+save_folder: /home/eldar/llmfoundry_checkpoints/llama3_8b_instruct/${run_name}
 
 icl_seq_len: ${max_seq_len}
 icl_tasks:
 -
   label: arc_challenge
-  dataset_uri: /root/github/upstream-llm-foundry/scripts/eval/local_data/world_knowledge/arc_challenge.jsonl
+  dataset_uri: /home/eldar/eldar-upstream/upstream-llm-foundry/scripts/eval/local_data/world_knowledge/arc_challenge_shrinked.jsonl
   num_fewshot: [25]
   icl_task_type: multiple_choice
   continuation_delimiter: "\nAnswer: " # this separates questions from answers
@@ -127,7 +122,7 @@ icl_tasks:
   - InContextLearningPerplexity
 -
   label: mmlu
-  dataset_uri: /root/github/upstream-llm-foundry/scripts/eval/local_data/world_knowledge/mmlu.jsonl
+  dataset_uri: /home/eldar/eldar-upstream/upstream-llm-foundry/scripts/eval/local_data/world_knowledge/mmlu_shrinked.jsonl
   num_fewshot: [5]
   icl_task_type: multiple_choice
   continuation_delimiter: "\nAnswer: " # this separates questions from answers
@@ -137,7 +132,7 @@ icl_tasks:
   - InContextLearningPerplexity
 -
   label: hellaswag
-  dataset_uri: /root/github/upstream-llm-foundry/scripts/eval/local_data/language_understanding/hellaswag.jsonl
+  dataset_uri: /home/eldar/eldar-upstream/upstream-llm-foundry/scripts/eval/local_data/language_understanding/hellaswag_shrinked.jsonl
   num_fewshot: [10]
   icl_task_type: multiple_choice
   metric_names:
@@ -145,23 +140,9 @@ icl_tasks:
   - InContextLearningPerplexity
 -
   label: winogrande
-  dataset_uri: /root/github/upstream-llm-foundry/scripts/eval/local_data/language_understanding/winogrande.jsonl
+  dataset_uri: /home/eldar/eldar-upstream/upstream-llm-foundry/scripts/eval/local_data/language_understanding/winogrande_shrinked.jsonl
   num_fewshot: [5]
   icl_task_type: schema
   metric_names:
   - InContextLearningMultipleChoiceAccuracy
   - InContextLearningPerplexity
--
-  label: gsm8k
-  dataset_uri: /root/github/upstream-llm-foundry/scripts/eval/local_data/symbolic_problem_solving/gsm8k.jsonl
-  num_fewshot: [5]
-  icl_task_type: question_answering
-  cot_delimiter: ' #### '  # we need this
-  continuation_delimiter: "\nAnswer: "
-  question_prelimiter: "Question: "
-  do_normalization: false
-  early_stopping_criteria:
-  - "\n\n"
-  - "Question:"
-  metric_names:
-  - InContextLearningQAAccuracy

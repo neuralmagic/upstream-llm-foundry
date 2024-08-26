@@ -110,13 +110,14 @@ class KnowledgeDistillation(Algorithm):
             if self.hardness_squarehead > 0:
                 layerwise_losses = []
                 for i in range(1, len(state.outputs.hidden_states)):
+                    # print(f">>>>>>>> ELDAR >>>>> state.batch.keys() = {list(state.batch.keys())}")
                     # TODO: all tokens are useful during pretraining, i.e. torch.all(state.batch['attention_mask']) == 1
-                    useful_tokens = state.batch['attention_mask'] == 1
-                    student_states = state.outputs.hidden_states[i][useful_tokens]
-                    teacher_states = teacher_outputs.hidden_states[i][useful_tokens]
-                    # student_states = state.outputs.hidden_states[i]
-                    # teacher_states = teacher_outputs.hidden_states[i]
-                    layerwise_losses.append((student_states - teacher_states).pow(2).mean() / (teacher_states.pow(2).mean() + torch.finfo(torch.bfloat16).eps))
+                    #useful_tokens = state.batch['attention_mask'] == 1
+                    # student_states = state.outputs.hidden_states[i][useful_tokens]
+                    # teacher_states = teacher_outputs.hidden_states[i][useful_tokens]
+                    student_states = state.outputs.hidden_states[i]
+                    teacher_states = teacher_outputs.hidden_states[i]
+                    layerwise_losses.append((student_states - teacher_states).pow(2).mean()) # / (teacher_states.pow(2).mean() + torch.finfo(torch.bfloat16).eps))
                     to_log_squarehead[f"squarehead/layer_{i}"] = layerwise_losses[-1].item()
 
                 squarehead_loss = self.hardness_squarehead * sum(layerwise_losses)
@@ -675,7 +676,7 @@ def main(cfg: DictConfig) -> Trainer:
             model = model.to(dtype=torch.bfloat16)
             if "knowledge_distillation" in cfg and cfg.knowledge_distillation.teacher_name_or_path is not None:
                 teacher = teacher.to(dtype=torch.bfloat16)
-        elif model_config.get('master_weights_dtype') in ('fp16', 'float16'):
+        elif model_config.get('master_weights_dtype') in ('f16', 'float16'):
             model = model.to(dtype=torch.float16)
             if "knowledge_distillation" in cfg and cfg.knowledge_distillation.teacher_name_or_path is not None:
                 teacher = teacher.to(dtype=torch.float16)

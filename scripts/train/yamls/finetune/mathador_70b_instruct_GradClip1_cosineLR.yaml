@@ -1,0 +1,122 @@
+model_name_or_path: #TODO
+max_seq_len: #TODO
+precision: #TODO
+
+data_local: # TODO
+data_remote: # If blank, files must be present in data_local
+global_seed: 42
+seed: ${global_seed}
+
+max_duration: #TODO
+eval_interval: 1dur
+eval_first: false
+
+global_train_batch_size: #TODO
+device_train_microbatch_size: #TODO
+device_eval_batch_size: #TODO
+
+run_name: # If left blank, will be read from env var $RUN_NAME
+
+model:
+  name: hf_causal_lm
+  pretrained: true
+  init_device: mixed
+  use_auth_token: true
+  use_flash_attention_2: true
+  pretrained_model_name_or_path: ${model_name_or_path}
+  master_weights_dtype: bf16
+
+# why do I need it when dataset is already tokenized?
+tokenizer:
+  name: ${model_name_or_path}
+  kwargs:
+    model_max_length: ${max_seq_len}
+
+train_loader:
+  name: finetuning
+  dataset:
+    streams:
+      mathador:
+        remote: /network/eldar/llama3_70b_mathador/maxseqlen512_chat_tokenized/mathador-rand-9k
+        local:
+        split: train
+    max_seq_len: ${max_seq_len}
+    shuffle: true
+    shuffle_seed: ${global_seed}
+    decoder_only_format: true
+  drop_last: true
+  num_workers: 8
+
+
+# TODO: probati dataloadere bez ovis fensi configs
+# eval_loader:
+#   name: text
+#   dataset:
+#     local: ${data_local}
+#     remote: ${data_remote}
+#     split: validation
+#     shuffle: false
+#     max_seq_len: ${max_seq_len}
+#     shuffle_seed: ${global_seed}
+#   drop_last: true
+#   num_workers: 8
+#   # prefetch_factor: 2
+#   # pin_memory: false
+#   # persistent_workers: true
+#   # timeout: 0
+
+scheduler:
+  name: cosine_with_warmup
+  t_warmup: # TODO
+  alpha_f: 0.1
+
+optimizer:
+  name: decoupled_adamw
+  lr: #TODO
+  betas:
+  - 0.9
+  - 0.95
+  eps: 1.0e-08
+  weight_decay: 0.0
+
+algorithms:
+  gradient_clipping:
+    clipping_type: norm
+    clipping_threshold: 1.0
+
+fsdp_config:
+  sharding_strategy: FULL_SHARD
+  mixed_precision: PURE # TODO: DEFAULT vs PURE?
+  activation_checkpointing: true
+  activation_checkpointing_reentrant: false
+  activation_cpu_offload: false
+  limit_all_gathers: true
+  sync_module_states: true
+
+knowledge_distillation:
+  teacher_name_or_path: #TODO
+  temperature: #TODO
+  hardness_kldiv: #TODO
+  hardness_ce: #TODO
+  hardness_squarehead: #TODO
+
+# Logging
+progress_bar: false
+log_to_console: true
+console_log_interval: 1ba
+
+callbacks:
+  speed_monitor:
+    window_size: 10
+  lr_monitor: {}
+  memory_monitor: {}
+  runtime_estimator: {}
+
+loggers:
+  wandb: {}
+
+# Checkpoint to local filesystem or remote object store
+save_interval: 1dur
+save_num_checkpoints_to_keep: 1  # Important, this cleans up checkpoints saved to DISK
+save_folder: /home/eldar/llmfoundry_checkpoints/llama3_70b_instruct_mathador/${run_name}
+# save_folder: s3://my-bucket/my-folder/{run_name}/checkpoints
