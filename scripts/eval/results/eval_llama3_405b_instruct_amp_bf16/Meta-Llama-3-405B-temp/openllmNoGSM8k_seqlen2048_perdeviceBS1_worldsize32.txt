@@ -1,0 +1,1152 @@
+----****----[eldar debug]----****---- Using fused CrossEntropyLoss from flash_attn.losses.cross_entropy ----****----[eldar debug]----****----
+----****----[eldar debug]----****---- Using fused CrossEntropyLoss from flash_attn.losses.cross_entropy ----****----[eldar debug]----****----
+/home/eldar/eldar-upstream/upstream-llm-foundry/scripts/eval/eval.py:281: UserWarning: Unused parameter global_seed found in cfg. Please check your yaml to ensure this parameter is necessary.
+  warnings.warn(
+/home/eldar/eldar-upstream/upstream-llm-foundry/scripts/eval/eval.py:281: UserWarning: Unused parameter ckpt_path found in cfg. Please check your yaml to ensure this parameter is necessary.
+  warnings.warn(
+[W Utils.hpp:133] Warning: Environment variable NCCL_ASYNC_ERROR_HANDLING is deprecated; use TORCH_NCCL_ASYNC_ERROR_HANDLING instead (function getCvarInt)
+H100-GPU19:1075041:1075041 [0] NCCL INFO cudaDriverVersion 12030
+H100-GPU19:1075041:1075041 [0] NCCL INFO Bootstrap : Using ibs3:fe80::a288:c203:8c:df72%ibs3<0>
+H100-GPU19:1075041:1075041 [0] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
+H100-GPU19:1075041:1076180 [0] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [1]mlx5_1:1/IB [2]mlx5_2:1/IB [3]mlx5_3:1/IB [4]mlx5_4:1/IB [5]mlx5_5:1/IB [6]mlx5_6:1/IB [7]mlx5_7:1/IB [RO]; OOB ibs3:fe80::a288:c203:8c:df72%ibs3<0>
+H100-GPU19:1075041:1076180 [0] NCCL INFO Using non-device net plugin version 0
+H100-GPU19:1075041:1076180 [0] NCCL INFO Using network IB
+H100-GPU19:1075041:1076180 [0] NCCL INFO comm 0xda15e70 rank 16 nranks 32 cudaDev 0 nvmlDev 0 busId 4000 commId 0xf807db33dff0cbf2 - Init START
+H100-GPU19:1075041:1076180 [0] NCCL INFO Setting affinity for GPU 0 to ffffffff,ffffffff,ffffffff,00000000,00000000,00000000,ffffffff,ffffffff,ffffffff
+H100-GPU19:1075041:1076180 [0] NCCL INFO NVLS multicast support is available on dev 0
+H100-GPU19:1075041:1076180 [0] NCCL INFO Trees [0] 17/24/-1->16->0 [1] -1/-1/-1->16->23 [2] 17/-1/-1->16->23 [3] 17/11/-1->16->19 [4] 17/-1/-1->16->23 [5] 17/-1/-1->16->23 [6] 17/-1/-1->16->23 [7] 17/-1/-1->16->22 [8] 17/-1/-1->16->9 [9] -1/-1/-1->16->23 [10] 17/-1/-1->16->23 [11] 17/-1/-1->16->19 [12] 17/-1/-1->16->23 [13] 17/-1/-1->16->23 [14] 17/-1/-1->16->23 [15] 17/-1/-1->16->22
+H100-GPU19:1075041:1076180 [0] NCCL INFO P2P Chunksize set to 131072
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 07/0 : 16[0] -> 20[4] via P2P/CUMEM
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 15/0 : 16[0] -> 20[4] via P2P/CUMEM
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 00/0 : 9[1] -> 16[0] [receive] via NET/IB/2
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 08/0 : 9[1] -> 16[0] [receive] via NET/IB/2
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 00/0 : 16[0] -> 23[7] via P2P/CUMEM
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 01/0 : 16[0] -> 23[7] via P2P/CUMEM
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 02/0 : 16[0] -> 23[7] via P2P/CUMEM
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 04/0 : 16[0] -> 23[7] via P2P/CUMEM
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 05/0 : 16[0] -> 23[7] via P2P/CUMEM
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 06/0 : 16[0] -> 23[7] via P2P/CUMEM
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 08/0 : 16[0] -> 23[7] via P2P/CUMEM
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 09/0 : 16[0] -> 23[7] via P2P/CUMEM
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 10/0 : 16[0] -> 23[7] via P2P/CUMEM
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 12/0 : 16[0] -> 23[7] via P2P/CUMEM
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 13/0 : 16[0] -> 23[7] via P2P/CUMEM
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 14/0 : 16[0] -> 23[7] via P2P/CUMEM
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 03/0 : 16[0] -> 27[3] [send] via NET/IB/0
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 11/0 : 16[0] -> 27[3] [send] via NET/IB/0
+H100-GPU19:1075041:1076180 [0] NCCL INFO Connected all rings
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 00/0 : 16[0] -> 17[1] via P2P/CUMEM
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 02/0 : 16[0] -> 17[1] via P2P/CUMEM
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 03/0 : 16[0] -> 17[1] via P2P/CUMEM
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 04/0 : 16[0] -> 17[1] via P2P/CUMEM
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 05/0 : 16[0] -> 17[1] via P2P/CUMEM
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 06/0 : 16[0] -> 17[1] via P2P/CUMEM
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 07/0 : 16[0] -> 17[1] via P2P/CUMEM
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 08/0 : 16[0] -> 17[1] via P2P/CUMEM
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 10/0 : 16[0] -> 17[1] via P2P/CUMEM
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 11/0 : 16[0] -> 17[1] via P2P/CUMEM
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 12/0 : 16[0] -> 17[1] via P2P/CUMEM
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 13/0 : 16[0] -> 17[1] via P2P/CUMEM
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 14/0 : 16[0] -> 17[1] via P2P/CUMEM
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 15/0 : 16[0] -> 17[1] via P2P/CUMEM
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 03/0 : 16[0] -> 19[3] via P2P/CUMEM
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 11/0 : 16[0] -> 19[3] via P2P/CUMEM
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 03/0 : 11[3] -> 16[0] [receive] via NET/IB/0
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 07/0 : 16[0] -> 22[6] via P2P/CUMEM
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 15/0 : 16[0] -> 22[6] via P2P/CUMEM
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 00/0 : 16[0] -> 24[0] [send] via NET/IB/2
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 00/0 : 0[0] -> 16[0] [receive] via NET/IB/2
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 00/0 : 16[0] -> 0[0] [send] via NET/IB/2
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 00/0 : 24[0] -> 16[0] [receive] via NET/IB/2
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 08/0 : 16[0] -> 9[1] [send] via NET/IB/2
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 03/0 : 16[0] -> 11[3] [send] via NET/IB/0
+H100-GPU19:1075041:1076180 [0] NCCL INFO Connected all trees
+H100-GPU19:1075041:1076180 [0] NCCL INFO NVLS comm 0xda15e70 headRank 0 nHeads 8 buffSize 4194304 memSize 2097152 nvlsPerRankSize 201326592 nvlsTotalSize 1610612736
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 00/0 : 8[0] -> 16[0] [receive] via NET/IB/2
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 01/0 : 8[0] -> 16[0] [receive] via NET/IB/2
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 02/0 : 8[0] -> 16[0] [receive] via NET/IB/2
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 03/0 : 8[0] -> 16[0] [receive] via NET/IB/2
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 04/0 : 8[0] -> 16[0] [receive] via NET/IB/2
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 05/0 : 8[0] -> 16[0] [receive] via NET/IB/2
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 06/0 : 8[0] -> 16[0] [receive] via NET/IB/2
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 07/0 : 8[0] -> 16[0] [receive] via NET/IB/2
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 08/0 : 8[0] -> 16[0] [receive] via NET/IB/2
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 09/0 : 8[0] -> 16[0] [receive] via NET/IB/2
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 10/0 : 8[0] -> 16[0] [receive] via NET/IB/2
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 11/0 : 8[0] -> 16[0] [receive] via NET/IB/2
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 12/0 : 8[0] -> 16[0] [receive] via NET/IB/2
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 13/0 : 8[0] -> 16[0] [receive] via NET/IB/2
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 14/0 : 8[0] -> 16[0] [receive] via NET/IB/2
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 15/0 : 8[0] -> 16[0] [receive] via NET/IB/2
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 02/0 : 16[0] -> 24[0] [send] via NET/IB/2
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 04/0 : 16[0] -> 24[0] [send] via NET/IB/2
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 06/0 : 16[0] -> 24[0] [send] via NET/IB/2
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 08/0 : 16[0] -> 24[0] [send] via NET/IB/2
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 10/0 : 16[0] -> 24[0] [send] via NET/IB/2
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 12/0 : 16[0] -> 24[0] [send] via NET/IB/2
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 14/0 : 16[0] -> 24[0] [send] via NET/IB/2
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 02/0 : 0[0] -> 16[0] [receive] via NET/IB/2
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 04/0 : 0[0] -> 16[0] [receive] via NET/IB/2
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 06/0 : 0[0] -> 16[0] [receive] via NET/IB/2
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 08/0 : 0[0] -> 16[0] [receive] via NET/IB/2
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 10/0 : 0[0] -> 16[0] [receive] via NET/IB/2
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 12/0 : 0[0] -> 16[0] [receive] via NET/IB/2
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 14/0 : 0[0] -> 16[0] [receive] via NET/IB/2
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 02/0 : 16[0] -> 0[0] [send] via NET/IB/2
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 04/0 : 16[0] -> 0[0] [send] via NET/IB/2
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 06/0 : 16[0] -> 0[0] [send] via NET/IB/2
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 08/0 : 16[0] -> 0[0] [send] via NET/IB/2
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 10/0 : 16[0] -> 0[0] [send] via NET/IB/2
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 12/0 : 16[0] -> 0[0] [send] via NET/IB/2
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 14/0 : 16[0] -> 0[0] [send] via NET/IB/2
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 02/0 : 24[0] -> 16[0] [receive] via NET/IB/2
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 04/0 : 24[0] -> 16[0] [receive] via NET/IB/2
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 06/0 : 24[0] -> 16[0] [receive] via NET/IB/2
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 08/0 : 24[0] -> 16[0] [receive] via NET/IB/2
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 10/0 : 24[0] -> 16[0] [receive] via NET/IB/2
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 12/0 : 24[0] -> 16[0] [receive] via NET/IB/2
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 14/0 : 24[0] -> 16[0] [receive] via NET/IB/2
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 00/0 : 16[0] -> 8[0] [send] via NET/IB/2
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 01/0 : 16[0] -> 8[0] [send] via NET/IB/2
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 02/0 : 16[0] -> 8[0] [send] via NET/IB/2
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 03/0 : 16[0] -> 8[0] [send] via NET/IB/2
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 04/0 : 16[0] -> 8[0] [send] via NET/IB/2
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 05/0 : 16[0] -> 8[0] [send] via NET/IB/2
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 06/0 : 16[0] -> 8[0] [send] via NET/IB/2
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 07/0 : 16[0] -> 8[0] [send] via NET/IB/2
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 08/0 : 16[0] -> 8[0] [send] via NET/IB/2
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 09/0 : 16[0] -> 8[0] [send] via NET/IB/2
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 10/0 : 16[0] -> 8[0] [send] via NET/IB/2
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 11/0 : 16[0] -> 8[0] [send] via NET/IB/2
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 12/0 : 16[0] -> 8[0] [send] via NET/IB/2
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 13/0 : 16[0] -> 8[0] [send] via NET/IB/2
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 14/0 : 16[0] -> 8[0] [send] via NET/IB/2
+H100-GPU19:1075041:1076180 [0] NCCL INFO Channel 15/0 : 16[0] -> 8[0] [send] via NET/IB/2
+H100-GPU19:1075041:1076180 [0] NCCL INFO Connected NVLS tree
+H100-GPU19:1075041:1076180 [0] NCCL INFO threadThresholds 8/8/64 | 256/8/64 | 512 | 512
+H100-GPU19:1075041:1076180 [0] NCCL INFO 16 coll channels, 16 nvls channels, 16 p2p channels, 2 p2p channels per peer
+H100-GPU19:1075041:1076180 [0] NCCL INFO comm 0xda15e70 rank 16 nranks 32 cudaDev 0 nvmlDev 0 busId 4000 commId 0xf807db33dff0cbf2 - Init COMPLETE
+2024-07-23 15:20:01,864: rank16[1075041][MainThread]: INFO: llmfoundry.utils.builders: Extracting ICL task config from path: eval/yamls/openllm_noGSM8k.yaml
+/home/eldar/eldar-upstream/upstream-transformers/src/transformers/models/auto/configuration_auto.py:1111: FutureWarning: The `use_auth_token` argument is deprecated and will be removed in v5 of Transformers. Please use `token` instead.
+  warnings.warn(
+/home/eldar/eldar-upstream/upstream-transformers/src/transformers/models/auto/auto_factory.py:468: FutureWarning: The `use_auth_token` argument is deprecated and will be removed in v5 of Transformers. Please use `token` instead.
+  warnings.warn(
+Loading checkpoint shards:   0%|          | 0/191 [00:00<?, ?it/s]Loading checkpoint shards:   1%|          | 1/191 [00:00<00:31,  6.10it/s]Loading checkpoint shards:   1%|          | 2/191 [00:00<00:29,  6.34it/s]Loading checkpoint shards:   2%|▏         | 3/191 [00:00<00:29,  6.40it/s]Loading checkpoint shards:   2%|▏         | 4/191 [00:00<00:29,  6.44it/s]Loading checkpoint shards:   3%|▎         | 5/191 [00:00<00:28,  6.50it/s]Loading checkpoint shards:   3%|▎         | 6/191 [00:00<00:28,  6.51it/s]Loading checkpoint shards:   4%|▎         | 7/191 [00:01<00:28,  6.47it/s]Loading checkpoint shards:   4%|▍         | 8/191 [00:01<00:28,  6.50it/s]Loading checkpoint shards:   5%|▍         | 9/191 [00:01<00:28,  6.50it/s]Loading checkpoint shards:   5%|▌         | 10/191 [00:01<00:27,  6.51it/s]Loading checkpoint shards:   6%|▌         | 11/191 [00:01<00:27,  6.54it/s]Loading checkpoint shards:   6%|▋         | 12/191 [00:01<00:27,  6.50it/s]Loading checkpoint shards:   7%|▋         | 13/191 [00:02<00:27,  6.49it/s]Loading checkpoint shards:   7%|▋         | 14/191 [00:02<00:27,  6.52it/s]Loading checkpoint shards:   8%|▊         | 15/191 [00:02<00:26,  6.52it/s]Loading checkpoint shards:   8%|▊         | 16/191 [00:02<00:26,  6.52it/s]Loading checkpoint shards:   9%|▉         | 17/191 [00:02<00:26,  6.52it/s]Loading checkpoint shards:   9%|▉         | 18/191 [00:02<00:26,  6.51it/s]Loading checkpoint shards:  10%|▉         | 19/191 [00:02<00:26,  6.51it/s]Loading checkpoint shards:  10%|█         | 20/191 [00:03<00:26,  6.53it/s]Loading checkpoint shards:  11%|█         | 21/191 [00:03<00:26,  6.53it/s]Loading checkpoint shards:  12%|█▏        | 22/191 [00:03<00:25,  6.50it/s]Loading checkpoint shards:  12%|█▏        | 23/191 [00:03<00:25,  6.52it/s]Loading checkpoint shards:  13%|█▎        | 24/191 [00:03<00:25,  6.52it/s]Loading checkpoint shards:  13%|█▎        | 25/191 [00:03<00:25,  6.52it/s]Loading checkpoint shards:  14%|█▎        | 26/191 [00:03<00:25,  6.54it/s]Loading checkpoint shards:  14%|█▍        | 27/191 [00:04<00:25,  6.52it/s]Loading checkpoint shards:  15%|█▍        | 28/191 [00:04<00:25,  6.50it/s]Loading checkpoint shards:  15%|█▌        | 29/191 [00:04<00:24,  6.52it/s]Loading checkpoint shards:  16%|█▌        | 30/191 [00:04<00:24,  6.52it/s]Loading checkpoint shards:  16%|█▌        | 31/191 [00:04<00:24,  6.52it/s]Loading checkpoint shards:  17%|█▋        | 32/191 [00:04<00:24,  6.53it/s]Loading checkpoint shards:  17%|█▋        | 33/191 [00:05<00:24,  6.51it/s]Loading checkpoint shards:  18%|█▊        | 34/191 [00:05<00:24,  6.50it/s]Loading checkpoint shards:  18%|█▊        | 35/191 [00:05<00:23,  6.52it/s]Loading checkpoint shards:  19%|█▉        | 36/191 [00:05<00:23,  6.52it/s]Loading checkpoint shards:  19%|█▉        | 37/191 [00:05<00:23,  6.52it/s]Loading checkpoint shards:  20%|█▉        | 38/191 [00:05<00:23,  6.51it/s]Loading checkpoint shards:  20%|██        | 39/191 [00:05<00:23,  6.50it/s]Loading checkpoint shards:  21%|██        | 40/191 [00:06<00:23,  6.50it/s]Loading checkpoint shards:  21%|██▏       | 41/191 [00:06<00:22,  6.53it/s]Loading checkpoint shards:  22%|██▏       | 42/191 [00:06<00:22,  6.53it/s]Loading checkpoint shards:  23%|██▎       | 43/191 [00:06<00:22,  6.50it/s]Loading checkpoint shards:  23%|██▎       | 44/191 [00:06<00:22,  6.51it/s]Loading checkpoint shards:  24%|██▎       | 45/191 [00:06<00:22,  6.51it/s]Loading checkpoint shards:  24%|██▍       | 46/191 [00:07<00:22,  6.51it/s]Loading checkpoint shards:  25%|██▍       | 47/191 [00:07<00:22,  6.54it/s]Loading checkpoint shards:  25%|██▌       | 48/191 [00:07<00:21,  6.51it/s]Loading checkpoint shards:  26%|██▌       | 49/191 [00:07<00:21,  6.49it/s]Loading checkpoint shards:  26%|██▌       | 50/191 [00:07<00:21,  6.52it/s]Loading checkpoint shards:  27%|██▋       | 51/191 [00:07<00:21,  6.53it/s]Loading checkpoint shards:  27%|██▋       | 52/191 [00:07<00:21,  6.53it/s]Loading checkpoint shards:  28%|██▊       | 53/191 [00:08<00:21,  6.51it/s]Loading checkpoint shards:  28%|██▊       | 54/191 [00:08<00:21,  6.49it/s]Loading checkpoint shards:  29%|██▉       | 55/191 [00:08<00:20,  6.48it/s]Loading checkpoint shards:  29%|██▉       | 56/191 [00:08<00:20,  6.51it/s]Loading checkpoint shards:  30%|██▉       | 57/191 [00:08<00:20,  6.51it/s]Loading checkpoint shards:  30%|███       | 58/191 [00:08<00:20,  6.48it/s]Loading checkpoint shards:  31%|███       | 59/191 [00:09<00:20,  6.49it/s]Loading checkpoint shards:  31%|███▏      | 60/191 [00:09<00:20,  6.47it/s]Loading checkpoint shards:  32%|███▏      | 61/191 [00:09<00:20,  6.47it/s]Loading checkpoint shards:  32%|███▏      | 62/191 [00:09<00:19,  6.50it/s]Loading checkpoint shards:  33%|███▎      | 63/191 [00:09<00:19,  6.46it/s]Loading checkpoint shards:  34%|███▎      | 64/191 [00:09<00:19,  6.44it/s]Loading checkpoint shards:  34%|███▍      | 65/191 [00:09<00:19,  6.46it/s]Loading checkpoint shards:  35%|███▍      | 66/191 [00:10<00:19,  6.46it/s]Loading checkpoint shards:  35%|███▌      | 67/191 [00:10<00:19,  6.47it/s]Loading checkpoint shards:  36%|███▌      | 68/191 [00:10<00:19,  6.45it/s]Loading checkpoint shards:  36%|███▌      | 69/191 [00:10<00:18,  6.44it/s]Loading checkpoint shards:  37%|███▋      | 70/191 [00:10<00:18,  6.44it/s]Loading checkpoint shards:  37%|███▋      | 71/191 [00:10<00:18,  6.48it/s]Loading checkpoint shards:  38%|███▊      | 72/191 [00:11<00:18,  6.48it/s]Loading checkpoint shards:  38%|███▊      | 73/191 [00:11<00:18,  6.43it/s]Loading checkpoint shards:  39%|███▊      | 74/191 [00:11<00:18,  6.45it/s]Loading checkpoint shards:  39%|███▉      | 75/191 [00:11<00:17,  6.45it/s]Loading checkpoint shards:  40%|███▉      | 76/191 [00:11<00:17,  6.45it/s]Loading checkpoint shards:  40%|████      | 77/191 [00:11<00:17,  6.49it/s]Loading checkpoint shards:  41%|████      | 78/191 [00:12<00:17,  6.44it/s]Loading checkpoint shards:  41%|████▏     | 79/191 [00:12<00:17,  6.43it/s]Loading checkpoint shards:  42%|████▏     | 80/191 [00:12<00:17,  6.46it/s]Loading checkpoint shards:  42%|████▏     | 81/191 [00:12<00:17,  6.46it/s]Loading checkpoint shards:  43%|████▎     | 82/191 [00:12<00:16,  6.47it/s]Loading checkpoint shards:  43%|████▎     | 83/191 [00:12<00:17,  6.10it/s]Loading checkpoint shards:  44%|████▍     | 84/191 [00:12<00:17,  6.19it/s]Loading checkpoint shards:  45%|████▍     | 85/191 [00:13<00:16,  6.27it/s]Loading checkpoint shards:  45%|████▌     | 86/191 [00:13<00:16,  6.35it/s]Loading checkpoint shards:  46%|████▌     | 87/191 [00:13<00:16,  6.36it/s]Loading checkpoint shards:  46%|████▌     | 88/191 [00:13<00:16,  6.36it/s]Loading checkpoint shards:  47%|████▋     | 89/191 [00:13<00:15,  6.40it/s]Loading checkpoint shards:  47%|████▋     | 90/191 [00:13<00:15,  6.41it/s]Loading checkpoint shards:  48%|████▊     | 91/191 [00:14<00:15,  6.42it/s]Loading checkpoint shards:  48%|████▊     | 92/191 [00:14<00:15,  6.41it/s]Loading checkpoint shards:  49%|████▊     | 93/191 [00:14<00:15,  6.40it/s]Loading checkpoint shards:  49%|████▉     | 94/191 [00:14<00:15,  6.41it/s]Loading checkpoint shards:  50%|████▉     | 95/191 [00:14<00:14,  6.44it/s]Loading checkpoint shards:  50%|█████     | 96/191 [00:14<00:14,  6.45it/s]Loading checkpoint shards:  51%|█████     | 97/191 [00:14<00:14,  6.40it/s]Loading checkpoint shards:  51%|█████▏    | 98/191 [00:15<00:14,  6.41it/s]Loading checkpoint shards:  52%|█████▏    | 99/191 [00:15<00:14,  6.42it/s]Loading checkpoint shards:  52%|█████▏    | 100/191 [00:15<00:14,  6.43it/s]Loading checkpoint shards:  53%|█████▎    | 101/191 [00:15<00:13,  6.46it/s]Loading checkpoint shards:  53%|█████▎    | 102/191 [00:15<00:13,  6.44it/s]Loading checkpoint shards:  54%|█████▍    | 103/191 [00:15<00:13,  6.48it/s]Loading checkpoint shards:  54%|█████▍    | 104/191 [00:16<00:13,  6.52it/s]Loading checkpoint shards:  55%|█████▍    | 105/191 [00:16<00:13,  6.54it/s]Loading checkpoint shards:  55%|█████▌    | 106/191 [00:16<00:12,  6.56it/s]Loading checkpoint shards:  56%|█████▌    | 107/191 [00:16<00:12,  6.58it/s]Loading checkpoint shards:  57%|█████▋    | 108/191 [00:16<00:13,  6.21it/s]Loading checkpoint shards:  57%|█████▋    | 109/191 [00:16<00:13,  6.04it/s]Loading checkpoint shards:  58%|█████▊    | 110/191 [00:17<00:12,  6.29it/s]Loading checkpoint shards:  58%|█████▊    | 111/191 [00:17<00:12,  6.56it/s]Loading checkpoint shards:  59%|█████▊    | 112/191 [00:17<00:11,  6.77it/s]Loading checkpoint shards:  59%|█████▉    | 113/191 [00:17<00:11,  6.94it/s]Loading checkpoint shards:  60%|█████▉    | 114/191 [00:17<00:10,  7.04it/s]Loading checkpoint shards:  60%|██████    | 115/191 [00:17<00:10,  7.12it/s]Loading checkpoint shards:  61%|██████    | 116/191 [00:17<00:10,  7.19it/s]Loading checkpoint shards:  61%|██████▏   | 117/191 [00:17<00:10,  7.23it/s]Loading checkpoint shards:  62%|██████▏   | 118/191 [00:18<00:10,  7.25it/s]Loading checkpoint shards:  62%|██████▏   | 119/191 [00:18<00:09,  7.26it/s]Loading checkpoint shards:  63%|██████▎   | 120/191 [00:18<00:09,  7.26it/s]Loading checkpoint shards:  63%|██████▎   | 121/191 [00:18<00:09,  7.28it/s]Loading checkpoint shards:  64%|██████▍   | 122/191 [00:18<00:09,  7.31it/s]Loading checkpoint shards:  64%|██████▍   | 123/191 [00:18<00:09,  7.31it/s]Loading checkpoint shards:  65%|██████▍   | 124/191 [00:18<00:09,  7.30it/s]Loading checkpoint shards:  65%|██████▌   | 125/191 [00:19<00:08,  7.34it/s]Loading checkpoint shards:  66%|██████▌   | 126/191 [00:19<00:08,  7.32it/s]Loading checkpoint shards:  66%|██████▋   | 127/191 [00:19<00:08,  7.31it/s]Loading checkpoint shards:  67%|██████▋   | 128/191 [00:19<00:08,  7.33it/s]Loading checkpoint shards:  68%|██████▊   | 129/191 [00:19<00:08,  7.32it/s]Loading checkpoint shards:  68%|██████▊   | 130/191 [00:19<00:08,  7.30it/s]Loading checkpoint shards:  69%|██████▊   | 131/191 [00:19<00:08,  7.32it/s]Loading checkpoint shards:  69%|██████▉   | 132/191 [00:20<00:08,  7.30it/s]Loading checkpoint shards:  70%|██████▉   | 133/191 [00:20<00:07,  7.30it/s]Loading checkpoint shards:  70%|███████   | 134/191 [00:20<00:07,  7.33it/s]Loading checkpoint shards:  71%|███████   | 135/191 [00:20<00:07,  7.33it/s]Loading checkpoint shards:  71%|███████   | 136/191 [00:20<00:07,  7.32it/s]Loading checkpoint shards:  72%|███████▏  | 137/191 [00:20<00:07,  7.34it/s]Loading checkpoint shards:  72%|███████▏  | 138/191 [00:20<00:07,  7.33it/s]Loading checkpoint shards:  73%|███████▎  | 139/191 [00:20<00:07,  7.32it/s]Loading checkpoint shards:  73%|███████▎  | 140/191 [00:21<00:06,  7.34it/s]Loading checkpoint shards:  74%|███████▍  | 141/191 [00:21<00:06,  7.33it/s]Loading checkpoint shards:  74%|███████▍  | 142/191 [00:21<00:06,  7.32it/s]Loading checkpoint shards:  75%|███████▍  | 143/191 [00:21<00:06,  7.33it/s]Loading checkpoint shards:  75%|███████▌  | 144/191 [00:21<00:06,  7.32it/s]Loading checkpoint shards:  76%|███████▌  | 145/191 [00:21<00:06,  7.32it/s]Loading checkpoint shards:  76%|███████▋  | 146/191 [00:21<00:06,  7.33it/s]Loading checkpoint shards:  77%|███████▋  | 147/191 [00:22<00:06,  7.33it/s]Loading checkpoint shards:  77%|███████▋  | 148/191 [00:22<00:05,  7.32it/s]Loading checkpoint shards:  78%|███████▊  | 149/191 [00:22<00:05,  7.34it/s]Loading checkpoint shards:  79%|███████▊  | 150/191 [00:22<00:05,  7.33it/s]Loading checkpoint shards:  79%|███████▉  | 151/191 [00:22<00:05,  7.31it/s]Loading checkpoint shards:  80%|███████▉  | 152/191 [00:22<00:05,  7.34it/s]Loading checkpoint shards:  80%|████████  | 153/191 [00:22<00:05,  7.33it/s]Loading checkpoint shards:  81%|████████  | 154/191 [00:23<00:05,  7.33it/s]Loading checkpoint shards:  81%|████████  | 155/191 [00:23<00:04,  7.34it/s]Loading checkpoint shards:  82%|████████▏ | 156/191 [00:23<00:04,  7.32it/s]Loading checkpoint shards:  82%|████████▏ | 157/191 [00:23<00:04,  7.31it/s]Loading checkpoint shards:  83%|████████▎ | 158/191 [00:23<00:04,  7.33it/s]Loading checkpoint shards:  83%|████████▎ | 159/191 [00:23<00:04,  7.32it/s]Loading checkpoint shards:  84%|████████▍ | 160/191 [00:23<00:04,  7.31it/s]Loading checkpoint shards:  84%|████████▍ | 161/191 [00:23<00:04,  7.33it/s]Loading checkpoint shards:  85%|████████▍ | 162/191 [00:24<00:03,  7.32it/s]Loading checkpoint shards:  85%|████████▌ | 163/191 [00:24<00:03,  7.32it/s]Loading checkpoint shards:  86%|████████▌ | 164/191 [00:24<00:03,  7.34it/s]Loading checkpoint shards:  86%|████████▋ | 165/191 [00:24<00:03,  7.33it/s]Loading checkpoint shards:  87%|████████▋ | 166/191 [00:24<00:03,  7.32it/s]Loading checkpoint shards:  87%|████████▋ | 167/191 [00:24<00:03,  7.34it/s]Loading checkpoint shards:  88%|████████▊ | 168/191 [00:24<00:03,  7.28it/s]Loading checkpoint shards:  88%|████████▊ | 169/191 [00:25<00:03,  7.29it/s]Loading checkpoint shards:  89%|████████▉ | 170/191 [00:25<00:02,  7.31it/s]Loading checkpoint shards:  90%|████████▉ | 171/191 [00:25<00:02,  7.31it/s]Loading checkpoint shards:  90%|█████████ | 172/191 [00:25<00:02,  7.30it/s]Loading checkpoint shards:  91%|█████████ | 173/191 [00:25<00:02,  7.33it/s]Loading checkpoint shards:  91%|█████████ | 174/191 [00:25<00:02,  7.32it/s]Loading checkpoint shards:  92%|█████████▏| 175/191 [00:25<00:02,  7.31it/s]Loading checkpoint shards:  92%|█████████▏| 176/191 [00:26<00:02,  7.33it/s]Loading checkpoint shards:  93%|█████████▎| 177/191 [00:26<00:01,  7.32it/s]Loading checkpoint shards:  93%|█████████▎| 178/191 [00:26<00:01,  7.31it/s]Loading checkpoint shards:  94%|█████████▎| 179/191 [00:26<00:01,  7.34it/s]Loading checkpoint shards:  94%|█████████▍| 180/191 [00:26<00:01,  7.32it/s]Loading checkpoint shards:  95%|█████████▍| 181/191 [00:26<00:01,  7.29it/s]Loading checkpoint shards:  95%|█████████▌| 182/191 [00:26<00:01,  7.32it/s]Loading checkpoint shards:  96%|█████████▌| 183/191 [00:27<00:01,  7.31it/s]Loading checkpoint shards:  96%|█████████▋| 184/191 [00:27<00:00,  7.28it/s]Loading checkpoint shards:  97%|█████████▋| 185/191 [00:27<00:00,  7.29it/s]Loading checkpoint shards:  97%|█████████▋| 186/191 [00:27<00:00,  7.28it/s]Loading checkpoint shards:  98%|█████████▊| 187/191 [00:27<00:00,  7.26it/s]Loading checkpoint shards:  98%|█████████▊| 188/191 [00:27<00:00,  7.28it/s]Loading checkpoint shards:  99%|█████████▉| 189/191 [00:27<00:00,  7.26it/s]Loading checkpoint shards:  99%|█████████▉| 190/191 [00:27<00:00,  7.26it/s]Loading checkpoint shards: 100%|██████████| 191/191 [00:28<00:00,  7.28it/s]Loading checkpoint shards: 100%|██████████| 191/191 [00:28<00:00,  6.80it/s]
+/home/eldar/eldar-upstream/upstream-transformers/src/transformers/models/auto/auto_factory.py:468: FutureWarning: The `use_auth_token` argument is deprecated and will be removed in v5 of Transformers. Please use `token` instead.
+  warnings.warn(
+Loading checkpoint shards:   0%|          | 0/191 [00:00<?, ?it/s]Loading checkpoint shards:   1%|          | 1/191 [00:01<06:04,  1.92s/it]Loading checkpoint shards:   1%|          | 2/191 [00:03<05:13,  1.66s/it]Loading checkpoint shards:   2%|▏         | 3/191 [00:05<05:14,  1.67s/it]Loading checkpoint shards:   2%|▏         | 4/191 [00:07<05:33,  1.79s/it]Loading checkpoint shards:   3%|▎         | 5/191 [00:08<04:57,  1.60s/it]Loading checkpoint shards:   3%|▎         | 6/191 [00:10<05:21,  1.74s/it]Loading checkpoint shards:   4%|▎         | 7/191 [00:12<05:24,  1.76s/it]Loading checkpoint shards:   4%|▍         | 8/191 [00:14<05:34,  1.83s/it]Loading checkpoint shards:   5%|▍         | 9/191 [00:15<05:23,  1.78s/it]Loading checkpoint shards:   5%|▌         | 10/191 [00:17<04:59,  1.66s/it]Loading checkpoint shards:   6%|▌         | 11/191 [00:18<04:21,  1.46s/it]Loading checkpoint shards:   6%|▋         | 12/191 [00:19<04:19,  1.45s/it]Loading checkpoint shards:   7%|▋         | 13/191 [00:20<04:08,  1.40s/it]Loading checkpoint shards:   7%|▋         | 14/191 [00:21<03:50,  1.30s/it]Loading checkpoint shards:   8%|▊         | 15/191 [00:23<03:55,  1.34s/it]Loading checkpoint shards:   8%|▊         | 16/191 [00:24<03:58,  1.36s/it]Loading checkpoint shards:   9%|▉         | 17/191 [00:25<03:42,  1.28s/it]Loading checkpoint shards:   9%|▉         | 18/191 [00:27<03:48,  1.32s/it]Loading checkpoint shards:  10%|▉         | 19/191 [00:28<03:52,  1.35s/it]Loading checkpoint shards:  10%|█         | 20/191 [00:29<03:31,  1.23s/it]Loading checkpoint shards:  11%|█         | 21/191 [00:31<03:38,  1.29s/it]Loading checkpoint shards:  12%|█▏        | 22/191 [00:32<03:43,  1.33s/it]Loading checkpoint shards:  12%|█▏        | 23/191 [00:33<03:30,  1.25s/it]Loading checkpoint shards:  13%|█▎        | 24/191 [00:34<03:36,  1.30s/it]Loading checkpoint shards:  13%|█▎        | 25/191 [00:36<03:40,  1.33s/it]Loading checkpoint shards:  14%|█▎        | 26/191 [00:37<03:26,  1.25s/it]Loading checkpoint shards:  14%|█▍        | 27/191 [00:38<03:25,  1.25s/it]Loading checkpoint shards:  15%|█▍        | 28/191 [00:40<03:31,  1.30s/it]Loading checkpoint shards:  15%|█▌        | 29/191 [00:41<03:14,  1.20s/it]Loading checkpoint shards:  16%|█▌        | 30/191 [00:42<03:23,  1.26s/it]Loading checkpoint shards:  16%|█▌        | 31/191 [00:43<03:21,  1.26s/it]Loading checkpoint shards:  17%|█▋        | 32/191 [00:44<03:11,  1.21s/it]Loading checkpoint shards:  17%|█▋        | 33/191 [00:46<03:20,  1.27s/it]Loading checkpoint shards:  18%|█▊        | 34/191 [00:47<03:26,  1.32s/it]Loading checkpoint shards:  18%|█▊        | 35/191 [00:48<03:13,  1.24s/it]Loading checkpoint shards:  19%|█▉        | 36/191 [00:50<03:19,  1.29s/it]Loading checkpoint shards:  19%|█▉        | 37/191 [00:51<03:23,  1.32s/it]Loading checkpoint shards:  20%|█▉        | 38/191 [00:52<03:10,  1.25s/it]Loading checkpoint shards:  20%|██        | 39/191 [00:53<03:16,  1.29s/it]Loading checkpoint shards:  21%|██        | 40/191 [00:55<03:13,  1.28s/it]Loading checkpoint shards:  21%|██▏       | 41/191 [00:56<02:56,  1.18s/it]Loading checkpoint shards:  22%|██▏       | 42/191 [00:57<02:59,  1.20s/it]Loading checkpoint shards:  23%|██▎       | 43/191 [00:58<03:07,  1.27s/it]Loading checkpoint shards:  23%|██▎       | 44/191 [00:59<02:57,  1.20s/it]Loading checkpoint shards:  24%|██▎       | 45/191 [01:01<03:04,  1.26s/it]Loading checkpoint shards:  24%|██▍       | 46/191 [01:02<03:09,  1.30s/it]Loading checkpoint shards:  25%|██▍       | 47/191 [01:03<02:57,  1.23s/it]Loading checkpoint shards:  25%|██▌       | 48/191 [01:05<03:03,  1.28s/it]Loading checkpoint shards:  26%|██▌       | 49/191 [01:06<03:06,  1.32s/it]Loading checkpoint shards:  26%|██▌       | 50/191 [01:07<02:54,  1.24s/it]Loading checkpoint shards:  27%|██▋       | 51/191 [01:09<03:00,  1.29s/it]Loading checkpoint shards:  27%|██▋       | 52/191 [01:10<02:56,  1.27s/it]Loading checkpoint shards:  28%|██▊       | 53/191 [01:11<02:46,  1.21s/it]Loading checkpoint shards:  28%|██▊       | 54/191 [01:12<02:46,  1.22s/it]Loading checkpoint shards:  29%|██▉       | 55/191 [01:13<02:52,  1.27s/it]Loading checkpoint shards:  29%|██▉       | 56/191 [01:15<02:43,  1.21s/it]Loading checkpoint shards:  30%|██▉       | 57/191 [01:16<02:49,  1.27s/it]Loading checkpoint shards:  30%|███       | 58/191 [01:17<02:53,  1.31s/it]Loading checkpoint shards:  31%|███       | 59/191 [01:18<02:42,  1.23s/it]Loading checkpoint shards:  31%|███▏      | 60/191 [01:20<02:47,  1.28s/it]Loading checkpoint shards:  32%|███▏      | 61/191 [01:21<02:50,  1.31s/it]Loading checkpoint shards:  32%|███▏      | 62/191 [01:22<02:38,  1.23s/it]Loading checkpoint shards:  33%|███▎      | 63/191 [01:23<02:36,  1.22s/it]Loading checkpoint shards:  34%|███▎      | 64/191 [01:25<02:41,  1.28s/it]Loading checkpoint shards:  34%|███▍      | 65/191 [01:26<02:29,  1.18s/it]Loading checkpoint shards:  35%|███▍      | 66/191 [01:27<02:36,  1.25s/it]Loading checkpoint shards:  35%|███▌      | 67/191 [01:29<02:41,  1.30s/it]Loading checkpoint shards:  36%|███▌      | 68/191 [01:30<02:31,  1.24s/it]Loading checkpoint shards:  36%|███▌      | 69/191 [01:31<02:31,  1.24s/it]Loading checkpoint shards:  37%|███▋      | 70/191 [01:32<02:30,  1.24s/it]Loading checkpoint shards:  37%|███▋      | 71/191 [01:33<02:22,  1.19s/it]Loading checkpoint shards:  38%|███▊      | 72/191 [01:35<02:27,  1.24s/it]Loading checkpoint shards:  38%|███▊      | 73/191 [01:36<02:31,  1.29s/it]Loading checkpoint shards:  39%|███▊      | 74/191 [01:37<02:22,  1.22s/it]Loading checkpoint shards:  39%|███▉      | 75/191 [01:38<02:27,  1.27s/it]Loading checkpoint shards:  40%|███▉      | 76/191 [01:40<02:29,  1.30s/it]Loading checkpoint shards:  40%|████      | 77/191 [01:41<02:19,  1.23s/it]Loading checkpoint shards:  41%|████      | 78/191 [01:42<02:18,  1.23s/it]Loading checkpoint shards:  41%|████▏     | 79/191 [01:44<02:25,  1.30s/it]Loading checkpoint shards:  42%|████▏     | 80/191 [01:45<02:12,  1.19s/it]Loading checkpoint shards:  42%|████▏     | 81/191 [01:46<02:16,  1.25s/it]Loading checkpoint shards:  43%|████▎     | 82/191 [01:47<02:20,  1.29s/it]Loading checkpoint shards:  43%|████▎     | 83/191 [01:48<02:12,  1.22s/it]Loading checkpoint shards:  44%|████▍     | 84/191 [01:50<02:11,  1.23s/it]Loading checkpoint shards:  45%|████▍     | 85/191 [01:51<02:10,  1.23s/it]Loading checkpoint shards:  45%|████▌     | 86/191 [01:52<02:00,  1.15s/it]Loading checkpoint shards:  46%|████▌     | 87/191 [01:53<02:06,  1.22s/it]Loading checkpoint shards:  46%|████▌     | 88/191 [01:55<02:10,  1.27s/it]Loading checkpoint shards:  47%|████▋     | 89/191 [01:56<02:02,  1.20s/it]Loading checkpoint shards:  47%|████▋     | 90/191 [01:57<02:06,  1.25s/it]Loading checkpoint shards:  48%|████▊     | 91/191 [01:58<02:09,  1.30s/it]Loading checkpoint shards:  48%|████▊     | 92/191 [01:59<02:01,  1.23s/it]Loading checkpoint shards:  49%|████▊     | 93/191 [02:01<02:04,  1.27s/it]Loading checkpoint shards:  49%|████▉     | 94/191 [02:02<02:07,  1.32s/it]Loading checkpoint shards:  50%|████▉     | 95/191 [02:03<01:55,  1.21s/it]Loading checkpoint shards:  50%|█████     | 96/191 [02:05<02:00,  1.27s/it]Loading checkpoint shards:  51%|█████     | 97/191 [02:06<01:58,  1.26s/it]Loading checkpoint shards:  51%|█████▏    | 98/191 [02:07<01:50,  1.19s/it]Loading checkpoint shards:  52%|█████▏    | 99/191 [02:08<01:54,  1.25s/it]Loading checkpoint shards:  52%|█████▏    | 100/191 [02:10<01:56,  1.28s/it]Loading checkpoint shards:  53%|█████▎    | 101/191 [02:11<01:46,  1.18s/it]Loading checkpoint shards:  53%|█████▎    | 102/191 [02:12<01:46,  1.19s/it]Loading checkpoint shards:  54%|█████▍    | 103/191 [02:13<01:46,  1.21s/it]Loading checkpoint shards:  54%|█████▍    | 104/191 [02:14<01:41,  1.17s/it]Loading checkpoint shards:  55%|█████▍    | 105/191 [02:16<01:47,  1.25s/it]Loading checkpoint shards:  55%|█████▌    | 106/191 [02:17<01:50,  1.31s/it]Loading checkpoint shards:  56%|█████▌    | 107/191 [02:18<01:46,  1.27s/it]Loading checkpoint shards:  57%|█████▋    | 108/191 [02:20<01:48,  1.31s/it]Loading checkpoint shards:  57%|█████▋    | 109/191 [02:21<01:50,  1.34s/it]Loading checkpoint shards:  58%|█████▊    | 110/191 [02:22<01:39,  1.23s/it]Loading checkpoint shards:  58%|█████▊    | 111/191 [02:23<01:39,  1.25s/it]Loading checkpoint shards:  59%|█████▊    | 112/191 [02:25<01:43,  1.31s/it]Loading checkpoint shards:  59%|█████▉    | 113/191 [02:26<01:36,  1.24s/it]Loading checkpoint shards:  60%|█████▉    | 114/191 [02:27<01:35,  1.24s/it]Loading checkpoint shards:  60%|██████    | 115/191 [02:29<01:40,  1.32s/it]Loading checkpoint shards:  61%|██████    | 116/191 [02:30<01:34,  1.26s/it]Loading checkpoint shards:  61%|██████▏   | 117/191 [02:31<01:36,  1.31s/it]Loading checkpoint shards:  62%|██████▏   | 118/191 [02:33<01:39,  1.36s/it]Loading checkpoint shards:  62%|██████▏   | 119/191 [02:34<01:31,  1.28s/it]Loading checkpoint shards:  63%|██████▎   | 120/191 [02:35<01:33,  1.32s/it]Loading checkpoint shards:  63%|██████▎   | 121/191 [02:36<01:34,  1.35s/it]Loading checkpoint shards:  64%|██████▍   | 122/191 [02:38<01:27,  1.27s/it]Loading checkpoint shards:  64%|██████▍   | 123/191 [02:39<01:29,  1.31s/it]Loading checkpoint shards:  65%|██████▍   | 124/191 [02:40<01:26,  1.30s/it]Loading checkpoint shards:  65%|██████▌   | 125/191 [02:41<01:21,  1.24s/it]Loading checkpoint shards:  66%|██████▌   | 126/191 [02:44<01:44,  1.60s/it]Loading checkpoint shards:  66%|██████▋   | 127/191 [02:46<02:01,  1.90s/it]Loading checkpoint shards:  67%|██████▋   | 128/191 [02:47<01:44,  1.66s/it]Loading checkpoint shards:  68%|██████▊   | 129/191 [02:49<01:38,  1.59s/it]Loading checkpoint shards:  68%|██████▊   | 130/191 [02:50<01:34,  1.54s/it]Loading checkpoint shards:  69%|██████▊   | 131/191 [02:51<01:24,  1.41s/it]Loading checkpoint shards:  69%|██████▉   | 132/191 [02:53<01:23,  1.42s/it]Loading checkpoint shards:  70%|██████▉   | 133/191 [02:55<01:34,  1.62s/it]Loading checkpoint shards:  70%|███████   | 134/191 [02:56<01:23,  1.47s/it]Loading checkpoint shards:  71%|███████   | 135/191 [02:57<01:21,  1.45s/it]Loading checkpoint shards:  71%|███████   | 136/191 [02:59<01:17,  1.41s/it]Loading checkpoint shards:  72%|███████▏  | 137/191 [03:00<01:11,  1.32s/it]Loading checkpoint shards:  72%|███████▏  | 138/191 [03:01<01:11,  1.35s/it]Loading checkpoint shards:  73%|███████▎  | 139/191 [03:03<01:11,  1.38s/it]Loading checkpoint shards:  73%|███████▎  | 140/191 [03:04<01:08,  1.34s/it]Loading checkpoint shards:  74%|███████▍  | 141/191 [03:06<01:22,  1.64s/it]Loading checkpoint shards:  74%|███████▍  | 142/191 [03:08<01:17,  1.59s/it]Loading checkpoint shards:  75%|███████▍  | 143/191 [03:09<01:09,  1.45s/it]Loading checkpoint shards:  75%|███████▌  | 144/191 [03:12<01:23,  1.78s/it]Loading checkpoint shards:  76%|███████▌  | 145/191 [03:16<01:57,  2.56s/it]Loading checkpoint shards:  76%|███████▋  | 146/191 [03:18<01:45,  2.34s/it]Loading checkpoint shards:  77%|███████▋  | 147/191 [03:21<01:51,  2.54s/it]Loading checkpoint shards:  77%|███████▋  | 148/191 [03:24<02:04,  2.90s/it]Loading checkpoint shards:  78%|███████▊  | 149/191 [03:26<01:40,  2.38s/it]Loading checkpoint shards:  79%|███████▊  | 150/191 [03:29<01:43,  2.53s/it]Loading checkpoint shards:  79%|███████▉  | 151/191 [03:31<01:46,  2.65s/it]Loading checkpoint shards:  80%|███████▉  | 152/191 [03:34<01:41,  2.60s/it]Loading checkpoint shards:  80%|████████  | 153/191 [03:43<02:47,  4.42s/it]ERROR:composer.cli.launcher:Rank 16 crashed with exit code -9.
+Waiting up to 30 seconds for all training processes to terminate. Press Ctrl-C to exit immediately.
+Global rank 17 (PID 1075042) exited with code 143
+----------Begin global rank 17 STDOUT----------
+----****----[eldar debug]----****---- Using fused CrossEntropyLoss from flash_attn.losses.cross_entropy ----****----[eldar debug]----****----
+----****----[eldar debug]----****---- Using fused CrossEntropyLoss from flash_attn.losses.cross_entropy ----****----[eldar debug]----****----
+H100-GPU19:1075042:1075042 [1] NCCL INFO cudaDriverVersion 12030
+H100-GPU19:1075042:1075042 [1] NCCL INFO Bootstrap : Using ibs3:fe80::a288:c203:8c:df72%ibs3<0>
+H100-GPU19:1075042:1075042 [1] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
+H100-GPU19:1075042:1076179 [1] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [1]mlx5_1:1/IB [2]mlx5_2:1/IB [3]mlx5_3:1/IB [4]mlx5_4:1/IB [5]mlx5_5:1/IB [6]mlx5_6:1/IB [7]mlx5_7:1/IB [RO]; OOB ibs3:fe80::a288:c203:8c:df72%ibs3<0>
+H100-GPU19:1075042:1076179 [1] NCCL INFO Using non-device net plugin version 0
+H100-GPU19:1075042:1076179 [1] NCCL INFO Using network IB
+H100-GPU19:1075042:1076179 [1] NCCL INFO comm 0xd1332b0 rank 17 nranks 32 cudaDev 1 nvmlDev 1 busId 23000 commId 0xf807db33dff0cbf2 - Init START
+H100-GPU19:1075042:1076179 [1] NCCL INFO Setting affinity for GPU 1 to ffffffff,ffffffff,ffffffff,00000000,00000000,00000000,ffffffff,ffffffff,ffffffff
+H100-GPU19:1075042:1076179 [1] NCCL INFO NVLS multicast support is available on dev 1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Trees [0] 18/8/-1->17->16 [1] 18/25/-1->17->1 [2] -1/-1/-1->17->16 [3] 18/-1/-1->17->16 [4] 18/-1/-1->17->16 [5] 18/-1/-1->17->16 [6] 18/-1/-1->17->16 [7] 18/-1/-1->17->16 [8] 18/-1/-1->17->16 [9] 18/-1/-1->17->10 [10] -1/-1/-1->17->16 [11] 18/-1/-1->17->16 [12] 18/-1/-1->17->16 [13] 18/-1/-1->17->16 [14] 18/-1/-1->17->16 [15] 18/-1/-1->17->16
+H100-GPU19:1075042:1076179 [1] NCCL INFO P2P Chunksize set to 131072
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 03/0 : 17[1] -> 23[7] via P2P/CUMEM
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 11/0 : 17[1] -> 23[7] via P2P/CUMEM
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 01/0 : 10[2] -> 17[1] [receive] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 09/0 : 10[2] -> 17[1] [receive] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 00/0 : 17[1] -> 24[0] [send] via NET/IB/2
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 08/0 : 17[1] -> 24[0] [send] via NET/IB/2
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 01/0 : 17[1] -> 16[0] via P2P/CUMEM
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 02/0 : 17[1] -> 16[0] via P2P/CUMEM
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 04/0 : 17[1] -> 16[0] via P2P/CUMEM
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 05/0 : 17[1] -> 16[0] via P2P/CUMEM
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 06/0 : 17[1] -> 16[0] via P2P/CUMEM
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 07/0 : 17[1] -> 16[0] via P2P/CUMEM
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 09/0 : 17[1] -> 16[0] via P2P/CUMEM
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 10/0 : 17[1] -> 16[0] via P2P/CUMEM
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 12/0 : 17[1] -> 16[0] via P2P/CUMEM
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 13/0 : 17[1] -> 16[0] via P2P/CUMEM
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 14/0 : 17[1] -> 16[0] via P2P/CUMEM
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 15/0 : 17[1] -> 16[0] via P2P/CUMEM
+H100-GPU19:1075042:1076179 [1] NCCL INFO Connected all rings
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 00/0 : 17[1] -> 18[2] via P2P/CUMEM
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 01/0 : 17[1] -> 18[2] via P2P/CUMEM
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 03/0 : 17[1] -> 18[2] via P2P/CUMEM
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 04/0 : 17[1] -> 18[2] via P2P/CUMEM
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 05/0 : 17[1] -> 18[2] via P2P/CUMEM
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 06/0 : 17[1] -> 18[2] via P2P/CUMEM
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 07/0 : 17[1] -> 18[2] via P2P/CUMEM
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 08/0 : 17[1] -> 18[2] via P2P/CUMEM
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 09/0 : 17[1] -> 18[2] via P2P/CUMEM
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 11/0 : 17[1] -> 18[2] via P2P/CUMEM
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 12/0 : 17[1] -> 18[2] via P2P/CUMEM
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 13/0 : 17[1] -> 18[2] via P2P/CUMEM
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 14/0 : 17[1] -> 18[2] via P2P/CUMEM
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 15/0 : 17[1] -> 18[2] via P2P/CUMEM
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 01/0 : 17[1] -> 25[1] [send] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 00/0 : 8[0] -> 17[1] [receive] via NET/IB/2
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 01/0 : 1[1] -> 17[1] [receive] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 01/0 : 17[1] -> 1[1] [send] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 00/0 : 17[1] -> 8[0] [send] via NET/IB/2
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 01/0 : 25[1] -> 17[1] [receive] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 09/0 : 17[1] -> 10[2] [send] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 00/0 : 17[1] -> 16[0] via P2P/CUMEM
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 03/0 : 17[1] -> 16[0] via P2P/CUMEM
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 08/0 : 17[1] -> 16[0] via P2P/CUMEM
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 11/0 : 17[1] -> 16[0] via P2P/CUMEM
+H100-GPU19:1075042:1076179 [1] NCCL INFO Connected all trees
+H100-GPU19:1075042:1076179 [1] NCCL INFO NVLS comm 0xd1332b0 headRank 1 nHeads 8 buffSize 4194304 memSize 2097152 nvlsPerRankSize 201326592 nvlsTotalSize 1610612736
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 00/0 : 9[1] -> 17[1] [receive] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 01/0 : 9[1] -> 17[1] [receive] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 02/0 : 9[1] -> 17[1] [receive] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 03/0 : 9[1] -> 17[1] [receive] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 04/0 : 9[1] -> 17[1] [receive] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 05/0 : 9[1] -> 17[1] [receive] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 06/0 : 9[1] -> 17[1] [receive] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 07/0 : 9[1] -> 17[1] [receive] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 08/0 : 9[1] -> 17[1] [receive] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 09/0 : 9[1] -> 17[1] [receive] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 10/0 : 9[1] -> 17[1] [receive] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 11/0 : 9[1] -> 17[1] [receive] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 12/0 : 9[1] -> 17[1] [receive] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 13/0 : 9[1] -> 17[1] [receive] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 14/0 : 9[1] -> 17[1] [receive] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 15/0 : 9[1] -> 17[1] [receive] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 00/0 : 17[1] -> 25[1] [send] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 02/0 : 17[1] -> 25[1] [send] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 04/0 : 17[1] -> 25[1] [send] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 06/0 : 17[1] -> 25[1] [send] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 08/0 : 17[1] -> 25[1] [send] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 10/0 : 17[1] -> 25[1] [send] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 12/0 : 17[1] -> 25[1] [send] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 14/0 : 17[1] -> 25[1] [send] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 00/0 : 1[1] -> 17[1] [receive] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 02/0 : 1[1] -> 17[1] [receive] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 04/0 : 1[1] -> 17[1] [receive] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 06/0 : 1[1] -> 17[1] [receive] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 08/0 : 1[1] -> 17[1] [receive] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 10/0 : 1[1] -> 17[1] [receive] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 12/0 : 1[1] -> 17[1] [receive] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 14/0 : 1[1] -> 17[1] [receive] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 00/0 : 17[1] -> 1[1] [send] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 02/0 : 17[1] -> 1[1] [send] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 04/0 : 17[1] -> 1[1] [send] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 06/0 : 17[1] -> 1[1] [send] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 08/0 : 17[1] -> 1[1] [send] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 10/0 : 17[1] -> 1[1] [send] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 12/0 : 17[1] -> 1[1] [send] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 14/0 : 17[1] -> 1[1] [send] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 00/0 : 25[1] -> 17[1] [receive] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 02/0 : 25[1] -> 17[1] [receive] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 04/0 : 25[1] -> 17[1] [receive] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 06/0 : 25[1] -> 17[1] [receive] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 08/0 : 25[1] -> 17[1] [receive] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 10/0 : 25[1] -> 17[1] [receive] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 12/0 : 25[1] -> 17[1] [receive] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 14/0 : 25[1] -> 17[1] [receive] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 00/0 : 17[1] -> 9[1] [send] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 01/0 : 17[1] -> 9[1] [send] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 02/0 : 17[1] -> 9[1] [send] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 03/0 : 17[1] -> 9[1] [send] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 04/0 : 17[1] -> 9[1] [send] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 05/0 : 17[1] -> 9[1] [send] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 06/0 : 17[1] -> 9[1] [send] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 07/0 : 17[1] -> 9[1] [send] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 08/0 : 17[1] -> 9[1] [send] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 09/0 : 17[1] -> 9[1] [send] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 10/0 : 17[1] -> 9[1] [send] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 11/0 : 17[1] -> 9[1] [send] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 12/0 : 17[1] -> 9[1] [send] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 13/0 : 17[1] -> 9[1] [send] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 14/0 : 17[1] -> 9[1] [send] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Channel 15/0 : 17[1] -> 9[1] [send] via NET/IB/1
+H100-GPU19:1075042:1076179 [1] NCCL INFO Connected NVLS tree
+H100-GPU19:1075042:1076179 [1] NCCL INFO threadThresholds 8/8/64 | 256/8/64 | 512 | 512
+H100-GPU19:1075042:1076179 [1] NCCL INFO 16 coll channels, 16 nvls channels, 16 p2p channels, 2 p2p channels per peer
+H100-GPU19:1075042:1076179 [1] NCCL INFO comm 0xd1332b0 rank 17 nranks 32 cudaDev 1 nvmlDev 1 busId 23000 commId 0xf807db33dff0cbf2 - Init COMPLETE
+H100-GPU19:1075042:1076349 [1] NCCL INFO [Service thread] Connection closed by localRank 0
+H100-GPU19:1075042:1076349 [1] NCCL INFO [Service thread] Connection closed by localRank 1
+H100-GPU19:1075042:1076349 [1] NCCL INFO [Service thread] Connection closed by localRank 7
+H100-GPU19:1075042:1076349 [1] NCCL INFO [Service thread] Connection closed by localRank 2
+H100-GPU19:1075042:1075042 [1] NCCL INFO comm 0xd1332b0 rank 17 nranks 32 cudaDev 1 busId 23000 - Abort COMPLETE
+
+----------End global rank 17 STDOUT----------
+----------Begin global rank 17 STDERR----------
+/home/eldar/eldar-upstream/upstream-llm-foundry/scripts/eval/eval.py:281: UserWarning: Unused parameter global_seed found in cfg. Please check your yaml to ensure this parameter is necessary.
+  warnings.warn(
+/home/eldar/eldar-upstream/upstream-llm-foundry/scripts/eval/eval.py:281: UserWarning: Unused parameter ckpt_path found in cfg. Please check your yaml to ensure this parameter is necessary.
+  warnings.warn(
+[W Utils.hpp:133] Warning: Environment variable NCCL_ASYNC_ERROR_HANDLING is deprecated; use TORCH_NCCL_ASYNC_ERROR_HANDLING instead (function getCvarInt)
+2024-07-23 15:20:01,864: rank17[1075042][MainThread]: INFO: llmfoundry.utils.builders: Extracting ICL task config from path: eval/yamls/openllm_noGSM8k.yaml
+/home/eldar/eldar-upstream/upstream-transformers/src/transformers/models/auto/configuration_auto.py:1111: FutureWarning: The `use_auth_token` argument is deprecated and will be removed in v5 of Transformers. Please use `token` instead.
+  warnings.warn(
+
+----------End global rank 17 STDERR----------
+Global rank 18 (PID 1075043) exited with code 143
+----------Begin global rank 18 STDOUT----------
+----****----[eldar debug]----****---- Using fused CrossEntropyLoss from flash_attn.losses.cross_entropy ----****----[eldar debug]----****----
+----****----[eldar debug]----****---- Using fused CrossEntropyLoss from flash_attn.losses.cross_entropy ----****----[eldar debug]----****----
+H100-GPU19:1075043:1075043 [2] NCCL INFO cudaDriverVersion 12030
+H100-GPU19:1075043:1075043 [2] NCCL INFO Bootstrap : Using ibs3:fe80::a288:c203:8c:df72%ibs3<0>
+H100-GPU19:1075043:1075043 [2] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
+H100-GPU19:1075043:1076177 [2] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [1]mlx5_1:1/IB [2]mlx5_2:1/IB [3]mlx5_3:1/IB [4]mlx5_4:1/IB [5]mlx5_5:1/IB [6]mlx5_6:1/IB [7]mlx5_7:1/IB [RO]; OOB ibs3:fe80::a288:c203:8c:df72%ibs3<0>
+H100-GPU19:1075043:1076177 [2] NCCL INFO Using non-device net plugin version 0
+H100-GPU19:1075043:1076177 [2] NCCL INFO Using network IB
+H100-GPU19:1075043:1076177 [2] NCCL INFO comm 0xca9c1b0 rank 18 nranks 32 cudaDev 2 nvmlDev 2 busId 43000 commId 0xf807db33dff0cbf2 - Init START
+H100-GPU19:1075043:1076177 [2] NCCL INFO Setting affinity for GPU 2 to ffffffff,ffffffff,ffffffff,00000000,00000000,00000000,ffffffff,ffffffff,ffffffff
+H100-GPU19:1075043:1076177 [2] NCCL INFO NVLS multicast support is available on dev 2
+H100-GPU19:1075043:1076177 [2] NCCL INFO Trees [0] 19/-1/-1->18->17 [1] 19/9/-1->18->17 [2] 19/26/-1->18->2 [3] 20/-1/-1->18->17 [4] 19/-1/-1->18->17 [5] 19/-1/-1->18->17 [6] 19/-1/-1->18->17 [7] 19/-1/-1->18->17 [8] 19/-1/-1->18->17 [9] 19/-1/-1->18->17 [10] 19/-1/-1->18->11 [11] 20/-1/-1->18->17 [12] 19/-1/-1->18->17 [13] 19/-1/-1->18->17 [14] 19/-1/-1->18->17 [15] 19/-1/-1->18->17
+H100-GPU19:1075043:1076177 [2] NCCL INFO P2P Chunksize set to 131072
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 02/0 : 11[3] -> 18[2] [receive] via NET/IB/3
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 10/0 : 11[3] -> 18[2] [receive] via NET/IB/3
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 01/0 : 18[2] -> 25[1] [send] via NET/IB/1
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 09/0 : 18[2] -> 25[1] [send] via NET/IB/1
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 00/0 : 18[2] -> 17[1] via P2P/CUMEM
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 02/0 : 18[2] -> 17[1] via P2P/CUMEM
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 03/0 : 18[2] -> 17[1] via P2P/CUMEM
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 04/0 : 18[2] -> 17[1] via P2P/CUMEM
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 05/0 : 18[2] -> 17[1] via P2P/CUMEM
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 06/0 : 18[2] -> 17[1] via P2P/CUMEM
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 07/0 : 18[2] -> 17[1] via P2P/CUMEM
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 08/0 : 18[2] -> 17[1] via P2P/CUMEM
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 10/0 : 18[2] -> 17[1] via P2P/CUMEM
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 11/0 : 18[2] -> 17[1] via P2P/CUMEM
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 12/0 : 18[2] -> 17[1] via P2P/CUMEM
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 13/0 : 18[2] -> 17[1] via P2P/CUMEM
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 14/0 : 18[2] -> 17[1] via P2P/CUMEM
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 15/0 : 18[2] -> 17[1] via P2P/CUMEM
+H100-GPU19:1075043:1076177 [2] NCCL INFO Connected all rings
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 00/0 : 18[2] -> 19[3] via P2P/CUMEM
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 01/0 : 18[2] -> 19[3] via P2P/CUMEM
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 02/0 : 18[2] -> 19[3] via P2P/CUMEM
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 04/0 : 18[2] -> 19[3] via P2P/CUMEM
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 05/0 : 18[2] -> 19[3] via P2P/CUMEM
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 06/0 : 18[2] -> 19[3] via P2P/CUMEM
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 07/0 : 18[2] -> 19[3] via P2P/CUMEM
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 08/0 : 18[2] -> 19[3] via P2P/CUMEM
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 09/0 : 18[2] -> 19[3] via P2P/CUMEM
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 10/0 : 18[2] -> 19[3] via P2P/CUMEM
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 12/0 : 18[2] -> 19[3] via P2P/CUMEM
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 13/0 : 18[2] -> 19[3] via P2P/CUMEM
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 14/0 : 18[2] -> 19[3] via P2P/CUMEM
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 15/0 : 18[2] -> 19[3] via P2P/CUMEM
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 03/0 : 18[2] -> 20[4] via P2P/CUMEM
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 11/0 : 18[2] -> 20[4] via P2P/CUMEM
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 02/0 : 18[2] -> 26[2] [send] via NET/IB/3
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 01/0 : 9[1] -> 18[2] [receive] via NET/IB/1
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 02/0 : 2[2] -> 18[2] [receive] via NET/IB/3
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 02/0 : 18[2] -> 2[2] [send] via NET/IB/3
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 01/0 : 18[2] -> 9[1] [send] via NET/IB/1
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 02/0 : 26[2] -> 18[2] [receive] via NET/IB/3
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 10/0 : 18[2] -> 11[3] [send] via NET/IB/3
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 01/0 : 18[2] -> 17[1] via P2P/CUMEM
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 09/0 : 18[2] -> 17[1] via P2P/CUMEM
+H100-GPU19:1075043:1076177 [2] NCCL INFO Connected all trees
+H100-GPU19:1075043:1076177 [2] NCCL INFO NVLS comm 0xca9c1b0 headRank 2 nHeads 8 buffSize 4194304 memSize 2097152 nvlsPerRankSize 201326592 nvlsTotalSize 1610612736
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 00/0 : 10[2] -> 18[2] [receive] via NET/IB/3
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 01/0 : 10[2] -> 18[2] [receive] via NET/IB/3
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 02/0 : 10[2] -> 18[2] [receive] via NET/IB/3
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 03/0 : 10[2] -> 18[2] [receive] via NET/IB/3
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 04/0 : 10[2] -> 18[2] [receive] via NET/IB/3
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 05/0 : 10[2] -> 18[2] [receive] via NET/IB/3
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 06/0 : 10[2] -> 18[2] [receive] via NET/IB/3
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 07/0 : 10[2] -> 18[2] [receive] via NET/IB/3
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 08/0 : 10[2] -> 18[2] [receive] via NET/IB/3
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 09/0 : 10[2] -> 18[2] [receive] via NET/IB/3
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 10/0 : 10[2] -> 18[2] [receive] via NET/IB/3
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 11/0 : 10[2] -> 18[2] [receive] via NET/IB/3
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 12/0 : 10[2] -> 18[2] [receive] via NET/IB/3
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 13/0 : 10[2] -> 18[2] [receive] via NET/IB/3
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 14/0 : 10[2] -> 18[2] [receive] via NET/IB/3
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 15/0 : 10[2] -> 18[2] [receive] via NET/IB/3
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 00/0 : 18[2] -> 26[2] [send] via NET/IB/3
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 04/0 : 18[2] -> 26[2] [send] via NET/IB/3
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 06/0 : 18[2] -> 26[2] [send] via NET/IB/3
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 08/0 : 18[2] -> 26[2] [send] via NET/IB/3
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 10/0 : 18[2] -> 26[2] [send] via NET/IB/3
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 12/0 : 18[2] -> 26[2] [send] via NET/IB/3
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 14/0 : 18[2] -> 26[2] [send] via NET/IB/3
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 00/0 : 2[2] -> 18[2] [receive] via NET/IB/3
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 04/0 : 2[2] -> 18[2] [receive] via NET/IB/3
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 06/0 : 2[2] -> 18[2] [receive] via NET/IB/3
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 08/0 : 2[2] -> 18[2] [receive] via NET/IB/3
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 10/0 : 2[2] -> 18[2] [receive] via NET/IB/3
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 12/0 : 2[2] -> 18[2] [receive] via NET/IB/3
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 14/0 : 2[2] -> 18[2] [receive] via NET/IB/3
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 00/0 : 18[2] -> 2[2] [send] via NET/IB/3
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 04/0 : 18[2] -> 2[2] [send] via NET/IB/3
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 06/0 : 18[2] -> 2[2] [send] via NET/IB/3
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 08/0 : 18[2] -> 2[2] [send] via NET/IB/3
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 10/0 : 18[2] -> 2[2] [send] via NET/IB/3
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 12/0 : 18[2] -> 2[2] [send] via NET/IB/3
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 14/0 : 18[2] -> 2[2] [send] via NET/IB/3
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 00/0 : 26[2] -> 18[2] [receive] via NET/IB/3
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 04/0 : 26[2] -> 18[2] [receive] via NET/IB/3
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 06/0 : 26[2] -> 18[2] [receive] via NET/IB/3
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 08/0 : 26[2] -> 18[2] [receive] via NET/IB/3
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 10/0 : 26[2] -> 18[2] [receive] via NET/IB/3
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 12/0 : 26[2] -> 18[2] [receive] via NET/IB/3
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 14/0 : 26[2] -> 18[2] [receive] via NET/IB/3
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 00/0 : 18[2] -> 10[2] [send] via NET/IB/3
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 01/0 : 18[2] -> 10[2] [send] via NET/IB/3
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 02/0 : 18[2] -> 10[2] [send] via NET/IB/3
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 03/0 : 18[2] -> 10[2] [send] via NET/IB/3
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 04/0 : 18[2] -> 10[2] [send] via NET/IB/3
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 05/0 : 18[2] -> 10[2] [send] via NET/IB/3
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 06/0 : 18[2] -> 10[2] [send] via NET/IB/3
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 07/0 : 18[2] -> 10[2] [send] via NET/IB/3
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 08/0 : 18[2] -> 10[2] [send] via NET/IB/3
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 09/0 : 18[2] -> 10[2] [send] via NET/IB/3
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 10/0 : 18[2] -> 10[2] [send] via NET/IB/3
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 11/0 : 18[2] -> 10[2] [send] via NET/IB/3
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 12/0 : 18[2] -> 10[2] [send] via NET/IB/3
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 13/0 : 18[2] -> 10[2] [send] via NET/IB/3
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 14/0 : 18[2] -> 10[2] [send] via NET/IB/3
+H100-GPU19:1075043:1076177 [2] NCCL INFO Channel 15/0 : 18[2] -> 10[2] [send] via NET/IB/3
+H100-GPU19:1075043:1076177 [2] NCCL INFO Connected NVLS tree
+H100-GPU19:1075043:1076177 [2] NCCL INFO threadThresholds 8/8/64 | 256/8/64 | 512 | 512
+H100-GPU19:1075043:1076177 [2] NCCL INFO 16 coll channels, 16 nvls channels, 16 p2p channels, 2 p2p channels per peer
+H100-GPU19:1075043:1076177 [2] NCCL INFO comm 0xca9c1b0 rank 18 nranks 32 cudaDev 2 nvmlDev 2 busId 43000 commId 0xf807db33dff0cbf2 - Init COMPLETE
+H100-GPU19:1075043:1076350 [2] NCCL INFO [Service thread] Connection closed by localRank 3
+H100-GPU19:1075043:1076350 [2] NCCL INFO [Service thread] Connection closed by localRank 1
+H100-GPU19:1075043:1076350 [2] NCCL INFO [Service thread] Connection closed by localRank 4
+H100-GPU19:1075043:1076350 [2] NCCL INFO [Service thread] Connection closed by localRank 2
+H100-GPU19:1075043:1075043 [2] NCCL INFO comm 0xca9c1b0 rank 18 nranks 32 cudaDev 2 busId 43000 - Abort COMPLETE
+
+----------End global rank 18 STDOUT----------
+----------Begin global rank 18 STDERR----------
+/home/eldar/eldar-upstream/upstream-llm-foundry/scripts/eval/eval.py:281: UserWarning: Unused parameter global_seed found in cfg. Please check your yaml to ensure this parameter is necessary.
+  warnings.warn(
+/home/eldar/eldar-upstream/upstream-llm-foundry/scripts/eval/eval.py:281: UserWarning: Unused parameter ckpt_path found in cfg. Please check your yaml to ensure this parameter is necessary.
+  warnings.warn(
+[W Utils.hpp:133] Warning: Environment variable NCCL_ASYNC_ERROR_HANDLING is deprecated; use TORCH_NCCL_ASYNC_ERROR_HANDLING instead (function getCvarInt)
+2024-07-23 15:20:01,864: rank18[1075043][MainThread]: INFO: llmfoundry.utils.builders: Extracting ICL task config from path: eval/yamls/openllm_noGSM8k.yaml
+/home/eldar/eldar-upstream/upstream-transformers/src/transformers/models/auto/configuration_auto.py:1111: FutureWarning: The `use_auth_token` argument is deprecated and will be removed in v5 of Transformers. Please use `token` instead.
+  warnings.warn(
+
+----------End global rank 18 STDERR----------
+Global rank 19 (PID 1075044) exited with code 143
+----------Begin global rank 19 STDOUT----------
+----****----[eldar debug]----****---- Using fused CrossEntropyLoss from flash_attn.losses.cross_entropy ----****----[eldar debug]----****----
+----****----[eldar debug]----****---- Using fused CrossEntropyLoss from flash_attn.losses.cross_entropy ----****----[eldar debug]----****----
+H100-GPU19:1075044:1075044 [3] NCCL INFO cudaDriverVersion 12030
+H100-GPU19:1075044:1075044 [3] NCCL INFO Bootstrap : Using ibs3:fe80::a288:c203:8c:df72%ibs3<0>
+H100-GPU19:1075044:1075044 [3] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
+H100-GPU19:1075044:1076181 [3] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [1]mlx5_1:1/IB [2]mlx5_2:1/IB [3]mlx5_3:1/IB [4]mlx5_4:1/IB [5]mlx5_5:1/IB [6]mlx5_6:1/IB [7]mlx5_7:1/IB [RO]; OOB ibs3:fe80::a288:c203:8c:df72%ibs3<0>
+H100-GPU19:1075044:1076181 [3] NCCL INFO Using non-device net plugin version 0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Using network IB
+H100-GPU19:1075044:1076181 [3] NCCL INFO comm 0xbeeced0 rank 19 nranks 32 cudaDev 3 nvmlDev 3 busId 64000 commId 0xf807db33dff0cbf2 - Init START
+H100-GPU19:1075044:1076181 [3] NCCL INFO Setting affinity for GPU 3 to ffffffff,ffffffff,ffffffff,00000000,00000000,00000000,ffffffff,ffffffff,ffffffff
+H100-GPU19:1075044:1076181 [3] NCCL INFO NVLS multicast support is available on dev 3
+H100-GPU19:1075044:1076181 [3] NCCL INFO Trees [0] 20/-1/-1->19->18 [1] 20/-1/-1->19->18 [2] 20/10/-1->19->18 [3] 16/27/-1->19->3 [4] -1/-1/-1->19->18 [5] 20/-1/-1->19->18 [6] 20/-1/-1->19->18 [7] -1/-1/-1->19->18 [8] 20/-1/-1->19->18 [9] 20/-1/-1->19->18 [10] 20/-1/-1->19->18 [11] 16/-1/-1->19->8 [12] -1/-1/-1->19->18 [13] 20/-1/-1->19->18 [14] 20/-1/-1->19->18 [15] -1/-1/-1->19->18
+H100-GPU19:1075044:1076181 [3] NCCL INFO P2P Chunksize set to 131072
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 02/0 : 19[3] -> 26[2] [send] via NET/IB/3
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 10/0 : 19[3] -> 26[2] [send] via NET/IB/3
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 03/0 : 8[0] -> 19[3] [receive] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 11/0 : 8[0] -> 19[3] [receive] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 00/0 : 19[3] -> 18[2] via P2P/CUMEM
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 01/0 : 19[3] -> 18[2] via P2P/CUMEM
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 03/0 : 19[3] -> 18[2] via P2P/CUMEM
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 04/0 : 19[3] -> 18[2] via P2P/CUMEM
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 05/0 : 19[3] -> 18[2] via P2P/CUMEM
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 06/0 : 19[3] -> 18[2] via P2P/CUMEM
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 07/0 : 19[3] -> 18[2] via P2P/CUMEM
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 08/0 : 19[3] -> 18[2] via P2P/CUMEM
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 09/0 : 19[3] -> 18[2] via P2P/CUMEM
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 11/0 : 19[3] -> 18[2] via P2P/CUMEM
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 12/0 : 19[3] -> 18[2] via P2P/CUMEM
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 13/0 : 19[3] -> 18[2] via P2P/CUMEM
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 14/0 : 19[3] -> 18[2] via P2P/CUMEM
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 15/0 : 19[3] -> 18[2] via P2P/CUMEM
+H100-GPU19:1075044:1076181 [3] NCCL INFO Connected all rings
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 00/0 : 19[3] -> 20[4] via P2P/CUMEM
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 01/0 : 19[3] -> 20[4] via P2P/CUMEM
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 02/0 : 19[3] -> 20[4] via P2P/CUMEM
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 05/0 : 19[3] -> 20[4] via P2P/CUMEM
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 06/0 : 19[3] -> 20[4] via P2P/CUMEM
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 08/0 : 19[3] -> 20[4] via P2P/CUMEM
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 09/0 : 19[3] -> 20[4] via P2P/CUMEM
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 10/0 : 19[3] -> 20[4] via P2P/CUMEM
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 13/0 : 19[3] -> 20[4] via P2P/CUMEM
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 14/0 : 19[3] -> 20[4] via P2P/CUMEM
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 03/0 : 19[3] -> 27[3] [send] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 02/0 : 10[2] -> 19[3] [receive] via NET/IB/3
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 03/0 : 3[3] -> 19[3] [receive] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 03/0 : 19[3] -> 3[3] [send] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 11/0 : 19[3] -> 8[0] [send] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 02/0 : 19[3] -> 10[2] [send] via NET/IB/3
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 03/0 : 27[3] -> 19[3] [receive] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 03/0 : 19[3] -> 16[0] via P2P/CUMEM
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 11/0 : 19[3] -> 16[0] via P2P/CUMEM
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 02/0 : 19[3] -> 18[2] via P2P/CUMEM
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 10/0 : 19[3] -> 18[2] via P2P/CUMEM
+H100-GPU19:1075044:1076181 [3] NCCL INFO Connected all trees
+H100-GPU19:1075044:1076181 [3] NCCL INFO NVLS comm 0xbeeced0 headRank 3 nHeads 8 buffSize 4194304 memSize 2097152 nvlsPerRankSize 201326592 nvlsTotalSize 1610612736
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 00/0 : 11[3] -> 19[3] [receive] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 01/0 : 11[3] -> 19[3] [receive] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 02/0 : 11[3] -> 19[3] [receive] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 03/0 : 11[3] -> 19[3] [receive] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 04/0 : 11[3] -> 19[3] [receive] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 05/0 : 11[3] -> 19[3] [receive] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 06/0 : 11[3] -> 19[3] [receive] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 07/0 : 11[3] -> 19[3] [receive] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 08/0 : 11[3] -> 19[3] [receive] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 09/0 : 11[3] -> 19[3] [receive] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 10/0 : 11[3] -> 19[3] [receive] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 11/0 : 11[3] -> 19[3] [receive] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 12/0 : 11[3] -> 19[3] [receive] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 13/0 : 11[3] -> 19[3] [receive] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 14/0 : 11[3] -> 19[3] [receive] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 15/0 : 11[3] -> 19[3] [receive] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 00/0 : 19[3] -> 27[3] [send] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 02/0 : 19[3] -> 27[3] [send] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 04/0 : 19[3] -> 27[3] [send] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 06/0 : 19[3] -> 27[3] [send] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 08/0 : 19[3] -> 27[3] [send] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 10/0 : 19[3] -> 27[3] [send] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 12/0 : 19[3] -> 27[3] [send] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 14/0 : 19[3] -> 27[3] [send] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 00/0 : 3[3] -> 19[3] [receive] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 02/0 : 3[3] -> 19[3] [receive] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 04/0 : 3[3] -> 19[3] [receive] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 06/0 : 3[3] -> 19[3] [receive] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 08/0 : 3[3] -> 19[3] [receive] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 10/0 : 3[3] -> 19[3] [receive] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 12/0 : 3[3] -> 19[3] [receive] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 14/0 : 3[3] -> 19[3] [receive] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 00/0 : 19[3] -> 3[3] [send] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 02/0 : 19[3] -> 3[3] [send] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 04/0 : 19[3] -> 3[3] [send] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 06/0 : 19[3] -> 3[3] [send] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 08/0 : 19[3] -> 3[3] [send] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 10/0 : 19[3] -> 3[3] [send] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 12/0 : 19[3] -> 3[3] [send] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 14/0 : 19[3] -> 3[3] [send] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 00/0 : 27[3] -> 19[3] [receive] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 02/0 : 27[3] -> 19[3] [receive] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 04/0 : 27[3] -> 19[3] [receive] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 06/0 : 27[3] -> 19[3] [receive] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 08/0 : 27[3] -> 19[3] [receive] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 10/0 : 27[3] -> 19[3] [receive] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 12/0 : 27[3] -> 19[3] [receive] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 14/0 : 27[3] -> 19[3] [receive] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 00/0 : 19[3] -> 11[3] [send] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 01/0 : 19[3] -> 11[3] [send] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 02/0 : 19[3] -> 11[3] [send] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 03/0 : 19[3] -> 11[3] [send] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 04/0 : 19[3] -> 11[3] [send] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 05/0 : 19[3] -> 11[3] [send] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 06/0 : 19[3] -> 11[3] [send] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 07/0 : 19[3] -> 11[3] [send] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 08/0 : 19[3] -> 11[3] [send] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 09/0 : 19[3] -> 11[3] [send] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 10/0 : 19[3] -> 11[3] [send] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 11/0 : 19[3] -> 11[3] [send] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 12/0 : 19[3] -> 11[3] [send] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 13/0 : 19[3] -> 11[3] [send] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 14/0 : 19[3] -> 11[3] [send] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Channel 15/0 : 19[3] -> 11[3] [send] via NET/IB/0
+H100-GPU19:1075044:1076181 [3] NCCL INFO Connected NVLS tree
+H100-GPU19:1075044:1076181 [3] NCCL INFO threadThresholds 8/8/64 | 256/8/64 | 512 | 512
+H100-GPU19:1075044:1076181 [3] NCCL INFO 16 coll channels, 16 nvls channels, 16 p2p channels, 2 p2p channels per peer
+H100-GPU19:1075044:1076181 [3] NCCL INFO comm 0xbeeced0 rank 19 nranks 32 cudaDev 3 nvmlDev 3 busId 64000 commId 0xf807db33dff0cbf2 - Init COMPLETE
+H100-GPU19:1075044:1076351 [3] NCCL INFO [Service thread] Connection closed by localRank 0
+H100-GPU19:1075044:1076351 [3] NCCL INFO [Service thread] Connection closed by localRank 3
+H100-GPU19:1075044:1076351 [3] NCCL INFO [Service thread] Connection closed by localRank 4
+H100-GPU19:1075044:1076351 [3] NCCL INFO [Service thread] Connection closed by localRank 5
+H100-GPU19:1075044:1076351 [3] NCCL INFO [Service thread] Connection closed by localRank 2
+H100-GPU19:1075044:1075044 [3] NCCL INFO comm 0xbeeced0 rank 19 nranks 32 cudaDev 3 busId 64000 - Abort COMPLETE
+
+----------End global rank 19 STDOUT----------
+----------Begin global rank 19 STDERR----------
+/home/eldar/eldar-upstream/upstream-llm-foundry/scripts/eval/eval.py:281: UserWarning: Unused parameter global_seed found in cfg. Please check your yaml to ensure this parameter is necessary.
+  warnings.warn(
+/home/eldar/eldar-upstream/upstream-llm-foundry/scripts/eval/eval.py:281: UserWarning: Unused parameter ckpt_path found in cfg. Please check your yaml to ensure this parameter is necessary.
+  warnings.warn(
+[W Utils.hpp:133] Warning: Environment variable NCCL_ASYNC_ERROR_HANDLING is deprecated; use TORCH_NCCL_ASYNC_ERROR_HANDLING instead (function getCvarInt)
+2024-07-23 15:20:01,864: rank19[1075044][MainThread]: INFO: llmfoundry.utils.builders: Extracting ICL task config from path: eval/yamls/openllm_noGSM8k.yaml
+/home/eldar/eldar-upstream/upstream-transformers/src/transformers/models/auto/configuration_auto.py:1111: FutureWarning: The `use_auth_token` argument is deprecated and will be removed in v5 of Transformers. Please use `token` instead.
+  warnings.warn(
+
+----------End global rank 19 STDERR----------
+Global rank 20 (PID 1075045) exited with code 143
+----------Begin global rank 20 STDOUT----------
+----****----[eldar debug]----****---- Using fused CrossEntropyLoss from flash_attn.losses.cross_entropy ----****----[eldar debug]----****----
+----****----[eldar debug]----****---- Using fused CrossEntropyLoss from flash_attn.losses.cross_entropy ----****----[eldar debug]----****----
+H100-GPU19:1075045:1075045 [4] NCCL INFO cudaDriverVersion 12030
+H100-GPU19:1075045:1075045 [4] NCCL INFO Bootstrap : Using ibs3:fe80::a288:c203:8c:df72%ibs3<0>
+H100-GPU19:1075045:1075045 [4] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
+H100-GPU19:1075045:1076183 [4] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [1]mlx5_1:1/IB [2]mlx5_2:1/IB [3]mlx5_3:1/IB [4]mlx5_4:1/IB [5]mlx5_5:1/IB [6]mlx5_6:1/IB [7]mlx5_7:1/IB [RO]; OOB ibs3:fe80::a288:c203:8c:df72%ibs3<0>
+H100-GPU19:1075045:1076183 [4] NCCL INFO Using non-device net plugin version 0
+H100-GPU19:1075045:1076183 [4] NCCL INFO Using network IB
+H100-GPU19:1075045:1076183 [4] NCCL INFO comm 0xd710ee0 rank 20 nranks 32 cudaDev 4 nvmlDev 4 busId 84000 commId 0xf807db33dff0cbf2 - Init START
+H100-GPU19:1075045:1076183 [4] NCCL INFO Setting affinity for GPU 4 to ffffffff,ffffffff,ffffffff,00000000,00000000,00000000,ffffffff,ffffffff,ffffffff,00000000,00000000,00000000
+H100-GPU19:1075045:1076183 [4] NCCL INFO NVLS multicast support is available on dev 4
+H100-GPU19:1075045:1076183 [4] NCCL INFO Trees [0] 21/-1/-1->20->19 [1] 21/-1/-1->20->19 [2] 21/-1/-1->20->19 [3] 21/-1/-1->20->18 [4] 21/28/-1->20->4 [5] -1/-1/-1->20->19 [6] 21/-1/-1->20->19 [7] 21/15/-1->20->23 [8] 21/-1/-1->20->19 [9] 21/-1/-1->20->19 [10] 21/-1/-1->20->19 [11] 21/-1/-1->20->18 [12] 21/-1/-1->20->13 [13] -1/-1/-1->20->19 [14] 21/-1/-1->20->19 [15] 21/-1/-1->20->23
+H100-GPU19:1075045:1076183 [4] NCCL INFO P2P Chunksize set to 131072
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 04/0 : 13[5] -> 20[4] [receive] via NET/IB/6
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 12/0 : 13[5] -> 20[4] [receive] via NET/IB/6
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 07/0 : 20[4] -> 31[7] [send] via NET/IB/4
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 15/0 : 20[4] -> 31[7] [send] via NET/IB/4
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 03/0 : 20[4] -> 16[0] via P2P/CUMEM
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 11/0 : 20[4] -> 16[0] via P2P/CUMEM
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 00/0 : 20[4] -> 19[3] via P2P/CUMEM
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 01/0 : 20[4] -> 19[3] via P2P/CUMEM
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 02/0 : 20[4] -> 19[3] via P2P/CUMEM
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 04/0 : 20[4] -> 19[3] via P2P/CUMEM
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 05/0 : 20[4] -> 19[3] via P2P/CUMEM
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 06/0 : 20[4] -> 19[3] via P2P/CUMEM
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 08/0 : 20[4] -> 19[3] via P2P/CUMEM
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 09/0 : 20[4] -> 19[3] via P2P/CUMEM
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 10/0 : 20[4] -> 19[3] via P2P/CUMEM
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 12/0 : 20[4] -> 19[3] via P2P/CUMEM
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 13/0 : 20[4] -> 19[3] via P2P/CUMEM
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 14/0 : 20[4] -> 19[3] via P2P/CUMEM
+H100-GPU19:1075045:1076183 [4] NCCL INFO Connected all rings
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 00/0 : 20[4] -> 21[5] via P2P/CUMEM
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 01/0 : 20[4] -> 21[5] via P2P/CUMEM
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 02/0 : 20[4] -> 21[5] via P2P/CUMEM
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 03/0 : 20[4] -> 21[5] via P2P/CUMEM
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 04/0 : 20[4] -> 21[5] via P2P/CUMEM
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 06/0 : 20[4] -> 21[5] via P2P/CUMEM
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 07/0 : 20[4] -> 21[5] via P2P/CUMEM
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 08/0 : 20[4] -> 21[5] via P2P/CUMEM
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 09/0 : 20[4] -> 21[5] via P2P/CUMEM
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 10/0 : 20[4] -> 21[5] via P2P/CUMEM
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 11/0 : 20[4] -> 21[5] via P2P/CUMEM
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 12/0 : 20[4] -> 21[5] via P2P/CUMEM
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 14/0 : 20[4] -> 21[5] via P2P/CUMEM
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 15/0 : 20[4] -> 21[5] via P2P/CUMEM
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 07/0 : 20[4] -> 23[7] via P2P/CUMEM
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 15/0 : 20[4] -> 23[7] via P2P/CUMEM
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 07/0 : 15[7] -> 20[4] [receive] via NET/IB/4
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 04/0 : 20[4] -> 28[4] [send] via NET/IB/6
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 04/0 : 4[4] -> 20[4] [receive] via NET/IB/6
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 04/0 : 20[4] -> 4[4] [send] via NET/IB/6
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 04/0 : 28[4] -> 20[4] [receive] via NET/IB/6
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 12/0 : 20[4] -> 13[5] [send] via NET/IB/6
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 07/0 : 20[4] -> 15[7] [send] via NET/IB/4
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 03/0 : 20[4] -> 18[2] via P2P/CUMEM
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 11/0 : 20[4] -> 18[2] via P2P/CUMEM
+H100-GPU19:1075045:1076183 [4] NCCL INFO Connected all trees
+H100-GPU19:1075045:1076183 [4] NCCL INFO NVLS comm 0xd710ee0 headRank 4 nHeads 8 buffSize 4194304 memSize 2097152 nvlsPerRankSize 201326592 nvlsTotalSize 1610612736
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 00/0 : 12[4] -> 20[4] [receive] via NET/IB/6
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 01/0 : 12[4] -> 20[4] [receive] via NET/IB/6
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 02/0 : 12[4] -> 20[4] [receive] via NET/IB/6
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 03/0 : 12[4] -> 20[4] [receive] via NET/IB/6
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 04/0 : 12[4] -> 20[4] [receive] via NET/IB/6
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 05/0 : 12[4] -> 20[4] [receive] via NET/IB/6
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 06/0 : 12[4] -> 20[4] [receive] via NET/IB/6
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 07/0 : 12[4] -> 20[4] [receive] via NET/IB/6
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 08/0 : 12[4] -> 20[4] [receive] via NET/IB/6
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 09/0 : 12[4] -> 20[4] [receive] via NET/IB/6
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 10/0 : 12[4] -> 20[4] [receive] via NET/IB/6
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 11/0 : 12[4] -> 20[4] [receive] via NET/IB/6
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 12/0 : 12[4] -> 20[4] [receive] via NET/IB/6
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 13/0 : 12[4] -> 20[4] [receive] via NET/IB/6
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 14/0 : 12[4] -> 20[4] [receive] via NET/IB/6
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 15/0 : 12[4] -> 20[4] [receive] via NET/IB/6
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 00/0 : 20[4] -> 28[4] [send] via NET/IB/6
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 02/0 : 20[4] -> 28[4] [send] via NET/IB/6
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 06/0 : 20[4] -> 28[4] [send] via NET/IB/6
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 08/0 : 20[4] -> 28[4] [send] via NET/IB/6
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 10/0 : 20[4] -> 28[4] [send] via NET/IB/6
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 12/0 : 20[4] -> 28[4] [send] via NET/IB/6
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 14/0 : 20[4] -> 28[4] [send] via NET/IB/6
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 00/0 : 4[4] -> 20[4] [receive] via NET/IB/6
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 02/0 : 4[4] -> 20[4] [receive] via NET/IB/6
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 06/0 : 4[4] -> 20[4] [receive] via NET/IB/6
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 08/0 : 4[4] -> 20[4] [receive] via NET/IB/6
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 10/0 : 4[4] -> 20[4] [receive] via NET/IB/6
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 12/0 : 4[4] -> 20[4] [receive] via NET/IB/6
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 14/0 : 4[4] -> 20[4] [receive] via NET/IB/6
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 00/0 : 20[4] -> 4[4] [send] via NET/IB/6
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 02/0 : 20[4] -> 4[4] [send] via NET/IB/6
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 06/0 : 20[4] -> 4[4] [send] via NET/IB/6
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 08/0 : 20[4] -> 4[4] [send] via NET/IB/6
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 10/0 : 20[4] -> 4[4] [send] via NET/IB/6
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 12/0 : 20[4] -> 4[4] [send] via NET/IB/6
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 14/0 : 20[4] -> 4[4] [send] via NET/IB/6
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 00/0 : 28[4] -> 20[4] [receive] via NET/IB/6
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 02/0 : 28[4] -> 20[4] [receive] via NET/IB/6
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 06/0 : 28[4] -> 20[4] [receive] via NET/IB/6
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 08/0 : 28[4] -> 20[4] [receive] via NET/IB/6
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 10/0 : 28[4] -> 20[4] [receive] via NET/IB/6
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 12/0 : 28[4] -> 20[4] [receive] via NET/IB/6
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 14/0 : 28[4] -> 20[4] [receive] via NET/IB/6
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 00/0 : 20[4] -> 12[4] [send] via NET/IB/6
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 01/0 : 20[4] -> 12[4] [send] via NET/IB/6
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 02/0 : 20[4] -> 12[4] [send] via NET/IB/6
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 03/0 : 20[4] -> 12[4] [send] via NET/IB/6
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 04/0 : 20[4] -> 12[4] [send] via NET/IB/6
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 05/0 : 20[4] -> 12[4] [send] via NET/IB/6
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 06/0 : 20[4] -> 12[4] [send] via NET/IB/6
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 07/0 : 20[4] -> 12[4] [send] via NET/IB/6
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 08/0 : 20[4] -> 12[4] [send] via NET/IB/6
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 09/0 : 20[4] -> 12[4] [send] via NET/IB/6
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 10/0 : 20[4] -> 12[4] [send] via NET/IB/6
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 11/0 : 20[4] -> 12[4] [send] via NET/IB/6
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 12/0 : 20[4] -> 12[4] [send] via NET/IB/6
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 13/0 : 20[4] -> 12[4] [send] via NET/IB/6
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 14/0 : 20[4] -> 12[4] [send] via NET/IB/6
+H100-GPU19:1075045:1076183 [4] NCCL INFO Channel 15/0 : 20[4] -> 12[4] [send] via NET/IB/6
+H100-GPU19:1075045:1076183 [4] NCCL INFO Connected NVLS tree
+H100-GPU19:1075045:1076183 [4] NCCL INFO threadThresholds 8/8/64 | 256/8/64 | 512 | 512
+H100-GPU19:1075045:1076183 [4] NCCL INFO 16 coll channels, 16 nvls channels, 16 p2p channels, 2 p2p channels per peer
+H100-GPU19:1075045:1076183 [4] NCCL INFO comm 0xd710ee0 rank 20 nranks 32 cudaDev 4 nvmlDev 4 busId 84000 commId 0xf807db33dff0cbf2 - Init COMPLETE
+H100-GPU19:1075045:1076345 [4] NCCL INFO [Service thread] Connection closed by localRank 0
+H100-GPU19:1075045:1076345 [4] NCCL INFO [Service thread] Connection closed by localRank 3
+H100-GPU19:1075045:1076345 [4] NCCL INFO [Service thread] Connection closed by localRank 4
+H100-GPU19:1075045:1076345 [4] NCCL INFO [Service thread] Connection closed by localRank 5
+H100-GPU19:1075045:1076345 [4] NCCL INFO [Service thread] Connection closed by localRank 7
+H100-GPU19:1075045:1076345 [4] NCCL INFO [Service thread] Connection closed by localRank 2
+H100-GPU19:1075045:1075045 [4] NCCL INFO comm 0xd710ee0 rank 20 nranks 32 cudaDev 4 busId 84000 - Abort COMPLETE
+
+----------End global rank 20 STDOUT----------
+----------Begin global rank 20 STDERR----------
+/home/eldar/eldar-upstream/upstream-llm-foundry/scripts/eval/eval.py:281: UserWarning: Unused parameter global_seed found in cfg. Please check your yaml to ensure this parameter is necessary.
+  warnings.warn(
+/home/eldar/eldar-upstream/upstream-llm-foundry/scripts/eval/eval.py:281: UserWarning: Unused parameter ckpt_path found in cfg. Please check your yaml to ensure this parameter is necessary.
+  warnings.warn(
+[W Utils.hpp:133] Warning: Environment variable NCCL_ASYNC_ERROR_HANDLING is deprecated; use TORCH_NCCL_ASYNC_ERROR_HANDLING instead (function getCvarInt)
+2024-07-23 15:20:01,864: rank20[1075045][MainThread]: INFO: llmfoundry.utils.builders: Extracting ICL task config from path: eval/yamls/openllm_noGSM8k.yaml
+/home/eldar/eldar-upstream/upstream-transformers/src/transformers/models/auto/configuration_auto.py:1111: FutureWarning: The `use_auth_token` argument is deprecated and will be removed in v5 of Transformers. Please use `token` instead.
+  warnings.warn(
+
+----------End global rank 20 STDERR----------
+Global rank 21 (PID 1075046) exited with code 143
+----------Begin global rank 21 STDOUT----------
+----****----[eldar debug]----****---- Using fused CrossEntropyLoss from flash_attn.losses.cross_entropy ----****----[eldar debug]----****----
+----****----[eldar debug]----****---- Using fused CrossEntropyLoss from flash_attn.losses.cross_entropy ----****----[eldar debug]----****----
+H100-GPU19:1075046:1075046 [5] NCCL INFO cudaDriverVersion 12030
+H100-GPU19:1075046:1075046 [5] NCCL INFO Bootstrap : Using ibs3:fe80::a288:c203:8c:df72%ibs3<0>
+H100-GPU19:1075046:1075046 [5] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
+H100-GPU19:1075046:1076178 [5] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [1]mlx5_1:1/IB [2]mlx5_2:1/IB [3]mlx5_3:1/IB [4]mlx5_4:1/IB [5]mlx5_5:1/IB [6]mlx5_6:1/IB [7]mlx5_7:1/IB [RO]; OOB ibs3:fe80::a288:c203:8c:df72%ibs3<0>
+H100-GPU19:1075046:1076178 [5] NCCL INFO Using non-device net plugin version 0
+H100-GPU19:1075046:1076178 [5] NCCL INFO Using network IB
+H100-GPU19:1075046:1076178 [5] NCCL INFO comm 0xc6bcb00 rank 21 nranks 32 cudaDev 5 nvmlDev 5 busId a3000 commId 0xf807db33dff0cbf2 - Init START
+H100-GPU19:1075046:1076178 [5] NCCL INFO Setting affinity for GPU 5 to ffffffff,ffffffff,ffffffff,00000000,00000000,00000000,ffffffff,ffffffff,ffffffff,00000000,00000000,00000000
+H100-GPU19:1075046:1076178 [5] NCCL INFO NVLS multicast support is available on dev 5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Trees [0] 22/-1/-1->21->20 [1] 22/-1/-1->21->20 [2] 22/-1/-1->21->20 [3] 22/-1/-1->21->20 [4] 22/12/-1->21->20 [5] 22/29/-1->21->5 [6] -1/-1/-1->21->20 [7] 22/-1/-1->21->20 [8] 22/-1/-1->21->20 [9] 22/-1/-1->21->20 [10] 22/-1/-1->21->20 [11] 22/-1/-1->21->20 [12] 22/-1/-1->21->20 [13] 22/-1/-1->21->14 [14] -1/-1/-1->21->20 [15] 22/-1/-1->21->20
+H100-GPU19:1075046:1076178 [5] NCCL INFO P2P Chunksize set to 131072
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 05/0 : 14[6] -> 21[5] [receive] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 13/0 : 14[6] -> 21[5] [receive] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 04/0 : 21[5] -> 28[4] [send] via NET/IB/6
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 12/0 : 21[5] -> 28[4] [send] via NET/IB/6
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 07/0 : 21[5] -> 19[3] via P2P/CUMEM
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 15/0 : 21[5] -> 19[3] via P2P/CUMEM
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 00/0 : 21[5] -> 20[4] via P2P/CUMEM
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 01/0 : 21[5] -> 20[4] via P2P/CUMEM
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 02/0 : 21[5] -> 20[4] via P2P/CUMEM
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 03/0 : 21[5] -> 20[4] via P2P/CUMEM
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 05/0 : 21[5] -> 20[4] via P2P/CUMEM
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 06/0 : 21[5] -> 20[4] via P2P/CUMEM
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 08/0 : 21[5] -> 20[4] via P2P/CUMEM
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 09/0 : 21[5] -> 20[4] via P2P/CUMEM
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 10/0 : 21[5] -> 20[4] via P2P/CUMEM
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 11/0 : 21[5] -> 20[4] via P2P/CUMEM
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 13/0 : 21[5] -> 20[4] via P2P/CUMEM
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 14/0 : 21[5] -> 20[4] via P2P/CUMEM
+H100-GPU19:1075046:1076178 [5] NCCL INFO Connected all rings
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 00/0 : 21[5] -> 22[6] via P2P/CUMEM
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 01/0 : 21[5] -> 22[6] via P2P/CUMEM
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 02/0 : 21[5] -> 22[6] via P2P/CUMEM
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 03/0 : 21[5] -> 22[6] via P2P/CUMEM
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 04/0 : 21[5] -> 22[6] via P2P/CUMEM
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 05/0 : 21[5] -> 22[6] via P2P/CUMEM
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 07/0 : 21[5] -> 22[6] via P2P/CUMEM
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 08/0 : 21[5] -> 22[6] via P2P/CUMEM
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 09/0 : 21[5] -> 22[6] via P2P/CUMEM
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 10/0 : 21[5] -> 22[6] via P2P/CUMEM
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 11/0 : 21[5] -> 22[6] via P2P/CUMEM
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 12/0 : 21[5] -> 22[6] via P2P/CUMEM
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 13/0 : 21[5] -> 22[6] via P2P/CUMEM
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 15/0 : 21[5] -> 22[6] via P2P/CUMEM
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 05/0 : 21[5] -> 29[5] [send] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 04/0 : 12[4] -> 21[5] [receive] via NET/IB/6
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 05/0 : 5[5] -> 21[5] [receive] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 05/0 : 21[5] -> 5[5] [send] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 04/0 : 21[5] -> 12[4] [send] via NET/IB/6
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 05/0 : 29[5] -> 21[5] [receive] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 13/0 : 21[5] -> 14[6] [send] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 04/0 : 21[5] -> 20[4] via P2P/CUMEM
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 07/0 : 21[5] -> 20[4] via P2P/CUMEM
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 12/0 : 21[5] -> 20[4] via P2P/CUMEM
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 15/0 : 21[5] -> 20[4] via P2P/CUMEM
+H100-GPU19:1075046:1076178 [5] NCCL INFO Connected all trees
+H100-GPU19:1075046:1076178 [5] NCCL INFO NVLS comm 0xc6bcb00 headRank 5 nHeads 8 buffSize 4194304 memSize 2097152 nvlsPerRankSize 201326592 nvlsTotalSize 1610612736
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 00/0 : 13[5] -> 21[5] [receive] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 01/0 : 13[5] -> 21[5] [receive] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 02/0 : 13[5] -> 21[5] [receive] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 03/0 : 13[5] -> 21[5] [receive] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 04/0 : 13[5] -> 21[5] [receive] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 05/0 : 13[5] -> 21[5] [receive] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 06/0 : 13[5] -> 21[5] [receive] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 07/0 : 13[5] -> 21[5] [receive] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 08/0 : 13[5] -> 21[5] [receive] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 09/0 : 13[5] -> 21[5] [receive] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 10/0 : 13[5] -> 21[5] [receive] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 11/0 : 13[5] -> 21[5] [receive] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 12/0 : 13[5] -> 21[5] [receive] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 13/0 : 13[5] -> 21[5] [receive] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 14/0 : 13[5] -> 21[5] [receive] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 15/0 : 13[5] -> 21[5] [receive] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 00/0 : 21[5] -> 29[5] [send] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 02/0 : 21[5] -> 29[5] [send] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 04/0 : 21[5] -> 29[5] [send] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 06/0 : 21[5] -> 29[5] [send] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 08/0 : 21[5] -> 29[5] [send] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 10/0 : 21[5] -> 29[5] [send] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 12/0 : 21[5] -> 29[5] [send] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 14/0 : 21[5] -> 29[5] [send] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 00/0 : 5[5] -> 21[5] [receive] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 02/0 : 5[5] -> 21[5] [receive] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 04/0 : 5[5] -> 21[5] [receive] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 06/0 : 5[5] -> 21[5] [receive] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 08/0 : 5[5] -> 21[5] [receive] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 10/0 : 5[5] -> 21[5] [receive] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 12/0 : 5[5] -> 21[5] [receive] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 14/0 : 5[5] -> 21[5] [receive] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 00/0 : 21[5] -> 5[5] [send] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 02/0 : 21[5] -> 5[5] [send] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 04/0 : 21[5] -> 5[5] [send] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 06/0 : 21[5] -> 5[5] [send] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 08/0 : 21[5] -> 5[5] [send] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 10/0 : 21[5] -> 5[5] [send] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 12/0 : 21[5] -> 5[5] [send] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 14/0 : 21[5] -> 5[5] [send] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 00/0 : 29[5] -> 21[5] [receive] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 02/0 : 29[5] -> 21[5] [receive] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 04/0 : 29[5] -> 21[5] [receive] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 06/0 : 29[5] -> 21[5] [receive] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 08/0 : 29[5] -> 21[5] [receive] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 10/0 : 29[5] -> 21[5] [receive] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 12/0 : 29[5] -> 21[5] [receive] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 14/0 : 29[5] -> 21[5] [receive] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 00/0 : 21[5] -> 13[5] [send] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 01/0 : 21[5] -> 13[5] [send] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 02/0 : 21[5] -> 13[5] [send] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 03/0 : 21[5] -> 13[5] [send] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 04/0 : 21[5] -> 13[5] [send] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 05/0 : 21[5] -> 13[5] [send] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 06/0 : 21[5] -> 13[5] [send] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 07/0 : 21[5] -> 13[5] [send] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 08/0 : 21[5] -> 13[5] [send] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 09/0 : 21[5] -> 13[5] [send] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 10/0 : 21[5] -> 13[5] [send] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 11/0 : 21[5] -> 13[5] [send] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 12/0 : 21[5] -> 13[5] [send] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 13/0 : 21[5] -> 13[5] [send] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 14/0 : 21[5] -> 13[5] [send] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Channel 15/0 : 21[5] -> 13[5] [send] via NET/IB/5
+H100-GPU19:1075046:1076178 [5] NCCL INFO Connected NVLS tree
+H100-GPU19:1075046:1076178 [5] NCCL INFO threadThresholds 8/8/64 | 256/8/64 | 512 | 512
+H100-GPU19:1075046:1076178 [5] NCCL INFO 16 coll channels, 16 nvls channels, 16 p2p channels, 2 p2p channels per peer
+H100-GPU19:1075046:1076178 [5] NCCL INFO comm 0xc6bcb00 rank 21 nranks 32 cudaDev 5 nvmlDev 5 busId a3000 commId 0xf807db33dff0cbf2 - Init COMPLETE
+H100-GPU19:1075046:1076346 [5] NCCL INFO [Service thread] Connection closed by localRank 3
+H100-GPU19:1075046:1076346 [5] NCCL INFO [Service thread] Connection closed by localRank 6
+H100-GPU19:1075046:1076346 [5] NCCL INFO [Service thread] Connection closed by localRank 4
+H100-GPU19:1075046:1076346 [5] NCCL INFO [Service thread] Connection closed by localRank 5
+H100-GPU19:1075046:1075046 [5] NCCL INFO comm 0xc6bcb00 rank 21 nranks 32 cudaDev 5 busId a3000 - Abort COMPLETE
+
+----------End global rank 21 STDOUT----------
+----------Begin global rank 21 STDERR----------
+/home/eldar/eldar-upstream/upstream-llm-foundry/scripts/eval/eval.py:281: UserWarning: Unused parameter global_seed found in cfg. Please check your yaml to ensure this parameter is necessary.
+  warnings.warn(
+/home/eldar/eldar-upstream/upstream-llm-foundry/scripts/eval/eval.py:281: UserWarning: Unused parameter ckpt_path found in cfg. Please check your yaml to ensure this parameter is necessary.
+  warnings.warn(
+[W Utils.hpp:133] Warning: Environment variable NCCL_ASYNC_ERROR_HANDLING is deprecated; use TORCH_NCCL_ASYNC_ERROR_HANDLING instead (function getCvarInt)
+2024-07-23 15:20:01,864: rank21[1075046][MainThread]: INFO: llmfoundry.utils.builders: Extracting ICL task config from path: eval/yamls/openllm_noGSM8k.yaml
+/home/eldar/eldar-upstream/upstream-transformers/src/transformers/models/auto/configuration_auto.py:1111: FutureWarning: The `use_auth_token` argument is deprecated and will be removed in v5 of Transformers. Please use `token` instead.
+  warnings.warn(
+
+----------End global rank 21 STDERR----------
+Global rank 22 (PID 1075047) exited with code 143
+----------Begin global rank 22 STDOUT----------
+----****----[eldar debug]----****---- Using fused CrossEntropyLoss from flash_attn.losses.cross_entropy ----****----[eldar debug]----****----
+----****----[eldar debug]----****---- Using fused CrossEntropyLoss from flash_attn.losses.cross_entropy ----****----[eldar debug]----****----
+H100-GPU19:1075047:1075047 [6] NCCL INFO cudaDriverVersion 12030
+H100-GPU19:1075047:1075047 [6] NCCL INFO Bootstrap : Using ibs3:fe80::a288:c203:8c:df72%ibs3<0>
+H100-GPU19:1075047:1075047 [6] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
+H100-GPU19:1075047:1076182 [6] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [1]mlx5_1:1/IB [2]mlx5_2:1/IB [3]mlx5_3:1/IB [4]mlx5_4:1/IB [5]mlx5_5:1/IB [6]mlx5_6:1/IB [7]mlx5_7:1/IB [RO]; OOB ibs3:fe80::a288:c203:8c:df72%ibs3<0>
+H100-GPU19:1075047:1076182 [6] NCCL INFO Using non-device net plugin version 0
+H100-GPU19:1075047:1076182 [6] NCCL INFO Using network IB
+H100-GPU19:1075047:1076182 [6] NCCL INFO comm 0xd017d60 rank 22 nranks 32 cudaDev 6 nvmlDev 6 busId c3000 commId 0xf807db33dff0cbf2 - Init START
+H100-GPU19:1075047:1076182 [6] NCCL INFO Setting affinity for GPU 6 to ffffffff,ffffffff,ffffffff,00000000,00000000,00000000,ffffffff,ffffffff,ffffffff,00000000,00000000,00000000
+H100-GPU19:1075047:1076182 [6] NCCL INFO NVLS multicast support is available on dev 6
+H100-GPU19:1075047:1076182 [6] NCCL INFO Trees [0] 23/-1/-1->22->21 [1] 23/-1/-1->22->21 [2] 23/-1/-1->22->21 [3] 23/-1/-1->22->21 [4] 23/-1/-1->22->21 [5] 23/13/-1->22->21 [6] 23/30/-1->22->6 [7] 16/-1/-1->22->21 [8] 23/-1/-1->22->21 [9] 23/-1/-1->22->21 [10] 23/-1/-1->22->21 [11] 23/-1/-1->22->21 [12] 23/-1/-1->22->21 [13] 23/-1/-1->22->21 [14] 23/-1/-1->22->15 [15] 16/-1/-1->22->21
+H100-GPU19:1075047:1076182 [6] NCCL INFO P2P Chunksize set to 131072
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 06/0 : 15[7] -> 22[6] [receive] via NET/IB/7
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 14/0 : 15[7] -> 22[6] [receive] via NET/IB/7
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 05/0 : 22[6] -> 29[5] [send] via NET/IB/5
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 13/0 : 22[6] -> 29[5] [send] via NET/IB/5
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 00/0 : 22[6] -> 21[5] via P2P/CUMEM
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 01/0 : 22[6] -> 21[5] via P2P/CUMEM
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 02/0 : 22[6] -> 21[5] via P2P/CUMEM
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 03/0 : 22[6] -> 21[5] via P2P/CUMEM
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 04/0 : 22[6] -> 21[5] via P2P/CUMEM
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 06/0 : 22[6] -> 21[5] via P2P/CUMEM
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 07/0 : 22[6] -> 21[5] via P2P/CUMEM
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 08/0 : 22[6] -> 21[5] via P2P/CUMEM
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 09/0 : 22[6] -> 21[5] via P2P/CUMEM
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 10/0 : 22[6] -> 21[5] via P2P/CUMEM
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 11/0 : 22[6] -> 21[5] via P2P/CUMEM
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 12/0 : 22[6] -> 21[5] via P2P/CUMEM
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 14/0 : 22[6] -> 21[5] via P2P/CUMEM
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 15/0 : 22[6] -> 21[5] via P2P/CUMEM
+H100-GPU19:1075047:1076182 [6] NCCL INFO Connected all rings
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 00/0 : 22[6] -> 23[7] via P2P/CUMEM
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 01/0 : 22[6] -> 23[7] via P2P/CUMEM
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 02/0 : 22[6] -> 23[7] via P2P/CUMEM
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 03/0 : 22[6] -> 23[7] via P2P/CUMEM
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 04/0 : 22[6] -> 23[7] via P2P/CUMEM
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 05/0 : 22[6] -> 23[7] via P2P/CUMEM
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 06/0 : 22[6] -> 23[7] via P2P/CUMEM
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 08/0 : 22[6] -> 23[7] via P2P/CUMEM
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 09/0 : 22[6] -> 23[7] via P2P/CUMEM
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 10/0 : 22[6] -> 23[7] via P2P/CUMEM
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 11/0 : 22[6] -> 23[7] via P2P/CUMEM
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 12/0 : 22[6] -> 23[7] via P2P/CUMEM
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 13/0 : 22[6] -> 23[7] via P2P/CUMEM
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 14/0 : 22[6] -> 23[7] via P2P/CUMEM
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 06/0 : 22[6] -> 30[6] [send] via NET/IB/7
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 05/0 : 13[5] -> 22[6] [receive] via NET/IB/5
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 06/0 : 6[6] -> 22[6] [receive] via NET/IB/7
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 06/0 : 22[6] -> 6[6] [send] via NET/IB/7
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 05/0 : 22[6] -> 13[5] [send] via NET/IB/5
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 06/0 : 30[6] -> 22[6] [receive] via NET/IB/7
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 14/0 : 22[6] -> 15[7] [send] via NET/IB/7
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 07/0 : 22[6] -> 16[0] via P2P/CUMEM
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 15/0 : 22[6] -> 16[0] via P2P/CUMEM
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 05/0 : 22[6] -> 21[5] via P2P/CUMEM
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 13/0 : 22[6] -> 21[5] via P2P/CUMEM
+H100-GPU19:1075047:1076182 [6] NCCL INFO Connected all trees
+H100-GPU19:1075047:1076182 [6] NCCL INFO NVLS comm 0xd017d60 headRank 6 nHeads 8 buffSize 4194304 memSize 2097152 nvlsPerRankSize 201326592 nvlsTotalSize 1610612736
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 00/0 : 14[6] -> 22[6] [receive] via NET/IB/7
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 01/0 : 14[6] -> 22[6] [receive] via NET/IB/7
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 02/0 : 14[6] -> 22[6] [receive] via NET/IB/7
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 03/0 : 14[6] -> 22[6] [receive] via NET/IB/7
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 04/0 : 14[6] -> 22[6] [receive] via NET/IB/7
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 05/0 : 14[6] -> 22[6] [receive] via NET/IB/7
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 06/0 : 14[6] -> 22[6] [receive] via NET/IB/7
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 07/0 : 14[6] -> 22[6] [receive] via NET/IB/7
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 08/0 : 14[6] -> 22[6] [receive] via NET/IB/7
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 09/0 : 14[6] -> 22[6] [receive] via NET/IB/7
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 10/0 : 14[6] -> 22[6] [receive] via NET/IB/7
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 11/0 : 14[6] -> 22[6] [receive] via NET/IB/7
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 12/0 : 14[6] -> 22[6] [receive] via NET/IB/7
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 13/0 : 14[6] -> 22[6] [receive] via NET/IB/7
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 14/0 : 14[6] -> 22[6] [receive] via NET/IB/7
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 15/0 : 14[6] -> 22[6] [receive] via NET/IB/7
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 00/0 : 22[6] -> 30[6] [send] via NET/IB/7
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 02/0 : 22[6] -> 30[6] [send] via NET/IB/7
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 04/0 : 22[6] -> 30[6] [send] via NET/IB/7
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 08/0 : 22[6] -> 30[6] [send] via NET/IB/7
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 10/0 : 22[6] -> 30[6] [send] via NET/IB/7
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 12/0 : 22[6] -> 30[6] [send] via NET/IB/7
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 14/0 : 22[6] -> 30[6] [send] via NET/IB/7
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 00/0 : 6[6] -> 22[6] [receive] via NET/IB/7
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 02/0 : 6[6] -> 22[6] [receive] via NET/IB/7
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 04/0 : 6[6] -> 22[6] [receive] via NET/IB/7
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 08/0 : 6[6] -> 22[6] [receive] via NET/IB/7
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 10/0 : 6[6] -> 22[6] [receive] via NET/IB/7
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 12/0 : 6[6] -> 22[6] [receive] via NET/IB/7
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 14/0 : 6[6] -> 22[6] [receive] via NET/IB/7
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 00/0 : 22[6] -> 6[6] [send] via NET/IB/7
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 02/0 : 22[6] -> 6[6] [send] via NET/IB/7
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 04/0 : 22[6] -> 6[6] [send] via NET/IB/7
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 08/0 : 22[6] -> 6[6] [send] via NET/IB/7
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 10/0 : 22[6] -> 6[6] [send] via NET/IB/7
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 12/0 : 22[6] -> 6[6] [send] via NET/IB/7
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 14/0 : 22[6] -> 6[6] [send] via NET/IB/7
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 00/0 : 30[6] -> 22[6] [receive] via NET/IB/7
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 02/0 : 30[6] -> 22[6] [receive] via NET/IB/7
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 04/0 : 30[6] -> 22[6] [receive] via NET/IB/7
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 08/0 : 30[6] -> 22[6] [receive] via NET/IB/7
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 10/0 : 30[6] -> 22[6] [receive] via NET/IB/7
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 12/0 : 30[6] -> 22[6] [receive] via NET/IB/7
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 14/0 : 30[6] -> 22[6] [receive] via NET/IB/7
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 00/0 : 22[6] -> 14[6] [send] via NET/IB/7
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 01/0 : 22[6] -> 14[6] [send] via NET/IB/7
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 02/0 : 22[6] -> 14[6] [send] via NET/IB/7
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 03/0 : 22[6] -> 14[6] [send] via NET/IB/7
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 04/0 : 22[6] -> 14[6] [send] via NET/IB/7
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 05/0 : 22[6] -> 14[6] [send] via NET/IB/7
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 06/0 : 22[6] -> 14[6] [send] via NET/IB/7
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 07/0 : 22[6] -> 14[6] [send] via NET/IB/7
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 08/0 : 22[6] -> 14[6] [send] via NET/IB/7
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 09/0 : 22[6] -> 14[6] [send] via NET/IB/7
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 10/0 : 22[6] -> 14[6] [send] via NET/IB/7
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 11/0 : 22[6] -> 14[6] [send] via NET/IB/7
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 12/0 : 22[6] -> 14[6] [send] via NET/IB/7
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 13/0 : 22[6] -> 14[6] [send] via NET/IB/7
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 14/0 : 22[6] -> 14[6] [send] via NET/IB/7
+H100-GPU19:1075047:1076182 [6] NCCL INFO Channel 15/0 : 22[6] -> 14[6] [send] via NET/IB/7
+H100-GPU19:1075047:1076182 [6] NCCL INFO Connected NVLS tree
+H100-GPU19:1075047:1076182 [6] NCCL INFO threadThresholds 8/8/64 | 256/8/64 | 512 | 512
+H100-GPU19:1075047:1076182 [6] NCCL INFO 16 coll channels, 16 nvls channels, 16 p2p channels, 2 p2p channels per peer
+H100-GPU19:1075047:1076182 [6] NCCL INFO comm 0xd017d60 rank 22 nranks 32 cudaDev 6 nvmlDev 6 busId c3000 commId 0xf807db33dff0cbf2 - Init COMPLETE
+H100-GPU19:1075047:1076348 [6] NCCL INFO [Service thread] Connection closed by localRank 0
+H100-GPU19:1075047:1076348 [6] NCCL INFO [Service thread] Connection closed by localRank 6
+H100-GPU19:1075047:1076348 [6] NCCL INFO [Service thread] Connection closed by localRank 5
+H100-GPU19:1075047:1076348 [6] NCCL INFO [Service thread] Connection closed by localRank 7
+H100-GPU19:1075047:1075047 [6] NCCL INFO comm 0xd017d60 rank 22 nranks 32 cudaDev 6 busId c3000 - Abort COMPLETE
+
+----------End global rank 22 STDOUT----------
+----------Begin global rank 22 STDERR----------
+/home/eldar/eldar-upstream/upstream-llm-foundry/scripts/eval/eval.py:281: UserWarning: Unused parameter global_seed found in cfg. Please check your yaml to ensure this parameter is necessary.
+  warnings.warn(
+/home/eldar/eldar-upstream/upstream-llm-foundry/scripts/eval/eval.py:281: UserWarning: Unused parameter ckpt_path found in cfg. Please check your yaml to ensure this parameter is necessary.
+  warnings.warn(
+[W Utils.hpp:133] Warning: Environment variable NCCL_ASYNC_ERROR_HANDLING is deprecated; use TORCH_NCCL_ASYNC_ERROR_HANDLING instead (function getCvarInt)
+2024-07-23 15:20:01,865: rank22[1075047][MainThread]: INFO: llmfoundry.utils.builders: Extracting ICL task config from path: eval/yamls/openllm_noGSM8k.yaml
+/home/eldar/eldar-upstream/upstream-transformers/src/transformers/models/auto/configuration_auto.py:1111: FutureWarning: The `use_auth_token` argument is deprecated and will be removed in v5 of Transformers. Please use `token` instead.
+  warnings.warn(
+
+----------End global rank 22 STDERR----------
+Global rank 23 (PID 1075048) exited with code 143
+----------Begin global rank 23 STDOUT----------
+----****----[eldar debug]----****---- Using fused CrossEntropyLoss from flash_attn.losses.cross_entropy ----****----[eldar debug]----****----
+----****----[eldar debug]----****---- Using fused CrossEntropyLoss from flash_attn.losses.cross_entropy ----****----[eldar debug]----****----
+H100-GPU19:1075048:1075048 [7] NCCL INFO cudaDriverVersion 12030
+H100-GPU19:1075048:1075048 [7] NCCL INFO Bootstrap : Using ibs3:fe80::a288:c203:8c:df72%ibs3<0>
+H100-GPU19:1075048:1075048 [7] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
+H100-GPU19:1075048:1076184 [7] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [1]mlx5_1:1/IB [2]mlx5_2:1/IB [3]mlx5_3:1/IB [4]mlx5_4:1/IB [5]mlx5_5:1/IB [6]mlx5_6:1/IB [7]mlx5_7:1/IB [RO]; OOB ibs3:fe80::a288:c203:8c:df72%ibs3<0>
+H100-GPU19:1075048:1076184 [7] NCCL INFO Using non-device net plugin version 0
+H100-GPU19:1075048:1076184 [7] NCCL INFO Using network IB
+H100-GPU19:1075048:1076184 [7] NCCL INFO comm 0xdc35df0 rank 23 nranks 32 cudaDev 7 nvmlDev 7 busId e4000 commId 0xf807db33dff0cbf2 - Init START
+H100-GPU19:1075048:1076184 [7] NCCL INFO Setting affinity for GPU 7 to ffffffff,ffffffff,ffffffff,00000000,00000000,00000000,ffffffff,ffffffff,ffffffff,00000000,00000000,00000000
+H100-GPU19:1075048:1076184 [7] NCCL INFO NVLS multicast support is available on dev 7
+H100-GPU19:1075048:1076184 [7] NCCL INFO Trees [0] -1/-1/-1->23->22 [1] 16/-1/-1->23->22 [2] 16/-1/-1->23->22 [3] -1/-1/-1->23->22 [4] 16/-1/-1->23->22 [5] 16/-1/-1->23->22 [6] 16/14/-1->23->22 [7] 20/31/-1->23->7 [8] -1/-1/-1->23->22 [9] 16/-1/-1->23->22 [10] 16/-1/-1->23->22 [11] -1/-1/-1->23->22 [12] 16/-1/-1->23->22 [13] 16/-1/-1->23->22 [14] 16/-1/-1->23->22 [15] 20/-1/-1->23->12
+H100-GPU19:1075048:1076184 [7] NCCL INFO P2P Chunksize set to 131072
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 06/0 : 23[7] -> 30[6] [send] via NET/IB/7
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 14/0 : 23[7] -> 30[6] [send] via NET/IB/7
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 07/0 : 12[4] -> 23[7] [receive] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 15/0 : 12[4] -> 23[7] [receive] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 00/0 : 23[7] -> 22[6] via P2P/CUMEM
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 01/0 : 23[7] -> 22[6] via P2P/CUMEM
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 02/0 : 23[7] -> 22[6] via P2P/CUMEM
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 03/0 : 23[7] -> 22[6] via P2P/CUMEM
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 04/0 : 23[7] -> 22[6] via P2P/CUMEM
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 05/0 : 23[7] -> 22[6] via P2P/CUMEM
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 07/0 : 23[7] -> 22[6] via P2P/CUMEM
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 08/0 : 23[7] -> 22[6] via P2P/CUMEM
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 09/0 : 23[7] -> 22[6] via P2P/CUMEM
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 10/0 : 23[7] -> 22[6] via P2P/CUMEM
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 11/0 : 23[7] -> 22[6] via P2P/CUMEM
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 12/0 : 23[7] -> 22[6] via P2P/CUMEM
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 13/0 : 23[7] -> 22[6] via P2P/CUMEM
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 15/0 : 23[7] -> 22[6] via P2P/CUMEM
+H100-GPU19:1075048:1076184 [7] NCCL INFO Connected all rings
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 07/0 : 23[7] -> 31[7] [send] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 06/0 : 14[6] -> 23[7] [receive] via NET/IB/7
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 07/0 : 7[7] -> 23[7] [receive] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 07/0 : 23[7] -> 7[7] [send] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 15/0 : 23[7] -> 12[4] [send] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 06/0 : 23[7] -> 14[6] [send] via NET/IB/7
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 07/0 : 31[7] -> 23[7] [receive] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 01/0 : 23[7] -> 16[0] via P2P/CUMEM
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 02/0 : 23[7] -> 16[0] via P2P/CUMEM
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 04/0 : 23[7] -> 16[0] via P2P/CUMEM
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 05/0 : 23[7] -> 16[0] via P2P/CUMEM
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 06/0 : 23[7] -> 16[0] via P2P/CUMEM
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 09/0 : 23[7] -> 16[0] via P2P/CUMEM
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 10/0 : 23[7] -> 16[0] via P2P/CUMEM
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 12/0 : 23[7] -> 16[0] via P2P/CUMEM
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 13/0 : 23[7] -> 16[0] via P2P/CUMEM
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 14/0 : 23[7] -> 16[0] via P2P/CUMEM
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 07/0 : 23[7] -> 20[4] via P2P/CUMEM
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 15/0 : 23[7] -> 20[4] via P2P/CUMEM
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 06/0 : 23[7] -> 22[6] via P2P/CUMEM
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 14/0 : 23[7] -> 22[6] via P2P/CUMEM
+H100-GPU19:1075048:1076184 [7] NCCL INFO Connected all trees
+H100-GPU19:1075048:1076184 [7] NCCL INFO NVLS comm 0xdc35df0 headRank 7 nHeads 8 buffSize 4194304 memSize 2097152 nvlsPerRankSize 201326592 nvlsTotalSize 1610612736
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 00/0 : 15[7] -> 23[7] [receive] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 01/0 : 15[7] -> 23[7] [receive] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 02/0 : 15[7] -> 23[7] [receive] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 03/0 : 15[7] -> 23[7] [receive] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 04/0 : 15[7] -> 23[7] [receive] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 05/0 : 15[7] -> 23[7] [receive] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 06/0 : 15[7] -> 23[7] [receive] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 07/0 : 15[7] -> 23[7] [receive] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 08/0 : 15[7] -> 23[7] [receive] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 09/0 : 15[7] -> 23[7] [receive] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 10/0 : 15[7] -> 23[7] [receive] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 11/0 : 15[7] -> 23[7] [receive] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 12/0 : 15[7] -> 23[7] [receive] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 13/0 : 15[7] -> 23[7] [receive] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 14/0 : 15[7] -> 23[7] [receive] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 15/0 : 15[7] -> 23[7] [receive] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 00/0 : 23[7] -> 31[7] [send] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 02/0 : 23[7] -> 31[7] [send] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 04/0 : 23[7] -> 31[7] [send] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 06/0 : 23[7] -> 31[7] [send] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 08/0 : 23[7] -> 31[7] [send] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 10/0 : 23[7] -> 31[7] [send] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 12/0 : 23[7] -> 31[7] [send] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 14/0 : 23[7] -> 31[7] [send] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 00/0 : 7[7] -> 23[7] [receive] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 02/0 : 7[7] -> 23[7] [receive] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 04/0 : 7[7] -> 23[7] [receive] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 06/0 : 7[7] -> 23[7] [receive] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 08/0 : 7[7] -> 23[7] [receive] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 10/0 : 7[7] -> 23[7] [receive] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 12/0 : 7[7] -> 23[7] [receive] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 14/0 : 7[7] -> 23[7] [receive] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 00/0 : 23[7] -> 7[7] [send] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 02/0 : 23[7] -> 7[7] [send] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 04/0 : 23[7] -> 7[7] [send] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 06/0 : 23[7] -> 7[7] [send] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 08/0 : 23[7] -> 7[7] [send] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 10/0 : 23[7] -> 7[7] [send] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 12/0 : 23[7] -> 7[7] [send] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 14/0 : 23[7] -> 7[7] [send] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 00/0 : 31[7] -> 23[7] [receive] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 02/0 : 31[7] -> 23[7] [receive] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 04/0 : 31[7] -> 23[7] [receive] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 06/0 : 31[7] -> 23[7] [receive] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 08/0 : 31[7] -> 23[7] [receive] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 10/0 : 31[7] -> 23[7] [receive] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 12/0 : 31[7] -> 23[7] [receive] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 14/0 : 31[7] -> 23[7] [receive] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 00/0 : 23[7] -> 15[7] [send] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 01/0 : 23[7] -> 15[7] [send] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 02/0 : 23[7] -> 15[7] [send] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 03/0 : 23[7] -> 15[7] [send] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 04/0 : 23[7] -> 15[7] [send] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 05/0 : 23[7] -> 15[7] [send] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 06/0 : 23[7] -> 15[7] [send] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 07/0 : 23[7] -> 15[7] [send] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 08/0 : 23[7] -> 15[7] [send] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 09/0 : 23[7] -> 15[7] [send] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 10/0 : 23[7] -> 15[7] [send] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 11/0 : 23[7] -> 15[7] [send] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 12/0 : 23[7] -> 15[7] [send] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 13/0 : 23[7] -> 15[7] [send] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 14/0 : 23[7] -> 15[7] [send] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Channel 15/0 : 23[7] -> 15[7] [send] via NET/IB/4
+H100-GPU19:1075048:1076184 [7] NCCL INFO Connected NVLS tree
+H100-GPU19:1075048:1076184 [7] NCCL INFO threadThresholds 8/8/64 | 256/8/64 | 512 | 512
+H100-GPU19:1075048:1076184 [7] NCCL INFO 16 coll channels, 16 nvls channels, 16 p2p channels, 2 p2p channels per peer
+H100-GPU19:1075048:1076184 [7] NCCL INFO comm 0xdc35df0 rank 23 nranks 32 cudaDev 7 nvmlDev 7 busId e4000 commId 0xf807db33dff0cbf2 - Init COMPLETE
+H100-GPU19:1075048:1076347 [7] NCCL INFO [Service thread] Connection closed by localRank 0
+H100-GPU19:1075048:1076347 [7] NCCL INFO [Service thread] Connection closed by localRank 6
+H100-GPU19:1075048:1076347 [7] NCCL INFO [Service thread] Connection closed by localRank 1
+H100-GPU19:1075048:1076347 [7] NCCL INFO [Service thread] Connection closed by localRank 4
+H100-GPU19:1075048:1076347 [7] NCCL INFO [Service thread] Connection closed by localRank 7
+H100-GPU19:1075048:1075048 [7] NCCL INFO comm 0xdc35df0 rank 23 nranks 32 cudaDev 7 busId e4000 - Abort COMPLETE
+
+----------End global rank 23 STDOUT----------
+----------Begin global rank 23 STDERR----------
+/home/eldar/eldar-upstream/upstream-llm-foundry/scripts/eval/eval.py:281: UserWarning: Unused parameter global_seed found in cfg. Please check your yaml to ensure this parameter is necessary.
+  warnings.warn(
+/home/eldar/eldar-upstream/upstream-llm-foundry/scripts/eval/eval.py:281: UserWarning: Unused parameter ckpt_path found in cfg. Please check your yaml to ensure this parameter is necessary.
+  warnings.warn(
+[W Utils.hpp:133] Warning: Environment variable NCCL_ASYNC_ERROR_HANDLING is deprecated; use TORCH_NCCL_ASYNC_ERROR_HANDLING instead (function getCvarInt)
+2024-07-23 15:20:01,865: rank23[1075048][MainThread]: INFO: llmfoundry.utils.builders: Extracting ICL task config from path: eval/yamls/openllm_noGSM8k.yaml
+/home/eldar/eldar-upstream/upstream-transformers/src/transformers/models/auto/configuration_auto.py:1111: FutureWarning: The `use_auth_token` argument is deprecated and will be removed in v5 of Transformers. Please use `token` instead.
+  warnings.warn(
+
+----------End global rank 23 STDERR----------ERROR:composer.cli.launcher:Global rank 16 (PID 1075041) exited with code -9
+

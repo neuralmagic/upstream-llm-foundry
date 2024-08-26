@@ -34,4 +34,4 @@ fsdp_config:
   sync_module_states: true
   state_dict_type: sharded
 
-icl_tasks: "eval/yamls/openllm_onlyGSM8k.yaml"
+icl_tasks: "eval/yamls/openllm_noGSM8k.yaml"
