@@ -105,11 +105,7 @@ extra_deps['tensorboard'] = [
 
 # Flash 2 group kept for backwards compatibility
 extra_deps['gpu-flash2'] = [
-<<<<<<< HEAD
     'flash-attn>=2.5.8,<3',
-=======
-    'flash-attn==2.5.5',
->>>>>>> 0c27b208afbcd055693b778644ebc3be094a08ee
 ]
 
 extra_deps['gpu'] = copy.deepcopy(extra_deps['gpu-flash2'])
