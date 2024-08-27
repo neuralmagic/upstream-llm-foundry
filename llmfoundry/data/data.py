@@ -5,7 +5,7 @@
 import os
 import warnings
 from abc import ABC, abstractmethod
-from typing import Iterable, Optional, Union
+from typing import Iterable, Optional, Union, Dict
 
 import datasets as hf_datasets
 import numpy as np
