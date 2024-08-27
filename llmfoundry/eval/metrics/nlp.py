@@ -559,7 +559,7 @@ class InContextLearningLMExpectedCalibrationError(
                 bucket_idx] += 1  # pyright: ignore [reportGeneralTypeIssues]
 
 
-# === stuff belowe added by Eldar to track in-context learning metrics ===
+# ===== Start of ICL ppl and loss -- useful when models are too small to have better than random ICL accuracy =====
 # NOTE: dont use LanguageCrossEntropy in the name as regex matching in _filter_metrics will pick it up for pretraning eval data
 class InContextLearningCrossEntropy(InContextLearningMetric):
     # Make torchmetrics call update only once
@@ -573,16 +573,11 @@ class InContextLearningCrossEntropy(InContextLearningMetric):
         self.add_state('sum_loss', default=torch.tensor(0.), dist_reduce_fx='sum')
         self.add_state('total_items', default=torch.tensor(0), dist_reduce_fx='sum')
 
-    def update(self, batch: dict, output: Union[Mapping, Tensor], target: Tensor) -> None:
-        """Updates the internal state with results from a new batch.
+    def update(self, batch: dict, outputs: torch.Tensor, labels: torch.Tensor) -> None:
+        """Updates the internal state with results from a new batch."""
 
-        Args:
-            output (Mapping): The output from the model, which must contain
-                either the Tensor or a Mapping type that contains the loss or model logits.
-            target (~torch.Tensor): A Tensor of ground-truth values to compare against.
-        """
         for (start, end), gold_idx in zip(batch['choice_groupings'], batch['gold_indices']):
-            sample_targets = target[start:end]  # all (correct and incorrect) answers/choices for given data sample
+            sample_targets = labels[start:end]  # all (correct and incorrect) answers/choices for given data sample
             correct_targets = sample_targets[gold_idx]  # we are interested in PPLs for correct choices only
             continuation_indices = batch['continuation_indices'][start:end][gold_idx]
             # correct_targets.shape = (seq_len,) is why we do dim=0 for index_select to select across columns
@@ -590,9 +585,7 @@ class InContextLearningCrossEntropy(InContextLearningMetric):
             continuation_targets = correct_targets.index_select(dim=0, index=continuation_indices-1)
             assert all(continuation_targets == batch['input_ids'][start:end][gold_idx][batch['continuation_indices'][start:end][gold_idx]])
             # we need to identify which outputs correspond to model's predictions at continuation_indices
-            continuation_logits = output[start:end][gold_idx].index_select(dim=0, index=continuation_indices-1)
-
-            # print(f"decoded = {tokenizer.decode(continuation_targets)}")
+            continuation_logits = outputs[start:end][gold_idx].index_select(dim=0, index=continuation_indices-1)
 
             losses = self.loss_fn(continuation_logits, continuation_targets)
             self.sum_loss += losses
@@ -617,3 +610,4 @@ class InContextLearningPerplexity(InContextLearningCrossEntropy):
         """Returns torch.exp() of the LanguageCrossEntropy."""
         avg_loss = super().compute()
         return torch.exp(avg_loss)
+# ===== End of ICL ppl and loss =====

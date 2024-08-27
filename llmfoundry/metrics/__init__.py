@@ -56,6 +56,8 @@ DEFAULT_CAUSAL_LM_EVAL_METRICS = [
     'mc_expected_calibration_error',
     'mc_accuracy',
     'qa_accuracy',
+    'icl_perplexity',
+    'icl_cross_entropy',
 ]
 
 DEFAULT_ENC_DEC_METRICS = [
@@ -73,4 +75,6 @@ __all__ = [
     'DEFAULT_CAUSAL_LM_TRAIN_METRICS',
     'DEFAULT_CAUSAL_LM_EVAL_METRICS',
     'DEFAULT_ENC_DEC_METRICS',
+    'InContextLearningPerplexity',
+    'InContextLearningCrossEntropy',
 ]
