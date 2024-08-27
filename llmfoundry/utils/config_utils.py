@@ -190,6 +190,8 @@ class TrainConfig:
     n_gpus: int = MISSING
     device_train_grad_accum: Union[str, int] = MISSING
 
+    # Knowledge Distillation
+    knowledge_distillation: Optional[dict[str, Any]] = None
 
 TRAIN_CONFIG_KEYS = {field.name for field in fields(TrainConfig)}
 

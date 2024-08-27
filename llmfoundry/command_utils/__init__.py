@@ -31,6 +31,7 @@ from llmfoundry.command_utils.train import (
     train_from_yaml,
     validate_config,
 )
+from llmfoundry.command_utils.train_sparse_with_kd import train_sparse_with_kd_from_yaml
 
 __all__ = [
     'train',
@@ -50,4 +51,5 @@ __all__ = [
     'convert_text_to_mds_from_args',
     'convert_delta_to_json_from_args',
     'fetch_DT',
+    'train_sparse_with_kd_from_yaml',
 ]

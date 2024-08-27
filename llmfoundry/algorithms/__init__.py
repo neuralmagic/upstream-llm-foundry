@@ -15,6 +15,7 @@ algorithms.register('alibi', func=Alibi)
 algorithms.register('gated_linear_units', func=GatedLinearUnits)
 algorithms.register('low_precision_layernorm', func=LowPrecisionLayerNorm)
 
+# ===== Start of Mask Pruned Weights Algorithm =====
 from composer.core import Algorithm, Event
 import torch
 class MaskPrunedWeights(Algorithm):
@@ -33,3 +34,4 @@ class MaskPrunedWeights(Algorithm):
         state.model.apply(mask_weights)
 
 algorithms.register('mask_pruned_weights', func=MaskPrunedWeights)
+# ===== End of Mask Pruned Weights Algorithm =====
