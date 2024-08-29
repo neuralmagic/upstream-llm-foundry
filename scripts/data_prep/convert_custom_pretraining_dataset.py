@@ -4,7 +4,7 @@
 """Streaming dataset conversion scripts for C4 and The Pile."""
 from argparse import ArgumentParser, Namespace
 
-from llmfoundry.command_utils import convert_dataset_hf_from_args
+from llmfoundry.command_utils import convert_custom_pretraining_dataset_from_args
 
 
 def parse_args() -> Namespace:
@@ -42,13 +42,29 @@ def parse_args() -> Namespace:
     parser.add_argument('--no_wrap', default=False, action='store_true')
     parser.add_argument('--num_workers', type=int, required=False, default=None)
 
+    # custom args to handle special cases not supported by llm-foundry
+    parser.add_argument('--data_files',
+                        type=str,
+                        required=False,
+                        default=None,
+                        help='Useful to concat all data_subsets, e.g. with data_files="data/**/*"')
+    parser.add_argument('--tokenizer_call_kwargs',
+                        type=str,
+                        required=False,
+                        help="""These kwargs are passed to tokenizer directly in __call__.
+                        This is useful when tokenizer_kwargs are completely ignored and it
+                        is impossible to dig up the reason for it in the very cumbersome HF
+                        codebase. For example, it is impossible to disable adding of special
+                        tokens with Llama-3 tokenizer. It will always add BOS token, which we
+                        sometimes do not want. Now we can disable in __call__ by setting add_special_tokens=False""")
+
     parsed = parser.parse_args()
     return parsed
 
 
 if __name__ == '__main__':
     args = parse_args()
-    convert_dataset_hf_from_args(
+    convert_custom_pretraining_dataset_from_args(
         dataset=args.dataset,
         data_subset=args.data_subset,
         splits=args.splits,
@@ -61,4 +77,6 @@ if __name__ == '__main__':
         eos_text=args.eos_text,
         no_wrap=args.no_wrap,
         num_workers=args.num_workers,
+        data_files=args.data_files,
+        tokenizer_call_kwargs=args.tokenizer_call_kwargs,
     )

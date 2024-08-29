@@ -31,7 +31,16 @@ from llmfoundry.command_utils.train import (
     train_from_yaml,
     validate_config,
 )
+# custom imports to handle special cases not supported by llm-foundry
 from llmfoundry.command_utils.train_sparse_with_kd import train_sparse_with_kd_from_yaml
+from llmfoundry.command_utils.data_prep.convert_custom_finetuning_dataset import (
+    convert_custom_finetuning_dataset,
+    convert_custom_finetuning_dataset_from_args,
+)
+from llmfoundry.command_utils.data_prep.convert_custom_pretraining_dataset import (
+    convert_custom_pretraining_dataset,
+    convert_custom_pretraining_dataset_from_args,
+)
 
 __all__ = [
     'train',
@@ -52,4 +61,8 @@ __all__ = [
     'convert_delta_to_json_from_args',
     'fetch_DT',
     'train_sparse_with_kd_from_yaml',
+    'convert_custom_finetuning_dataset_from_args',
+    'convert_custom_finetuning_dataset',
+    'convert_custom_pretraining_dataset_from_args',
+    'convert_custom_pretraining_dataset',
 ]

@@ -1114,6 +1114,18 @@ def shareGPT_format_preprocessor(inp: dict) -> ChatFormattedDict:
     return {'messages': messages}
 
 
+@dataset_constructor.register('cognitivecomputations/dolphin')
+def dolphin_preprocessing_function(inp: Dict):
+    try:
+        prompt = "Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n### Instruction:\n{instruction}\n\n### Response:\n".format(instruction=inp['input'])
+        response = inp['output']
+    except Exception as e:
+        raise ValueError(
+            f"Unable to extract prompt/response from inp={inp}"
+        ) from e
+    return {'prompt': prompt, 'response': response}
+
+
 @dataset_constructor.register('gsm8k')
 def gsm8k_preprocessing_function(inp: Dict):
     try:
@@ -1134,13 +1146,318 @@ def openplatypus_preprocessing_function(inp: Dict):
     return {'prompt': prompt, 'response': response}
 
 
-@dataset_constructor.register('cognitivecomputations/dolphin')
-def dolphin_preprocessing_function(inp: Dict):
+def chat_openplatypus_preprocessing_function(inp: Dict):
     try:
-        prompt = "Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n### Instruction:\n{instruction}\n\n### Response:\n".format(instruction=inp['input'])
-        response = inp['output']
+        user = inp['instruction']
+        assistant = inp['output']
+    except Exception as e:
+        raise ValueError(
+            f"Unable to extract prompt/response from inp={inp}"
+        ) from e
+    return {'messages': [{'role': 'user', 'content': user}, {'role': 'assistant', 'content': assistant}]}
+
+
+def chat_ultrachat_preprocessing_function(inp: Dict):
+    try:
+        assert len(inp['data']) % 2 == 0, "Some conversations dont have Q+A pairs"
+        messages = []
+        for i in range(0, len(inp['data']), 2):
+            messages.append({'role': 'user', 'content': inp['data'][i]})
+            messages.append({'role': 'assistant', 'content': inp['data'][i+1]})
+    except Exception as e:
+        raise ValueError(
+            f"Unable to extract prompt/response from inp={inp}"
+        ) from e
+    return {'messages': messages}
+
+
+def chat_openorca_preprocessing_function(inp: Dict):
+    try:
+        user = inp['question']
+        assistant = inp['response']
+    except Exception as e:
+        raise ValueError(
+            f"Unable to extract prompt/response from inp={inp}"
+        ) from e
+    return {'messages': [{'role': 'user', 'content': user}, {'role': 'assistant', 'content': assistant}]}
+
+
+def chat_openhermes_preprocessing_function(inp: Dict):
+    try:
+        conversations_without_system_prompt = []
+        for item in inp['conversations']:
+            if item["from"] == "system":
+                continue
+            conversations_without_system_prompt.append(item)
+
+        assert len(conversations_without_system_prompt) % 2 == 0, "Some conversations dont have Q+A pairs"
+        messages = []
+        for i in range(0, len(conversations_without_system_prompt), 2):
+            assert conversations_without_system_prompt[i]["from"] == "human"
+            messages.append({'role': 'user', 'content': conversations_without_system_prompt[i]["value"]})
+            assert conversations_without_system_prompt[i+1]["from"] == "gpt"
+            messages.append({'role': 'assistant', 'content': conversations_without_system_prompt[i+1]["value"]})
+    except Exception as e:
+        raise ValueError(
+            f"Unable to extract prompt/response from inp={inp}"
+        ) from e
+    return {'messages': messages}
+
+
+def chat_dolphin_preprocessing_function(inp: Dict):
+    try:
+        user = inp['input']
+        assistant = inp['output']
+    except Exception as e:
+        raise ValueError(
+            f"Unable to extract prompt/response from inp={inp}"
+        ) from e
+    return {'messages': [{'role': 'user', 'content': user}, {'role': 'assistant', 'content': assistant}]}
+
+
+def chat_alpaca_cleaned_preprocessing_function(inp: Dict):
+    try:
+        user = inp['instruction']
+        if inp['input'] != '':
+            user += '\n\n' + inp['input']
+        assistant = inp['output']
+    except  Exception as e:
+        raise ValueError(
+            f"Unable to extract prompt/response from inp={inp}"
+        ) from e
+    return {'messages': [{'role': 'user', 'content': user}, {'role': 'assistant', 'content': assistant}]}
+
+
+def chat_dolly_hhrlhf_preprocessing_function(inp: Dict):
+    try:
+        user = inp['prompt'].replace('Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n### Instruction:\n', '')
+        user = user.replace('\n\n### Response:\n', '')
+        user = user.strip()
+        assistant = inp['response']
+    except Exception as e:
+        raise ValueError(
+            f"Unable to extract prompt/response from inp={inp}"
+        ) from e
+    return {'messages': [{'role': 'user', 'content': user}, {'role': 'assistant', 'content': assistant}]}
+
+
+def chat_flan2021_submix_original_preprocessing_function(inp: Dict):
+    try:
+        user = inp['inputs']
+        assistant = inp['targets']
+    except Exception as e:
+        raise ValueError(
+            f"Unable to extract prompt/response from inp={inp}"
+        ) from e
+    return {'messages': [{'role': 'user', 'content': user}, {'role': 'assistant', 'content': assistant}]}
+
+
+def chat_flan_cot_preprocessing_function(inp: Dict):
+    try:
+        user = inp['question']
+        assistant = inp['explanation'] + '\n\n' + "The correct answer is: " + inp['answer']
+    except Exception as e:
+        raise ValueError(
+            f"Unable to extract prompt/response from inp={inp}"
+        ) from e
+    return {'messages': [{'role': 'user', 'content': user}, {'role': 'assistant', 'content': assistant}]}
+
+
+def chat_arc_both_datagen_preprocessing_function(inp: Dict):
+    try:
+        user = inp['question'] + '\n' + inp['all_choices']
+        assistant = inp['detailed_answer'] + '\n\n' + "The correct answer is: " + inp['correct_answer']
+    except Exception as e:
+        raise ValueError(
+            f"Unable to extract prompt/response from inp={inp}"
+        ) from e
+    return {'messages': [{'role': 'user', 'content': user}, {'role': 'assistant', 'content': assistant}]}
+
+
+def chat_winogrande_datagen_preprocessing_function(inp: Dict):
+    try:
+        user = inp['question'] + '\n' + inp['all_choices']
+        assert inp['question'].count('_') == 1, "Winogrande question should have exactly one blank"
+        assistant = inp['detailed_answer'] + '\n\n' + "The correct answer is: " + inp['question'].replace('_', inp['correct_answer'])
+    except Exception as e:
+        raise ValueError(
+            f"Unable to extract prompt/response from inp={inp}"
+        ) from e
+    return {'messages': [{'role': 'user', 'content': user}, {'role': 'assistant', 'content': assistant}]}
+
+
+def chat_hellaswag_datagen_preprocessing_function(inp: Dict):
+    try:
+        user = inp['question'] + '\n' + inp['all_choices']
+        assistant = inp['detailed_answer'] + '\n\n' + "The correct answer is: " + inp['correct_answer']
+    except Exception as e:
+        raise ValueError(
+            f"Unable to extract prompt/response from inp={inp}"
+        ) from e
+    return {'messages': [{'role': 'user', 'content': user}, {'role': 'assistant', 'content': assistant}]}
+
+
+def chat_mmlu_datagen_preprocessing_function(inp: Dict):
+    try:
+        user = inp['question'] + '\n' + inp['all_choices']
+        assistant = inp['detailed_answer'] + '\n\n' + "The correct answer is: " + inp['correct_answer']
+    except Exception as e:
+        raise ValueError(
+            f"Unable to extract prompt/response from inp={inp}"
+        ) from e
+    return {'messages': [{'role': 'user', 'content': user}, {'role': 'assistant', 'content': assistant}]}
+
+
+def chat_openmathinstruct1_datagen_preprocessing_function(inp: Dict):
+    try:
+        user = inp['question']
+        assistant = inp['detailed_answer']
+    except Exception as e:
+        raise ValueError(
+            f"Unable to extract prompt/response from inp={inp}"
+        ) from e
+    return {'messages': [{'role': 'user', 'content': user}, {'role': 'assistant', 'content': assistant}]}
+
+
+def chat_mmlu_aux_train_preprocessing_function(inp: Dict):
+    try:
+        if 'train' in inp.keys():
+            inp = inp['train']
+
+        user = inp['question']
+        assistant = inp['choices'][inp['answer']]
+    except Exception as e:
+        raise ValueError(
+            f"Unable to extract prompt/response from inp={inp}"
+        ) from e
+    return {'messages': [{'role': 'user', 'content': user}, {'role': 'assistant', 'content': assistant}]}
+
+
+def chat_arc_both_preprocessing_function(inp: Dict):
+    try:
+        correct = [item for item in inp['question']['choices'] if item['label'] == inp['answerKey']]
+        assert len(correct) == 1, f"Something is wrong with sample: {inp}"
+        correct = correct[0]
+        # Make it explicit that there are some QA pairs with only three choices. Is this a bug in the dataset?
+        if len(inp['question']['choices']) == 3:
+            user = (inp['question']['stem'] + "\nOptions:"
+                + f"\n- {inp['question']['choices'][0]['label']}) {inp['question']['choices'][0]['text']}"
+                + f"\n- {inp['question']['choices'][1]['label']}) {inp['question']['choices'][1]['text']}"
+                + f"\n- {inp['question']['choices'][2]['label']}) {inp['question']['choices'][2]['text']}")
+            assistant = f"\nThe correct answer is: {inp['answerKey']}) {correct['text']}"
+        elif len(inp['question']['choices']) == 4:
+            user = (inp['question']['stem'] + "\nOptions:"
+                + f"\n- {inp['question']['choices'][0]['label']}) {inp['question']['choices'][0]['text']}"
+                + f"\n- {inp['question']['choices'][1]['label']}) {inp['question']['choices'][1]['text']}"
+                + f"\n- {inp['question']['choices'][2]['label']}) {inp['question']['choices'][2]['text']}"
+                + f"\n- {inp['question']['choices'][3]['label']}) {inp['question']['choices'][3]['text']}")
+            assistant = f"\nThe correct answer is: {inp['answerKey']}) {correct['text']}"
+        elif len(inp['question']['choices']) == 5:
+            user = (inp['question']['stem'] + "\nOptions:"
+                + f"\n- {inp['question']['choices'][0]['label']}) {inp['question']['choices'][0]['text']}"
+                + f"\n- {inp['question']['choices'][1]['label']}) {inp['question']['choices'][1]['text']}"
+                + f"\n- {inp['question']['choices'][2]['label']}) {inp['question']['choices'][2]['text']}"
+                + f"\n- {inp['question']['choices'][3]['label']}) {inp['question']['choices'][3]['text']}"
+                + f"\n- {inp['question']['choices'][4]['label']}) {inp['question']['choices'][4]['text']}")
+            assistant = f"\nThe correct answer is: {inp['answerKey']}) {correct['text']}"
+        else:
+            raise ValueError(f"Unexpected number of choices in sample: {inp}")
+    except Exception as e:
+        raise ValueError(
+            f"Unable to extract prompt/response from inp={inp}"
+        ) from e
+    return {'messages': [{'role': 'user', 'content': user}, {'role': 'assistant', 'content': assistant}]}
+
+
+def chat_winogrande_preprocessing_function(inp: Dict):
+    try:
+        user = inp['sentence'] + '\n\n' + f"Option 1): {inp['option1']}\n" + f"Option 2): {inp['option2']}\n"
+        assistant = f"The correct answer is: Option {inp['answer']}) {inp['option'+inp['answer']]}"
+    except Exception as e:
+        raise ValueError(
+            f"Unable to extract prompt/response from inp={inp}"
+        ) from e
+    return {'messages': [{'role': 'user', 'content': user}, {'role': 'assistant', 'content': assistant}]}
+
+
+def chat_hellaswag_preprocessing_function(inp: Dict):
+    try:
+        user = (inp['ctx'] + '\n'
+            + f"\n1) {inp['endings'][0]}"
+            + f"\n2) {inp['endings'][1]}"
+            + f"\n3) {inp['endings'][2]}"
+            + f"\n4) {inp['endings'][3]}")
+        assistant = "The correct answer is: " + inp['endings'][int(inp['label'])]
+    except Exception as e:
+        raise ValueError(
+            f"Unable to extract prompt/response from inp={inp}"
+        ) from e
+    return {'messages': [{'role': 'user', 'content': user}, {'role': 'assistant', 'content': assistant}]}
+
+
+def mathador_sft_preprocessing_function(inp: Dict):
+    try:
+        prompt = f"""
+Game description: In the Mathador game, players use the given base numbers and the operations of addition, subtraction, multiplication, and division to reach a specified target number.
+
+Scoring:
+- Each use of addition (+) is worth 1 point.
+- Each use of multiplication (*) is worth 1 point.
+- Each use of subtraction (-) is worth 2 points.
+- Each use of division (/) is worth 3 points.
+- 6 bonus points are awarded for using all four operations exactly once.
+
+Rules:
+- You should reach the target number.
+- You should only use the base and intermediate numbers.
+- You shouldn't use a base or intermediate number more than once in later steps.
+- You should only produce nonnegative and integer intermediate results.
+- Your solution should be 4 lines at most.
+
+Only the solution you write at the end will be considered for scoring.
+Find the highest scoring solution. If you are not able to find it, find a simple solution to earn at least some points.
+
+Target number: {inp['target']}
+Base numbers: {inp['base_numbers']}
+"""
+        prompt = prompt.lstrip() # remove leading \n
+        response = f"Solution:\n" + inp['mathador_solution']
     except Exception as e:
         raise ValueError(
             f"Unable to extract prompt/response from inp={inp}"
         ) from e
     return {'prompt': prompt, 'response': response}
+
+
+def chat_mathador_preprocessing_function(inp: Dict):
+    try:
+        prompt = f"""
+Game description: In the Mathador game, players use the given base numbers and the operations of addition, subtraction, multiplication, and division to reach a specified target number.
+
+Scoring:
+- Each use of addition (+) is worth 1 point.
+- Each use of multiplication (*) is worth 1 point.
+- Each use of subtraction (-) is worth 2 points.
+- Each use of division (/) is worth 3 points.
+- 6 bonus points are awarded for using all four operations exactly once.
+
+Rules:
+- You should reach the target number.
+- You should only use the base and intermediate numbers.
+- You shouldn't use a base or intermediate number more than once in later steps.
+- You should only produce nonnegative and integer intermediate results.
+- Your solution should be 4 lines at most.
+
+Only the solution you write at the end will be considered for scoring.
+Find the highest scoring solution. If you are not able to find it, find a simple solution to earn at least some points.
+
+Target number: {inp['target']}
+Base numbers: {inp['base_numbers']}
+"""
+        prompt = prompt.lstrip() # remove leading \n
+        response = f"Solution:\n" + inp['mathador_solution']
+    except Exception as e:
+        raise ValueError(
+            f"Unable to extract prompt/response from inp={inp}"
+        ) from e
+    return {'messages': [{'role': 'user', 'content': prompt}, {'role': 'assistant', 'content': response}]}
