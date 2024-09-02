@@ -321,6 +321,10 @@ def train(cfg: DictConfig) -> Trainer:
     init_context = process_init_device(model_config, fsdp_config)
     logged_cfg.update({'fsdp_config': fsdp_config}, merge=True)
 
+    # Cleanup to prevent stalled processes
+    from streaming.base.util import clean_stale_shared_memory
+    clean_stale_shared_memory()
+
     # Build tokenizer
     log.info('Building tokenizer...')
     tokenizer_name = train_cfg.tokenizer['name']

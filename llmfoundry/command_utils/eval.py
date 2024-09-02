@@ -254,6 +254,10 @@ def evaluate(cfg: DictConfig) -> tuple[list[Trainer], pd.DataFrame]:
     reproducibility.seed_all(eval_config.seed)
     dist.initialize_dist(get_device(None), timeout=eval_config.dist_timeout)
 
+    # Cleanup to prevent stalled processes
+    from streaming.base.util import clean_stale_shared_memory
+    clean_stale_shared_memory()
+
     if eval_config.python_log_level is not None:
         logging.basicConfig(
             # Example of format string
