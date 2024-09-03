@@ -122,7 +122,7 @@ def stitch_turns_decoder_only(
     target_responses: str,
     eos_token_id: Optional[int] = None,
     validate: bool = False,
-) -> tuple[list[int], list[int]]:
+) -> tuple[list[int], list[int], list[int]]:
     target_prompts = target_prompts.lower()
     target_responses = target_responses.lower()
 
@@ -143,6 +143,7 @@ def stitch_turns_decoder_only(
 
     input_ids = []
     labels = []
+    position_ids = []
     for idx, turn in enumerate(example_turns):
         is_last_turn = idx + 1 == len(example_turns)
         # We assume that no padding has been applied. If there is a pad token,
@@ -152,7 +153,10 @@ def stitch_turns_decoder_only(
         # If an EOS token id is given, ensure that the target sequence ends with it.
         if is_last_turn and eos_token_id is not None:
             if target[-1] != eos_token_id:
+                log.warning(f"Your target sequence does not end with EOS token. EOS token will not be added automatically, as Eldar disabled it. Make sure to fix your dataset conversion script if you expect different behavior.")
                 target = target + [eos_token_id]
+                if 'position_ids' in turn:
+                    turn['position_ids'] += [turn['position_ids'][-1] + 1]
         # Extend the input_ids
         input_ids += context
         input_ids += target
@@ -160,11 +164,19 @@ def stitch_turns_decoder_only(
         labels += prompt_to_target(context, is_last_turn, prompt_cutoff)
         labels += response_to_target(target, is_last_turn)
 
+        if 'position_ids' in turn:
+            position_ids += ensure_list(turn['position_ids'])
+
     if len(input_ids) != len(labels):
         raise ValueError(
             f'input_ids and labels should be the same length, {len(input_ids)=}, {len(labels)=}',
         )
-    return input_ids, labels
+    if len(position_ids) > 0 and len(position_ids) != len(input_ids):
+        raise ValueError(
+            f'position_ids should be the same length as input_ids, {len(position_ids)=}, {len(input_ids)=}',
+        )
+
+    return input_ids, labels, position_ids
 
 
 def stitch_turns_encoder_decoder(
@@ -338,18 +350,19 @@ class Seq2SeqFinetuningCollator:
 
         if self._pad_to_longest:
             max_seq_len = max([
-                len(input_ids) for input_ids, _ in input_ids_and_labels
+                len(input_ids) for input_ids, _, _ in input_ids_and_labels
             ])
             max_seq_len = min(max_seq_len, self.max_seq_len)
         else:
             max_seq_len = self.max_seq_len
 
-        for input_ids, labels in input_ids_and_labels:
+        for input_ids, labels, position_ids in input_ids_and_labels:
             orig_size = len(input_ids)
             # We may need to truncate the input_ids / labels in order to maintain max_seq_len
             if orig_size > max_seq_len:
                 input_ids = input_ids[:max_seq_len]
                 labels = labels[:max_seq_len]
+                position_ids = position_ids[:max_seq_len]
 
                 # Check to make sure there are still loss-generating tokens. Error if not.
                 if len([l for l in labels if l != _HF_IGNORE_INDEX]) == 0:
@@ -380,6 +393,8 @@ class Seq2SeqFinetuningCollator:
                 labels = i_pad + labels
             else:
                 labels = labels + i_pad
+                if len(position_ids) > 0:
+                    position_ids = position_ids + list(range(len(i_pad)))
 
             # Update the example
             processed_example = {
@@ -387,6 +402,8 @@ class Seq2SeqFinetuningCollator:
                 'labels': labels,
                 'attention_mask': attention_mask,
             }
+            if len(position_ids) > 0:
+                processed_example['position_ids'] = position_ids
 
             processed_examples.append(processed_example)
 
@@ -397,7 +414,8 @@ class Seq2SeqFinetuningCollator:
             return_tensors='pt',
         )
 
-        batch['sequence_id'] = batch['attention_mask'] - 1
+        # TODO (Eldar): check if we need this at all?
+        # batch['sequence_id'] = batch['attention_mask'] - 1
 
         # This logic prevents trimming on at least the first batch
         if not (self._allow_pad_trimming and self._seen_first_batch):

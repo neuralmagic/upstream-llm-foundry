@@ -23,7 +23,52 @@ from llmfoundry.data.finetuning.tasks import (
 )
 from llmfoundry.utils.builders import build_tokenizer
 
+
 HFDataset = Union[DatasetDict, Dataset, IterableDatasetDict, IterableDataset]
+
+
+class FirstFitSequencePacking:
+    def __init__(self, max_seq_len: int, sequence_packing_padding_threshold: float = 0.05):
+        self.max_seq_len = max_seq_len
+        self.allowed_padding_size = int(max_seq_len * sequence_packing_padding_threshold)
+        self.bins = []  # list of bins where each bin is a dict of: {list of samples_to_write, bin_size}
+
+    def get_sequence_len(self, sequence):
+        # TODO: Implement this for your framework, as it depends on the way that sequences are represented
+        return sum([len(turn['input_ids']) + len(turn['labels']) for turn in sequence['turns']])
+
+    def get_position_ids(self, sequence):
+        return list(range(self.get_sequence_len(sequence)))
+
+    def write_out_bin(self, bin, out_writer):
+        print(f"[Sequence Packing] writing out a bin of size: {bin['size']=}")
+        sample_to_write = {'turns': []}
+        for sample in bin['samples']:
+            for turn in sample['turns']:
+                turn_to_write = {}
+                for key in ['input_ids', 'labels']:
+                    turn_to_write[key] = list(turn[key])
+                turn_to_write['position_ids'] = sample['position_ids']
+                sample_to_write['turns'].append(turn_to_write)
+        out_writer.write(sample_to_write)
+
+    def add_sequence(self, sequence, out_writer):
+        fits = False
+        for idx, bin in enumerate(self.bins):
+            if bin['size'] + self.get_sequence_len(sequence) <= self.max_seq_len:
+                sequence['position_ids'] = self.get_position_ids(sequence)
+                bin['samples'].append(sequence)
+                bin['size'] += self.get_sequence_len(sequence)
+
+                if bin['size'] >= self.max_seq_len - self.allowed_padding_size:
+                    self.write_out_bin(self.bins.pop(idx), out_writer)
+
+                fits = True
+                break
+
+        if not fits: # open a new bin
+            sequence['position_ids'] = self.get_position_ids(sequence)
+            self.bins.append({'samples': [sequence], 'size': self.get_sequence_len(sequence)})
 
 
 def build_dataloader(
@@ -118,6 +163,8 @@ def convert_custom_finetuning_dataset(
     target_prompts: str,
     target_responses: str,
     encoder_decoder: bool,
+    do_sequence_packing: bool = False,
+    sequence_packing_padding_threshold: float = 0.05,
 ) -> None:
     """Converts Finetuning datasets to MDS format.
 
@@ -213,6 +260,9 @@ def convert_custom_finetuning_dataset(
         n_tokens_labels = 0
         n_tokens_padding = 0
         maximum_seq_len = 0
+        sequence_packer = None
+        if do_sequence_packing:
+            sequence_packer = FirstFitSequencePacking(max_seq_len, sequence_packing_padding_threshold)
         with MDSWriter(
             columns=columns,
             out=out,
@@ -256,7 +306,11 @@ def convert_custom_finetuning_dataset(
                         sample_to_write['turns'].append(turn_to_write)
                         n_tokens_input_ids += len(turn_to_write['input_ids'])
                         n_tokens_labels += len(turn_to_write['labels'])
-                    out.write(sample_to_write)
+
+                    if sequence_packer is not None:
+                        sequence_packer.add_sequence(sample_to_write, out)
+                    else:
+                        out.write(sample_to_write)
 
                     n_samples +=1
                     stitched_seq_len = sum([len(turn['input_ids']) + len(turn['labels']) for turn in sample_to_write['turns']])
@@ -277,6 +331,12 @@ def convert_custom_finetuning_dataset(
                         out.write(encoded_sample)
                     else:
                         out.write(formatted_sample)
+
+            if sequence_packer is not None:
+                # it could happen that not all bins were written out, so we write them out here
+                print(f"[Sequence Packing] writing out the remaining bins: {len(sequence_packer.bins)=}")
+                for bin in sequence_packer.bins:
+                    sequence_packer.write_out_bin(bin, out)
 
         if tokenizer is not None and examples_removed > 0:
             warnings.warn(
@@ -310,6 +370,8 @@ def convert_custom_finetuning_dataset_from_args(
     target_prompts: str,
     target_responses: str,
     encoder_decoder: bool,
+    do_sequence_packing: bool = False,
+    sequence_packing_padding_threshold: float = 0.05,
 ):
     """A wrapper for `convert_finetuning_dataset` to parse arguments.
 
@@ -368,4 +430,6 @@ def convert_custom_finetuning_dataset_from_args(
         target_prompts=target_prompts,
         target_responses=target_responses,
         encoder_decoder=encoder_decoder,
+        do_sequence_packing=do_sequence_packing,
+        sequence_packing_padding_threshold=sequence_packing_padding_threshold,
     )

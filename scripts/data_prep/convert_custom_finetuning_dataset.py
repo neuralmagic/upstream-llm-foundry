@@ -99,6 +99,20 @@ def parse_args() -> Namespace:
             '``target_prompts`` and ``target_responses`` settings of "none" and "last", respectively.',
     )
 
+    #### Used for Sequence Packing ####
+    parser.add_argument(
+        '--do_sequence_packing',
+        action='store_true',
+        help='To trigger sequence packing during dataset conversion',
+        required=False,
+    )
+    parser.add_argument(
+        '--sequence_packing_padding_threshold',
+        type=float,
+        default=0.05,
+        required=False
+    )
+
     parsed = parser.parse_args()
     return parsed
 
@@ -130,4 +144,6 @@ if __name__ == '__main__':
         target_prompts=args.target_prompts,
         target_responses=args.target_responses,
         encoder_decoder=args.encoder_decoder,
+        do_sequence_packing=args.do_sequence_packing,
+        sequence_packing_padding_threshold=args.sequence_packing_padding_threshold,
     )

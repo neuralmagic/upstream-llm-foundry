@@ -489,7 +489,7 @@ def is_valid_ift_example(
             return False
 
     if decoder_only_format:
-        input_ids, labels = stitch_turns_decoder_only(
+        input_ids, labels, _ = stitch_turns_decoder_only(
             example_turns=example['turns'],
             target_prompts=target_prompts,
             target_responses=target_responses,
