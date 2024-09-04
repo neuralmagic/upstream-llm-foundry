@@ -304,6 +304,8 @@ def _tokenize_with_bos_removal(
     tokenizer: PreTrainedTokenizerBase,
     text: str,
     text_target: str,
+    tokenizer_call_kwargs: Optional[dict[str, Any]] = None,
+    add_eos_token_to_prompt_response_formatted_examples: bool = False,
 ) -> dict[str, list[int]]:
     """Tokenizes the prompt and response using the provided tokenizer.
 
@@ -320,7 +322,12 @@ def _tokenize_with_bos_removal(
         text_target=text_target,
         padding=False,
         truncation=False,
+        **tokenizer_call_kwargs,  # useful with add_special_tokens=False to disable auto adding of BOS token
     )
+
+    # useful to manually add EOS token to the end of response part of prompt-response formatted samples
+    if add_eos_token_to_prompt_response_formatted_examples:
+        tokenized_sample['labels'] += [tokenizer.eos_token_id]
 
     # Remove the BOS token from the start of the labels if it was automatically added
     # Unfortunately if the tokenizer is PretrainedTokenizerFast, as llama3 is, it does not provide
@@ -381,6 +388,8 @@ def _tokenize_chat_formatted_example(
 def _tokenize_prompt_response_formatted_example(
     example: PromptResponseDict,
     tokenizer: PreTrainedTokenizerBase,
+    tokenizer_call_kwargs: Optional[dict[str, Any]] = None,
+    add_eos_token_to_prompt_response_formatted_examples: bool = False,
 ) -> TokenizedExample:
     """Tokenize a formatted example and validate expected keys."""
     example_keys = set(example.keys())
@@ -409,6 +418,8 @@ def _tokenize_prompt_response_formatted_example(
                 tokenizer=tokenizer,
                 text=prompt,
                 text_target=response,
+                tokenizer_call_kwargs=tokenizer_call_kwargs,
+                add_eos_token_to_prompt_response_formatted_examples=add_eos_token_to_prompt_response_formatted_examples,
             ),
         ],
     }
@@ -417,6 +428,8 @@ def _tokenize_prompt_response_formatted_example(
 def tokenize_formatted_example(
     example: Example,
     tokenizer: PreTrainedTokenizerBase,
+    tokenizer_call_kwargs: Optional[dict[str, Any]] = None,
+    add_eos_token_to_prompt_response_formatted_examples: bool = False,
 ) -> TokenizedExample:
     """Tokenizes a formatted example using the provided tokenizer.
 
@@ -443,6 +456,8 @@ def tokenize_formatted_example(
         return _tokenize_prompt_response_formatted_example(
             prompt_response_example,
             tokenizer,
+            tokenizer_call_kwargs=tokenizer_call_kwargs,
+            add_eos_token_to_prompt_response_formatted_examples=add_eos_token_to_prompt_response_formatted_examples
         )
     else:
         raise NotImplementedError

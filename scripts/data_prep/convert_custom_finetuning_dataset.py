@@ -112,6 +112,8 @@ def parse_args() -> Namespace:
         default=0.05,
         required=False
     )
+    parser.add_argument('--tokenizer_call_kwargs', type=str, required=False, help="Useful to disable automatic adding of BOS token by tokenizer with add_special_tokens=False")
+    parser.add_argument('--add_eos_token_to_prompt_response_formatted_examples', action='store_true', required=False, help="Useful to add EOS token to prompt-response formatted samples at the end of response part. Useful when doing sequence packing to learn to produce EOS at the end of each sample.")
 
     parsed = parser.parse_args()
     return parsed
@@ -146,4 +148,6 @@ if __name__ == '__main__':
         encoder_decoder=args.encoder_decoder,
         do_sequence_packing=args.do_sequence_packing,
         sequence_packing_padding_threshold=args.sequence_packing_padding_threshold,
+        tokenizer_call_kwargs=args.tokenizer_call_kwargs,
+        add_eos_token_to_prompt_response_formatted_examples=args.add_eos_token_to_prompt_response_formatted_examples,
     )

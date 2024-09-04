@@ -165,6 +165,8 @@ def convert_custom_finetuning_dataset(
     encoder_decoder: bool,
     do_sequence_packing: bool = False,
     sequence_packing_padding_threshold: float = 0.05,
+    tokenizer_call_kwargs: Optional[dict[str, Any]] = None,
+    add_eos_token_to_prompt_response_formatted_examples: bool = False,
 ) -> None:
     """Converts Finetuning datasets to MDS format.
 
@@ -287,6 +289,8 @@ def convert_custom_finetuning_dataset(
                     sample = tokenize_formatted_example(
                         formatted_sample,
                         tokenizer=tokenizer,
+                        tokenizer_call_kwargs=tokenizer_call_kwargs,
+                        add_eos_token_to_prompt_response_formatted_examples=add_eos_token_to_prompt_response_formatted_examples,
                     )
                     if not is_valid_ift_example(
                         max_seq_len,
@@ -372,6 +376,8 @@ def convert_custom_finetuning_dataset_from_args(
     encoder_decoder: bool,
     do_sequence_packing: bool = False,
     sequence_packing_padding_threshold: float = 0.05,
+    tokenizer_call_kwargs: Optional[str] = None,
+    add_eos_token_to_prompt_response_formatted_examples: bool = False,
 ):
     """A wrapper for `convert_finetuning_dataset` to parse arguments.
 
@@ -413,6 +419,12 @@ def convert_custom_finetuning_dataset_from_args(
         raise ValueError(
             f'If data_files is set, data_files and splits must have the same length. Got {len(data_files)=} while {len(splits)=}',
         )
+
+    if tokenizer_call_kwargs is not None:
+        parsed_tokenizer_call_kwargs = json.loads(tokenizer_call_kwargs)
+    else:
+        parsed_tokenizer_call_kwargs = {}
+
     convert_custom_finetuning_dataset(
         dataset=dataset,
         data_subset=data_subset,
@@ -432,4 +444,6 @@ def convert_custom_finetuning_dataset_from_args(
         encoder_decoder=encoder_decoder,
         do_sequence_packing=do_sequence_packing,
         sequence_packing_padding_threshold=sequence_packing_padding_threshold,
+        tokenizer_call_kwargs=parsed_tokenizer_call_kwargs,
+        add_eos_token_to_prompt_response_formatted_examples=add_eos_token_to_prompt_response_formatted_examples,
     )
