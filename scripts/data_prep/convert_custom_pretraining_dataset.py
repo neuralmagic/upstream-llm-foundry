@@ -57,6 +57,7 @@ def parse_args() -> Namespace:
                         codebase. For example, it is impossible to disable adding of special
                         tokens with Llama-3 tokenizer. It will always add BOS token, which we
                         sometimes do not want. Now we can disable in __call__ by setting add_special_tokens=False""")
+    parser.add_argument('--add_position_ids', default=False, action='store_true', help="Useful to add position ids to each concatenated sample. The goal is to use this for variable length FlashAttention to avoid cross-document attention during pretraining")
 
     parsed = parser.parse_args()
     return parsed
@@ -79,4 +80,5 @@ if __name__ == '__main__':
         num_workers=args.num_workers,
         data_files=args.data_files,
         tokenizer_call_kwargs=args.tokenizer_call_kwargs,
+        add_position_ids=args.add_position_ids,
     )

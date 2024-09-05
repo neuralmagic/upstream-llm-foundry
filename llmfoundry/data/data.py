@@ -209,6 +209,10 @@ CONVERT_TO_PRETRAINING = {
     "/nm/drive0/eldar/datasets/winogrande/merged_for_upstream_v2": winogrande_all,  #_v2 no dev
     "/nm/drive0/eldar/datasets/hellaswag/merged_for_upstream_v2": hellaswag_all,  # _v2 no dev
     "/nm/drive0/eldar/datasets/ARC-V1-Feb2018-2/merged_for_upstream": arc_all,
+    "/network/eldar/datasets/raw/winogrande/merged_for_upstream_v2": winogrande_all,
+    "/network/eldar/datasets/raw/hellaswag/merged_for_upstream_v2": hellaswag_all,
+    "/network/eldar/datasets/raw/ARC-V1-Feb2018-2/merged_for_upstream": arc_all,
+
     "/network/eldar/datasets/data_gen/arcboth/arcboth_llama3_8b_instruct": arc_all_datagen,
     "/network/eldar/datasets/data_gen/arcboth/arcboth_llama3_70b_instruct": arc_all_datagen,
     "/network/eldar/datasets/data_gen/winogrande/winogrande_llama3_8b_instruct": winogrande_datagen,
@@ -373,12 +377,17 @@ class ConcatTokensDataset(AbstractConcatTokensDataset):
         no_wrap: bool,
         hf_id: Optional[str] = None,
         tokenizer_call_kwargs: Optional[Dict] = None,
+        add_position_ids: bool = False,
     ):
         self.hf_dataset = hf_dataset
         super().__init__(tokenizer, max_length, bos_text, eos_text, no_wrap, hf_id, tokenizer_call_kwargs)
+        if add_position_ids:
+            assert not self.should_wrap, "add_position_ids cant be used with wrapping"
+        self.add_position_ids = add_position_ids
 
     def __iter__(self) -> Iterable[dict[str, NDArray]]:
         buffer = []
+        buffer_position_ids = []
         for sample in self.hf_dataset:
             if self.hf_id in CONVERT_TO_PRETRAINING:
                 sample['text'] = CONVERT_TO_PRETRAINING[self.hf_id](sample)
@@ -397,15 +406,29 @@ class ConcatTokensDataset(AbstractConcatTokensDataset):
                 if self.debug_counter <= 0:
                     os.environ["ELDAR_DEBUG"] = "0"
 
-            iids = encoded['input_ids']
-            buffer = buffer + self.bos_tokens + iids + self.eos_tokens
+            iids = self.bos_tokens + encoded['input_ids'] + self.eos_tokens
+            buffer = buffer + iids
+
+            if self.add_position_ids:
+                buffer_position_ids = buffer_position_ids + list(range(len(iids)))
+
             while len(buffer) >= self.max_length:
                 concat_sample = buffer[:self.max_length]
+                concat_position_ids = buffer_position_ids[:self.max_length]
+
                 buffer = buffer[self.max_length:] if self.should_wrap else []
-                yield {
-                    # convert to ndarray to store in MDS format
-                    'tokens': np.asarray(concat_sample, dtype=np.int32),
-                }
+                buffer_position_ids = []  # no need to take care of self.should_wrap case as it is not supported
+                if self.add_position_ids:
+                    yield {
+                        # convert to ndarray to store in MDS format
+                        'tokens': np.asarray(concat_sample, dtype=np.int32),
+                        'position_ids': np.asarray(concat_position_ids, dtype=np.int32),
+                    }
+                else:
+                    yield {
+                        # convert to ndarray to store in MDS format
+                        'tokens': np.asarray(concat_sample, dtype=np.int32),
+                    }
 
                 if "ELDAR_DEBUG" in os.environ and os.environ["ELDAR_DEBUG"] == "1":
                     print(f"\n [concatenated samples] ---> {self.tokenizer.decode(concat_sample)}")

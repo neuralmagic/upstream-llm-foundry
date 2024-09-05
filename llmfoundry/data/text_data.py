@@ -230,8 +230,13 @@ class StreamingTextDataset(StreamingDataset):
         sample = super().__getitem__(idx)
         if 'text' in sample:
             token_sample = self._tokenize(sample)
-        elif 'tokens' in sample:
+        elif 'tokens' in sample and 'position_ids' not in sample:
             token_sample = self._read_binary_tokenized_sample(sample)
+        elif 'tokens' in sample and 'position_ids' in sample:  # our custom pretraining dataset
+            token_sample = {
+                'input_ids': torch.from_numpy(sample['tokens'][:self.max_seq_len].copy()).to(torch.int64),
+                'position_ids': torch.from_numpy(sample['position_ids'][:self.max_seq_len].copy()).to(torch.int64),
+            }
         else:
             raise RuntimeError(
                 'StreamingTextDataset needs samples to have a `text` or `tokens` column',

@@ -38,6 +38,7 @@ def build_hf_dataset(
     data_subset: Union[str, None] = None,
     data_files: Union[str, None] = None,
     tokenizer_call_kwargs: Optional[Dict] = None,
+    add_position_ids: bool = False,
 ) -> IterableDataset:
     """Build an IterableDataset over the HF C4 or pile source data.
 
@@ -92,6 +93,7 @@ def build_hf_dataset(
             no_wrap=no_wrap,
             hf_id=dataset_name,
             tokenizer_call_kwargs=tokenizer_call_kwargs,
+            add_position_ids=add_position_ids,
         )
     return dataset
 
@@ -169,6 +171,7 @@ def convert_custom_pretraining_dataset(
     num_workers: Optional[int],
     data_files: Optional[str],
     tokenizer_call_kwargs: Optional[dict[str, Any]],
+    add_position_ids: bool = False,
 ) -> None:
     """Converts HuggingFace datasets to MDS format.
 
@@ -195,6 +198,8 @@ def convert_custom_pretraining_dataset(
         # we will enforce length, so suppress warnings about sequences too long for the model
         built_tokenizer.model_max_length = int(1e30)
         columns = {'tokens': 'ndarray:int32'}
+        if add_position_ids:
+            columns['position_ids'] = 'ndarray:int32'
     else:
         mode = ConcatMode.NO_CONCAT
         built_tokenizer = None
@@ -219,6 +224,7 @@ def convert_custom_pretraining_dataset(
             tokenizer=built_tokenizer,
             data_files=data_files,
             tokenizer_call_kwargs=tokenizer_call_kwargs,
+            add_position_ids=add_position_ids,
         )
         loader = build_dataloader(
             dataset=hf_dataset,
@@ -266,6 +272,7 @@ def convert_custom_pretraining_dataset_from_args(
     num_workers: Optional[int],
     data_files: Optional[str],
     tokenizer_call_kwargs: Optional[str],
+    add_position_ids: bool = False,
 ) -> None:
     """A wrapper for `convert_dataset_hf` that parses arguments.
 
@@ -329,4 +336,5 @@ def convert_custom_pretraining_dataset_from_args(
         num_workers=num_workers,
         data_files=data_files,
         tokenizer_call_kwargs=parsed_tokenizer_call_kwargs,
+        add_position_ids=add_position_ids,
     )
