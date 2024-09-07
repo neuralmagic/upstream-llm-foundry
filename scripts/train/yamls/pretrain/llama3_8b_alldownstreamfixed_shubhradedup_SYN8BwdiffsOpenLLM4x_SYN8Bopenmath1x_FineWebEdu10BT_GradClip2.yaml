@@ -1,32 +1,36 @@
-model_name_or_path: #TODO
+variables:
+  model_name_or_path:
+
+run_name: #TODO
+save_folder: /home/eldar/llmfoundry_checkpoints_v2/llama3_8b_cosmopedia_alldownstream/${run_name}
+save_weights_only: true
+
 max_seq_len: #TODO
-precision: #TODO
-
-data_local: # TODO
-data_remote: # If blank, files must be present in data_local
-global_seed: 42
-seed: ${global_seed}
-
 max_duration: #TODO
 eval_interval: #TODO
-eval_first: true
-
 global_train_batch_size: #TODO
 device_train_microbatch_size: #TODO
 device_eval_batch_size: #TODO
+eval_first: true
+precision: #TODO
 
-run_name: # If left blank, will be read from env var $RUN_NAME
+seed: 42
+dist_timeout: 5000
+expandable_segments: true
+
+save_interval: ${eval_interval}
+save_num_checkpoints_to_keep: 1  # Important, this cleans up checkpoints saved to DISK
+# save_folder: s3://my-bucket/my-folder/{run_name}/checkpoints
 
 model:
   name: hf_causal_lm
   use_flash_attention_2: true
   pretrained: true
-  pretrained_model_name_or_path: ${model_name_or_path}
+  pretrained_model_name_or_path: ${variables.model_name_or_path}
   use_auth_token: true
 
-# why do I need it when dataset is already tokenized?
 tokenizer:
-  name: ${model_name_or_path}
+  name: ${variables.model_name_or_path}
   kwargs:
     model_max_length: ${max_seq_len}
 
@@ -35,108 +39,95 @@ train_loader:
   dataset:
     streams:
       shubhra_dedup:
-        remote: /network/eldar/datasets/llama3_8b/seqlen8k_tokenized_wEOS_noWrap/downstream_mix_shubhra_deduplicated
+        remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wEOS_noWrap/downstream_mix_shubhra_deduplicated
         local:
         split: train
       arc_8b:
-        remote: /network/eldar/datasets/llama3_8b/seqlen8k_tokenized_wEOS_noWrap/arcboth_datagen_wllama3_8b_instruct
+        remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wEOS_noWrap/arcboth_datagen_wllama3_8b_instruct
         local:
         split: train
       winogrande_8b:
-        remote: /network/eldar/datasets/llama3_8b/seqlen8k_tokenized_wEOS_noWrap/winogrande_datagen_wllama3_8b_instruct
+        remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wEOS_noWrap/winogrande_datagen_wllama3_8b_instruct
         local:
         split: train
       hellaswag_8b:
-        remote: /network/eldar/datasets/llama3_8b/seqlen8k_tokenized_wEOS_noWrap/hellaswag_datagen_wllama3_8b_instruct
+        remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wEOS_noWrap/hellaswag_datagen_wllama3_8b_instruct
         local:
         split: train
       mmlu_aux_8b:
-        remote: /network/eldar/datasets/llama3_8b/seqlen8k_tokenized_wEOS_noWrap/mmlu_datagen_wllama3_8b_instruct
+        remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wEOS_noWrap/mmlu_datagen_wllama3_8b_instruct
         local:
         split: train
       openmathinstruct_1_8b:
-        remote: /network/eldar/datasets/llama3_8b/seqlen8k_tokenized_wEOS_noWrap/openmathinstruct1_datagen_wllama3_8b_instruct
+        remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wEOS_noWrap/openmathinstruct1_datagen_wllama3_8b_instruct
         local:
         split: train
       arc_8b_young_children:
-        remote: /network/eldar/datasets/llama3_8b/seqlen8k_tokenized_wEOS_noWrap/arcboth_datagen_wllama3_8b_instruct_difficulty_young_children
+        remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wEOS_noWrap/arcboth_datagen_wllama3_8b_instruct_difficulty_young_children
         local:
         split: train
       winogrande_8b_young_children:
-        remote: /network/eldar/datasets/llama3_8b/seqlen8k_tokenized_wEOS_noWrap/winogrande_datagen_wllama3_8b_instruct_difficulty_young_children
+        remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wEOS_noWrap/winogrande_datagen_wllama3_8b_instruct_difficulty_young_children
         local:
         split: train
       hellaswag_8b_young_children:
-        remote: /network/eldar/datasets/llama3_8b/seqlen8k_tokenized_wEOS_noWrap/hellaswag_datagen_wllama3_8b_instruct_difficulty_young_children
+        remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wEOS_noWrap/hellaswag_datagen_wllama3_8b_instruct_difficulty_young_children
         local:
         split: train
       mmlu_aux_8b_young_children:
-        remote: /network/eldar/datasets/llama3_8b/seqlen8k_tokenized_wEOS_noWrap/mmlu_datagen_wllama3_8b_instruct_difficulty_young_children
+        remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wEOS_noWrap/mmlu_datagen_wllama3_8b_instruct_difficulty_young_children
         local:
         split: train
       arc_8b_college_students:
-        remote: /network/eldar/datasets/llama3_8b/seqlen8k_tokenized_wEOS_noWrap/arcboth_datagen_wllama3_8b_instruct_difficulty_college_students
+        remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wEOS_noWrap/arcboth_datagen_wllama3_8b_instruct_difficulty_college_students
         local:
         split: train
       winogrande_8b_college_students:
-        remote: /network/eldar/datasets/llama3_8b/seqlen8k_tokenized_wEOS_noWrap/winogrande_datagen_wllama3_8b_instruct_difficulty_college_students
+        remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wEOS_noWrap/winogrande_datagen_wllama3_8b_instruct_difficulty_college_students
         local:
         split: train
       hellaswag_8b_college_students:
-        remote: /network/eldar/datasets/llama3_8b/seqlen8k_tokenized_wEOS_noWrap/hellaswag_datagen_wllama3_8b_instruct_difficulty_college_students
+        remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wEOS_noWrap/hellaswag_datagen_wllama3_8b_instruct_difficulty_college_students
         local:
         split: train
       mmlu_aux_8b_college_students:
-        remote: /network/eldar/datasets/llama3_8b/seqlen8k_tokenized_wEOS_noWrap/mmlu_datagen_wllama3_8b_instruct_difficulty_college_students
+        remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wEOS_noWrap/mmlu_datagen_wllama3_8b_instruct_difficulty_college_students
         local:
         split: train
       arc_8b_scientists:
-        remote: /network/eldar/datasets/llama3_8b/seqlen8k_tokenized_wEOS_noWrap/arcboth_datagen_wllama3_8b_instruct_difficulty_scientists
+        remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wEOS_noWrap/arcboth_datagen_wllama3_8b_instruct_difficulty_scientists
         local:
         split: train
       winogrande_8b_scientists:
-        remote: /network/eldar/datasets/llama3_8b/seqlen8k_tokenized_wEOS_noWrap/winogrande_datagen_wllama3_8b_instruct_difficulty_scientists
+        remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wEOS_noWrap/winogrande_datagen_wllama3_8b_instruct_difficulty_scientists
         local:
         split: train
       hellaswag_8b_scientists:
-        remote: /network/eldar/datasets/llama3_8b/seqlen8k_tokenized_wEOS_noWrap/hellaswag_datagen_wllama3_8b_instruct_difficulty_scientists
+        remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wEOS_noWrap/hellaswag_datagen_wllama3_8b_instruct_difficulty_scientists
         local:
         split: train
       mmlu_aux_8b_scientists:
-        remote: /network/eldar/datasets/llama3_8b/seqlen8k_tokenized_wEOS_noWrap/mmlu_datagen_wllama3_8b_instruct_difficulty_scientists
+        remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wEOS_noWrap/mmlu_datagen_wllama3_8b_instruct_difficulty_scientists
         local:
         split: train
       finewebedu10bt:
-        remote: /network/eldar/datasets/llama3_8b_FineWebEduSample10BT_seq8k_tokenized_wEOS_noWrap
+        remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b_FineWebEduSample10BT_seq8k_tokenized_wEOS_noWrap
         local:
         split: train
     max_seq_len: ${max_seq_len}
     shuffle: true
-    shuffle_seed: ${global_seed}
+    shuffle_seed: ${seed}
+    allow_pad_trimming: false
+    decoder_only_format: true
   drop_last: true
+  pin_memory: true
   num_workers: 8
-
-
-# TODO: probati dataloadere bez ovis fensi configs
-# eval_loader:
-#   name: text
-#   dataset:
-#     local: ${data_local}
-#     remote: ${data_remote}
-#     split: validation
-#     shuffle: false
-#     max_seq_len: ${max_seq_len}
-#     shuffle_seed: ${global_seed}
-#   drop_last: true
-#   num_workers: 8
-#   # prefetch_factor: 2
-#   # pin_memory: false
-#   # persistent_workers: true
-#   # timeout: 0
+  prefetch_factor: 2
+  persistent_workers: true
 
 scheduler:
   name: cosine_with_warmup
-  t_warmup: # TODO
+  t_warmup: #TODO
   alpha_f: 0.1
 
 optimizer:
@@ -156,7 +147,7 @@ algorithms:
 
 fsdp_config:
   sharding_strategy: FULL_SHARD
-  mixed_precision: PURE # TODO: DEFAULT vs PURE?
+  mixed_precision: PURE
   activation_checkpointing: true
   activation_checkpointing_reentrant: false
   activation_cpu_offload: false
@@ -175,20 +166,20 @@ log_to_console: true
 console_log_interval: 1ba
 
 callbacks:
+  lr_monitor: {}
   speed_monitor:
     window_size: 10
-  lr_monitor: {}
   memory_monitor: {}
   runtime_estimator: {}
+  hf_checkpointer:
+    overwrite: true
+    precision: bfloat16
+    save_folder: ${save_folder}
+    save_interval: 1dur
 
 loggers:
   wandb: {}
-
-# Checkpoint to local filesystem or remote object store
-save_interval: ${eval_interval}
-save_num_checkpoints_to_keep: 1  # Important, this cleans up checkpoints saved to DISK
-save_folder: /home/eldar/llmfoundry_checkpoints/llama3_8b_cosmopedia_alldownstream/${run_name}
-# save_folder: s3://my-bucket/my-folder/{run_name}/checkpoints
+  clearml: {}
 
 icl_seq_len: ${max_seq_len}
 icl_tasks:
