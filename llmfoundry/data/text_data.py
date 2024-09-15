@@ -232,10 +232,21 @@ class StreamingTextDataset(StreamingDataset):
             token_sample = self._tokenize(sample)
         elif 'tokens' in sample and 'position_ids' not in sample:
             token_sample = self._read_binary_tokenized_sample(sample)
-        elif 'tokens' in sample and 'position_ids' in sample:  # our custom pretraining dataset
+        elif 'tokens' in sample and 'position_ids' in sample and 'attention_mask' not in sample:
+            # our custom pretraining dataset format: sequences concatenated for varlen FA2
+            # tokens above max-seq-len dropped
             token_sample = {
                 'input_ids': torch.from_numpy(sample['tokens'][:self.max_seq_len].copy()).to(torch.int64),
                 'position_ids': torch.from_numpy(sample['position_ids'][:self.max_seq_len].copy()).to(torch.int64),
+            }
+        elif 'tokens' in sample and 'position_ids' in sample and 'attention_mask' in sample:
+            # our custom pretraining dataset format: sequences concatenated for varlen FA2
+            # no dropping of tokens unless the original sequences is longer than max-seq-len
+            # uses first fit sequence packing with padding, therefore we need attention_mask as well
+            token_sample = {
+                'input_ids': torch.from_numpy(sample['tokens'][:self.max_seq_len].copy()).to(torch.int64),
+                'position_ids': torch.from_numpy(sample['position_ids'][:self.max_seq_len].copy()).to(torch.int64),
+                'attention_mask': torch.from_numpy(sample['attention_mask'][:self.max_seq_len].copy()).to(torch.int64),
             }
         else:
             raise RuntimeError(

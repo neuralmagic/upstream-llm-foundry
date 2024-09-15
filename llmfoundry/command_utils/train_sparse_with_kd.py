@@ -135,12 +135,15 @@ class KnowledgeDistillation(Algorithm):
             if self.hardness_squarehead > 0:
                 layerwise_losses = []
                 for i in range(1, len(state.outputs.hidden_states)):
-                    # TODO: all tokens are useful during pretraining, i.e. torch.all(state.batch['attention_mask']) == 1
-                    # useful_tokens = state.batch['attention_mask'] == 1
-                    # student_states = state.outputs.hidden_states[i][useful_tokens]
-                    # teacher_states = teacher_outputs.hidden_states[i][useful_tokens]
-                    student_states = state.outputs.hidden_states[i]
-                    teacher_states = teacher_outputs.hidden_states[i]
+                    if 'attention_mask' in state.batch:
+                        # filter out padding tokens
+                        useful_tokens = state.batch['attention_mask'] == 1
+                        student_states = state.outputs.hidden_states[i][useful_tokens]
+                        teacher_states = teacher_outputs.hidden_states[i][useful_tokens]
+                    else:
+                        # no padding tokens
+                        student_states = state.outputs.hidden_states[i]
+                        teacher_states = teacher_outputs.hidden_states[i]
                     layerwise_losses.append((student_states - teacher_states).pow(2).mean() / (teacher_states.pow(2).mean() + torch.finfo(torch.bfloat16).eps))
                     to_log_squarehead[f"squarehead/layer_{i}"] = layerwise_losses[-1].item()
 
