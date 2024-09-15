@@ -39,79 +39,79 @@ train_loader:
   dataset:
     streams:
       shubhra_dedup:
-        remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wEOS_noDroppingSeqPack/downstream_mix_shubhra_deduplicated
+        remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wBOSandEOS_noDroppingSeqPack/downstream_mix_shubhra_deduplicated
         local:
         split: train
       arc_8b:
-        remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wEOS_noDroppingSeqPack/arcboth_datagen_wllama3_8b_instruct
+        remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wBOSandEOS_noDroppingSeqPack/arcboth_datagen_wllama3_8b_instruct
         local:
         split: train
       winogrande_8b:
-        remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wEOS_noDroppingSeqPack/winogrande_datagen_wllama3_8b_instruct
+        remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wBOSandEOS_noDroppingSeqPack/winogrande_datagen_wllama3_8b_instruct
         local:
         split: train
       hellaswag_8b:
-        remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wEOS_noDroppingSeqPack/hellaswag_datagen_wllama3_8b_instruct
+        remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wBOSandEOS_noDroppingSeqPack/hellaswag_datagen_wllama3_8b_instruct
         local:
         split: train
       mmlu_aux_8b:
-        remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wEOS_noDroppingSeqPack/mmlu_datagen_wllama3_8b_instruct
+        remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wBOSandEOS_noDroppingSeqPack/mmlu_datagen_wllama3_8b_instruct
         local:
         split: train
       openmathinstruct_1_8b:
-        remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wEOS_noDroppingSeqPack/openmathinstruct1_datagen_wllama3_8b_instruct
+        remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wBOSandEOS_noDroppingSeqPack/openmathinstruct1_datagen_wllama3_8b_instruct
         local:
         split: train
       arc_8b_young_children:
-        remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wEOS_noDroppingSeqPack/arcboth_datagen_wllama3_8b_instruct_difficulty_young_children
+        remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wBOSandEOS_noDroppingSeqPack/arcboth_datagen_wllama3_8b_instruct_difficulty_young_children
         local:
         split: train
       winogrande_8b_young_children:
-        remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wEOS_noDroppingSeqPack/winogrande_datagen_wllama3_8b_instruct_difficulty_young_children
+        remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wBOSandEOS_noDroppingSeqPack/winogrande_datagen_wllama3_8b_instruct_difficulty_young_children
         local:
         split: train
       hellaswag_8b_young_children:
-        remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wEOS_noDroppingSeqPack/hellaswag_datagen_wllama3_8b_instruct_difficulty_young_children
+        remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wBOSandEOS_noDroppingSeqPack/hellaswag_datagen_wllama3_8b_instruct_difficulty_young_children
         local:
         split: train
       mmlu_aux_8b_young_children:
-        remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wEOS_noDroppingSeqPack/mmlu_datagen_wllama3_8b_instruct_difficulty_young_children
+        remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wBOSandEOS_noDroppingSeqPack/mmlu_datagen_wllama3_8b_instruct_difficulty_young_children
         local:
         split: train
       arc_8b_college_students:
-        remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wEOS_noDroppingSeqPack/arcboth_datagen_wllama3_8b_instruct_difficulty_college_students
+        remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wBOSandEOS_noDroppingSeqPack/arcboth_datagen_wllama3_8b_instruct_difficulty_college_students
         local:
         split: train
       winogrande_8b_college_students:
-        remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wEOS_noDroppingSeqPack/winogrande_datagen_wllama3_8b_instruct_difficulty_college_students
+        remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wBOSandEOS_noDroppingSeqPack/winogrande_datagen_wllama3_8b_instruct_difficulty_college_students
         local:
         split: train
       hellaswag_8b_college_students:
-        remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wEOS_noDroppingSeqPack/hellaswag_datagen_wllama3_8b_instruct_difficulty_college_students
+        remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wBOSandEOS_noDroppingSeqPack/hellaswag_datagen_wllama3_8b_instruct_difficulty_college_students
         local:
         split: train
       mmlu_aux_8b_college_students:
-        remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wEOS_noDroppingSeqPack/mmlu_datagen_wllama3_8b_instruct_difficulty_college_students
+        remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wBOSandEOS_noDroppingSeqPack/mmlu_datagen_wllama3_8b_instruct_difficulty_college_students
         local:
         split: train
       arc_8b_scientists:
-        remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wEOS_noDroppingSeqPack/arcboth_datagen_wllama3_8b_instruct_difficulty_scientists
+        remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wBOSandEOS_noDroppingSeqPack/arcboth_datagen_wllama3_8b_instruct_difficulty_scientists
         local:
         split: train
       winogrande_8b_scientists:
-        remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wEOS_noDroppingSeqPack/winogrande_datagen_wllama3_8b_instruct_difficulty_scientists
+        remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wBOSandEOS_noDroppingSeqPack/winogrande_datagen_wllama3_8b_instruct_difficulty_scientists
         local:
         split: train
       hellaswag_8b_scientists:
-        remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wEOS_noDroppingSeqPack/hellaswag_datagen_wllama3_8b_instruct_difficulty_scientists
+        remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wBOSandEOS_noDroppingSeqPack/hellaswag_datagen_wllama3_8b_instruct_difficulty_scientists
         local:
         split: train
       mmlu_aux_8b_scientists:
-        remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wEOS_noDroppingSeqPack/mmlu_datagen_wllama3_8b_instruct_difficulty_scientists
+        remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wBOSandEOS_noDroppingSeqPack/mmlu_datagen_wllama3_8b_instruct_difficulty_scientists
         local:
         split: train
       finewebedu10bt:
-        remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b_FineWebEduSample10BT_seq8k_tokenized_wEOS_noDroppingSeqPack
+        remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b_FineWebEduSample10BT_seq8k_tokenized_wBOSandEOS_noDroppingSeqPack
         local:
         split: train
     max_seq_len: ${max_seq_len}

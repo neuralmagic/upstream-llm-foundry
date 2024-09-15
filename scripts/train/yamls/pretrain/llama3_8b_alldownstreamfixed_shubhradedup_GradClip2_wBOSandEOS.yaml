@@ -40,32 +40,32 @@ train_loader:
     streams:
       shubhra_dedup:
         # remote: /network/eldar/datasets/llama3_8b/seqlen8k_tokenized_wEOS_noWrap/downstream_mix_shubhra_deduplicated
-        # remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wEOS_noWrap/downstream_mix_shubhra_deduplicated
-        remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wEOS_noDroppingSeqPack/downstream_mix_shubhra_deduplicated
+        # remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wBOSandEOS_noWrap/downstream_mix_shubhra_deduplicated
+        remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wBOSandEOS_noDroppingSeqPack/downstream_mix_shubhra_deduplicated
         local:
         split: train
       mmlu_aux:
         # remote: /network/eldar/datasets/llama3_8b/seqlen8k_tokenized_wEOS_noWrap/mmlu_auxiliary_train
-        # remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wEOS_noWrap/mmlu_auxiliary_train
-        remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wEOS_noDroppingSeqPack/mmlu_auxiliary_train
+        # remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wBOSandEOS_noWrap/mmlu_auxiliary_train
+        remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wBOSandEOS_noDroppingSeqPack/mmlu_auxiliary_train
         local:
         split: train
       winogrande:
         # remote: /network/eldar/datasets/llama3_8b/seqlen8k_tokenized_wEOS_noWrap/winogrande_all_v2
-        # remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wEOS_noWrap/winogrande_all_v2
-        remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wEOS_noDroppingSeqPack/winogrande_all_v2
+        # remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wBOSandEOS_noWrap/winogrande_all_v2
+        remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wBOSandEOS_noDroppingSeqPack/winogrande_all_v2
         local:
         split: train
       arc:
         # remote: /network/eldar/datasets/llama3_8b/seqlen8k_tokenized_wEOS_noWrap/arc_all
-        # remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wEOS_noWrap/arc_all
-        remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wEOS_noDroppingSeqPack/arc_all
+        # remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wBOSandEOS_noWrap/arc_all
+        remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wBOSandEOS_noDroppingSeqPack/arc_all
         local:
         split: train
       hellaswag:
         # remote: /network/eldar/datasets/llama3_8b/seqlen8k_tokenized_wEOS_noWrap/hellaswag_all_v2
-        # remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wEOS_noWrap/hellaswag_all_v2
-        remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wEOS_noDroppingSeqPack/hellaswag_all_v2
+        # remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wBOSandEOS_noWrap/hellaswag_all_v2
+        remote: /network/eldar/datasets/pretrain_with_position_ids/llama3_8b/seqlen8k_tokenized_wBOSandEOS_noDroppingSeqPack/hellaswag_all_v2
         local:
         split: train
     max_seq_len: ${max_seq_len}
