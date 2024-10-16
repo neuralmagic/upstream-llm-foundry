@@ -423,10 +423,6 @@ def train_sparse_with_kd(cfg: DictConfig) -> Trainer:
     init_context = process_init_device(model_config, fsdp_config)
     logged_cfg.update({'fsdp_config': fsdp_config}, merge=True)
 
-    # Cleanup to prevent stalled processes
-    from streaming.base.util import clean_stale_shared_memory
-    clean_stale_shared_memory()
-
     # Build tokenizer
     log.info('Building tokenizer...')
     tokenizer_name = train_cfg.tokenizer['name']
@@ -576,7 +572,7 @@ def train_sparse_with_kd(cfg: DictConfig) -> Trainer:
         )
 
     # Prepare for teacher model
-    teacher_model_config = deepcopy(model_config) if train_cfg.knowledge_distillation else None
+    teacher_model_config = deepcopy(model_config) if (train_cfg.knowledge_distillation and train_cfg.knowledge_distillation['teacher_name_or_path'] is not None) else None
 
     # Build Model
     log.info('Initializing model...')
@@ -731,6 +727,11 @@ def train_sparse_with_kd(cfg: DictConfig) -> Trainer:
     trainer.fit()
 
     log.info('Done.')
+
+    # Cleanup to prevent stalled processes
+    from streaming.base.util import clean_stale_shared_memory
+    clean_stale_shared_memory()
+
     return trainer
 
 

@@ -1,0 +1,141 @@
+variables:
+  model_name_or_path:
+  project_name:
+  dataset_path:
+
+run_name: #TODO
+save_folder: /home/eldar/llmfoundry_checkpoints_v2/${variables.project_name}/${run_name}
+save_weights_only: true
+
+max_seq_len: #TODO
+max_duration: #TODO
+eval_interval: #TODO
+global_train_batch_size: #TODO
+device_train_microbatch_size: #TODO
+device_eval_batch_size: #TODO
+eval_first: true
+precision: #TODO
+
+seed: 42
+dist_timeout: 5000
+expandable_segments: true
+
+save_interval: ${eval_interval}
+save_num_checkpoints_to_keep: 1  # Important, this cleans up checkpoints saved to DISK
+# save_folder: s3://my-bucket/my-folder/{run_name}/checkpoints
+
+model:
+  name: hf_causal_lm
+  use_flash_attention_2: true
+  pretrained: true
+  pretrained_model_name_or_path: ${variables.model_name_or_path}
+  use_auth_token: true
+
+tokenizer:
+  name: ${variables.model_name_or_path}
+  kwargs:
+    model_max_length: ${max_seq_len}
+
+train_loader:
+  name: finetuning
+  dataset:
+    streams:
+      dset:
+        local: ${variables.dataset_path}
+        remote:
+        split: train
+    # hf_name: ${variables.dataset_name}
+    # hf_kwargs:
+    #   name: ${variables.dataset_config_name}
+    # split: ${variables.train_split}
+    max_seq_len: ${max_seq_len}
+    shuffle: true
+    allow_pad_trimming: false
+    decoder_only_format: true
+    target_responses: all
+    target_prompts: none
+  drop_last: false
+  pin_memory: true
+  num_workers: 8
+  prefetch_factor: 2
+  persistent_workers: true
+
+eval_loader:
+  name: finetuning
+  dataset:
+    streams:
+      dset:
+        local: ${variables.dataset_path}
+        remote:
+        split: test
+    # hf_name: ${variables.dataset_name}
+    # hf_kwargs:
+    #   name: ${variables.dataset_config_name}
+    # split: ${variables.eval_split}
+    max_seq_len: ${max_seq_len}
+    shuffle: false
+    allow_pad_trimming: false
+    decoder_only_format: true
+    target_responses: all
+    target_prompts: none
+  drop_last: false
+  pin_memory: true
+  num_workers: 8
+  prefetch_factor: 2
+  persistent_workers: true
+
+scheduler:
+  name: linear_decay_with_warmup
+  t_warmup: #TODO
+  alpha_f: 0.0
+
+optimizer:
+  name: decoupled_adamw
+  lr: #TODO
+  betas:
+  - 0.9
+  - 0.95
+  eps: 1.0e-08
+  weight_decay: 0.0
+
+algorithms:
+  mask_pruned_weights: {}
+  gradient_clipping:
+    clipping_type: norm
+    clipping_threshold: 2.0
+
+fsdp_config:
+  sharding_strategy: FULL_SHARD
+  mixed_precision: PURE
+  activation_checkpointing: true
+  activation_checkpointing_reentrant: false
+  activation_cpu_offload: false
+  limit_all_gathers: true
+
+knowledge_distillation:
+  teacher_name_or_path: #TODO
+  temperature: #TODO
+  hardness_kldiv: #TODO
+  hardness_ce: #TODO
+  hardness_squarehead: #TODO
+
+# Logging
+progress_bar: false
+log_to_console: true
+console_log_interval: 1ba
+
+callbacks:
+  lr_monitor: {}
+  speed_monitor:
+    window_size: 10
+  memory_monitor: {}
+  runtime_estimator: {}
+  hf_checkpointer:
+    overwrite: true
+    precision: bfloat16
+    save_folder: ${save_folder}
+    save_interval: 1dur
+
+loggers:
+  wandb: {}
+  clearml: {}

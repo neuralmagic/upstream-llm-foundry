@@ -1144,7 +1144,7 @@ def dolphin_preprocessing_function(inp: Dict):
 @dataset_constructor.register('gsm8k')
 def gsm8k_preprocessing_function(inp: Dict):
     try:
-        return {'prompt': inp['question'], 'response': inp['answer']}
+        return {'prompt': f"Question: {inp['question']}\nAnswer:", 'response': inp['answer']}
     except Exception as e:
         raise ValueError(f"Unable to extract prompt/response from inp={inp}") from e
 
