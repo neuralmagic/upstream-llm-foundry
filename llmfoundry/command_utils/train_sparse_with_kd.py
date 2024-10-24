@@ -728,10 +728,6 @@ def train_sparse_with_kd(cfg: DictConfig) -> Trainer:
 
     log.info('Done.')
 
-    # Cleanup to prevent stalled processes
-    from streaming.base.util import clean_stale_shared_memory
-    clean_stale_shared_memory()
-
     return trainer
 
 
