@@ -12,6 +12,7 @@ from llmfoundry.cli import (
 from llmfoundry.command_utils import (
     eval_from_yaml,
     train_from_yaml,
+    train_sparse_with_kd_from_yaml,
 )
 
 app = Typer(pretty_exceptions_show_locals=False)
@@ -47,6 +48,21 @@ def eval(
 ):
     """Run the eval with optional overrides from CLI."""
     eval_from_yaml(yaml_path, args_list)
+
+
+@app.command(name='train_sparse_with_kd')
+def train_sparse_with_kd(
+    yaml_path: Annotated[str,
+                         Argument(
+                             ...,
+                             help='Path to the YAML configuration file',
+                         )],
+    args_list: Annotated[
+        Optional[list[str]],
+        Argument(help='Additional command line arguments')] = None,
+):
+    """Run the training with sparsity masks and optional KD and optional overrides from CLI."""
+    train_sparse_with_kd_from_yaml(yaml_path, args_list)
 
 
 if __name__ == '__main__':
