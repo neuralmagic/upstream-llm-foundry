@@ -41,8 +41,8 @@ train_loader:
   dataset:
     streams:
       dset:
-        local: ${variables.dataset_path}
-        remote:
+        local: 
+        remote: ${variables.dataset_path}
         split: train
     # hf_name: ${variables.dataset_name}
     # hf_kwargs:
@@ -65,8 +65,8 @@ eval_loader:
   dataset:
     streams:
       dset:
-        local: ${variables.dataset_path}
-        remote:
+        local: 
+        remote: ${variables.dataset_path}
         split: test
     # hf_name: ${variables.dataset_name}
     # hf_kwargs:
